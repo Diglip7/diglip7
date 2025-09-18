@@ -1,0 +1,1035 @@
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  TrendingUp,
+  BarChart3,
+  Search,
+  Handshake,
+  ShoppingCart,
+  Building2,
+  MapPin,
+  Link2,
+  HelpCircle,
+  Mic,
+  CheckCircle,
+  ArrowRight,
+  Sparkles,
+  Target,
+  Zap,
+  Globe,
+  Users,
+  Award,
+  ChevronDown,
+} from "lucide-react";
+import seo2 from "../images/vso.jpeg";
+import seoImage from "../images/vso1.png";
+import seo4 from "../images/vso2.png";
+import aboutImg from "../images/vso3.png";
+
+// Mock images - replace with your actual images
+// const seoImage =
+//   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
+// // const seo2 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop";
+// const seo4 =
+//   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
+// const aboutImg =
+//   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+const advantages = [
+  {
+    title: "AI-powered keyword Analyzers",
+    description:
+      "Tools like Ahrefs and SEMrush uncover conversational keywords and question-based phrases for precise targeting.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Voice-Readability Testing Tools",
+    description:
+      "We ensure that content is clear and concise for voice assistants to read aloud naturally.",
+    icon: BarChart3,
+  },
+  {
+    title: "Mobile Responsiveness Checkers",
+    description:
+      "Platforms like Google’s Mobile-Friendly Test confirm your site performs flawlessly on smartphones.",
+    icon: Search,
+  },
+  {
+    title: "Structured Data Validators",
+    description:
+      "We use Google’s Structured Data Testing Tool to verify schema markup for voice search accuracy.",
+    icon: Handshake,
+  },
+];
+
+const solutions = [
+  {
+    title: "E-commerce",
+    description:
+      "Shoppers ask, “What’s the best deal on wireless headphones?” We optimize product pages and FAQs to capture these queries, driving sales.",
+    icon: ShoppingCart,
+    points: [
+      "What’s the best deal on wireless headphones",
+      "E-commerce harmful content and replacing it with positive, authentic narratives.",
+      " E-commerce Enhancing User Experience: Fast, mobile-friendly design.",
+    ],
+  },
+  {
+    title: "Healthcare",
+    description: "Patients search for “What are symptoms of a cold?” Our voice SEO ensures that clinics and providers rank for health-related questions.",
+    icon: Building2,
+    points: [
+      "Diglip7’s Hospitality, we polish your online presence to exude reliability",
+      " Healthcare authority, winning over customers, clients, and peers.",
+      "Healthcare Systems that grow with your business.",
+    ],
+  },
+  {
+    title: "Hospitality",
+    description: "Travelers say, “Find hotels near Times Square.” We boost your visibility with local voice search and structured data for bookings.",
+    icon: MapPin,
+    points: [
+      "voice search optimization bury undesirable results",
+      " Hospitality elevate content that screams credibility—because visibility is power.",
+      "Targeted Hospitality Strategies: Engage your local audience.",
+    ],
+  },
+  {
+    title: "Legal",
+    description:
+      "Clients ask, “How much does a divorce lawyer cost?” We create voice-friendly content to answer legal FAQs, generating leads.",
+    icon: Link2,
+    points: [
+      " Diglip7’s voice search optimization ensures you outshine rivals ",
+      "voice search optimization stay top-of-mind for your audience.",
+      "Boosting Domain Authority: Improve rankings and trust.",
+    ],
+  },
+  {
+    title: "Real Estate",
+    description: "Homebuyers search, “What are homes for sale near me?” Our Google Assistant SEO targets location-based queries to showcase listings.",
+    icon: HelpCircle,
+    points: [
+      "voice search optimization services swoop in to contain the damage,",
+      "restore your image, and voice search optimization keep your brand standing tall.",
+      "voice search optimization Stand out in voice and AI searches.",
+    ],
+  },
+  {
+    title: "Scalable Solutions",
+    description: "From startups to enterprises, our voice search optimization service grows with your business.",
+    icon: Mic,
+    points: [
+      "voice search optimization that keeps your business relevant,",
+      "respected, and thriving voice search optimization in a world where online perception is everything.",
+      "Voice Assistant Compatibility: Optimized for Siri, Alexa.",
+    ],
+  },
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Brand Story Videos",
+    description: " Share your mission and values to connect emotionally.",
+    icon: Target,
+  },
+  {
+    number: "2",
+    title: "Product Demonstrations",
+    description: "Show off features and benefits to drive sales.",
+    icon: Search,
+  },
+  {
+    number: "3",
+    title: "Tutorials & How-To Videos",
+    description: "Educate your audience and position yourself as an expert.",
+    icon: Zap,
+  },
+  {
+    number: "4",
+    title: "Customer Testimonials",
+    description: "Let happy clients do the talking to build trust.",
+    icon: Globe,
+  },
+  {
+    number: "5",
+    title: "Event Coverage",
+    description: "Capture launches, conferences, or milestones with flair.",
+    icon: BarChart3,
+  },
+  {
+    number: "6",
+    title: "Animated Explainer Videos",
+    description: "Simplify complex offerings with fun visuals.",
+    icon: Award,
+  },
+];
+
+const faqs = [
+  {
+      question:
+        "How is voice search different from typed search?",
+      answer:
+        "Voice search uses natural, conversational language—like “What’s the best coffee shop near me?”—while typed searches are shorter and keyword-focused, such as “coffee shop.” Our voice SEO targets these conversational search queries to ensure your brand ranks in spoken results.",
+    },
+    {
+        question:
+          "Why is voice search optimization important for my business?",
+        answer:
+          "With over 50% of users relying on voice search daily (Statista, 2024), it’s a growing channel for discovery. A voice search optimization service boosts your visibility in local voice search, featured snippets, and mobile queries, keeping you competitive in 2025 and beyond.",
+      },
+      {
+        question:
+          "How long does it take to see results from voice optimization?",
+        answer:
+          "Results depend on your current SEO foundation, but most DigLip7 clients see ranking improvements or traffic boosts within 2–3 months. Our voice-enabled search strategy delivers steady progress, tracked with transparent reporting.",
+      },
+      {
+        question:
+          "Is voice optimization suitable for small businesses?",
+        answer:
+          "Yes! Small businesses thrive with voice search optimization services, especially for local voice search. We help you capture “near me” queries—like “Find a plumber nearby”—driving foot traffic and leads without a big budget.",
+      },
+      {
+        question:
+          "What platforms does your voice SEO target?",
+        answer:
+          "We optimize for major voice assistants, including Google Assistant SEO, Amazon Alexa, Apple Siri, and other emerging platforms, ensuring your brand reaches users across devices.",
+      },
+      {
+        question:
+          "Will voice optimization help me rank in “near me” searches?",
+        answer:
+          "Absolutely. Our voice search optimization service enhances your Google Business Profile, local citations, and location-specific content to dominate “near me” results—perfect for brick-and-mortar businesses.",
+      },
+      {
+        question:
+          "How does DigLip7 ensure my content is voice-friendly?",
+        answer:
+          "We use schema markup for voice search, craft long-tail and question-based content, and test readability for voice assistants. This ensures your site answers queries naturally and ranks in featured snippets optimization.",
+      },
+      {
+        question:
+          "Can voice search optimization improve my mobile SEO too?",
+        answer:
+          "Yes! Since most voice searches happen on mobile, our mobile-first SEO—including site speed and responsiveness—boosts both voice and mobile performance, creating a seamless user experience.",
+      },
+];
+
+// 3D Card Component
+const Card3D = ({ children, className }) => {
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateXValue = (y - centerY) / 10;
+    const rotateYValue = (centerX - x) / 10;
+
+    setRotateX(rotateXValue);
+    setRotateY(rotateYValue);
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      className={`transform-gpu ${className}`}
+      style={{
+        transformStyle: "preserve-3d",
+        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      transition={{ type: "spring", stiffness: 100, damping: 15 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Floating Animation Component
+const FloatingElement = ({ children, delay = 0 }) => (
+  <motion.div
+    animate={{
+      y: [0, -10, 0],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      delay: delay,
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+// Parallax Background Component
+const ParallaxBg = ({ children }) => {
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setOffsetY(window.pageYOffset);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+      {children}
+    </div>
+  );
+};
+
+function Voice() {
+  const [openIndex, setOpenIndex] = useState(null);
+  const [isVisible, setIsVisible] = useState({});
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }));
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll("[id]").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="overflow-x-hidden pt-18 sm:pt-18">
+      {/* Hero Section with Parallax */}
+      <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
+              {/* Hero Content */}
+              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, type: "spring" }}
+                  className="mb-6"
+                >
+                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
+                </motion.div>
+      
+                <motion.h1
+                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                >
+                  Grow Your Business with{" "}
+                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
+                    Voice Search Optimization
+                  </span>
+                </motion.h1>
+      {/* Building Digital Experiences That Drive Success */}
+                <motion.p
+                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 1 }}
+                >
+                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
+                </motion.p>
+      
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1, duration: 1 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                >
+                  <a href="/contact">
+                              <motion.button
+                              
+                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                
+                                Get Started
+                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                              </motion.button>
+                              </a>
+                </motion.div>
+              </div>
+              <div>
+                <div className="p-6 inset-0 w-full h-full">
+                  <img
+                    src={seo2}
+                    alt="Digital Marketing Background"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 "></div>
+                </div>
+              </div>
+      
+              {/* Floating particles */}
+              <div className="absolute inset-0">
+                {[...Array(20)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-white/20 rounded-full"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                      y: [0, -100, 0],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
+                ))}
+              </div>
+            </section>
+
+      {/* About Section with 3D Cards */}
+      <section id="about" className=" sm:py-16 lg: bg-white">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg: px-4 sm:px-6 lg:">
+          {/* Left Image with 3D effect */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-1 w-full"
+          >
+            <Card3D className="w-full">
+              <div className="relative overflow-hidden rounded-2xl ">
+                <img
+                  src={seoImage}
+                  alt="ui/ux Service"
+                  className="w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-110"
+                />
+                <div className="absolute inset-0 "></div>
+              </div>
+            </Card3D>
+          </motion.div>
+
+          {/* Right Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-1 w-full"
+          >
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+                Voice Search Optimization{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Service | DigLip7 SEO Solutions
+                </span>
+              </h2>
+            </FloatingElement>
+            {/* UI/UX Design Services | Diglip7 – Crafting Seamless Digital Experiences */}
+            <div className="space-y-4 sm:space-y-6">
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+                In a world where “Hey, Siri” and “OK, Google” are part of daily
+                life, voice search is reshaping how customers find businesses
+                online. By 2025, voice-enabled devices and conversational
+                queries are set to dominate digital interactions, making a voice
+                search optimization service essential for staying competitive.
+                At DigLip7, we specialize in helping brands rank higher in
+                voice-first searches, ensuring your business is the answer when
+                customers ask their devices for solutions. Whether you’re a
+                local shop, an e-commerce giant, or a startup, our voice search
+                optimization service unlocks new opportunities to connect with
+                your audience—faster, smarter, and more effectively than ever
+                before.
+              </p>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+                Why settle for outdated SEO strategies when the future is
+                voice-first? With DigLip7’s expertise, you’ll not only adapt to
+                this seismic shift but lead the way, capturing the attention of
+                voice search users across platforms like Google Assistant,
+                Alexa, and Siri. Let’s dive into how our voice search
+                optimization service can future-proof your brand and drive
+                measurable growth
+              </p>
+            </div>
+
+            <motion.div
+              className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              {[
+                { icon: Users, text: "1000+ Projects" },
+                { icon: Award, text: "2+ Years Experience" },
+                { icon: Target, text: "5 Month Results" },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3 sm:px-4 py-2 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-700" />
+                  <span className="text-sm sm:text-base font-medium text-gray-700">
+                    {item.text}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Difference Section */}
+      <section className=" sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          <motion.div
+            className="flex-1 w-full"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <FloatingElement delay={0.2}>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                What Is Voice{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Search Optimization?
+                </span>
+              </h2>
+            </FloatingElement>
+            {/* What Are UI/UX Design Services? */}
+            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
+              Voice search optimization is the process of tailoring your website
+              and digital presence to rank highly in results delivered by voice
+              assistants like Google Assistant, Amazon Alexa, Apple Siri, and
+              others. Unlike traditional typed searches, which often use short,
+              keyword-heavy phrases, voice searches are conversational,
+              question-based, and longer—think “What’s the best Italian
+              restaurant near me?” instead of “Italian restaurant.” A voice
+              search optimization service ensures that your business appears in
+              these spoken results, especially in coveted “position zero”
+              featured snippets.Over 50% of U.S. adults use voice search daily
+              (Statista, 2024). 41% of voice search users say it feels like
+              “talking to a friend” (Google, 2023). By 2025, nearly 75% of
+              households in developed markets will own a smart speaker (Juniper
+              Research).
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+              {[
+                { number: "500%", label: "Traffic Increase" },
+                { number: "95%", label: "Client Satisfaction" },
+                { number: "24/7", label: "Support Available" },
+                { number: "50+", label: "Team Experts" },
+              ].map((stat, idx) => (
+                <motion.div
+                  key={idx}
+                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-700">
+                    {stat.number}
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="flex-1 flex justify-center w-full"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Card3D className="w-full max-w-md lg:max-w-none">
+              <div className="relative">
+                <img
+                  src={seo4}
+                  alt="ui/ux Service"
+                  className="rounded-2xl  w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0  rounded-2xl"></div>
+              </div>
+            </Card3D>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Results Section with Custom Shape */}
+      <section className="w-full  sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 flex justify-center"
+          >
+            <div className="relative w-72 h-full sm:w-full sm:h-full lg:w-full lg:h-full">
+              <Card3D className="w-full h-full">
+                <img
+                  src={aboutImg}
+                  alt="About Diglip7"
+                  className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
+                  
+                />
+              </Card3D>
+
+              {/* Floating elements around the image */}
+              <motion.div
+                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              >
+                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
+              </motion.div>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2"
+          >
+            <FloatingElement delay={0.3}>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
+                Why Choose DigLip7 for {" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
+                  Voice Search Optimization?
+                </span>
+              </h2>
+            </FloatingElement>
+            {/* Ready to Grow Your Business? */}
+            <div className="space-y-4 sm:space-y-6">
+              <motion.div
+                className="flex items-start gap-3 sm:gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                  At{" "}
+                  <span className="font-semibold text-teal-700">Diglip7</span>,
+                  When it comes to voice search optimization services, DigLip7 stands out for all the right reasons:
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex items-start gap-3 sm:gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                  Deep SEO Expertise{" "}
+                  <span className="font-semibold text-[#c89d5a]">
+                    Our team blends traditional SEO mastery with voice-first innovation to deliver results that last.
+                  </span>
+                  Customized Strategies
+Whether you’re a local bakery or a global brand, we tailor our voice SEO to your niche and goals.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex items-start gap-3 sm:gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                 Data-Driven Approach
+We use real-time analytics and transparent reporting to track progress and refine campaigns.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          
+        </div>
+      </section>
+
+      {/* Advantages Section with 3D Cards */}
+      <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <FloatingElement>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+              Voice Search Optimization Tools & Techniques We Use
+            </h2>
+          </FloatingElement>
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
+            At DigLip7, we combine cutting-edge technology with proven strategies to deliver top-tier voice search optimization services. Our toolkit includes:
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+          {advantages.map((adv, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card3D className="h-full">
+                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                  <FloatingElement delay={index * 0.1}>
+                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
+                      <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                    </div>
+                  </FloatingElement>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 text-center">
+                    {adv.title}
+                  </h3>
+                  <p className="text-white/90 text-xs sm:text-sm leading-relaxed text-center flex-grow">
+                    {adv.description}
+                  </p>
+                </div>
+              </Card3D>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <FloatingElement>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+              Our Voice Search Optimization Services at DigLip7
+            </h2>
+          </FloatingElement>
+          <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
+            At DigLip7, we offer a comprehensive voice search optimization service designed to make your business the first answer users hear. Here’s how we do it:
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+          {solutions.map((solution, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card3D className="h-full">
+                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 h-full flex flex-col">
+                  <FloatingElement delay={index * 0.1}>
+                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-100 to-[#c89d5a]/20 rounded-full mb-4">
+                      <solution.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />
+                    </div>
+                  </FloatingElement>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
+                    {solution.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 text-xs sm:text-sm flex-grow">
+                    {solution.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {solution.points.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-xs sm:text-sm text-gray-600"
+                      >
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-teal-600 mt-0.5 flex-shrink-0" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Card3D>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
+                Types of Videos We Create at DigLip7
+              </h2>
+            </FloatingElement>
+            <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto">
+              Every business has a story, and we’ve got the perfect video to
+              tell it. Here’s what our Video Marketing Service offers:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <Card3D className="h-full">
+                  <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
+                    <div className="flex items-start gap-4 mb-4">
+                      <motion.div
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        whileHover={{ scale: 1.1, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {step.number}
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
+                          {step.title}
+                        </h3>
+                        <div className="flex items-center gap-2 mb-3">
+                          <step.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600" />
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </Card3D>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="mt-8 sm:mt-12 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6">
+              This process is built for simplicity, effectiveness, and rapid
+              growth.
+            </p>
+            <a href="/contact">
+                        <motion.button
+                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          Start Your Journey
+                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                        </motion.button>
+                        </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div className="w-full mx-auto">
+          <motion.div
+            className="text-center mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
+                Frequently Asked Questions (FAQs)
+              </h2>
+            </FloatingElement>
+            <p className="text-gray-600 text-sm sm:text-base">
+              Get answers to the most common questions about our digital
+              marketing services.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4 sm:space-y-6">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                    {faq.question}
+                  </span>
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
+                  >
+                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="border-t border-gray-100"
+                    >
+                      <div className="p-4 sm:p-6 text-gray-600 leading-relaxed text-xs sm:text-sm lg:text-base">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 border border-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6">
+                Ready to Optimize for the Future? 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
+                  Contact DigLip7 Today
+                </span>
+              </h2>
+            </FloatingElement>
+            {/* Final Call-to-Action */}
+            <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
+             The voice search revolution is here, and your business can’t afford to be left behind. With DigLip7’s voice search optimization service, you’ll rank higher, reach more customers, and stay ahead of the competition in 2025 and beyond. Whether you’re targeting local shoppers or global audiences, we’ll craft a voice-enabled search strategy that delivers results.Schedule a free voice search audit today or contact us for a personalized consultation
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a href="/contact">
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Free Consultation
+                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+              </a>
+            </div>
+
+            <motion.div
+              className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/80"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                <span className="text-xs sm:text-sm">Free Website Audit</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                <span className="text-xs sm:text-sm">
+                  No Long-term Contracts
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                <span className="text-xs sm:text-sm">Results in 5 Months</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Voice;
