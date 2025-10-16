@@ -24,9 +24,9 @@ function Contect() {
     e.preventDefault();
     try {
       const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/contact`,
-      formData
-    );
+        `${import.meta.env.VITE_API_URL}/contact`,
+        formData
+      );
       setStatus(res.data.msg);
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
@@ -41,42 +41,41 @@ function Contect() {
         className="w-full h-screen bg-no-repeat bg-cover bg-right flex items-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-         <div className="container   md:px-16">
-              {/* Left Content */}
-              <motion.div
-                className="max-w-xl  p-6 rounded-2xl text-center md:text-left"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-3xl md:text-5xl font-bold text-teal-700 mb-4">
-                  Drive Growth with Expert Web & Marketing Solutions
-                </h2>
-                <p className="text-gray-700 text-lg md:text-xl mb-6">
-                  Diglip7 help ambitious businesses like yours generate more profits by building awareness, driving web traffic, connecting with customers growing.
-                </p>
-      
-                {/* Google Rating */}
-                <div className="flex items-center justify-center md:justify-start space-x-2">
-                  <img
-                    src={d7}
-                    alt="Google Logo"
-                    className="w-6 h-6"
-                  />
-                  <span className="text-yellow-500 text-xl">★★★★★</span>
-                  <span className="text-gray-700 text-lg">4.5</span>
-                </div>
-              </motion.div>
+        <div className="container   md:px-16">
+          {/* Left Content */}
+          <motion.div
+            className="max-w-xl  p-6 rounded-2xl text-center md:text-left"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-teal-700 mb-4">
+              Drive Growth with Expert Web & Marketing Solutions
+            </h2>
+            <p className="text-gray-700 text-lg md:text-xl mb-6">
+              Diglip7 help ambitious businesses like yours generate more profits by building awareness, driving web traffic, connecting with customers growing.
+            </p>
+
+            {/* Google Rating */}
+            <div className="flex items-center justify-center md:justify-start space-x-2">
+              <img
+                src={d7}
+                alt="Google Logo"
+                className="w-6 h-6"
+              />
+              <span className="text-yellow-500 text-xl">★★★★★</span>
+              <span className="text-gray-700 text-lg">4.5</span>
             </div>
+          </motion.div>
+        </div>
         {/* ...same as before */}
       </section>
 
       {/* Form Section */}
-      <div className="w-full bg-teal-100 min-h-screen pt-24">
+       <div className="w-full bg-teal-100 min-h-screen pt-24">
         <div className="w-full mx-auto px-4 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left Section same as before */}
-              {/* Left Side - Contact Info */}
+           
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -110,7 +109,7 @@ function Contect() {
           </div>
 
           {/* Social Icons */}
-          <div className="flex gap-4 pt-4">
+       <div className="flex gap-4 pt-4">
             <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:bg-orange-500 hover:text-white transition">
               <FaFacebook />
             </a>
@@ -121,10 +120,10 @@ function Contect() {
               <FaInstagram />
             </a>
           </div>
-        </motion.div>
+        </motion.div> 
 
-            {/* Right Section - Form */}
-            <motion.div
+      {/* Right Section - Form */}
+       <motion.div
               initial={{ x: 80, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -183,8 +182,8 @@ function Contect() {
               {status && <p className="mt-4 text-center text-green-600">{status}</p>}
             </motion.div>
           </div>
-        </div>
-      </div>
+        </div> 
+       </div>  
     </div>
   );
 }

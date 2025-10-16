@@ -4,7 +4,7 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -15,17 +15,22 @@ import {
   ArrowRight,
   Sparkles,
   Target,
-  Zap,
+  Zap, Star,
   Globe,
   Users,
   Award,
   ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
-import seo2 from "../images/ppc.jpeg";
+import seo2 from "../images/ppc00.jpeg";
 import seoImage from "../images/ppc1.png";
 import seo4 from "../images/ppc2 (2).png";
 import aboutImg from "../images/ppc3.png";
-
+import ppc1 from "../images/ppc001.png";
+import ppc2 from "../images/ppc002.png";
+import ppc3 from "../images/ppc003.png";
+import ppc4 from "../images/ppc004.jpeg";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -35,6 +40,122 @@ import aboutImg from "../images/ppc3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip7 transformed our online presence completely. Our organic traffic increased by 250% in just 6 months, and we’re now ranking #1 for our main keywords. Their team is professional, responsive, and delivers real results.”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: "Michael Chen",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“Working with DigLip7 has been a game-changer for our e-commerce business. They improved our search rankings and boosted conversions significantly.”`,
+  },
+  {
+    name: "Dr. Emily Rodriguez",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“The local SEO work by DigLip7 did for our clinic was outstanding. We went from being invisible online to the top-rated healthcare provider in our area.”`,
+  },
+  {
+    name: "David Thompson",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“I was skeptical about SEO at first, but DigLip7 proved me wrong. Their transparent reporting and consistent results made them an invaluable partner.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover SEO opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized SEO strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical SEO improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "TechStart Inc.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive SEO strategy.",
+    image:
+      ppc4,
+      alt:"Digital marketing PPC services increasing conversions and business growth",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "EcoShop",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image: ppc1,
+     alt:"Pay-per-click advertising strategy for higher ROI and lead generation",
+
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "HealthPlus Clinic",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local SEO rankings for a healthcare provider using optimized content strategy.",
+    image:
+      ppc2,
+       alt:"Expert PPC campaign management boosting website traffic and online sales",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
 
 const advantages = [
   {
@@ -183,7 +304,7 @@ const faqs = [
   {
     question: "How can Diglip7 help grow my business?",
     answer:
-      "We specialize in SEO, PPC, social media marketing, and local SEO to help expand your audience and connect with the right customers.",
+      "We specialize in SEO, PPC, ppc, and local SEO to help expand your audience and connect with the right customers.",
   },
   {
     question: "How long does it take to see results from digital marketing?",
@@ -306,257 +427,415 @@ function PpcAdvertising() {
     return () => observer.disconnect();
   }, []);
 
+
+
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // SEO Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$799",
+      duration: "/month",
+      features: [
+        "Google Ads campaign setup (1 campaign)",
+        "Keyword research & targeting",
+        "Ad copywriting (up to 3 ads)",
+        "Conversion tracking setup",
+        "Monthly performance report",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,499",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Google & Meta Ads campaigns (up to 3 campaigns)",
+        "Advanced keyword & audience targeting",
+        "A/B ad testing & optimization",
+        "Landing page optimization",
+        "Bi-weekly performance reporting",
+        "Priority support",
+        "Competitor & market analysis",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$2,999",
+      duration: "/month",
+      features: [
+        "Multi-platform PPC management (Google, Meta, LinkedIn, YouTube)",
+        "Unlimited campaigns & ad variations",
+        "Custom landing page creation",
+        "Conversion rate optimization (CRO)",
+        "Weekly reporting & strategy calls",
+        "Dedicated PPC strategist",
+        "Data-driven budget optimization",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // PPC Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "PPC Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
+
   return (
-    <div className="overflow-x-hidden w-full  ">
+    <div className="w-full  bg-white ">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full pt-20 flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
-                >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    PPC Services
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="Digital Marketing Background"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
-              </div>
-            </section>
+      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+        {/* Animated Floating Objects */}
+        <motion.div
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
 
-      {/* About Section with 3D Cards */}
-      <section id="about" className=" sm:py-16 lg: bg-white w-full">
-        <div className=" mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
-          {/* Left Image with 3D effect */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <Card3D className="w-full h-full">
-              <div className=" overflow-hidden rounded-2xl ">
-                <img
-                  src={seoImage}
-                  alt="SEO Service"
-                  className="w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-110"
-                />
-                <div className="absolute inset-0 "></div>
-              </div>
-            </Card3D>
-          </motion.div>
+        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+          {/* Left Section */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900">Drive Instant Growth with </span>
+              <br className="text-gray-600" />
 
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-                Transform Clicks into Conversions{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  with Expert PPC Management
-                </span>
-              </h2>
-            </FloatingElement>
-            {/* Transform Clicks into Conversions with Expert PPC Management */}
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                Accelerate Your Digital Ascent: Unlock Infinite Possibilities
-                with diglip7Ready to Elevate Your Advertising Game? Connect with
-                our PPC experts today and discover how our tailored strategies
-                can transform your digital presence.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                At diglip7, we believe that every click is an opportunity
-                waiting to be seized. Our comprehensive Pay-Per-Click (PPC)
-                Management Services are designed to boost your online
-                advertising performance, ensuring you get the highest return on
-                your investment.
-              </p>
-            </div>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                Proven PPC Strategies
+              </span>
+              <br />
 
-            <motion.div
-              className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              {[
-                { icon: Users, text: "1000+ Projects" },
-                { icon: Award, text: "2+ Years Experience" },
-                { icon: Target, text: "5 Month Results" },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3 sm:px-4 py-2 rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-700" />
-                  <span className="text-sm sm:text-base font-medium text-gray-700">
-                    {item.text}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+            </h1>
+            <p className="text-gray-700 mb-6">
+              At <span className="font-semibold text-blue-700">DigLip7</span>, Explore real PPC success stories where businesses achieved higher traffic, improved conversions, and exceptional ROI. DigLip 7’s expert PPC strategies drive measurable growth and lasting impact for your brand.
 
-      {/* Difference Section */}
-      <section className=" sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className=" w-full mx-auto flex flex-col lg:flex-row items-center gap-8 lg:w-full gap-12">
-          <motion.div
-            className="flex-1 w-full"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <FloatingElement delay={0.2}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
-                The diglip7 Difference:{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  Your Ultimate PPC Partner
-                </span>
-              </h2>
-            </FloatingElement>
-            {/* Welcome to diglip7 – Your Ultimate PPC Partner */}
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              At diglip7, we believe that every click is an opportunity waiting
-              to be seized. Our comprehensive Pay-Per-Click (PPC) Management
-              Services are designed to boost your online advertising
-              performance, ensuring you get the highest return on your
-              investment. With years of experience managing multi-million-dollar
-              budgets across platforms like Google Ads, Facebook, Instagram, and
-              more, our dedicated team leverages cutting-edge strategies to turn
-              your PPC campaigns into powerful revenue-generating engines.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              {[
-                { number: "500%", label: "Traffic Increase" },
-                { number: "95%", label: "Client Satisfaction" },
-                { number: "24/7", label: "Support Available" },
-                { number: "50+", label: "Team Experts" },
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+              <div>🚀 Boost organic traffic</div>
+              <div>📈 Improve search ranking</div>
+              <div>🎯 Target right audience</div>
+              <div>📊 Transparent reporting</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+              Get Free SEO Audit <ArrowRight size={18} />
+            </button> */}
+              <a href="/contact">
+                <motion.button
+
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
                   whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-700">
-                    {stat.number}
+
+                  Get Started
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Right Section - Animated Chart */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={seo2}
+              alt="Professional PPC management improving online visibility and revenue"
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+
+      </div>
+
+
+      {/* addedd */}
+
+      <div className="bg-gray-50 w-full">
+        {/* SEO Section */}
+        <div className="py-16 px-6 md:px-12 lg:px-20">
+          <div className="w-full flex flex-col md:flex-row items-center gap-10 mb-20">
+            <motion.img
+              src={ppc3}
+              alt="Targeted PPC ads driving qualified traffic to websites effectively"
+              className="rounded-2xl shadow-lg w-full md:w-1/2"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why PPC is the Best Investment for Your Business
+              </h2>
+              <p className="text-gray-700 mb-4">
+                PPC delivers instant visibility by placing your <span className="font-semibold text-blue-700">DigLip7</span>,
+                business at the top of search results. It drives targeted traffic, offers complete budget control, and provides measurable ROI, making it a fast, cost-effective strategy for growth and brand exposure.
+
+              </p>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+                <li>✅ Immediate Results</li>
+                <li>✅ Targeted Reach</li>
+                <li>✅ Budget Control</li>
+                <li>✅ Measurable ROI</li>
+                <li>✅ Brand Exposure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+            {/* Header */}
+            <div className="w-full ">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Our Proven PPC Process
+              </h2>
+              <p className="text-gray-600 mt-3">
+                A systematic approach that delivers consistent results for our clients
+              </p>
+            </div>
+
+            {/* Steps Section */}
+            <div className="w-full">
+              {/* Blue Line (Desktop only) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                {stepss.map((step, index) => (
+                  <motion.div
+                    key={step.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                      {step.icon}
+                      <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
+                        {step.id}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* SEO Services */}
+          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+            <div className="max-w-6xl mx-auto text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Proven PPC Success Stories
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Real results from real businesses that trusted <span className="font-semibold text-teal-600">DigLip7</span> with their PPC journey.
+              </p>
+
+              {/* Tabs */}
+              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+                {Object.keys(caseStudies).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActive(key)}
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-teal-50"
+                      }`}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className=" flex flex-col md:flex-row items-center gap-10"
+            >
+              {/* Left: Image & Info */}
+              <div className="flex-1">
+                <img
+                  src={study.image}
+                  alt={study.alt}
+                  className="rounded-2xl shadow-md w-full object-cover"
+                />
+
+              </div>
+
+              {/* Right: Stats */}
+              <div className="flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+                <p className="text-sm text-gray-600">
+                  Discover how businesses achieved remarkable growth with DigLip 7’s PPC campaigns. From higher traffic to increased conversions, our data-driven strategies deliver measurable results and maximize ROI, proving the power of effective PPC advertising.
+
+                </p>
+                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
+
+
+                  {study.stats.map((stat, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                    >
+
+                      <div className="flex items-center gap-2">{stat.icon}</div>
+                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* PPC Services Section */}
+        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our PPC Services</h2>
+            <p className="text-gray-600 mb-10">
+              PPC designed to maximize ROI and drive targeted traffic.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ppcServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="text-teal-600 w-10 h-10" />
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
-                    {stat.label}
-                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          <motion.div
-            className="flex-1 flex justify-center w-full"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Card3D className="w-full max-w-md lg:max-w-none">
-              <div className="">
-                <img
-                  src={seo4}
-                  alt="SEO Service"
-                  className="rounded-2xl  w-full h-full sm:h-full lg:h-2/3 object-cover transform transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0 "></div>
-              </div>
-            </Card3D>
-          </motion.div>
+          </div>
         </div>
-      </section>
+
+        {/* SEO Pricing Section */}
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">PPC Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 mb-10">
+              Choose the perfect PPC package that fits your business needs and budget.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {seoPackages.map((pkg, index) => (
+                <motion.div
+                  key={index}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                    {pkg.popular && (
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                        🌟 Most Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                    {pkg.features.map((feat, i) => (
+                      <li key={i}>✅ {feat}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact">
+                    <button
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      {pkg.button}
+                    </button></a>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-gray-500 text-sm">
+              All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* added  */}
+
+
 
       {/* Results Section with Custom Shape */}
       <section className="w-full bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -574,7 +853,7 @@ function PpcAdvertising() {
                   src={aboutImg}
                   alt="About Diglip7"
                   className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  
+
                 />
               </Card3D>
 
@@ -641,7 +920,7 @@ function PpcAdvertising() {
                 <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                   We help you expand your audience through{" "}
                   <span className="font-semibold text-[#c89d5a]">
-                    SEO, PPC, social media marketing, and local SEO
+                    SEO, PPC, ppc, and local SEO
                   </span>
                   , ensuring your brand reaches the right customers at the right
                   time.
@@ -666,7 +945,7 @@ function PpcAdvertising() {
             </div>
           </motion.div>
 
-          
+
         </div>
       </section>
 
@@ -702,7 +981,7 @@ function PpcAdvertising() {
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                <div className="bg-gradient-to-br from-teal-600 to-teal-900 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
                     <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -810,7 +1089,7 @@ function PpcAdvertising() {
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-teal-900 text-white font-bold text-sm sm:text-base flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -846,18 +1125,101 @@ function PpcAdvertising() {
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
+
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -875,8 +1237,7 @@ function PpcAdvertising() {
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
+              Get answers to the most common questions about our digital marketing services.
             </p>
           </motion.div>
 
@@ -884,7 +1245,7 @@ function PpcAdvertising() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -892,9 +1253,10 @@ function PpcAdvertising() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -902,7 +1264,7 @@ function PpcAdvertising() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -975,7 +1337,7 @@ function PpcAdvertising() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -983,14 +1345,7 @@ function PpcAdvertising() {
                 <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
 
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-teal-700 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Our Portfolio
-                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+
             </div>
 
             <motion.div

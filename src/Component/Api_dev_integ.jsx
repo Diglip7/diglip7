@@ -4,7 +4,7 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -19,12 +19,19 @@ import {
   Globe,
   Users,
   Award,
-  ChevronDown,
+  ChevronDown, Star,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
-import seo2 from "../images/api.jpeg";
+import seo2 from "../images/api001.png";
 import seoImage from "../images/api1.png";
 import seo4 from "../images/api2.png";
 import aboutImg from "../images/api3.png";
+
+import ppc1 from "../images/api002.png";
+import ppc2 from "../images/api003.png";
+import ppc3 from "../images/api004.png";
+import ppc4 from "../images/api005.png";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -34,6 +41,121 @@ import aboutImg from "../images/api3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Emily R., USA",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip7 developed custom APIs that seamlessly integrated our systems. Workflow efficiency and data accessibility have improved dramatically.”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: " Michael T., USA",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“The team at DigLip7 delivered scalable and secure API solutions. Our applications now communicate flawlessly, saving time and resources.”`,
+  },
+  {
+    name: "Rajesh S., India",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“Thanks to DigLip7, our software systems are now connected efficiently. The APIs are reliable, fast, and easy to manage.”`,
+  },
+  {
+    name: "Sophia M., UK",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“DigLip7’s API development enhanced our business processes and automation. Their professional approach ensured smooth integration and measurable results.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover API Development opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized API Development strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical API Development improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "Professional illustration of API Development enabling seamless software automation and system connectivity.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive API Development strategy.",
+    image:
+      ppc1,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "Flat vector design showcasing API Development process for web, mobile, and enterprise applications.",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      ppc2,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "Professional illustration of API Development enabling seamless software automation and system connectivity.",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local API Development rankings for a healthcare provider using optimized content strategy.",
+    image:
+      ppc3,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
+
+
 
 const advantages = [
   {
@@ -176,43 +298,43 @@ const steps = [
 ];
 
 const faqs = [
- {
-      question:
-        "What is the difference between API development and API integration?",
-      answer:
-        "API development creates custom APIs tailored to your business needs, enabling unique functionality and data exchange. API integration connects existing APIs, custom or third-party, to your systems for seamless workflows. DigLip7 delivers both, designing robust APIs and integrating services like Stripe or Salesforce. Our solutions ensure scalability, security, and performance, streamlining operations and enhancing user experiences across industries like fintech, e-commerce, and healthcare.",
-    },
-    {
-      question: "How secure are custom-built APIs?",
-      answer:
-        "DigLip7 prioritizes security in custom API development with end-to-end encryption, OAuth authentication, and rate limiting. We adhere to OWASP standards and conduct regular audits to safeguard data, ensuring compliance for sensitive sectors like healthcare (HIPAA) or fintech. Our APIs feature secure token management and robust error handling, minimizing vulnerabilities. Whether for startups or enterprises, we build APIs that protect your systems and user trust while maintaining high performance and reliability.",
-    },
-    {
-      question: "Can I integrate multiple third-party APIs into one platform?",
-      answer:
-        "Yes, DigLip7 excels at integrating multiple third-party APIs into a unified platform. We connect services like PayPal, Google Maps, HubSpot, or Shopify, creating cohesive workflows. Our team ensures compatibility, optimizes data flow, and minimizes latency for smooth operation. This approach enhances productivity, automates tasks, and improves user experiences, making it ideal for SaaS, e-commerce, or analytics platforms seeking streamlined connectivity and scalability across diverse systems.",
-    },
-    {
-      question: "How long does it take to build an API?",
-      answer:
-        "API development timelines vary by complexity. A simple RESTful API typically takes 3-5 weeks, including design, coding, and testing. Complex microservices or cloud-based APIs may require 8-12 weeks to ensure scalability and integration. DigLip7 provides a detailed roadmap during planning, aligning with your deadlines. Our agile process emphasizes transparency, delivering high-quality APIs on time, whether for startups needing quick solutions or enterprises building robust, long-term systems.",
-    },
-    {
-      question: "Do you offer API maintenance and scaling support?",
-      answer:
-        "Absolutely. DigLip7 provides comprehensive post-launch support. We offer maintenance to ensure APIs run smoothly, including bug fixes, performance optimization, and security updates. Our scaling services handle increased traffic or new features, leveraging cloud platforms like AWS or Azure. We monitor API health, provide analytics, and troubleshoot issues proactively, ensuring reliability for businesses of all sizes, from SaaS providers to e-commerce platforms, keeping your systems future-proof.",
-    },
-    {
-      question: "What types of APIs can DigLip7 develop?",
-      answer:
-        "DigLip7 develops a range of APIs, including RESTful APIs for flexible, modern applications, SOAP APIs for enterprise reliability, and GraphQL APIs for efficient data querying. We also build microservices-based APIs for modular scalability and WebSocket APIs for real-time communication. Tailored to your needs, our APIs support industries like fintech, healthcare, and e-commerce, ensuring compatibility, performance, and security with frameworks like Node.js, Python, or Java.",
-    },
-    {
-      question: "How does DigLip7 ensure API performance optimization?",
-      answer:
-        "DigLip7 optimizes API performance through efficient coding, caching strategies, and load balancing. We use tools like Redis for caching, implement rate limiting, and design lightweight payloads to reduce latency. Our team conducts load testing to simulate high traffic and fine-tunes APIs for speed. By leveraging cloud platforms like AWS and monitoring tools, we ensure your APIs deliver fast, reliable responses, enhancing user satisfaction for applications in SaaS, analytics, or e-commerce.",
-    },
-  ];
+  {
+    question:
+      "What is the difference between API development and API integration?",
+    answer:
+      "API development creates custom APIs tailored to your business needs, enabling unique functionality and data exchange. API integration connects existing APIs, custom or third-party, to your systems for seamless workflows. DigLip7 delivers both, designing robust APIs and integrating services like Stripe or Salesforce. Our solutions ensure scalability, security, and performance, streamlining operations and enhancing user experiences across industries like fintech, e-commerce, and healthcare.",
+  },
+  {
+    question: "How secure are custom-built APIs?",
+    answer:
+      "DigLip7 prioritizes security in custom API development with end-to-end encryption, OAuth authentication, and rate limiting. We adhere to OWASP standards and conduct regular audits to safeguard data, ensuring compliance for sensitive sectors like healthcare (HIPAA) or fintech. Our APIs feature secure token management and robust error handling, minimizing vulnerabilities. Whether for startups or enterprises, we build APIs that protect your systems and user trust while maintaining high performance and reliability.",
+  },
+  {
+    question: "Can I integrate multiple third-party APIs into one platform?",
+    answer:
+      "Yes, DigLip7 excels at integrating multiple third-party APIs into a unified platform. We connect services like PayPal, Google Maps, HubSpot, or Shopify, creating cohesive workflows. Our team ensures compatibility, optimizes data flow, and minimizes latency for smooth operation. This approach enhances productivity, automates tasks, and improves user experiences, making it ideal for SaaS, e-commerce, or analytics platforms seeking streamlined connectivity and scalability across diverse systems.",
+  },
+  {
+    question: "How long does it take to build an API?",
+    answer:
+      "API development timelines vary by complexity. A simple RESTful API typically takes 3-5 weeks, including design, coding, and testing. Complex microservices or cloud-based APIs may require 8-12 weeks to ensure scalability and integration. DigLip7 provides a detailed roadmap during planning, aligning with your deadlines. Our agile process emphasizes transparency, delivering high-quality APIs on time, whether for startups needing quick solutions or enterprises building robust, long-term systems.",
+  },
+  {
+    question: "Do you offer API maintenance and scaling support?",
+    answer:
+      "Absolutely. DigLip7 provides comprehensive post-launch support. We offer maintenance to ensure APIs run smoothly, including bug fixes, performance optimization, and security updates. Our scaling services handle increased traffic or new features, leveraging cloud platforms like AWS or Azure. We monitor API health, provide analytics, and troubleshoot issues proactively, ensuring reliability for businesses of all sizes, from SaaS providers to e-commerce platforms, keeping your systems future-proof.",
+  },
+  {
+    question: "What types of APIs can DigLip7 develop?",
+    answer:
+      "DigLip7 develops a range of APIs, including RESTful APIs for flexible, modern applications, SOAP APIs for enterprise reliability, and GraphQL APIs for efficient data querying. We also build microservices-based APIs for modular scalability and WebSocket APIs for real-time communication. Tailored to your needs, our APIs support industries like fintech, healthcare, and e-commerce, ensuring compatibility, performance, and security with frameworks like Node.js, Python, or Java.",
+  },
+  {
+    question: "How does DigLip7 ensure API performance optimization?",
+    answer:
+      "DigLip7 optimizes API performance through efficient coding, caching strategies, and load balancing. We use tools like Redis for caching, implement rate limiting, and design lightweight payloads to reduce latency. Our team conducts load testing to simulate high traffic and fine-tunes APIs for speed. By leveraging cloud platforms like AWS and monitoring tools, we ensure your APIs deliver fast, reliable responses, enhancing user satisfaction for applications in SaaS, analytics, or e-commerce.",
+  },
+];
 
 // 3D Card Component
 const Card3D = ({ children, className }) => {
@@ -312,96 +434,432 @@ function Api_dev_integ() {
     return () => observer.disconnect();
   }, []);
 
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // API Development Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$999",
+      duration: "/month",
+      features: [
+        "API consultation & requirement analysis",
+        "Development of simple REST APIs",
+        "Basic authentication & security setup",
+        "Monthly progress & performance report",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,999",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Development of complex REST & GraphQL APIs",
+        "Integration with web & mobile applications",
+        "Advanced authentication & security measures",
+        "Bi-weekly progress reporting",
+        "Priority support",
+        "Database integration & optimization",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$3,999",
+      duration: "/month",
+      features: [
+        "Full-scale API design & development",
+        "Custom API architecture & documentation",
+        "Enterprise-level security & performance optimization",
+        "Weekly progress reporting & strategy calls",
+        "Dedicated API development team",
+        "Integration with multiple platforms & microservices",
+        "Post-launch maintenance & support",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // API Development Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "API Development Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
+    <div className="bg-white w-full">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
+      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+        {/* Animated Floating Objects */}
+        <motion.div
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+
+        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+          {/* Left Section */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900"> Expert API Development Services</span>
+              <br className="text-gray-600" />
+
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                for Seamless Integration & Growth
+              </span>
+              <br />
+
+            </h1>
+            <p className="text-gray-700 mb-6">
+              At <span className="font-semibold text-blue-700">DigLip7</span>provides professional API development services to create secure, scalable, and efficient integrations. Our solutions streamline workflows, enhance connectivity between systems, and improve data accessibility, helping businesses boost productivity, innovation, and long-term growth.
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+              <div>🚀 Boost organic traffic</div>
+              <div>📈 Improve search ranking</div>
+              <div>🎯 Target right audience</div>
+              <div>📊 Transparent reporting</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+                    Get Free API Development Audit <ArrowRight size={18} />
+                  </button> */}
+              <a href="/contact">
+                <motion.button
+
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    Api Development & Integration
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="API development and integration services for seamless connectivity and efficient business solutions"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
+
+                  Get Started
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Right Section - Animated Chart */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={seo2}
+              alt="API Development concept showing developers building and integrating applications with secure APIs."
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+
+      {/* addedd */}
+
+      <div className="bg-gray-50">
+        {/* API Development Section */}
+        <div className="py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+            <motion.img
+              src={ppc4}
+              alt="Modern illustration of API Development workflow with backend coding, endpoints, and data flow."
+              className="rounded-2xl shadow-lg w-full md:w-1/2"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why API Development is the Best Investment for Your Business
+              </h2>
+              <p className="text-gray-700 mb-4">
+                API development enables seamless system integration, improved efficiency <span className="font-semibold text-blue-700">DigLip7</span>,
+                and better data accessibility. It supports automation, enhances user experiences, and drives innovation, making it a smart investment for long-term business growth and competitive advantage.
+
+
+              </p>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+                <li>✅ Immediate Results</li>
+                <li>✅ Targeted Reach</li>
+                <li>✅ Budget Control</li>
+                <li>✅ Measurable ROI</li>
+                <li>✅ Brand Exposure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Our Proven API Development Process
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Discover how DigLip7’s API development services have transformed businesses. From seamless system integrations to enhanced workflow automation, our clients have experienced improved efficiency, faster processes, and measurable ROI. Our APIs consistently deliver secure, scalable, and reliable solutions that drive business growth.
+
+              </p>
+            </div>
+
+            {/* Steps Section */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Blue Line (Desktop only) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                {stepss.map((step, index) => (
                   <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
+                    key={step.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                      {step.icon}
+                      <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
+                        {step.id}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
-            </section>
+            </div>
+          </div>
+
+          {/* API Development Services */}
+          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+            <div className="max-w-6xl mx-auto text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Proven API Development Success Stories
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Real results from real businesses that trusted <span className="font-semibold text-teal-600">DigLip7</span> our API development process ensures seamless, secure, and scalable integrations. We begin with requirement analysis, followed by design, development, and rigorous testing. Deployment and continuous optimization guarantee reliable performance, improved workflow efficiency, and enhanced connectivity across your business applications.
+
+              </p>
+
+              {/* Tabs */}
+              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+                {Object.keys(caseStudies).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActive(key)}
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-teal-50"
+                      }`}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+            >
+              {/* Left: Image & Info */}
+              <div className="flex-1">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="rounded-2xl shadow-md w-full object-cover"
+                />
+
+              </div>
+
+              {/* Right: Stats */}
+              <div className="flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+                <p className="text-sm text-gray-600">
+                  Transformed a struggling tech startup into an industry leader through advanced API Development.
+                </p>
+                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
+
+
+                  {study.stats.map((stat, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                    >
+
+                      <div className="flex items-center gap-2">{stat.icon}</div>
+                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* API Development Services Section */}
+        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our API Development Services</h2>
+            <p className="text-gray-600 mb-10">
+              API services designed to maximize ROI and drive targeted traffic.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ppcServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="text-teal-600 w-10 h-10" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* API Development Pricing Section */}
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">API Development Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 mb-10">
+              Choose the perfect API Development package that fits your business needs and budget.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {seoPackages.map((pkg, index) => (
+                <motion.div
+                  key={index}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                    {pkg.popular && (
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                        🌟 Most Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                    {pkg.features.map((feat, i) => (
+                      <li key={i}>✅ {feat}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact">
+                    <button
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      {pkg.button}
+                    </button></a>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-gray-500 text-sm">
+              All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* added  */}
+
+
+
+
 
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
@@ -501,11 +959,11 @@ function Api_dev_integ() {
             <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
               Our API Development & Integration service at DigLip7 is designed to deliver end-to-end solutions that enhance functionality and connectivity. We combine technical expertise with a client-focused approach to meet your business goals. Our core offerings include:
               Custom API Development
-Build bespoke APIs tailored to your workflows, ensuring optimal performance and scalability using frameworks like Node.js, Python, or Java.
-Third-Party API Integration
-Seamlessly connect your systems with popular APIs, such as Stripe, PayPal, Salesforce, Google Maps, or social media platforms.
-REST & SOAP API Services
-Develop modern RESTful APIs for flexibility or robust SOAP APIs for enterprise-grade reliability based on your requirements.
+              Build bespoke APIs tailored to your workflows, ensuring optimal performance and scalability using frameworks like Node.js, Python, or Java.
+              Third-Party API Integration
+              Seamlessly connect your systems with popular APIs, such as Stripe, PayPal, Salesforce, Google Maps, or social media platforms.
+              REST & SOAP API Services
+              Develop modern RESTful APIs for flexibility or robust SOAP APIs for enterprise-grade reliability based on your requirements.
             </p>
 
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
@@ -572,8 +1030,8 @@ Develop modern RESTful APIs for flexibility or robust SOAP APIs for enterprise-g
                   src={aboutImg}
                   alt="About Diglip7"
                   className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                 
-                 
+
+
                 />
               </Card3D>
 
@@ -624,7 +1082,7 @@ Develop modern RESTful APIs for flexibility or robust SOAP APIs for enterprise-g
                   At{" "}
                   <span className="font-semibold text-teal-700">Diglip7</span>,
                   Skilled Developers
-Our team excels in multiple programming languages (Node.js, Python, PHP, Java, and more), delivering robust APIs for any use case.
+                  Our team excels in multiple programming languages (Node.js, Python, PHP, Java, and more), delivering robust APIs for any use case.
                 </p>
               </motion.div>
 
@@ -637,10 +1095,10 @@ Our team excels in multiple programming languages (Node.js, Python, PHP, Java, a
               >
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                   Proven Track Record{" "}
+                  Proven Track Record{" "}
                   <span className="font-semibold text-[#c89d5a]">
-                   
-We’ve built and integrated APIs for industries like e-commerce, fintech, healthcare, CRM, and ERP, delivering measurable results.
+
+                    We’ve built and integrated APIs for industries like e-commerce, fintech, healthcare, CRM, and ERP, delivering measurable results.
                   </span>
                   A polished logo or cohesive website signals professionalism,
                   fostering confidence. Memorable designs improve brand recall,
@@ -658,13 +1116,13 @@ We’ve built and integrated APIs for industries like e-commerce, fintech, healt
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                   At Diglip7, Scalable and Secure Architecture
-Our APIs are designed to handle high loads and fortified with encryption, OAuth, and other security protocols.
+                  Our APIs are designed to handle high loads and fortified with encryption, OAuth, and other security protocols.
                 </p>
               </motion.div>
             </div>
           </motion.div>
 
-          
+
         </div>
       </section>
 
@@ -683,7 +1141,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
             </h2>
           </FloatingElement>
           <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-           At Diglip7, By choosing DigLip7’s custom API development, you unlock a world of streamlined operations and superior digital experiences.
+            At Diglip7, By choosing DigLip7’s custom API development, you unlock a world of streamlined operations and superior digital experiences.
           </p>
         </motion.div>
 
@@ -698,7 +1156,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                <div className="bg-gradient-to-br from-teal-600 to-teal-900 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
                     <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -729,7 +1187,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
         >
           <FloatingElement>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-             Use Cases & Industries We Serve
+              Use Cases & Industries We Serve
             </h2>
           </FloatingElement>
           <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -805,7 +1263,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-teal-900 text-white font-bold text-sm sm:text-base flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -841,18 +1299,101 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
+
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -870,8 +1411,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
+              Get answers to the most common questions about our digital marketing services.
             </p>
           </motion.div>
 
@@ -879,7 +1419,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -887,9 +1427,10 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -897,7 +1438,7 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -969,14 +1510,14 @@ Our APIs are designed to handle high loads and fortified with encryption, OAuth,
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contact">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+                <motion.button
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Free Consultation
+                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
               </a>
             </div>
 

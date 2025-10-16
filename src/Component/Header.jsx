@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { 
-  Search, 
-  Zap, 
-  Share2, 
-  FileText, 
-  Mail, 
-  Shield, 
-  MapPin, 
-  ShoppingCart, 
-  TrendingUp, 
-  Video, 
-  Brain, 
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Search,
+  Zap,
+  Share2,
+  FileText,
+  Mail,
+  Shield,
+  MapPin,
+  ShoppingCart,
+  TrendingUp,
+  Video,
+  Brain,
   Mic,
   Palette,
   Layers,
@@ -103,11 +104,10 @@ const Header = () => {
 
   const ServiceDropdown = ({ services, isVisible, onMouseEnter, onMouseLeave, maxWidth = "w-72" }) => (
     <div
-      className={`absolute left-0 mt-2 ${maxWidth} bg-teal-800 shadow-xl rounded-lg py-2 border border-gray-100 transition-all duration-200 z-50 ${
-        isVisible
-          ? "opacity-100 visible transform translate-y-0"
-          : "opacity-0 invisible transform -translate-y-2"
-      }`}
+      className={`absolute left-0 mt-2 ${maxWidth} bg-teal-800 shadow-xl rounded-lg py-2 border border-gray-100 transition-all duration-200 z-50 ${isVisible
+        ? "opacity-100 visible transform translate-y-0"
+        : "opacity-0 invisible transform -translate-y-2"
+        }`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -118,10 +118,10 @@ const Header = () => {
             <Link
               key={index}
               to={service.href}
-              className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200 group"
+              className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-900 transition-colors duration-200 group"
             >
               <IconComponent className="w-4 h-4 mr-3 text-white group-hover:text-teal-800 transition-colors duration-200" />
-              <span className="flex-1 text-white hover:text-black">{service.name}</span>
+              <span className="flex-1 text-white group-hover:text-teal-900">{service.name}</span>
             </Link>
           );
         })}
@@ -131,9 +131,8 @@ const Header = () => {
 
   const MobileServiceDropdown = ({ services, isVisible, onItemClick }) => (
     <div
-      className={`overflow-hidden transition-all duration-300 ${
-        isVisible ? (services.length > 5 ? "max-h-80" : "max-h-96") : "max-h-0"
-      }`}
+      className={`overflow-hidden transition-all duration-300 ${isVisible ? (services.length > 5 ? "max-h-80" : "max-h-96") : "max-h-0"
+        }`}
     >
       <div className={`ml-4 mt-2 space-y-1 ${services.length > 5 ? "max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100" : ""}`}>
         {services.map((service, index) => {
@@ -142,11 +141,11 @@ const Header = () => {
             <a
               key={index}
               href={service.href}
-              className="flex items-center py-2 text-sm text-gray-600 hover:text-teal-600 transition-colors duration-200 group"
+              className="flex items-center py-2 text-sm text-gray-600 hover:text-teal-900 transition-colors duration-200 group"
               onClick={onItemClick}
             >
-              
-              <IconComponent className="w-4 h-4 mr-3 text-gray-500 group-hover:text-teal-600 transition-colors duration-200" />
+
+              <IconComponent className="w-4 h-4 mr-3 text-gray-500 group-hover:text-teal-900 transition-colors duration-200" />
               <span>{service.name}</span>
             </a>
           );
@@ -157,12 +156,28 @@ const Header = () => {
 
   return (
     <>
-      <nav className="fixed w-full top-0 left-0 z-50 shadow-lg bg-teal-700">
-        <div className="w-full px-6 sm:px-6 lg:w-full flex justify-between items-center h-16 sm:h-18 lg:h-20">
+      <nav className="fixed w-full top-0 z-50 bg-gradient-to-r from-purple-100 via-pink-100 to-white ">
+        <div className="w-full  mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <Link href="/">
+          {/* <Link href="/">
             <div className="flex items-center pt-0 pb-0">
               <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+            </div>
+          </Link> */}
+          <Link
+            to="/"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center space-x-2 cursor-pointer"
+          >
+            <img
+              src={logo}
+              alt="Logo"
+              className="w-12 h-12 "
+            />
+            <div>
+              <h1 className="text-xl font-bold text-teal-900">DigLip7</h1>
+
             </div>
           </Link>
 
@@ -171,19 +186,19 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                
+
               >
-                <span className="text-white hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Home</span>
-                
+                <span className="text-teal-800 hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Home</span>
+
               </Link>
             </li>
             <li>
               <Link
                 to="/about"
-                
+
               >
-                <span className="text-white hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">About</span>
-                
+                <span className="text-teal-800 hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">About</span>
+
               </Link>
             </li>
 
@@ -194,13 +209,12 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <span
-                className="text-white hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+                className="text-teal-800 hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
               >
                 Digital Marketing
                 <svg
-                  className={`w-6 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === "digital" ? "rotate-180" : ""
-                  }`}
+                  className={`w-6 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "digital" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 40"
@@ -230,13 +244,12 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <span
-                className="text-white hover:text-black lg:text-bold transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+                className="text-teal-800 hover:text-black lg:text-bold transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
               >
                 Design
                 <svg
-                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === "design" ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "design" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -266,13 +279,12 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <span
-                className="text-white hover:text-black lg:text-bold transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+                className="text-teal-800 hover:text-black lg:text-bold transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
               >
                 Development
                 <svg
-                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === "development" ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "development" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -298,21 +310,22 @@ const Header = () => {
             <li>
               <Link
                 to="/contact"
-                
+
               >
-                <span className="text-white hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Contact</span>
-                
+                <span className="text-teal-800 hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Contact</span>
+
               </Link>
             </li>
             <li>
               <Link
                 to="/blogview"
-                
+
               >
-                <span className="pr-10 text-white hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Blog</span>
-                
+                <span className="pr-10 text-teal-800 hover:text-black lg:text-bold duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Blog</span>
+
               </Link>
             </li>
+
           </ul>
 
           {/* Mobile Menu Button */}
@@ -355,9 +368,8 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden bg-white shadow-lg transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-          }`}
+          className={`md:hidden bg-white shadow-lg transition-all duration-300 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+            }`}
         >
           <ul className="flex flex-col space-y-1 p-4 font-medium">
             <li>
@@ -387,9 +399,8 @@ const Header = () => {
               >
                 Digital Marketing
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    mobileDropdown === "digital" ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "digital" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -417,9 +428,8 @@ const Header = () => {
               >
                 Design
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    mobileDropdown === "design" ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "design" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -447,9 +457,8 @@ const Header = () => {
               >
                 Development
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    mobileDropdown === "development" ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "development" ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

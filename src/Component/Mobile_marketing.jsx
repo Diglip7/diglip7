@@ -4,14 +4,14 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
   Link2,
   HelpCircle,
   Mic,
-  CheckCircle,
+  CheckCircle, Star,
   ArrowRight,
   Sparkles,
   Target,
@@ -20,11 +20,18 @@ import {
   Users,
   Award,
   ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
-import seo2 from "../images/mm.jpeg";
+import seo2 from "../images/mm001.png";
 import seoImage from "../images/mm1.png";
 import seo4 from "../images/mm2.png";
 import aboutImg from "../images/mm3.png";
+
+import ppc1 from "../images/mm002.png";
+import ppc2 from "../images/mm003.png";
+import ppc3 from "../images/mm004.png";
+import ppc4 from "../images/mm005.png";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -34,6 +41,119 @@ import aboutImg from "../images/mm3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Michael T., USA",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip 7’s mobile marketing campaigns significantly boosted our app engagement and customer interaction. Their team is highly professional and results-driven”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: "Emily R., USA",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“Thanks to DigLip 7, our SMS and push notification campaigns now deliver higher conversions. Their strategies are effective and data-driven.”`,
+  },
+  {
+    name: "Rajesh S., India",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“The team at DigLip 7 optimized our mobile marketing perfectly. We saw increased app usage and measurable ROI across all campaigns.”`,
+  },
+  {
+    name: "Sophia M., UK",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“Working with DigLip 7 improved our mobile engagement and customer reach. Their approach delivers consistent results and sustainable growth.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover Mobile marketing opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized Mobile marketing strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical Mobile marketing improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "TechStart Inc.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive Mobile marketing strategy.",
+    image:
+      ppc3,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "EcoShop",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      ppc2,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "HealthPlus Clinic",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local Mobile marketing rankings for a healthcare provider using optimized content strategy.",
+    image:
+      ppc4,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
 
 const advantages = [
   {
@@ -177,45 +297,45 @@ const steps = [
 
 const faqs = [
   {
-      question: "What Exactly is a Mobile Marketing Service?",
-      answer:
-        "A Mobile Marketing Service encompasses a range of strategies designed to engage customers on their smartphones, tablets, or other mobile devices. It includes tactics like SMS marketing, push notifications, mobile-optimized websites, in-app advertising, geofencing, and mobile social media campaigns. At DigLip7, our Mobile Marketing Service is tailored to your business goals, ensuring you connect with your audience in a personalized and impactful way.",
-    },
-    {
-      question: "Why Should My Business Invest in Mobile Marketing?",
-      answer:
-        "Mobile marketing is no longer optional—it’s a game-changer. With over 90% of internet users accessing the web via mobile devices, a Mobile Marketing Service helps you: Reach Customers Instantly: Mobile channels like SMS and push notifications have open rates as high as 98%. Personalize Experiences: Deliver tailored content based on user behavior, location, or preferences. Boost Conversions: Mobile campaigns drive immediate actions, such as purchases or sign-ups. Stay Competitive: Businesses that embrace mobile marketing gain an edge over those relying on outdated methods. DigLip7’s Mobile Marketing Service ensures you capitalize on these benefits to grow your brand.",
-    },
-    {
-      question: "Is Mobile Marketing Suitable for Small Businesses?",
-      answer:
-        "Absolutely! Small businesses often face tight budgets and fierce competition, making mobile marketing an ideal solution. Our Mobile Marketing Service offers cost-effective options like SMS campaigns and geofencing, which allow small businesses to target local customers, increase foot traffic, and build loyalty without breaking the bank. Whether you’re a boutique, café, or service provider, DigLip7 crafts strategies that deliver big results on a small-business budget.",
-    },
-    {
-      question: "What Types of Mobile Marketing Does DigLip7 Offer?",
-      answer:
-        "Our Mobile Marketing Service is comprehensive and customizable, including: SMS and MMS Marketing: Text-based promotions and multimedia messages with high engagement rates. Push Notifications: Timely alerts to re-engage users and drive action. Mobile Website Optimization: Fast, responsive websites that enhance user experience and conversions. Geofencing and Location-Based Marketing: Offers triggered by a user’s proximity to your business. In-App Advertising: Targeted ads within popular apps to boost brand visibility. Mobile Social Media Campaigns: Creative content for platforms like Instagram, TikTok, and Snapchat. QR Code Marketing: Seamless offline-to-online connections through scannable codes. Mobile Email Marketing: Optimized emails that look great on any device. We combine these tactics to create a cohesive strategy that aligns with your goals.",
-    },
-    {
-      question: "How Effective is SMS Marketing in 2025?",
-      answer:
-        "SMS marketing remains one of the most powerful tools in our Mobile Marketing Service arsenal. With open rates exceeding 90% and messages read within minutes, SMS is perfect for time-sensitive promotions, appointment reminders, or loyalty program updates. DigLip7 ensures your SMS campaigns are compliant with regulations, personalized, and designed to maximize engagement without overwhelming your audience.",
-    },
-    {
-      question: "What Are Push Notifications, and How Do They Work?",
-      answer:
-        "Push notifications are short messages sent to a user’s mobile device, appearing on their screen even if they’re not using your app or website. They’re ideal for re-engaging customers with updates, discounts, or reminders. Our Mobile Marketing Service uses push notifications strategically to drive actions like completing a purchase or returning to your app, all while ensuring they’re relevant and non-intrusive.",
-    },
-    {
-      question: "Why is a Mobile-Friendly Website Important?",
-      answer:
-        "A mobile-friendly website is the backbone of any successful Mobile Marketing Service. If your site isn’t optimized for mobile devices, you risk losing customers due to slow loading times, poor navigation, or unresponsive design. DigLip7 optimizes your website for speed, usability, and conversions, ensuring a seamless experience that keeps visitors engaged and encourages them to take action.",
-    },
-    {
-      question: "How Does Geofencing Work in Mobile Marketing?",
-      answer:
-        "Geofencing is a location-based tactic that sends targeted messages to users when they enter a predefined geographic area, such as near your store. For example, a restaurant might send a discount code to users within a 1-mile radius during lunch hours. DigLip7’s Mobile Marketing Service leverages geofencing to drive foot traffic and create hyper-local campaigns that resonate with your audience.",
-    },
+    question: "What Exactly is a Mobile Marketing Service?",
+    answer:
+      "A Mobile Marketing Service encompasses a range of strategies designed to engage customers on their smartphones, tablets, or other mobile devices. It includes tactics like SMS marketing, push notifications, mobile-optimized websites, in-app advertising, geofencing, and mobile social media campaigns. At DigLip7, our Mobile Marketing Service is tailored to your business goals, ensuring you connect with your audience in a personalized and impactful way.",
+  },
+  {
+    question: "Why Should My Business Invest in Mobile Marketing?",
+    answer:
+      "Mobile marketing is no longer optional—it’s a game-changer. With over 90% of internet users accessing the web via mobile devices, a Mobile Marketing Service helps you: Reach Customers Instantly: Mobile channels like SMS and push notifications have open rates as high as 98%. Personalize Experiences: Deliver tailored content based on user behavior, location, or preferences. Boost Conversions: Mobile campaigns drive immediate actions, such as purchases or sign-ups. Stay Competitive: Businesses that embrace mobile marketing gain an edge over those relying on outdated methods. DigLip7’s Mobile Marketing Service ensures you capitalize on these benefits to grow your brand.",
+  },
+  {
+    question: "Is Mobile Marketing Suitable for Small Businesses?",
+    answer:
+      "Absolutely! Small businesses often face tight budgets and fierce competition, making mobile marketing an ideal solution. Our Mobile Marketing Service offers cost-effective options like SMS campaigns and geofencing, which allow small businesses to target local customers, increase foot traffic, and build loyalty without breaking the bank. Whether you’re a boutique, café, or service provider, DigLip7 crafts strategies that deliver big results on a small-business budget.",
+  },
+  {
+    question: "What Types of Mobile Marketing Does DigLip7 Offer?",
+    answer:
+      "Our Mobile Marketing Service is comprehensive and customizable, including: SMS and MMS Marketing: Text-based promotions and multimedia messages with high engagement rates. Push Notifications: Timely alerts to re-engage users and drive action. Mobile Website Optimization: Fast, responsive websites that enhance user experience and conversions. Geofencing and Location-Based Marketing: Offers triggered by a user’s proximity to your business. In-App Advertising: Targeted ads within popular apps to boost brand visibility. Mobile Social Media Campaigns: Creative content for platforms like Instagram, TikTok, and Snapchat. QR Code Marketing: Seamless offline-to-online connections through scannable codes. Mobile Email Marketing: Optimized emails that look great on any device. We combine these tactics to create a cohesive strategy that aligns with your goals.",
+  },
+  {
+    question: "How Effective is SMS Marketing in 2025?",
+    answer:
+      "SMS marketing remains one of the most powerful tools in our Mobile Marketing Service arsenal. With open rates exceeding 90% and messages read within minutes, SMS is perfect for time-sensitive promotions, appointment reminders, or loyalty program updates. DigLip7 ensures your SMS campaigns are compliant with regulations, personalized, and designed to maximize engagement without overwhelming your audience.",
+  },
+  {
+    question: "What Are Push Notifications, and How Do They Work?",
+    answer:
+      "Push notifications are short messages sent to a user’s mobile device, appearing on their screen even if they’re not using your app or website. They’re ideal for re-engaging customers with updates, discounts, or reminders. Our Mobile Marketing Service uses push notifications strategically to drive actions like completing a purchase or returning to your app, all while ensuring they’re relevant and non-intrusive.",
+  },
+  {
+    question: "Why is a Mobile-Friendly Website Important?",
+    answer:
+      "A mobile-friendly website is the backbone of any successful Mobile Marketing Service. If your site isn’t optimized for mobile devices, you risk losing customers due to slow loading times, poor navigation, or unresponsive design. DigLip7 optimizes your website for speed, usability, and conversions, ensuring a seamless experience that keeps visitors engaged and encourages them to take action.",
+  },
+  {
+    question: "How Does Geofencing Work in Mobile Marketing?",
+    answer:
+      "Geofencing is a location-based tactic that sends targeted messages to users when they enter a predefined geographic area, such as near your store. For example, a restaurant might send a discount code to users within a 1-mile radius during lunch hours. DigLip7’s Mobile Marketing Service leverages geofencing to drive foot traffic and create hyper-local campaigns that resonate with your audience.",
+  },
 ];
 
 // 3D Card Component
@@ -316,96 +436,438 @@ function Mobile_marketing() {
     return () => observer.disconnect();
   }, []);
 
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Mobile marketing Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$799",
+      duration: "/month",
+      features: [
+        "Mobile marketing strategy consultation (1 session/month)",
+        "App store optimization (ASO) for 1 app",
+        "SMS campaign setup (up to 2 campaigns/month)",
+        "Basic push notification setup",
+        "Monthly performance report",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,499",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Mobile app marketing for 2–3 apps",
+        "Advanced ASO & app listing optimization",
+        "Push notification campaigns & automation",
+        "Targeted SMS campaigns & subscriber management",
+        "Bi-weekly performance reporting",
+        "Priority support",
+        "Mobile ad campaign setup (Google Ads, Meta Ads)",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$2,999",
+      duration: "/month",
+      features: [
+        "Full-scale mobile marketing management",
+        "Unlimited app promotion & ASO optimization",
+        "Advanced push notification & SMS automation",
+        "Cross-platform mobile ad campaigns (Google, Meta, TikTok)",
+        "Weekly performance reporting & strategy calls",
+        "Dedicated mobile marketing strategist",
+        "Mobile user acquisition & retention strategy",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // Mobile marketing Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "Mobile marketing Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
+    <div className="bg-white w-full">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
+      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+        {/* Animated Floating Objects */}
+        <motion.div
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+
+        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+          {/* Left Section */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900">Effective Mobile Marketing Services
+              </span>
+
+
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                to Boost Engagement & Conversions
+              </span>
+              <br />
+
+            </h1>
+            <p className="text-gray-700 mb-6">
+              Reach your customers anytime, <span className="font-semibold text-blue-700">anywhere with DigLip 7’s mobile marketing services</span>From SMS campaigns to push notifications and in-app ads, we help businesses drive engagement, increase conversions, and achieve measurable ROI with targeted, data-driven strategies.
+
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+              <div>🚀 Boost organic traffic</div>
+              <div>📈 Improve search ranking</div>
+              <div>🎯 Target right audience</div>
+              <div>📊 Transparent reporting</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+                    Get Free Mobile marketing Audit <ArrowRight size={18} />
+                  </button> */}
+              <a href="/contact">
+                <motion.button
+
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    Mobile marketing
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="Digital Marketing Background"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
+
+                  Get Started
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Right Section - Animated Chart */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={seo2}
+              alt="Mobile Marketing concept showing a smartphone with social media, analytics, and notifications icons."
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* addedd */}
+
+      <div className="bg-gray-50">
+        {/* Mobile marketing Section */}
+        <div className="py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+            <motion.img
+              src={ppc1}
+              alt="Digital illustration of mobile marketing with charts, messages, and e-commerce icons around a phone."
+              className="rounded-2xl shadow-lg w-full md:w-1/2"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why Mobile Marketing is the Best Investment for Your Business
+
+              </h2>
+              <p className="text-gray-700 mb-4">
+                Mobile marketing reaches customers directly on their devices,<span className="font-semibold text-blue-700">DigLip7</span>,
+                boosting engagement, visibility, and conversions. Targeted campaigns like SMS, push notifications, and in-app ads deliver measurable ROI and support sustainable business growth.
+
+
+              </p>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+                <li>✅ Immediate Results</li>
+                <li>✅ Targeted Reach</li>
+                <li>✅ Budget Control</li>
+                <li>✅ Measurable ROI</li>
+                <li>✅ Brand Exposure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white py-16 px-6 md:px-6 lg:px-6 text-center">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Our Proven Mobile Marketing Process
+              </h2>
+              <p className="text-gray-600 mt-3">
+                At DigLip 7, our mobile marketing process is designed to maximize engagement and ROI. We begin with audience analysis and strategy planning, create targeted campaigns including SMS, push notifications, and in-app ads, and continuously monitor performance. Ongoing optimization ensures higher conversions, improved customer interaction, and measurable business growth.
+
+              </p>
+            </div>
+
+            {/* Steps Section */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Blue Line (Desktop only) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                {stepss.map((step, index) => (
                   <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
+                    key={step.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                      {step.icon}
+                      <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
+                        {step.id}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
-            </section>
+            </div>
+          </div>
+
+          {/* Mobile marketing Services */}
+          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+            <div className="max-w-6xl mx-auto text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Proven Mobile Marketing Success Stories
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Discover how DigLip 7’s mobile marketing strategies have helped businesses achieve remarkable results.<span className="font-semibold text-teal-600">DigLip7</span> From increased app engagement and higher click-through rates to improved conversions, our targeted, data-driven campaigns deliver measurable ROI and long-term business growth.
+
+              </p>
+
+              {/* Tabs */}
+              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+                {Object.keys(caseStudies).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActive(key)}
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-teal-50"
+                      }`}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+            >
+              {/* Left: Image & Info */}
+              <div className="flex-1">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="rounded-2xl shadow-md w-full object-cover"
+                />
+
+              </div>
+
+              {/* Right: Stats */}
+              <div className="flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+                <p className="text-sm text-gray-600">
+                  Transformed a struggling tech startup into an industry leader through advanced Mobile Marketing.
+                </p>
+                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
+
+
+                  {study.stats.map((stat, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                    >
+
+                      <div className="flex items-center gap-2">{stat.icon}</div>
+                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* Mobile marketing Services Section */}
+        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mobile Marketing Services</h2>
+            <p className="text-gray-600 mb-10">
+              At DigLip 7, we offer comprehensive mobile marketing services to help businesses connect with their audience effectively. Our services include SMS marketing, push notifications, in-app advertising, mobile app marketing, location-based campaigns, and performance tracking. These strategies drive engagement, increase conversions, and deliver measurable results for sustainable business growth.
+
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ppcServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="text-teal-600 w-10 h-10" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile marketing Pricing Section */}
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Mobile Marketing Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 mb-10">
+              Choose the perfect Mobile Marketing package that fits your business needs and budget.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {seoPackages.map((pkg, index) => (
+                <motion.div
+                  key={index}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                    {pkg.popular && (
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                        🌟 Most Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                    {pkg.features.map((feat, i) => (
+                      <li key={i}>✅ {feat}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact">
+                    <button
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      {pkg.button}
+                    </button></a>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-gray-500 text-sm">
+              All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* added  */}
+
+
+
+
+
 
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
@@ -585,7 +1047,7 @@ function Mobile_marketing() {
                   src={aboutImg}
                   alt="About Diglip7"
                   className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  
+
                 />
               </Card3D>
 
@@ -681,7 +1143,7 @@ function Mobile_marketing() {
             </div>
           </motion.div>
 
-          
+
         </div>
       </section>
 
@@ -717,7 +1179,7 @@ function Mobile_marketing() {
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                <div className="bg-gradient-to-br from-teal-600 to-teal-900 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
                     <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -770,7 +1232,7 @@ function Mobile_marketing() {
               <Card3D className="h-full">
                 <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-100 to-[#c89d5a]/20 rounded-full mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-100 to-teal-200 rounded-full mb-4">
                       <solution.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />
                     </div>
                   </FloatingElement>
@@ -828,7 +1290,7 @@ function Mobile_marketing() {
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-teal-900 text-white font-bold text-sm sm:text-base flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -864,18 +1326,101 @@ function Mobile_marketing() {
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
+
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their Mobile marketing success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -893,8 +1438,7 @@ function Mobile_marketing() {
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
+              Get answers to the most common questions about our digital marketing services.
             </p>
           </motion.div>
 
@@ -902,7 +1446,7 @@ function Mobile_marketing() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -910,9 +1454,10 @@ function Mobile_marketing() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -920,7 +1465,7 @@ function Mobile_marketing() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -996,14 +1541,14 @@ function Mobile_marketing() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/conact">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+                <motion.button
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Free Consultation
+                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
               </a>
             </div>
 

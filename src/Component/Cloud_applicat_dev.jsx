@@ -4,14 +4,14 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
   Link2,
   HelpCircle,
   Mic,
-  CheckCircle,
+  CheckCircle, Star,
   ArrowRight,
   Sparkles,
   Target,
@@ -20,11 +20,18 @@ import {
   Users,
   Award,
   ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
-import seo2 from "../images/cad.jpeg";
+import seo2 from "../images/cloud5.png";
 import seoImage from "../images/cad1.png";
 import seo4 from "../images/cad2.png";
 import aboutImg from "../images/cad3.png";
+
+import ppc1 from "../images/cloud2.png";
+import ppc2 from "../images/cloud3.png";
+import ppc3 from "../images/cloud4.png";
+import ppc4 from "../images/cloud1.jpeg";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -34,6 +41,119 @@ import aboutImg from "../images/cad3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Emily R., USA",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip7 migrated our systems to the cloud seamlessly. Our operations are now faster, more secure, and highly scalable.”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: "Michael T., USA",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“The cloud solutions provided by DigLip7 enhanced our team collaboration and productivity. Their expertise is exceptional.”`,
+  },
+  {
+    name: "Rajesh S., India",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“Thanks to DigLip7, our cloud applications run smoothly with improved performance and reliability. Support throughout the process was outstanding”`,
+  },
+  {
+    name: "Sophia M., UK",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“DigLip7’s cloud development services transformed our business infrastructure. We’ve seen measurable growth and a competitive edge since implementation.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover Cloud Development opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized Cloud Development strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical Cloud Development improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "Digital artwork representing Cloud Development infrastructure with real-time data synchronization and APIs.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive Cloud Development strategy.",
+    image:
+      ppc1,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "Professional flat design showing Cloud Development process including integration, scaling, and deployment.",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      ppc2,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "Futuristic graphic of Cloud Development showcasing team collaboration, storage solutions, and DevOps tools.",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local Cloud Development rankings for a healthcare provider using optimized content strategy.",
+    image:
+      ppc3,
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
 
 const advantages = [
   {
@@ -178,65 +298,65 @@ const steps = [
 
 const faqs = [
   {
-  question: "What is custom cloud development?",
-  answer:
-    "Custom cloud development is designing and building tailored cloud applications or platforms that meet unique business requirements, offering scalability, security, integration, and efficiency beyond standard off-the-shelf cloud services.",
-},
-{
-  question: "How does custom cloud development benefit my business?",
-  answer:
-    "It enhances productivity, reduces costs, strengthens security, supports scalability, and integrates seamlessly with existing systems, ensuring long-term flexibility while aligning perfectly with your organization’s specific operational workflows and growth goals.",
-},
-{
-  question: "Which industries can use custom cloud development?",
-  answer:
-    "Custom cloud development benefits industries like healthcare, finance, e-commerce, education, manufacturing, startups, and enterprises by delivering secure, scalable, and efficient cloud-based applications tailored for compliance, innovation, and digital transformation.",
-},
-{
-  question: "What cloud platforms does DigLip7 support?",
-  answer:
-    "DigLip7 specializes in AWS, Microsoft Azure, Google Cloud, IBM Cloud, and hybrid or private cloud solutions, ensuring businesses receive tailored, future-ready cloud ecosystems aligned with their technical and operational needs.",
-},
-{
-  question: "How secure is custom cloud development?",
-  answer:
-    "Security is prioritized with encryption, firewalls, access controls, multi-factor authentication, and compliance protocols, ensuring sensitive business data and applications are safeguarded against cyberattacks, breaches, and unauthorized access at every level.",
-},
-{
-  question: "Can DigLip7 migrate my legacy system to the cloud?",
-  answer:
-    "Yes, DigLip7 provides seamless migration services, transferring legacy systems, applications, and data to secure cloud environments while minimizing downtime, ensuring performance, and optimizing systems for scalability and cost efficiency.",
-},
-{
-  question: "How long does custom cloud development take?",
-  answer:
-    "Project timelines depend on complexity, features, and scale. On average, development can range from a few weeks for smaller apps to several months for enterprise-level cloud ecosystem solutions.",
-},
-{
-  question: "Is custom cloud development cost-effective?",
-  answer:
-    "Yes, custom cloud development reduces operational costs by optimizing resource use, eliminating unnecessary licenses, and offering scalable infrastructure, allowing businesses to pay only for required cloud services while maximizing ROI.",
-},
-{
-  question: "How does custom cloud development support scalability?",
-  answer:
-    "Custom cloud solutions scale dynamically, allowing businesses to handle increased workloads, traffic, or users without disruptions, while maintaining cost efficiency and performance through flexible cloud infrastructure and automated resource allocation.",
-},
-{
-  question: "What makes DigLip7 different in custom cloud development?",
-  answer:
-    "DigLip7 offers tailored cloud strategies, expert multi-cloud development, agile processes, and continuous support, focusing on innovation and business-centric solutions that maximize efficiency, security, and long-term cloud ecosystem growth.",
-},
-{
-  question: "Do you provide ongoing support after deployment?",
-  answer:
-    "Yes, DigLip7 offers 24/7 monitoring, maintenance, updates, and optimization services post-deployment, ensuring that your cloud systems remain secure, scalable, cost-efficient, and aligned with evolving business needs.",
-},
-{
-  question: "How do I get started with DigLip7’s custom cloud development?",
-  answer:
-    "Simply contact DigLip7 for a consultation. Our experts will assess your requirements, design a tailored roadmap, and deliver scalable, secure, and future-ready custom cloud solutions aligned with business goals.",
-},
+    question: "What is custom cloud development?",
+    answer:
+      "Custom cloud development is designing and building tailored cloud applications or platforms that meet unique business requirements, offering scalability, security, integration, and efficiency beyond standard off-the-shelf cloud services.",
+  },
+  {
+    question: "How does custom cloud development benefit my business?",
+    answer:
+      "It enhances productivity, reduces costs, strengthens security, supports scalability, and integrates seamlessly with existing systems, ensuring long-term flexibility while aligning perfectly with your organization’s specific operational workflows and growth goals.",
+  },
+  {
+    question: "Which industries can use custom cloud development?",
+    answer:
+      "Custom cloud development benefits industries like healthcare, finance, e-commerce, education, manufacturing, startups, and enterprises by delivering secure, scalable, and efficient cloud-based applications tailored for compliance, innovation, and digital transformation.",
+  },
+  {
+    question: "What cloud platforms does DigLip7 support?",
+    answer:
+      "DigLip7 specializes in AWS, Microsoft Azure, Google Cloud, IBM Cloud, and hybrid or private cloud solutions, ensuring businesses receive tailored, future-ready cloud ecosystems aligned with their technical and operational needs.",
+  },
+  {
+    question: "How secure is custom cloud development?",
+    answer:
+      "Security is prioritized with encryption, firewalls, access controls, multi-factor authentication, and compliance protocols, ensuring sensitive business data and applications are safeguarded against cyberattacks, breaches, and unauthorized access at every level.",
+  },
+  {
+    question: "Can DigLip7 migrate my legacy system to the cloud?",
+    answer:
+      "Yes, DigLip7 provides seamless migration services, transferring legacy systems, applications, and data to secure cloud environments while minimizing downtime, ensuring performance, and optimizing systems for scalability and cost efficiency.",
+  },
+  {
+    question: "How long does custom cloud development take?",
+    answer:
+      "Project timelines depend on complexity, features, and scale. On average, development can range from a few weeks for smaller apps to several months for enterprise-level cloud ecosystem solutions.",
+  },
+  {
+    question: "Is custom cloud development cost-effective?",
+    answer:
+      "Yes, custom cloud development reduces operational costs by optimizing resource use, eliminating unnecessary licenses, and offering scalable infrastructure, allowing businesses to pay only for required cloud services while maximizing ROI.",
+  },
+  {
+    question: "How does custom cloud development support scalability?",
+    answer:
+      "Custom cloud solutions scale dynamically, allowing businesses to handle increased workloads, traffic, or users without disruptions, while maintaining cost efficiency and performance through flexible cloud infrastructure and automated resource allocation.",
+  },
+  {
+    question: "What makes DigLip7 different in custom cloud development?",
+    answer:
+      "DigLip7 offers tailored cloud strategies, expert multi-cloud development, agile processes, and continuous support, focusing on innovation and business-centric solutions that maximize efficiency, security, and long-term cloud ecosystem growth.",
+  },
+  {
+    question: "Do you provide ongoing support after deployment?",
+    answer:
+      "Yes, DigLip7 offers 24/7 monitoring, maintenance, updates, and optimization services post-deployment, ensuring that your cloud systems remain secure, scalable, cost-efficient, and aligned with evolving business needs.",
+  },
+  {
+    question: "How do I get started with DigLip7’s custom cloud development?",
+    answer:
+      "Simply contact DigLip7 for a consultation. Our experts will assess your requirements, design a tailored roadmap, and deliver scalable, secure, and future-ready custom cloud solutions aligned with business goals.",
+  },
 ];
 
 // 3D Card Component
@@ -337,96 +457,436 @@ function Cloud_applicat_dev() {
     return () => observer.disconnect();
   }, []);
 
+
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Cloud Development Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$999",
+      duration: "/month",
+      features: [
+        "Cloud architecture consultation",
+        "Setup of cloud environment (AWS, Azure, or Google Cloud)",
+        "Basic deployment & configuration",
+        "Monthly performance & usage report",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,999",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Custom cloud solutions & scalable architecture",
+        "Deployment automation & CI/CD setup",
+        "Security & access management",
+        "Bi-weekly performance reporting",
+        "Priority support",
+        "Integration with existing applications",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$3,999",
+      duration: "/month",
+      features: [
+        "Full-scale cloud development & management",
+        "Multi-cloud architecture & hybrid solutions",
+        "Advanced security & compliance setup",
+        "Weekly performance reporting & strategy calls",
+        "Dedicated cloud development team",
+        "Cloud monitoring, optimization & cost management",
+        "Post-deployment support & maintenance",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // Cloud Development Services
+  const ppcServices = [
+    { icon: Search, title: "Cloud Application Development", description: "Custom cloud-based applications tailored to your business needs." },
+    { icon: DollarSign, title: "Cloud Migration Services", description: "Seamless migration from on-premises systems to the cloud." },
+    { icon: Settings, title: "Cloud Integration", description: "Connect multiple platforms and applications for streamlined operations." },
+    { icon: FileText, title: "Cloud Security Solutions", description: "Protect data and ensure compliance with robust security measures." },
+    { icon: Target, title: "DevOps & Cloud Automation", description: "Automate processes to enhance productivity and reduce manual efforts." },
+    { icon: RefreshCw, title: "Maintenance & Support ", description: "Continuous monitoring, updates, and optimization for reliable cloud performance." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
+
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
+    <div className="bg-white">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
+      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+        {/* Animated Floating Objects */}
+        <motion.div
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+
+        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+          {/* Left Section */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900">Expert Cloud Development Services </span>
+
+
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                to Boost Efficiency & Scalability
+
+              </span>
+              <br />
+
+            </h1>
+            <p className="text-gray-700 mb-6">
+              At <span className="font-semibold text-blue-700">DigLip7</span>offers professional cloud development services to build secure, scalable, and high-performing solutions. From cloud applications and migration to integration and automation, our services enhance collaboration, streamline operations, and drive long-term business growth.
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+              <div>🚀 Boost organic traffic</div>
+              <div>📈 Improve search ranking</div>
+              <div>🎯 Target right audience</div>
+              <div>📊 Transparent reporting</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+                    Get Free Cloud Development Audit <ArrowRight size={18} />
+                  </button> */}
+              <a href="/contact">
+                <motion.button
+
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    Cloud Application Development
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="Digital Marketing Background"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
+
+                  Get Started
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Right Section - Animated Chart */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={seo2}
+              alt="Cloud Development concept showing developers coding and deploying applications in a secure cloud environment."
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+
+      {/* addedd */}
+
+      <div className="bg-gray-50">
+        {/* Cloud Development Section */}
+        <div className="py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+            <motion.img
+              src={ppc4}
+              alt="Modern illustration of Cloud Development architecture with servers, databases, and connected applications."
+              className="rounded-2xl shadow-lg w-full md:w-1/2"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why Cloud Development is the Best Investment for Your Business
+              </h2>
+              <p className="text-gray-700 mb-4">
+                Cloud development enables businesses to scale quickly,<span className="font-semibold text-blue-700">DigLip7</span>,
+                reduce infrastructure costs, and improve data accessibility. It enhances collaboration, security, and operational efficiency. Investing in professional cloud development services ensures long-term ROI, streamlined workflows, and a competitive edge in the digital marketplace.
+
+
+              </p>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+                <li>✅ Immediate Results</li>
+                <li>✅ Targeted Reach</li>
+                <li>✅ Budget Control</li>
+                <li>✅ Measurable ROI</li>
+                <li>✅ Brand Exposure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Our Proven Cloud Development Process
+              </h2>
+              <p className="text-gray-600 mt-3">
+                At DigLip7, our cloud development process ensures secure, scalable, and high-performing solutions. We begin with requirement analysis and strategy planning, followed by architecture design, cloud deployment, and rigorous testing. Continuous monitoring and optimization guarantee seamless performance, enhanced collaboration, and reliable business operations.
+              </p>
+            </div>
+
+            {/* Steps Section */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Blue Line (Desktop only) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                {stepss.map((step, index) => (
                   <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
+                    key={step.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                      {step.icon}
+                      <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
+                        {step.id}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
-            </section>
+            </div>
+          </div>
+
+          {/* Cloud Development Services */}
+          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+            <div className="max-w-6xl mx-auto text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Proven Cloud Development Success Stories
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Discover how<span className="font-semibold text-teal-600">DigLip7</span> cloud development solutions have transformed businesses. From scalable cloud applications to secure data management, our clients have experienced improved efficiency, enhanced collaboration, and measurable ROI. Our cloud solutions consistently deliver long-term growth and a competitive advantage in the digital landscape.
+              </p>
+
+              {/* Tabs */}
+              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+                {Object.keys(caseStudies).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActive(key)}
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-teal-50"
+                      }`}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+            >
+              {/* Left: Image & Info */}
+              <div className="flex-1">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="rounded-2xl shadow-md w-full object-cover"
+                />
+
+              </div>
+
+              {/* Right: Stats */}
+              <div className="flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+                <p className="text-sm text-gray-600">
+                  Transformed a struggling tech startup into an industry leader through advanced Cloud Development.
+                </p>
+                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
+
+
+                  {study.stats.map((stat, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                    >
+
+                      <div className="flex items-center gap-2">{stat.icon}</div>
+                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* Cloud Development Services Section */}
+        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Cloud Development Services</h2>
+            <p className="text-gray-600 mb-10">
+              At DigLip7, we offer comprehensive cloud development services to help businesses build scalable, secure, and efficient cloud solutions. Our services include:
+
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ppcServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="text-teal-600 w-10 h-10" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Cloud Development Pricing Section */}
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Cloud Development Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 mb-10">
+              Choose the perfect Cloud Development package that fits your business needs and budget.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {seoPackages.map((pkg, index) => (
+                <motion.div
+                  key={index}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                    {pkg.popular && (
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                        🌟 Most Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                    {pkg.features.map((feat, i) => (
+                      <li key={i}>✅ {feat}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact">
+                    <button
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      {pkg.button}
+                    </button></a>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-gray-500 text-sm">
+              All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* added  */}
+
+
+
+
+
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg: px-4 sm:px-6 lg:">
@@ -514,7 +974,7 @@ function Cloud_applicat_dev() {
       </section>
 
       {/* Difference Section */}
-      <section className=" sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+      <section className=" sm:py-16 lg: bg-white">
         <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             className="flex-1 w-full"
@@ -593,7 +1053,7 @@ function Cloud_applicat_dev() {
       </section>
 
       {/* Results Section with Custom Shape */}
-      <section className="w-full  sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+      <section className="sm:py-16 lg: bg-white">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -608,7 +1068,7 @@ function Cloud_applicat_dev() {
                   src={aboutImg}
                   alt="About Diglip7"
                   className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  
+
                 />
               </Card3D>
 
@@ -665,7 +1125,7 @@ function Cloud_applicat_dev() {
                   Tailored Security – Industry-specific compliance and custom security protocols.
 
 
-Cost Efficiency – Pay only for what you use while avoiding unnecessary services.
+                  Cost Efficiency – Pay only for what you use while avoiding unnecessary services.
 
 
                 </p>
@@ -680,8 +1140,8 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
               >
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Seamless Integration – 
-{" "}
+                  Seamless Integration –
+                  {" "}
                   <span className="font-semibold text-[#c89d5a]">
                     Connect with existing systems, CRMs, ERPs, and APIs.
                   </span>
@@ -706,7 +1166,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
             </div>
           </motion.div>
 
-          
+
         </div>
       </section>
 
@@ -742,7 +1202,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                <div className="bg-gradient-to-br from-teal-600 to-teal-900 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
                     <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -763,7 +1223,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
       </section>
 
       {/* Solutions Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="sm:py-16 lg: bg-white">
         <motion.div
           className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: -50 }}
@@ -835,7 +1295,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
               </h2>
             </FloatingElement>
             <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto">
-             Here are some real-world scenarios where custom cloud solutions make an impact:
+              Here are some real-world scenarios where custom cloud solutions make an impact:
 
             </p>
           </div>
@@ -853,7 +1313,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-teal-900 text-white font-bold text-sm sm:text-base flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -889,21 +1349,104 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
 
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
       {/* FAQ Section */}
-      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-white  py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full mx-auto">
           <motion.div
             className="text-center mb-8 sm:mb-12"
@@ -935,9 +1478,10 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-white pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -945,7 +1489,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -971,7 +1515,8 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden 
+      group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-teal-900 text-white text-lg font-semibold  shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform ">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(15)].map((_, i) => (
@@ -1004,7 +1549,7 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
           >
             <FloatingElement>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6">
-                Why DigLip7 is Your 
+                Why DigLip7 is Your
 
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
                   Trusted Cloud Partner
@@ -1014,20 +1559,20 @@ Cost Efficiency – Pay only for what you use while avoiding unnecessary service
             {/* Final Call-to-Action */}
             <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
               At DigLip7, we don’t just deliver custom cloud development services—we build long-term partnerships. Our focus is not only on cutting-edge technology but also on ensuring that your business achieves measurable success in the cloud.
-Whether you’re starting your cloud journey or optimizing existing solutions, we provide the expertise, innovation, and support you need.
+              Whether you’re starting your cloud journey or optimizing existing solutions, we provide the expertise, innovation, and support you need.
 
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="href">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+              <a href="/contact">
+                <motion.button
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Free Consultation
+                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
               </a>
             </div>
 

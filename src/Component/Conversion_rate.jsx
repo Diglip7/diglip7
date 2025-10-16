@@ -4,7 +4,7 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -13,18 +13,25 @@ import {
   Mic,
   CheckCircle,
   ArrowRight,
-  Sparkles,
+  Sparkles, Star,
   Target,
   Zap,
   Globe,
   Users,
   Award,
   ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
 import seo2 from "../images/cro.jpeg";
 import seoImage from "../images/cro1.png";
 import seo4 from "../images/cro2.png";
 import aboutImg from "../images/cro3.png";
+
+import ppc1 from "../images/ppc001.png";
+import ppc2 from "../images/ppc002.png";
+import ppc3 from "../images/ppc003.png";
+import ppc4 from "../images/ppc004.jpeg";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -34,6 +41,119 @@ import aboutImg from "../images/cro3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip7 transformed our online presence completely. Our organic traffic increased by 250% in just 6 months, and we’re now ranking #1 for our main keywords. Their team is professional, responsive, and delivers real results.”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: "Michael Chen",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“Working with DigLip7 has been a game-changer for our e-commerce business. They improved our search rankings and boosted conversions significantly.”`,
+  },
+  {
+    name: "Dr. Emily Rodriguez",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“The local SEO work by DigLip7 did for our clinic was outstanding. We went from being invisible online to the top-rated healthcare provider in our area.”`,
+  },
+  {
+    name: "David Thompson",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“I was skeptical about SEO at first, but DigLip7 proved me wrong. Their transparent reporting and consistent results made them an invaluable partner.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover SEO opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized SEO strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical SEO improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "TechStart Inc.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive SEO strategy.",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "EcoShop",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "HealthPlus Clinic",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local SEO rankings for a healthcare provider using optimized content strategy.",
+    image:
+      "https://images.unsplash.com/photo-1581091870622-3a64a9a67b5d?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
 
 const advantages = [
   {
@@ -312,96 +432,192 @@ function Conversion_rate() {
     return () => observer.disconnect();
   }, []);
 
+
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // SEO Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$799",
+      duration: "/month",
+      features: [
+        "Keyword research (up to 20 keywords)",
+        "On-page SEO optimization",
+        "Monthly SEO audit",
+        "Google My Business optimization",
+        "Monthly reporting",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,499",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Keyword research (up to 50 keywords)",
+        "On-page & Technical SEO",
+        "Link building (5 high-quality links/month)",
+        "Content optimization",
+        "Local SEO optimization",
+        "Bi-weekly reporting",
+        "Priority support",
+        "Competitor analysis",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$2,999",
+      duration: "/month",
+      features: [
+        "Unlimited keyword research",
+        "Complete SEO optimization",
+        "Comprehensive backlinks (10+/month)",
+        "Custom dashboard & automation",
+        "Weekly reporting & calls",
+        "Dedicated SEO manager",
+        "Custom strategy development",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // PPC Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "PPC Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
+
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
+    <div className=" bg-white overflow-x-hidden pt-18 sm:pt-18">
       {/* Hero Section with Parallax */}
       <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
-                >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    Conversion Rate Optimization(cro)
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="Digital Marketing Background"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
-              </div>
-            </section>
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, type: "spring" }}
+            className="mb-6"
+          >
+            <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
+          </motion.div>
+
+          <motion.h1
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            Grow Your Business with{" "}
+            <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
+              Conversion Rate Optimization(cro)
+            </span>
+          </motion.h1>
+          {/* Building Digital Experiences That Drive Success */}
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 1 }}
+          >
+            DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 1 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <a href="/contact">
+              <motion.button
+
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+
+                Get Started
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </a>
+          </motion.div>
+        </div>
+        <div>
+          <div className="p-6 inset-0 w-full h-full">
+            <img
+              src={seo2}
+              alt="Digital Marketing Background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 "></div>
+          </div>
+        </div>
+
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </section>
 
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
@@ -864,18 +1080,101 @@ function Conversion_rate() {
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
+
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -889,12 +1188,11 @@ function Conversion_rate() {
           >
             <FloatingElement>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
-               Frequently Asked Questions About Web Development Services
+                Frequently Asked Questions (FAQs)
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
+              Get answers to the most common questions about our digital marketing services.
             </p>
           </motion.div>
 
@@ -902,7 +1200,7 @@ function Conversion_rate() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -910,9 +1208,10 @@ function Conversion_rate() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -920,7 +1219,7 @@ function Conversion_rate() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -998,17 +1297,17 @@ function Conversion_rate() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contact">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+                <motion.button
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Free Consultation
+                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
               </a>
             </div>
-            
+
 
             <motion.div
               className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/80"

@@ -4,7 +4,7 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -20,6 +20,8 @@ import {
   Users,
   Award,
   ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
 import seo2 from "../images/pd1.png";
 
@@ -174,36 +176,36 @@ const steps = [
 
 const faqs = [
   {
-      question: "What does a Web Development Service include?",
-      answer:
-        "A Web Development Service is about creating a website that reflects your brand and meets your business needs. At DigLip7, we design custom visuals that capture your unique identity, ensuring your site stands out in a crowded digital space. Our team handles front-end development for user-friendly interfaces and back-end development for secure, dynamic functionality. We integrate content management systems like WordPress or Shopify for easy updates, build responsive designs for all devices, and develop e-commerce platforms with secure payment systems. API connections enhance functionality by linking to tools like CRMs or analytics, delivering a tailored solution that grows with your business.",
-    },
-    {
-      question: "How long does it take to build a website?",
-      answer:
-        "The timeline for a Web Development Service depends on your project’s complexity and goals. A simple website, like a portfolio or small business page, typically takes 4 to 6 weeks from planning to launch, ensuring quality without rushing the process. More intricate sites, such as e-commerce platforms or custom applications with advanced features, may require 8 to 12 weeks to perfect every detail. During our initial consultation, we analyze your needs and provide a clear schedule, keeping you informed at every stage. Our efficient process balances speed and precision, delivering a website that’s ready to perform on time.",
-    },
-    {
-      question: "Will my website work on mobile devices?",
-      answer:
-        "Yes, mobile compatibility is a core part of our Web Development Service. With most users browsing on smartphones, we ensure your website performs flawlessly across all devices, from phones to desktops. Our responsive designs adapt to any screen size, offering intuitive navigation and fast load times that keep visitors engaged. This approach not only enhances user experience but also improves your search engine rankings, as Google prioritizes mobile-friendly sites. We test rigorously to guarantee consistency across browsers like Chrome and Safari so your audience enjoys a seamless experience, whether they’re at home or on the go, building trust in your brand.",
-    },
-    {
-      question: "How does your Web Development Service help with SEO?",
-      answer:
-        "Our Web Development Service prioritizes search engine optimization to boost your website’s visibility. We optimize for speed, ensuring fast load times that reduce bounce rates and improve rankings. Mobile-friendly designs align with Google’s standards, while clean, structured code makes it easy for search engines to crawl your site. We incorporate proper metadata, like title tags and descriptions, to attract clicks from search results. By building with SEO in mind, we help your site reach more customers organically, driving traffic and leads. For broader strategies, we can connect you with our marketing team to amplify your online presence further.",
-    },
-    {
-      question: "Do you provide support after launch?",
-      answer:
-        "Absolutely. Our Web Development Service extends beyond launch to keep your website thriving. We offer ongoing maintenance to ensure your site stays secure, fast, and compatible with new technologies. Regular updates protect against vulnerabilities, while performance monitoring helps us suggest improvements over time. If you need to add content, like new pages or products, our team handles it efficiently. Technical support is always available via email or phone, addressing issues promptly to minimize downtime. Whether you’re a small business or a large enterprise, our flexible support plans ensure your website remains a reliable asset for your growth.",
-    },
-    {
-      question: "How much does a website cost?",
-      answer:
-        "The cost of a Web Development Service varies based on your project’s needs. A simple site with basic features is more affordable, while complex platforms like e-commerce stores or custom systems with integrations cost more due to added functionality. Design complexity and ongoing support also influence pricing. At DigLip7, we believe in clear pricing with no surprises. During a free consultation, we assess your goals and provide a detailed quote tailored to your vision. This ensures you get a high-quality website that delivers value without breaking your budget. Contact us today to explore your options.",
-    },
-  ];
+    question: "What does a Web Development Service include?",
+    answer:
+      "A Web Development Service is about creating a website that reflects your brand and meets your business needs. At DigLip7, we design custom visuals that capture your unique identity, ensuring your site stands out in a crowded digital space. Our team handles front-end development for user-friendly interfaces and back-end development for secure, dynamic functionality. We integrate content management systems like WordPress or Shopify for easy updates, build responsive designs for all devices, and develop e-commerce platforms with secure payment systems. API connections enhance functionality by linking to tools like CRMs or analytics, delivering a tailored solution that grows with your business.",
+  },
+  {
+    question: "How long does it take to build a website?",
+    answer:
+      "The timeline for a Web Development Service depends on your project’s complexity and goals. A simple website, like a portfolio or small business page, typically takes 4 to 6 weeks from planning to launch, ensuring quality without rushing the process. More intricate sites, such as e-commerce platforms or custom applications with advanced features, may require 8 to 12 weeks to perfect every detail. During our initial consultation, we analyze your needs and provide a clear schedule, keeping you informed at every stage. Our efficient process balances speed and precision, delivering a website that’s ready to perform on time.",
+  },
+  {
+    question: "Will my website work on mobile devices?",
+    answer:
+      "Yes, mobile compatibility is a core part of our Web Development Service. With most users browsing on smartphones, we ensure your website performs flawlessly across all devices, from phones to desktops. Our responsive designs adapt to any screen size, offering intuitive navigation and fast load times that keep visitors engaged. This approach not only enhances user experience but also improves your search engine rankings, as Google prioritizes mobile-friendly sites. We test rigorously to guarantee consistency across browsers like Chrome and Safari so your audience enjoys a seamless experience, whether they’re at home or on the go, building trust in your brand.",
+  },
+  {
+    question: "How does your Web Development Service help with SEO?",
+    answer:
+      "Our Web Development Service prioritizes search engine optimization to boost your website’s visibility. We optimize for speed, ensuring fast load times that reduce bounce rates and improve rankings. Mobile-friendly designs align with Google’s standards, while clean, structured code makes it easy for search engines to crawl your site. We incorporate proper metadata, like title tags and descriptions, to attract clicks from search results. By building with SEO in mind, we help your site reach more customers organically, driving traffic and leads. For broader strategies, we can connect you with our marketing team to amplify your online presence further.",
+  },
+  {
+    question: "Do you provide support after launch?",
+    answer:
+      "Absolutely. Our Web Development Service extends beyond launch to keep your website thriving. We offer ongoing maintenance to ensure your site stays secure, fast, and compatible with new technologies. Regular updates protect against vulnerabilities, while performance monitoring helps us suggest improvements over time. If you need to add content, like new pages or products, our team handles it efficiently. Technical support is always available via email or phone, addressing issues promptly to minimize downtime. Whether you’re a small business or a large enterprise, our flexible support plans ensure your website remains a reliable asset for your growth.",
+  },
+  {
+    question: "How much does a website cost?",
+    answer:
+      "The cost of a Web Development Service varies based on your project’s needs. A simple site with basic features is more affordable, while complex platforms like e-commerce stores or custom systems with integrations cost more due to added functionality. Design complexity and ongoing support also influence pricing. At DigLip7, we believe in clear pricing with no surprises. During a free consultation, we assess your goals and provide a detailed quote tailored to your vision. This ensures you get a high-quality website that delivers value without breaking your budget. Contact us today to explore your options.",
+  },
+];
 
 // 3D Card Component
 const Card3D = ({ children, className }) => {
@@ -346,17 +348,17 @@ function Development() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a href="/contact">
-                        <motion.button
-                        
-                          className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          
-                          Get Started
-                          <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </motion.button>
-                        </a>
+              <motion.button
+
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+
+                Get Started
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
         <ParallaxBg>
@@ -689,7 +691,7 @@ function Development() {
             </h2>
           </FloatingElement>
           <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-           At Diglip7, our graphic design process is clear and collaborative, ensuring stunning results. Here’s how we create visuals you’ll love:
+            At Diglip7, our graphic design process is clear and collaborative, ensuring stunning results. Here’s how we create visuals you’ll love:
           </p>
         </motion.div>
 
@@ -735,7 +737,7 @@ function Development() {
         >
           <FloatingElement>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-             Graphic Design for Different Industries
+              Graphic Design for Different Industries
             </h2>
           </FloatingElement>
           <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -847,15 +849,15 @@ function Development() {
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>

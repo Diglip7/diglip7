@@ -4,7 +4,7 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake,
+  Handshake, DollarSign, RefreshCw, Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -20,11 +20,19 @@ import {
   Users,
   Award,
   ChevronDown,
+  Star,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
 import seo2 from "../images/ai.jpeg";
 import seoImage from "../images/ai1.png";
 import seo4 from "../images/ai2.png";
 import aboutImg from "../images/ai3.png";
+
+import ppc1 from "../images/ppc001.png";
+import ppc2 from "../images/ppc002.png";
+import ppc3 from "../images/ppc003.png";
+import ppc4 from "../images/ppc004.jpeg";
 
 // Mock images - replace with your actual images
 // const seoImage =
@@ -34,6 +42,121 @@ import aboutImg from "../images/ai3.png";
 //   "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg =
 //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+// added 
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "CEO, TechStart Inc.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    text: `“DigLip 7’s AI solutions transformed our workflow. Automation and predictive analytics improved efficiency and saved us valuable time.”`,
+    link: "https://techstart.io",
+  },
+  {
+    name: "Michael Chen",
+    role: "EcomShop",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
+    text: `“Thanks to DigLip 7, we gained actionable insights from our data. Their AI-powered services boosted our business decisions and ROI.”`,
+  },
+  {
+    name: "Dr. Emily Rodriguez",
+    role: "HealthPlus Clinic",
+    image: "https://randomuser.me/api/portraits/women/49.jpg",
+    text: `“The AI tools implemented by DigLip 7 streamlined our operations and enhanced productivity. Their team is highly professional and results-driven.”`,
+  },
+  {
+    name: "David Thompson",
+    role: "Thompson Law Firm",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    text: `“Working with DigLip 7’s AI team helped us reduce costs and optimize processes. The measurable results exceeded our expectations.”`,
+  },
+];
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover AI POWERED opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized AI POWERED strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical AI POWERED improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "TechStart Inc.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive AI POWERED strategy.",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "EcoShop",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "HealthPlus Clinic",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local AI POWERED rankings for a healthcare provider using optimized content strategy.",
+    image:
+      "https://images.unsplash.com/photo-1581091870622-3a64a9a67b5d?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
+
+
 
 const advantages = [
   {
@@ -175,47 +298,47 @@ const steps = [
 
 const faqs = [
   {
-      question:
-        "What’s the difference between traditional and AI-powered digital marketing?",
-      answer:
-        "Traditional marketing relies on manual efforts and static plans, while an AI-powered digital Marketing Service uses machine learning in marketing to automate tasks, analyze data, and optimize in real time. DigLip7 leverages AI to deliver faster, more precise results—think smarter targeting and higher ROI.",
-    },
-    {
-      question: "How secure is my customer data with AI tools?",
-      answer:
-        "Data security is non-negotiable at DigLip7. Our AI-powered digital Marketing Service uses encrypted systems and complies with standards like GDPR and CCPA. Whether we’re running smart targeting or personalized marketing with AI, your customer data stays safe and confidential.",
-    },
-    {
-      question: "Can small businesses benefit from AI-powered marketing?",
-      answer:
-        "Yes! Our AI marketing strategy is scalable and budget-friendly, making it perfect for small businesses. From AI-powered SEO tools to cost-efficient smart paid advertising, DigLip7 helps startups and local companies compete with bigger players.",
-    },
-    {
-      question:
-        "How long does it take to see results from AI-powered strategies?",
-      answer:
-        "Results vary, but AI speeds up the process. Many DigLip7 clients see boosts in engagement or leads within 2–4 weeks, with significant ROI often emerging in 2–3 months. Our automated reporting dashboards keep you informed every step of the way.",
-    },
-    {
-      question: "Do I need technical skills to use your AI marketing services?",
-      answer:
-        "Not at all. DigLip7 handles the complexity for you. Our in-house AI experts turn advanced tech—like predictive marketing analytics or conversational AI—into simple, effective strategies, so you can focus on your business.",
-    },
-    {
-      question: "How does AI improve campaign performance?",
-      answer:
-        "AI enhances performance by analyzing data, predicting trends, and optimizing in real time. With smart marketing automation, DigLip7 reduces costs, boosts conversions, and personalizes customer experiences—delivering campaigns that hit your KPIs.",
-    },
-    {
-      question: "Can you customize AI strategies for my industry?",
-      answer:
-        "Absolutely. Whether you’re in e-commerce, healthcare, or finance, DigLip7 tailors our AI-powered digital Marketing Service to your goals and industry needs. From AI content generation to chatbots for customer support, we build solutions that fit.",
-    },
-    {
-      question: " Why choose DigLip7 over other agencies?",
-      answer:
-        "We stand out with our proprietary AI tools, transparent reporting, and proven results. DigLip7 combines technical expertise with marketing know-how to deliver an AI-powered digital Marketing Service that drives growth—trusted by businesses worldwide",
-    },
+    question:
+      "What’s the difference between traditional and AI-powered digital marketing?",
+    answer:
+      "Traditional marketing relies on manual efforts and static plans, while an AI-powered digital Marketing Service uses machine learning in marketing to automate tasks, analyze data, and optimize in real time. DigLip7 leverages AI to deliver faster, more precise results—think smarter targeting and higher ROI.",
+  },
+  {
+    question: "How secure is my customer data with AI tools?",
+    answer:
+      "Data security is non-negotiable at DigLip7. Our AI-powered digital Marketing Service uses encrypted systems and complies with standards like GDPR and CCPA. Whether we’re running smart targeting or personalized marketing with AI, your customer data stays safe and confidential.",
+  },
+  {
+    question: "Can small businesses benefit from AI-powered marketing?",
+    answer:
+      "Yes! Our AI marketing strategy is scalable and budget-friendly, making it perfect for small businesses. From AI-powered AI POWERED tools to cost-efficient smart paid advertising, DigLip7 helps startups and local companies compete with bigger players.",
+  },
+  {
+    question:
+      "How long does it take to see results from AI-powered strategies?",
+    answer:
+      "Results vary, but AI speeds up the process. Many DigLip7 clients see boosts in engagement or leads within 2–4 weeks, with significant ROI often emerging in 2–3 months. Our automated reporting dashboards keep you informed every step of the way.",
+  },
+  {
+    question: "Do I need technical skills to use your AI marketing services?",
+    answer:
+      "Not at all. DigLip7 handles the complexity for you. Our in-house AI experts turn advanced tech—like predictive marketing analytics or conversational AI—into simple, effective strategies, so you can focus on your business.",
+  },
+  {
+    question: "How does AI improve campaign performance?",
+    answer:
+      "AI enhances performance by analyzing data, predicting trends, and optimizing in real time. With smart marketing automation, DigLip7 reduces costs, boosts conversions, and personalizes customer experiences—delivering campaigns that hit your KPIs.",
+  },
+  {
+    question: "Can you customize AI strategies for my industry?",
+    answer:
+      "Absolutely. Whether you’re in e-commerce, healthcare, or finance, DigLip7 tailors our AI-powered digital Marketing Service to your goals and industry needs. From AI content generation to chatbots for customer support, we build solutions that fit.",
+  },
+  {
+    question: " Why choose DigLip7 over other agencies?",
+    answer:
+      "We stand out with our proprietary AI tools, transparent reporting, and proven results. DigLip7 combines technical expertise with marketing know-how to deliver an AI-powered digital Marketing Service that drives growth—trusted by businesses worldwide",
+  },
 ];
 
 // 3D Card Component
@@ -316,96 +439,444 @@ function Ai_powered() {
     return () => observer.disconnect();
   }, []);
 
+
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // AI POWERED Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$899",
+      duration: "/month",
+      features: [
+        "AI-driven marketing strategy consultation (1 session/month)",
+        "Automated ad campaign setup (Google & Meta)",
+        "Smart audience segmentation & targeting",
+        "AI-powered keyword & trend research",
+        "Monthly performance dashboard",
+        "Email & chat support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,799",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Full AI automation for Google, Meta & LinkedIn Ads",
+        "Predictive analytics for campaign optimization",
+        "AI-generated ad copy & visuals (up to 10 campaigns)",
+        "Custom chatbot integration for lead nurturing",
+        "Bi-weekly performance & ROI reporting",
+        "Priority support",
+        "Competitor trend analysis using AI tools",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$3,499",
+      duration: "/month",
+      features: [
+        "Complete AI-powered marketing ecosystem setup",
+        "Cross-platform ad automation (Google, Meta, TikTok, YouTube)",
+        "AI-driven customer journey & personalization engine",
+        "Predictive lead scoring & sales forecasting",
+        "Weekly insights & strategy calls with AI data reports",
+        "Dedicated AI marketing strategist",
+        "Custom data dashboards & automation pipelines",
+        "Integration with CRM, analytics, and email systems",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // AI POWERED Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "AI POWERED Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  const testimonial = testimonials[index];
+
+
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
+    <div className=" bg-white overflow-x-hidden pt-18 sm:pt-18">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full  flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
+
+      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+        {/* Animated Floating Objects */}
+        <motion.div
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        />
+
+        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+          {/* Left Section */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900"> Advanced AI-Powered Services to
+              </span>
+              <br className="text-gray-600" />
+
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                Boost Business Efficiency
+              </span>
+              <br />
+
+            </h1>
+            <p className="text-gray-700 mb-6">
+              <span className="font-semibold text-blue-700"> Leverage DigLip 7’</span>AI-powered services to automate tasks, gain actionable insights, and enhance decision-making. Our innovative solutions drive efficiency, reduce costs, and deliver measurable growth for businesses in today’s competitive digital landscape.
+
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+              <div>🚀 Boost organic traffic</div>
+              <div>📈 Improve search ranking</div>
+              <div>🎯 Target right audience</div>
+              <div>📊 Transparent reporting</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+                          Get Free AI POWERED Audit <ArrowRight size={18} />
+                        </button> */}
+              <a href="/contact">
+                <motion.button
+
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
-      
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    AI-powered Digital Marketing
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
-      
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                  <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="AI-powered digital marketing strategy with data-driven insights and automation"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
-                </div>
-              </div>
-      
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
+
+                  Get Started
+                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Right Section - Animated Chart */}
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={seo2}
+              alt="Analytics"
+              className="rounded-2xl shadow-lg w-full"
+            />
+          </motion.div>
+        </div>
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+
+      {/* addedd */}
+
+      <div className="bg-gray-50">
+        {/* AI POWERED Section */}
+        <div className="py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+            <motion.img
+              src="https://cdn.dribbble.com/users/5276/screenshots/16619923/media/734983b3adcf6676c6f6b6f45a4ac7ef.png"
+              alt="AI POWERED Growth"
+              className="rounded-2xl shadow-lg w-full md:w-1/2"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why ai powered is the Best Investment for Your Business
+              </h2>
+              <p className="text-gray-700 mb-4">
+                AI-powered solutions enhance efficiency,<span className="font-semibold text-blue-700">DigLip7</span>,
+                lower costs, and improve decision-making. By automating tasks and providing actionable insights, they enhance customer experiences, drive growth, and deliver measurable ROI for businesses in today’s competitive digital landscape.
+
+              </p>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+                <li>✅ Immediate Results</li>
+                <li>✅ Targeted Reach</li>
+                <li>✅ Budget Control</li>
+                <li>✅ Measurable ROI</li>
+                <li>✅ Brand Exposure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+            {/* Header */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Our Proven AI POWERED Process
+              </h2>
+              <p className="text-gray-600 mt-3">
+                At DigLip 7, our AI-powered process is designed to deliver maximum efficiency and results. We start with data analysis and strategy planning, implement intelligent automation, and optimize workflows using advanced AI tools. Continuous monitoring ensures improved productivity, better insights, and measurable business growth.
+
+              </p>
+            </div>
+
+            {/* Steps Section */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Blue Line (Desktop only) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
+
+              {/* Steps */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                {stepss.map((step, index) => (
                   <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
+                    key={step.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center text-center"
+                  >
+                    {/* Icon Circle */}
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                      {step.icon}
+                      <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
+                        {step.id}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
-            </section>
+            </div>
+          </div>
+
+          {/* AI POWERED Services */}
+          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+            <div className="max-w-6xl mx-auto text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Proven AI POWERED Success Stories
+              </h2>
+              <p className="text-gray-600 mt-3">
+                Discover how DigLip 7’s AI-powered solutions have transformed businesses.<span className="font-semibold text-teal-600">DigLip7</span>From increased efficiency and reduced operational costs to smarter decision-making and higher ROI, our innovative, data-driven strategies deliver measurable results and sustainable growth for every client.
+
+              </p>
+
+              {/* Tabs */}
+              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+                {Object.keys(caseStudies).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setActive(key)}
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-teal-50"
+                      }`}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content */}
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+            >
+              {/* Left: Image & Info */}
+              <div className="flex-1">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="rounded-2xl shadow-md w-full object-cover"
+                />
+
+              </div>
+
+              {/* Right: Stats */}
+              <div className="flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+                <p className="text-sm text-gray-600">
+                  See how DigLip 7’s AI-powered solutions have helped businesses achieve remarkable results. By automating processes, enhancing decision-making, and boosting productivity, our data-driven strategies deliver measurable growth, improved efficiency, and long-term business success.
+
+                </p>
+                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
+
+
+                  {study.stats.map((stat, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                    >
+
+                      <div className="flex items-center gap-2">{stat.icon}</div>
+                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+
+        {/* AI POWERED Services Section */}
+        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our AI POWERED Services</h2>
+            <p className="text-gray-600 mb-10">
+              At DigLip 7, we offer a range of AI-powered services designed to drive business growth and efficiency. Our services include intelligent automation, predictive analytics, AI-driven marketing, chatbots and virtual assistants, data analysis and insights, and workflow optimization. These solutions help businesses save time, reduce costs, improve decision-making, and achieve measurable ROI.
+
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ppcServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <service.icon className="text-teal-600 w-10 h-10" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm">{service.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* AI POWERED Pricing Section */}
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">AI POWERED Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 mb-10">
+              Choose the perfect AI POWERED package that fits your business needs and budget.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {seoPackages.map((pkg, index) => (
+                <motion.div
+                  key={index}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                >
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                    {pkg.popular && (
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                        🌟 Most Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                    {pkg.features.map((feat, i) => (
+                      <li key={i}>✅ {feat}</li>
+                    ))}
+                  </ul>
+                  <a href="/contact">
+                    <button
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                    >
+                      {pkg.button}
+                    </button></a>
+                </motion.div>
+              ))}
+            </div>
+
+            <p className="mt-10 text-gray-500 text-sm">
+              All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* added  */}
+
+
+
+
+
+
+
 
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
@@ -528,7 +999,7 @@ function Ai_powered() {
               often relies on trial and error, an AI-powered digital Marketing
               Service transforms customer acquisition by automating repetitive
               tasks, personalizing content, and optimizing performance in real
-              time. From AI-driven SEO tools to smart advertising platforms,
+              time. From AI-driven AI POWERED tools to smart advertising platforms,
               this technology empowers businesses to deliver the right message
               to the right person at the right time—every time. At DigLip7, we
               simplify this complex technology for our clients, ensuring you
@@ -602,7 +1073,7 @@ function Ai_powered() {
                   src={aboutImg}
                   alt="How DigLip7 implements AI in real digital marketing campaigns for smarter targeting and higher ROI"
                   className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  
+
                 />
               </Card3D>
 
@@ -690,7 +1161,7 @@ function Ai_powered() {
             </div>
           </motion.div>
 
-          
+
         </div>
       </section>
 
@@ -724,7 +1195,7 @@ function Ai_powered() {
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                <div className="bg-gradient-to-r from-teal-700 to-teal-900 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                   <FloatingElement delay={index * 0.1}>
                     <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -814,7 +1285,7 @@ function Ai_powered() {
               </h2>
             </FloatingElement>
             <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto">
-             Why should your business invest in an AI-powered digital Marketing Service? The advantages are clear and transformative:
+              Why should your business invest in an AI-powered digital Marketing Service? The advantages are clear and transformative:
             </p>
           </div>
 
@@ -831,7 +1302,7 @@ function Ai_powered() {
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-700 to-teal-900 text-white font-bold text-sm sm:text-base flex-shrink-0"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -867,18 +1338,101 @@ function Ai_powered() {
               growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
+
+      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Trusted by Businesses Worldwide
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        </p>
+
+        <motion.div
+          key={testimonial.name}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+        >
+          <div className="flex justify-center mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <div className="flex flex-col items-center">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+            />
+            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            {testimonial.link && (
+              <a
+                href={testimonial.link}
+                className="text-blue-500 text-sm mt-1 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {testimonial.role}
+              </a>
+            )}
+          </div>
+        </motion.div>
+
+        <div className="flex justify-center items-center mt-8 gap-4">
+          <button
+            onClick={prev}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+          {testimonials.map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
+                }`}
+            ></div>
+          ))}
+          <button
+            onClick={next}
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+          />
+        </div>
+
+        {/* Floating small cards */}
+        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
+                }`}
+            >
+              <div className="flex gap-3 items-center mb-3">
+                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
+                <div>
+                  <p className="font-semibold text-sm">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -896,8 +1450,7 @@ function Ai_powered() {
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
+              Get answers to the most common questions about our digital marketing services.
             </p>
           </motion.div>
 
@@ -905,7 +1458,7 @@ function Ai_powered() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -913,9 +1466,10 @@ function Ai_powered() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -923,7 +1477,7 @@ function Ai_powered() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -949,7 +1503,7 @@ function Ai_powered() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-teal-700 to-teal-900 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(15)].map((_, i) => (
@@ -982,7 +1536,7 @@ function Ai_powered() {
           >
             <FloatingElement>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6">
-                Get Started with AI-Powered 
+                Get Started with AI-Powered
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
                   Digital Marketing Today
                 </span>
@@ -995,14 +1549,14 @@ function Ai_powered() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contact">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
+                <motion.button
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Free Consultation
+                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.button>
               </a>
             </div>
 

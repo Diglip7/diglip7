@@ -19,12 +19,52 @@ import {
   Globe,
   Users,
   Award,
-  ChevronDown
+  ChevronDown,
+ PlayCircle,BarChart, Settings, FileText,Quote 
 } from "lucide-react";
-import seo2 from "../images/seo01.png";
-import seoImage from "../images/seo12.png"
-import seo4 from "../images/seo11.png";
+import seo2 from "../images/seon3.jpg";
+import seoImage from "../images/seon.jpg"
+import seo4 from "../images/seon5.jpeg";
 import aboutImg from "../images/seo13.png";
+
+import ppc1 from "../images/ppc001.png";
+import ppc2 from "../images/ppc002.png";
+import ppc3 from "../images/ppc003.png";
+import ppc4 from "../images/ppc004.jpeg";
+
+// news 
+const testimonials = [
+  {
+    name: "Amit K., Business Owner",
+    title: "CEO, TechStart Inc.",
+    quote:
+      "DigLip 7 transformed our online presence with their exceptional SEO services. Our website traffic increased significantly, and we now rank higher on Google. Truly a game-changer for our business!",
+    image: "https://i.pravatar.cc/100?img=1",
+  },
+  {
+    name: "Sara M., Marketing Manager",
+    title: "Founder, EcoShop",
+    quote:
+      "Working with DigLip 7 was one of the best decisions we made. Their team is professional, detail-oriented, and delivers real results. Our brand visibility and lead generation have improved dramatically.",
+    image: "https://i.pravatar.cc/100?img=2",
+  },
+  {
+    name: "Jessica L., Marketing Director, New York, USA",
+    title: "Director, HealthPlus Clinic",
+    quote:
+      "DigLip 7’s SEO expertise completely changed our online visibility. Within months, our website started ranking on the first page, and leads grew steadily. Highly recommend their services!",
+    image: "https://i.pravatar.cc/100?img=3",
+  },
+  {
+    name: "Michael R., Small Business Owner, California, USA",
+    title: "Manager, BrightMedia",
+    quote:
+      "We hired DigLip 7 to improve our search rankings, and they exceeded expectations. Their professional approach and clear results make them the top SEO partner for any business.",
+    image: "https://i.pravatar.cc/100?img=4",
+  },
+];
+
+
 
 
 const advantages = [
@@ -299,356 +339,484 @@ function Sco() {
     return () => observer.disconnect();
   }, []);
 
+
+
+  // {new}
+  // Counter animation (increasing & decreasing)
+  const [stats, setStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const limits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const directions = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = directions[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= limits[key]) directions[key] = -1;
+          if (newStats[key] <= 20) directions[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  const packages = [
+    {
+      name: "Basic",
+      price: "$799",
+      duration: "/month",
+      features: [
+        "Keyword research (up to 20 keywords)",
+        "On-page SEO optimization",
+        "Monthly SEO audit",
+        "Google My Business optimization",
+        "Monthly reporting",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,499",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Keyword research (up to 50 keywords)",
+        "On-page & Technical SEO",
+        "Link building (5 high-quality links/month)",
+        "Content optimization",
+        "Local SEO optimization",
+        "Bi-weekly reporting",
+        "Priority support",
+        "Competitor analysis",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$2,999",
+      duration: "/month",
+      features: [
+        "Unlimited keyword research",
+        "Complete SEO optimization",
+        "Comprehensive backlinks (10+/month)",
+        "Custom dashboard & automation",
+        "Weekly reporting & calls",
+        "Dedicated SEO manager",
+        "Custom strategy development",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // news 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-change testimonial every 5s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  
+
   return (
-    <div className="  w-full ">
+    <div className="  w-full bg-white ">
       {/* Hero Section with Parallax */}
-      <section className="relative w-full  flex flex-col lg:pt-20 lg:flex-row items-center justify-center overflow-hidden">
-              {/* Hero Content */}
-              <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="mb-6"
-                >
-                  <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-                </motion.div>
+       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+            {/* Animated Floating Objects */}
+            <motion.div
+              className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+              animate={{ y: [0, 20, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+            <motion.div
+              className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 5, repeat: Infinity }}
+            />
       
-                <motion.h1
-                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  Grow Your Business with{" "}
-                  <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-                    Seo Services
-                  </span>
-                </motion.h1>
-      {/* Building Digital Experiences That Drive Success */}
-                <motion.p
-                  className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 1 }}
-                >
-                  DigLip 7 expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
-                </motion.p>
+            <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+              {/* Left Section */}
+              <div className="flex-1 text-center md:text-left">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                    <span className="text-gray-900">Unlock Success with SEO: The Smart Choice for</span>
+                    <br className="text-gray-600" />
+                  
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+                      Your Business | DigLip 7
+                    </span>
+                    <br />
+                    
+                  </h1>
+                <p className="text-gray-700 mb-6">
+                  At <span className="font-semibold text-blue-700">DigLip7</span>Transform your business with powerful SEO. Increase online visibility, attract the right audience, and achieve sustainable growth with proven, results-driven SEO strategies.
+
+                </p>
       
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 1 }}
-                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
+                {/* Features */}
+                <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+                  <div>🚀 Boost organic traffic</div>
+                  <div>📈 Improve search ranking</div>
+                  <div>🎯 Target right audience</div>
+                  <div>📊 Transparent reporting</div>
+                </div>
+      
+                {/* Buttons */}
+                <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                  {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
+                    Get Free SEO Audit <ArrowRight size={18} />
+                  </button> */}
                   <a href="/contact">
-                              <motion.button
-                              
-                                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                
-                                Get Started
-                                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                              </motion.button>
-                              </a>
-                </motion.div>
-              </div>
-              <div>
-                <div className="p-6 inset-0 w-full h-full">
-                  <img
-                    src={seo2}
-                    alt="Digital Marketing Background"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 "></div>
+                                    <motion.button
+                                    
+                                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                                      whileHover={{ scale: 1.05 }}
+                                      whileTap={{ scale: 0.95 }}
+                                    >
+                                      
+                                      Get Started
+                                      <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </motion.button>
+                                    </a>
+                 
                 </div>
               </div>
       
-              {/* Floating particles */}
-              <div className="absolute inset-0">
-                {[...Array(20)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white/20 rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -100, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
-              </div>
-            </section>
+              {/* Right Section - Animated Chart */}
+              <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative">
+              <img
+                src={seo2}
+                alt="About Diglip7"
+                className="rounded-3xl shadow-2xl w-full max-w-md lg:max-w-lg"
+              />
+
+              {/* Decorative Elements */}
+              {/* <div className="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-br from-yellow-500/30 to-yellow-400/30 rounded-full animate-pulse"></div>
+              <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-br from-teal-700/30 to-teal-500/30 rounded-full animate-pulse"></div> */}
+
+              {/* Floating Stats */}
+              <motion.div
+                className="absolute top-0 -right-4 bg-white rounded-2xl p-4 shadow-xl"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-teal-600">+150%</div>
+                  <div className="text-xs font-bold text-gray-600">Traffic Growth</div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-80 -left-4 bg-white rounded-2xl p-4 shadow-xl"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-teal-600">#1 Ranking</div>
+                  
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+            </div>
+           
+                    
+          </div>
+      
 
       {/* About Section with 3D Cards */}
       <section id="about" className=" sm:py-16 lg: bg-white">
-        <div className="mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
-          {/* Left Image with 3D effect */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <Card3D className="w-full">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <img
-                  src={seoImage}
-                  alt="SEO Service"
-                  className="w-full h-full sm:h-full lg:h-96 object-cover transform transition-transform duration-700 hover:scale-110"
-                />
-                <div className="absolute inset-0 "></div>
-              </div>
-            </Card3D>
-          </motion.div>
+        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+      {/* WHY SEO SECTION */}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+        {/* Left Image */}
+        <motion.img
+          src={seo4}
+          alt="SEO Growth"
+          className="rounded-2xl  w-full md:w-1/2"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
 
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex-1 w-full"
-          >
-            <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-                Boost Your Website's Traffic with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  AI-Powered SEO Service
-                </span>
-              </h2>
-            </FloatingElement>
-            
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                Accelerate Your Growth in 5 Months | Triple Your Website Traffic In
-                the competitive online landscape, every click matters. With Diglip7's
-                AI-powered SEO service, you can elevate your website's performance,
-                drive high-quality traffic, and secure top rankings—all in just five
-                months.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                We leverage advanced artificial intelligence tools and proven,
-                data-driven strategies to transform your website into a traffic
-                magnet. Read on to discover how our simple, effective approach can
-                revolutionize your digital presence.
-              </p>
-            </div>
+        {/* Right Text */}
+        <div className="flex-1 text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+           Why SEO is the Best Investment for Your Business
 
-            <motion.div 
-              className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+          </h2>
+          <p className="text-gray-700 mb-4">
+            SEO is a powerful, long-term strategy that boosts <span className="font-semibold text-blue-700">DigLip7</span>,
+            your website's visibility and drives organic traffic. Unlike paid ads, SEO works 24/7 to improve rankings, attract quality leads, and build lasting brand credibility for sustainable online growth.
+          </p>
+          <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+            <li>✅ Cost-Effective Growth</li>
+            <li>✅ Increased Visibility</li>
+            <li>✅ Better User Experience</li>
+            <li>✅ Higher ROI</li>
+            <li>✅ Brand Trust</li>
+            <li>✅ Sustainable Results</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* OUR SEO SERVICES */}
+      <div className="max-w-6xl mx-auto text-center mb-20">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our SEO Services</h2>
+        <p className="text-gray-600 mb-10">
+          Comprehensive SEO solutions tailored to boost your online presence and drive results.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { icon: Search, title: "Keyword Research & Strategy" },
+            { icon: FileText, title: "On-Page SEO" },
+            { icon: Link2, title: "Off-Page SEO & Link Building" },
+            { icon: Settings, title: "Technical SEO Audit" },
+            { icon: Target, title: "Local SEO Optimization" },
+            { icon: BarChart, title: "Content Optimization" },
+          ].map((service, index) => (
+            <motion.div
+              key={index}
+              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
+              whileHover={{ scale: 1.05 }}
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              {[
-                { icon: Users, text: "1000+ Projects" },
-                { icon: Award, text: "2+ Years Experience" },
-                { icon: Target, text: "5 Month Results" }
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3 sm:px-4 py-2 rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-700" />
-                  <span className="text-sm sm:text-base font-medium text-gray-700">{item.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Difference Section */}
-      <section className=" sm:py-6 lg: px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-6">
-          <motion.div
-            className="flex-1 w-full"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <FloatingElement delay={0.2}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
-                The diglip7 Difference:{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  Why Our SEO Service Works
-                </span>
-              </h2>
-            </FloatingElement>
-            
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              At diglip7, we blend cutting-edge technology with practical expertise
-              to create an SEO strategy that truly delivers results. Our
-              AI-powered system continuously analyzes your website's performance,
-              identifies the best opportunities for growth, and implements
-              optimizations that make a difference.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              {[
-                { number: "500%", label: "Traffic Increase" },
-                { number: "95%", label: "Client Satisfaction" },
-                { number: "24/7", label: "Support Available" },
-                { number: "50+", label: "Team Experts" }
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-700">{stat.number}</div>
-                  <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="flex-1 flex justify-center w-full"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Card3D className="relative w-72 h-1/2 sm:w-full sm:h-full lg:w-full lg:h-1/2">
-              <div className="w-full h-full">
-                <img
-                  src={seo4}
-                  alt="SEO Service"
-                  className="rounded-2xl  w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0  rounded-2xl"></div>
+              <div className="flex justify-center mb-4">
+                <service.icon className="text-blue-600 w-10 h-10" />
               </div>
-            </Card3D>
-          </motion.div>
+              <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+              <p className="text-gray-600 text-sm">
+                Comprehensive analysis and strategies designed to improve visibility and traffic.
+              </p>
+              <a
+                href="/contact"
+                className="inline-block mt-3 text-blue-700 font-medium text-sm hover:underline"
+              >
+                Learn More →
+              </a>
+            </motion.div>
+          ))}
         </div>
+      </div>
+
+      {/* OUR PROVEN SEO PROCESS */}
+      {/* <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Proven SEO Process</h2>
+        <p className="text-gray-600 mb-10">
+          A systematic approach that delivers measurable results for our clients.
+        </p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          {["Research", "Strategy", "Implementation", "Monitoring", "Reporting", "Improvement"].map(
+            (step, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center bg-white p-4 rounded-xl shadow-md hover:shadow-lg"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 3, repeat: Infinity, delay: index * 0.3 }}
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+                  <BarChart className="text-blue-600 w-6 h-6" />
+                </div>
+                <h4 className="font-semibold text-gray-900 text-sm">{step}</h4>
+              </motion.div>
+            )
+          )}
+        </div>
+      </div> */}
+    </div>
       </section>
 
       {/* Results Section with Custom Shape */}
-      <section className="w-full bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
+      {/* SUCCESS STORIES */}
+      <div className="max-w-6xl mx-auto mb-20">
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">Proven SEO Success Stories</h2>
+        <p className="text-center text-gray-600 mb-10">
+          Real results from real businesses that trusted DigLip7 with their SEO journey.
+        </p>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 flex justify-center"
-          >
-            <div className="relative w-full h-full sm:w-full sm:h-full lg:w-full lg:h-full">
-              <Card3D className="w-full h-full">
-                <img
-                  src={aboutImg}
-                  alt="About Diglip7"
-                  className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  
-                />
-              </Card3D>
-              
-              {/* Floating elements around the image */}
+        <div className="bg-gray-50 rounded-2xl shadow-md p-6 flex flex-col md:flex-row gap-8 items-center">
+          {/* Image */}
+          <img
+            src={seoImage}
+            alt="SEO Results"
+            className="rounded-xl w-full md:w-1/2 shadow-lg"
+          />
+
+          {/* Results */}
+          <div className="flex-1 space-y-4">
+            <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
+            <p className="text-sm text-gray-600">
+              Transformed a struggling tech startup into an industry leader through advanced SEO.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-center">
               <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
-                animate={{ y: [0, -10, 0] }}
+                animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
+                className="bg-white rounded-xl shadow-md p-4"
               >
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
+                <p className="text-3xl font-bold text-blue-600">+{stats.traffic}%</p>
+                <p className="text-sm text-gray-700">Traffic</p>
+              </motion.div>
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+                className="bg-white rounded-xl shadow-md p-4"
+              >
+                <p className="text-3xl font-bold text-blue-600">+{stats.visibility}%</p>
+                <p className="text-sm text-gray-700">Visibility</p>
+              </motion.div>
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="bg-white rounded-xl shadow-md p-4"
+              >
+                <p className="text-3xl font-bold text-blue-600">+{stats.leads}%</p>
+                <p className="text-sm text-gray-700">Leads</p>
+              </motion.div>
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 3.5, repeat: Infinity }}
+                className="bg-white rounded-xl shadow-md p-4"
+              >
+                <p className="text-3xl font-bold text-blue-600">+{stats.revenue}%</p>
+                <p className="text-sm text-gray-700">Revenue</p>
               </motion.div>
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2"
-          >
-            <FloatingElement delay={0.3}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
-                Driving Real Results with{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
-                  Diglip7's Digital Marketing
-                </span>
-              </h2>
-            </FloatingElement>
-
-            <div className="space-y-4 sm:space-y-6">
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  At <span className="font-semibold text-teal-700">Diglip7</span>, we specialize in
-                  tailored digital marketing strategies that deliver real results. Our
-                  expertise spans multiple areas to ensure your business thrives online.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  We help you expand your audience through{" "}
-                  <span className="font-semibold text-[#c89d5a]">SEO, PPC, social media marketing, and local SEO</span>, 
-                  ensuring your brand reaches the right customers at the right time.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  With customized marketing strategies, we give you full control over
-                  your brand's online identity, ensuring consistency and a strong
-                  digital presence.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          
+          </div>
         </div>
-      </section>
+      </div>
+
+      {/* PRICING SECTION */}
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          SEO Packages Designed for Every Stage
+        </h2>
+        <p className="text-gray-600 mb-10">
+          Choose the perfect SEO package that fits your business needs and budget.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {packages.map((pkg, index) => (
+            <motion.div
+              key={index}
+              className={`rounded-2xl p-8 shadow-lg transition-all ${
+                pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"
+              }`}
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+            >
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
+                {pkg.popular && (
+                  <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                    🌟 Most Popular
+                  </span>
+                )}
+              </div>
+              <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
+              <p className="text-gray-600 mb-6">{pkg.duration}</p>
+              <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
+                {pkg.features.map((feat, i) => (
+                  <li key={i}>✅ {feat}</li>
+                ))}
+              </ul>
+              <button
+                className="group px-8 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+              >
+                {pkg.button}
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="mt-10 text-gray-500 text-sm">
+          All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
+          <a href="/contact" className="text-blue-600 underline">
+            Contact us
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+
+
+    {/* news  */}
+
+    <section className="bg-gradient-to-r from-purple-50 via-purple-50 to-pink-50 py-20 px-4 sm:px-8">
+      {/* 💬 Testimonials Section */}
+      <div className="max-w-6xl mx-auto text-center mb-20">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-teal-900 mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Trusted by Businesses Worldwide
+        </motion.h2>
+        <p className="text-gray-500 dark:text-gray-900 mb-10">
+          Don’t just take our word for it. See what our clients say about their SEO success with DigiUp.
+        </p>
+
+        {/* Main Highlighted Testimonial */}
+        <motion.div
+          key={activeIndex}
+          className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6 md:p-10 mx-auto max-w-3xl"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Quote className="text-teal-600 w-10 h-10 mx-auto mb-4" />
+          <p className="text-gray-700 dark:text-gray-200 italic mb-6">{testimonials[activeIndex].quote}</p>
+          <div className="flex items-center justify-center gap-4">
+            <img
+              src={testimonials[activeIndex].image}
+              alt={testimonials[activeIndex].name}
+              className="w-12 h-12 rounded-full object-cover"
+            />
+            <div>
+              <p className="font-bold text-gray-900 dark:text-white">{testimonials[activeIndex].name}</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">{testimonials[activeIndex].title}</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Small Carousel Avatars */}
+        <div className="flex justify-center mt-8 gap-4 flex-wrap">
+          {testimonials.map((t, i) => (
+            <motion.button
+              key={i}
+              className={`p-2 rounded-full border-2 ${
+                activeIndex === i ? "border-blue-500 scale-110" : "border-gray-300"
+              } transition-all duration-300`}
+              onClick={() => setActiveIndex(i)}
+              whileHover={{ scale: 1.1 }}
+            >
+              <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full" />
+            </motion.button>
+          ))}
+        </div>
+      </div>
+
+      
+    </section>
+     
 
       {/* Advantages Section with 3D Cards */}
       <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -705,7 +873,7 @@ function Sco() {
       </section>
 
       {/* Solutions Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-pink-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: -50 }}
@@ -790,7 +958,7 @@ function Sco() {
                   <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
                     <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
+                        className="flex items-center justify-center w-10 h-10 group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -826,7 +994,7 @@ function Sco() {
             </p>
             <a href="/contact">
             <motion.button
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -862,7 +1030,7 @@ function Sco() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -870,9 +1038,10 @@ function Sco() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -880,7 +1049,7 @@ function Sco() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -906,7 +1075,8 @@ function Sco() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden 
+      group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-teal-900 text-white text-lg font-semibold  shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           {[...Array(15)].map((_, i) => (

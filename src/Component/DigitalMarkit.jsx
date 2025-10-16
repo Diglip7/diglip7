@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  TrendingUp, 
-  BarChart3, 
-  Search, 
-  Handshake, 
-  ShoppingCart, 
-  Building2, 
-  MapPin, 
-  Link2, 
-  HelpCircle, 
+import {
+  TrendingUp,
+  BarChart3,
+  Search,
+  Handshake, DollarSign, RefreshCw, Eye,
+  ShoppingCart,
+  Building2,
+  MapPin,
+  Link2,
+  HelpCircle,
   Mic,
   CheckCircle,
   ArrowRight,
@@ -19,7 +19,9 @@ import {
   Globe,
   Users,
   Award,
-  ChevronDown
+  ChevronDown,
+
+  PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
 import seo2 from "../images/seo01.png";
 import seoImage from "../images/seo12.png"
@@ -31,6 +33,94 @@ import aboutImg from "../images/seo13.png";
 // const seo2 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop";
 // const seo4 = "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
 // const aboutImg = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
+
+
+// added 
+
+const stepss = [
+  {
+    id: 1,
+    title: "Research",
+    description:
+      "Deep dive into your industry, competitors, and target keywords to uncover SEO opportunities.",
+    icon: <Search className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 2,
+    title: "Strategy",
+    description:
+      "Develop a customized SEO strategy based on our research findings to maximize visibility and ROI.",
+    icon: <Target className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 3,
+    title: "Implementation",
+    description:
+      "Execute on-page, off-page, and technical SEO improvements for measurable growth.",
+    icon: <Settings className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 4,
+    title: "Monitoring",
+    description:
+      "Track rankings, traffic, and performance metrics continuously to ensure consistent progress.",
+    icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    id: 5,
+    title: "Reporting",
+    description:
+      "Provide detailed monthly reports with actionable insights and recommendations.",
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+  },
+];
+const caseStudies = {
+  "TechStart Inc.": {
+    title: "TechStart Inc.",
+    industry: "Technology • 6 months",
+    description:
+      "Transformed a struggling tech startup into an industry leader through comprehensive SEO strategy.",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+250%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+180%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+320%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+150%" },
+    ],
+  },
+  "EcoShop": {
+    title: "EcoShop",
+    industry: "E-commerce • 8 months",
+    description:
+      "Boosted organic traffic and conversions for a sustainable online store through targeted keyword optimization.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+300%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+210%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+270%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
+    ],
+  },
+  "HealthPlus Clinic": {
+    title: "HealthPlus Clinic",
+    industry: "Healthcare • 5 months",
+    description:
+      "Improved patient acquisition and local SEO rankings for a healthcare provider using optimized content strategy.",
+    image:
+      "https://images.unsplash.com/photo-1581091870622-3a64a9a67b5d?auto=format&fit=crop&w=1000&q=80",
+    stats: [
+      { icon: <TrendingUp className="w-5 h-5 text-teal-600" />, label: "Traffic", value: "+220%" },
+      { icon: <Eye className="w-5 h-5 text-blue-600" />, label: "Visibility", value: "+200%" },
+      { icon: <Users className="w-5 h-5 text-purple-600" />, label: "Leads", value: "+250%" },
+      { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+170%" },
+    ],
+  },
+};
+// added end 
+
+
 
 const advantages = [
   {
@@ -182,12 +272,12 @@ const faqs = [
   {
     question: "How can Diglip7 help grow my business?",
     answer:
-      "We specialize in SEO, PPC, social media marketing, and local SEO to help expand your audience and connect with the right customers."
+      "We specialize in SEO, content marketing, social media marketing, and local SEO to help expand your audience and connect with the right customers."
   },
   {
     question: "How long does it take to see results from digital marketing?",
     answer:
-      "Typically, SEO results take 3-6 months, while PPC and social media campaigns can generate leads almost immediately."
+      "Typically, SEO results take 3-6 months, while content marketing and social media campaigns can generate leads almost immediately."
   },
   {
     question: "What industries does Diglip7 specialize in?",
@@ -304,11 +394,100 @@ function DigitalMarkit() {
     return () => observer.disconnect();
   }, []);
 
+
+  // added
+  const [seoStats, setSeoStats] = useState({ traffic: 0, visibility: 0, leads: 0, revenue: 0 });
+  const seoLimits = { traffic: 250, visibility: 180, leads: 320, revenue: 150 };
+  const seoDirections = { traffic: 1, visibility: 1, leads: 1, revenue: 1 };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeoStats((prev) => {
+        const newStats = { ...prev };
+        for (let key in newStats) {
+          const change = seoDirections[key] === 1 ? 1 : -1;
+          newStats[key] += change;
+
+          if (newStats[key] >= seoLimits[key]) seoDirections[key] = -1;
+          if (newStats[key] <= 20) seoDirections[key] = 1;
+        }
+        return { ...newStats };
+      });
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
+  // SEO Packages
+  const seoPackages = [
+    {
+      name: "Basic",
+      price: "$799",
+      duration: "/month",
+      features: [
+        "Keyword research (up to 20 keywords)",
+        "On-page SEO optimization",
+        "Monthly SEO audit",
+        "Google My Business optimization",
+        "Monthly reporting",
+        "Email support",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Pro",
+      price: "$1,499",
+      duration: "/month",
+      popular: true,
+      features: [
+        "Keyword research (up to 50 keywords)",
+        "On-page & Technical SEO",
+        "Link building (5 high-quality links/month)",
+        "Content optimization",
+        "Local SEO optimization",
+        "Bi-weekly reporting",
+        "Priority support",
+        "Competitor analysis",
+      ],
+      button: "Get Started",
+    },
+    {
+      name: "Premium",
+      price: "$2,999",
+      duration: "/month",
+      features: [
+        "Unlimited keyword research",
+        "Complete SEO optimization",
+        "Comprehensive backlinks (10+/month)",
+        "Custom dashboard & automation",
+        "Weekly reporting & calls",
+        "Dedicated SEO manager",
+        "Custom strategy development",
+      ],
+      button: "Contact Sales",
+    },
+  ];
+
+  // content marketing Services
+  const ppcServices = [
+    { icon: Search, title: "Keyword Research & Targeting", description: "Find and target the best keywords to maximize ROI." },
+    { icon: DollarSign, title: "content marketing Campaign Management", description: "Full management of Google Ads, Bing Ads, and social campaigns." },
+    { icon: Settings, title: "Bid Management & Optimization", description: "Optimize bids to get the most clicks and conversions within budget." },
+    { icon: FileText, title: "Ad Copywriting & Creative Design", description: "Engaging ads that capture attention and drive results." },
+    { icon: Target, title: "Audience & Demographic Targeting", description: "Reach the right audience based on location, interests, and demographics." },
+    { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn’t convert the first time." },
+  ];
+
+  const [active, setActive] = useState("TechStart Inc.");
+  const study = caseStudies[active];
+
+
+
+
   return (
     <div className="overflow-x-hidden  w-full h-screen">
       {/* Hero Section with Parallax */}
       <section className="relative w-full h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-       
+
         {/* Floating particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -371,17 +550,17 @@ function DigitalMarkit() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a href="/contact">
-                        <motion.button
-                        
-                          className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          
-                          Get Started
-                          <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </motion.button>
-                        </a>
+              <motion.button
+
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+
+                Get Started
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
         <ParallaxBg>
@@ -435,7 +614,7 @@ function DigitalMarkit() {
                 </span>
               </h2>
             </FloatingElement>
-            
+
             <div className="space-y-4 sm:space-y-6">
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
                 Accelerate Your Growth in 5 Months | Triple Your Website Traffic In
@@ -452,7 +631,7 @@ function DigitalMarkit() {
               </p>
             </div>
 
-            <motion.div 
+            <motion.div
               className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -495,7 +674,7 @@ function DigitalMarkit() {
                 </span>
               </h2>
             </FloatingElement>
-            
+
             <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
               At diglip7, we blend cutting-edge technology with practical expertise
               to create an SEO strategy that truly delivers results. Our
@@ -593,7 +772,7 @@ function DigitalMarkit() {
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                   We help you expand your audience through{" "}
-                  <span className="font-semibold text-[#c89d5a]">SEO, PPC, social media marketing, and local SEO</span>, 
+                  <span className="font-semibold text-[#c89d5a]">SEO, content marketing, social media marketing, and local SEO</span>,
                   ensuring your brand reaches the right customers at the right time.
                 </p>
               </motion.div>
@@ -634,7 +813,7 @@ function DigitalMarkit() {
                   }}
                 />
               </Card3D>
-              
+
               {/* Floating elements around the image */}
               <motion.div
                 className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
@@ -643,7 +822,7 @@ function DigitalMarkit() {
               >
                 <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
               </motion.div>
-              
+
               <motion.div
                 className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
                 animate={{ y: [0, -10, 0] }}
@@ -696,7 +875,7 @@ function DigitalMarkit() {
                       <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                   </FloatingElement>
-                  
+
                   <h3 className="text-lg sm:text-xl font-bold text-white mb-3 text-center">
                     {adv.title}
                   </h3>
@@ -725,7 +904,7 @@ function DigitalMarkit() {
             </h2>
           </FloatingElement>
           <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
-            Deep Dive Into Our Comprehensive SEO Solutions. Our suite of SEO services is designed to cater 
+            Deep Dive Into Our Comprehensive SEO Solutions. Our suite of SEO services is designed to cater
             to various business needs, from online stores to large enterprises and local businesses.
           </p>
         </motion.div>
@@ -746,7 +925,7 @@ function DigitalMarkit() {
                       <solution.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />
                     </div>
                   </FloatingElement>
-                  
+
                   <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
                     {solution.title}
                   </h3>
@@ -820,7 +999,7 @@ function DigitalMarkit() {
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             className="mt-8 sm:mt-12 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -831,15 +1010,15 @@ function DigitalMarkit() {
               This process is built for simplicity, effectiveness, and rapid growth.
             </p>
             <a href="/contact">
-                        <motion.button
-                          className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Start Your Journey
-                          <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                        </motion.button>
-                        </a>
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Journey
+                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -868,7 +1047,7 @@ function DigitalMarkit() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-white rounded-xl shadow-lg  overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -876,9 +1055,10 @@ function DigitalMarkit() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -886,7 +1066,7 @@ function DigitalMarkit() {
                     transition={{ duration: 0.3 }}
                     className="flex-shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-teal-600" />
+                    <ChevronDown className="w-5 h-5 text-white" />
                   </motion.div>
                 </button>
 
@@ -951,9 +1131,9 @@ function DigitalMarkit() {
                 </span>
               </h2>
             </FloatingElement>
-            
+
             <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Join 1000+ businesses that have accelerated their growth with Diglip7. 
+              Join 1000+ businesses that have accelerated their growth with Diglip7.
               Let's create your success story together.
             </p>
 
@@ -966,7 +1146,7 @@ function DigitalMarkit() {
                 Get Free Consultation
                 <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
-              
+
               <motion.button
                 className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-teal-700 transition-all duration-300 text-sm sm:text-base"
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -977,7 +1157,7 @@ function DigitalMarkit() {
               </motion.button>
             </div>
 
-            <motion.div 
+            <motion.div
               className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/80"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

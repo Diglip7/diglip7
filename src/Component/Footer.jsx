@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Lock, Users, Phone, Mail } from "lucide-react";
 import {
   FaFacebookF,
   FaTwitter,
@@ -7,7 +9,204 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+
+  const [stats, setStats] = useState([
+    { label: "Websites Optimized", value: 500 },
+    { label: "Average Traffic Increase", value: 250 },
+    { label: "Client Satisfaction Rate", value: 95 },
+  ]);
+
+  // Animate numbers (auto increase/decrease infinitely)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStats((prev) =>
+        prev.map((stat) => {
+          const change = Math.random() > 0.5 ? 1 : -1;
+          let newValue = stat.value + change;
+          if (newValue > stat.value + 5) newValue = stat.value;
+          if (newValue < stat.value - 5) newValue = stat.value;
+          return { ...stat, value: newValue };
+        })
+      );
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
+    <div>
+
+    <section className="bg-gradient-to-r from-teal-700 via-teal-600 to-teal-700 text-white py-20 px-6 sm:px-10 lg:px-20">
+      {/* 💬 Consultation Form Section */}
+      {/* <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+        {/* Left Text Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Get Your Free Consultation
+          </h2>
+          <p className="text-white/90 mb-8 text-lg leading-relaxed">
+            Ready to dominate search results? Let’s discuss how we can boost your online
+            visibility and drive more qualified traffic to your website.
+          </p>
+
+          <ul className="space-y-3 mb-8">
+            <li className="flex items-center gap-3">
+              <Lock className="text-white w-5 h-5" /> Secure & Confidential
+            </li>
+            <li className="flex items-center gap-3">
+              <Users className="text-white w-5 h-5" /> Trusted by 500+ Businesses
+            </li>
+          </ul> */}
+
+          {/* <div className="space-y-2 text-white/90">
+            <p className="flex items-center gap-3">
+              <Phone className="w-5 h-5 text-white" /> +1 (555) 123-4567
+            </p>
+            <p className="flex items-center gap-3">
+              <Mail className="w-5 h-5 text-white" /> hello@diglip7.com
+            </p>
+          </div>
+        </motion.div> */}
+
+        {/* Right Form Section */}
+        {/* <motion.div
+          className="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">
+            Start Your Journey Today
+          </h3>
+
+          <form className="space-y-5">
+            <div>
+              <label className="text-sm font-semibold">Full Name *</label>
+              <input
+                type="text"
+                placeholder="Enter your full name"
+                className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold">Email Address *</label>
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-sm font-semibold">Website URL</label>
+                <input
+                  type="url"
+                  placeholder="www.yoursite.com"
+                  className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold">Phone Number</label>
+                <input
+                  type="tel"
+                  placeholder="+1 (555) 123 4567"
+                  className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold">Interested Package</label>
+              <select className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                <option>Select a package</option>
+                <option>Basic SEO</option>
+                <option>Advanced SEO</option>
+                <option>Enterprise SEO</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="text-sm font-semibold">Tell us about your goals</label>
+              <textarea
+                placeholder="Describe your SEO goals and challenges..."
+                rows={3}
+                className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              ></textarea>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+            >
+              Submit My Request
+            </motion.button>
+          </form>
+
+          <p className="text-xs text-center text-gray-500 mt-4">
+            By submitting this form, you agree to our privacy policy. We’ll never share your information.
+          </p>
+        </motion.div> */}
+      {/* </div>  */}
+
+      {/* 📈 SEO Stats Section */}
+      <motion.div
+        className="max-w-5xl mx-auto text-center mt-24"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h3 className="text-3xl md:text-4xl font-bold mb-4">
+          Ready to Boost Your SEO Performance?
+        </h3>
+        <p className="text-white/90 mb-10 text-lg">
+          Let DigiUp help you achieve your SEO goals and dominate search results in your industry.
+        </p>
+
+        {/* Animated Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-md"
+            >
+              <h4 className="text-4xl font-bold text-white mb-2">{s.value}+</h4>
+              <p className="text-white/80">{s.label}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap justify-center gap-4">
+          <a href="/contact">
+          <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105">
+            Request a Free SEO Audit
+          </button></a>
+          <a href="/contact">
+          <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105">
+            Schedule a Call
+          </button></a>
+        </div>
+
+        {/* Extra Info */}
+        <div className="mt-10 text-sm text-white/90 space-y-2">
+          <p className="bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full px-4 py-2 inline-block rounded-full text-white font-semibold shadow-md
+          ">
+            🎁 Limited Time: Free SEO audit worth $500
+          </p>
+          <p className="mt-4 text-white/80">
+            💼 No Long-term Contracts &nbsp; | &nbsp; 🔄 30-Day Money Back &nbsp; | &nbsp; ✅ Proven Results
+          </p>
+        </div>
+      </motion.div>
+    </section>
     
     <footer className="bg-teal-700 text-white px-6 py-8 font-sans">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
@@ -164,6 +363,7 @@ const Footer = () => {
         <p className="xl:text-lg font-medium">&copy; {new Date().getFullYear()} DigLip7 Tech. All rights reserved.</p>
       </div>
     </footer>
+    </div>
   );
 };
 
