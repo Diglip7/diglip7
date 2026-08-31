@@ -282,6 +282,19 @@ function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
+    // Google Tag Manager
+    const script = document.createElement('script');
+    script.innerHTML = `
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K3KHW2JJ');
+    `;
+    document.head.prepend(script);
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
@@ -426,6 +439,9 @@ function Home() {
 
   return (
     <div className="bg-teal-50 overflow-x-hidden w-full">
+      {/* Google Tag Manager (noscript) */}
+      <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KHW2JJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
+      {/* End Google Tag Manager (noscript) */}
       {/* Hero Section */}
 
       {/* Hero Section */}
