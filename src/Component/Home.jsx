@@ -292,6 +292,12 @@ function Home() {
       })(window,document,'script','dataLayer','GTM-K3KHW2JJ');
     `;
     document.head.prepend(script);
+
+    // Google Site Verification
+    const meta = document.createElement('meta');
+    meta.name = 'google-site-verification';
+    meta.content = 'WaLhKfxePCohSoCD9dR1n6C3_cX1H_Aqar3idXvMWn8';
+    document.head.prepend(meta);
   }, []);
 
   useEffect(() => {
