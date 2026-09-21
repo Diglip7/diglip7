@@ -1,9 +1,3 @@
-import React from 'react'
+import AdminDashboard from "./AdminDashboard";
 
-function BlogAdmin() {
-  return (
-    <div>BlogAdmin</div>
-  )
-}
-
-export default BlogAdmin
+export default AdminDashboard;

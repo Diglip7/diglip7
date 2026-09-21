@@ -1,74 +1,69 @@
-const Blog = require("../models/Blog");
+import Blog from "../models/Blog.js";
 
-// Get all blogs or single blog by ID
-const getBlogs = async (req, res) => {
+/**
+ * @desc    Get all blogs or a single blog by query ID: /api/getblog?id=xxx
+ * @route   GET /api/getblog
+ * @access  Public
+ */
+export const getBlogs = async (req, res) => {
   try {
     const { id } = req.query;
     if (id) {
       const blog = await Blog.findById(id);
-      if (!blog) {
-        return res.status(404).json({ success: false, message: "Blog not found" });
-      }
+      if (!blog) return res.status(404).json({ success: false, message: "Blog not found" });
       return res.status(200).json(blog);
     }
     const blogs = await Blog.find().sort({ createdAt: -1 });
     res.status(200).json(blogs);
   } catch (error) {
-    console.error("Error fetching blogs:", error);
     res.status(500).json({ error: "Server Error" });
   }
 };
 
-// Create a new blog
-const createBlog = async (req, res) => {
+/**
+ * @desc    Create a basic blog entry
+ * @route   POST /api/createblog
+ * @access  Public / Admin
+ */
+export const createBlog = async (req, res) => {
   try {
     const { title, content, status = "draft" } = req.body;
     const blog = await Blog.create({ title, content, status });
     res.status(201).json(blog);
   } catch (error) {
-    console.error("Error creating blog:", error);
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-// Update a blog by ID
-const updateBlog = async (req, res) => {
+/**
+ * @desc    Update a blog entry by ID
+ * @route   PUT /api/updateblog/:id
+ * @access  Public / Admin
+ */
+export const updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content, status } = req.body;
-
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      id,
-      { title, content, status },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedBlog) {
-      return res.status(404).json({ success: false, message: "Blog not found" });
-    }
-
-    res.status(200).json(updatedBlog);
+    const updated = await Blog.findByIdAndUpdate(id, { title, content, status }, { new: true, runValidators: true });
+    if (!updated) return res.status(404).json({ success: false, message: "Blog not found" });
+    res.status(200).json(updated);
   } catch (error) {
-    console.error("Error updating blog:", error);
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-// Delete a blog by ID
-const deleteBlog = async (req, res) => {
+/**
+ * @desc    Delete a blog entry by ID
+ * @route   DELETE /api/deleteblog/:id
+ * @access  Public / Admin
+ */
+export const deleteBlog = async (req, res) => {
   try {
-    const { id } = req.params;
-    await Blog.findByIdAndDelete(id);
+    await Blog.findByIdAndDelete(req.params.id);
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Error deleting blog:", error);
-    res.status(400).json({ success: false });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-module.exports = {
-  getBlogs,
-  createBlog,
-  updateBlog,
-  deleteBlog,
-};
+

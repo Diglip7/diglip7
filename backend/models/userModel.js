@@ -1,16 +1,19 @@
-// backend/models/userModel.js
 import mongoose from "mongoose";
 
+/**
+ * Admin User Schema for dashboard authentication
+ */
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, default: "admin" } // default admin role
+    password: { type: String, required: true }, // Admin login password
+    role: { type: String, default: "admin" },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
-export default User;
+export default mongoose.models.User || mongoose.model("User", userSchema);
+
+
 

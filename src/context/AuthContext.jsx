@@ -2,14 +2,28 @@ import React, { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
+const parseToken = (rawToken) => {
+  if (!rawToken || typeof rawToken !== "string") return null;
+  try {
+    const parts = rawToken.split(".");
+    if (parts.length < 2) return null;
+    const payload = JSON.parse(atob(parts[1]));
+    return payload;
+  } catch (err) {
+    console.warn("Invalid auth token detected, clearing from storage.");
+    localStorage.removeItem("token");
+    return null;
+  }
+};
+
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(token ? JSON.parse(atob(token.split(".")[1])) : null);
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [user, setUser] = useState(() => parseToken(localStorage.getItem("token")));
 
   const login = (newToken) => {
     localStorage.setItem("token", newToken);
     setToken(newToken);
-    setUser(JSON.parse(atob(newToken.split(".")[1])));
+    setUser(parseToken(newToken));
   };
 
   const logout = () => {

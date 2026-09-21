@@ -1,44 +1,33 @@
 import express from "express";
-import {
-  getBlogs,
-  createBlog,
-  updateBlog,
-  deleteBlog
-} from "../controllers/blogController.js";
-
-import {
-  getDrafts,
-  createDraft,
-  updateDraft,
-  deleteDraft
-} from "../controllers/DraftController.js";
-
+import { getBlogs, createBlog, updateBlog, deleteBlog } from "../controllers/blogController.js";
+import { getDrafts, createDraft, updateDraft, deleteDraft } from "../controllers/DraftController.js";
 import {
   getPublishedBlogs,
   createPublishedBlog,
   updatePublishedBlog,
-  deletePublishedBlog
+  deletePublishedBlog,
 } from "../controllers/PublishedBlogController.js";
 
 const router = express.Router();
 
-/* ----------------- Blog Routes ----------------- */
+/* ================= 1. General Blog Routes ================= */
 router.get("/getblog", getBlogs);
 router.post("/createblog", createBlog);
 router.put("/updateblog/:id", updateBlog);
 router.delete("/deleteblog/:id", deleteBlog);
 
-/* ----------------- Draft Routes ---------------- */
-router.get("/getdraft", getDrafts);                // GET /api/drafts
-router.post("/createdraft", createDraft);          // POST /api/drafts
-router.put("/updatedraft/:id", updateDraft);       // PUT /api/drafts/:id
-router.delete("/deletedraft/:id", deleteDraft);    // DELETE /api/drafts/:id
+/* ================= 2. Draft Blog Routes (CMS) ================= */
+router.get(["/getdraft", "/getdrafts"], getDrafts);
+router.post(["/createdraft", "/createdrafts"], createDraft);
+router.put(["/updatedraft/:id", "/updatedrafts/:id"], updateDraft);
+router.delete(["/deletedraft/:id", "/deletedrafts/:id"], deleteDraft);
 
-/* ------------ Published Blog Routes ------------ */
-router.get("/publishedblogs", getPublishedBlogs);                   // GET /api/published-blogs
-router.post("/createpublishedblogs", createPublishedBlog);          // POST /api/published-blogs
-router.put("/updatePublishedBlog/:id", updatePublishedBlog);        // PUT /api/published-blogs/:id
-router.delete("/deletePublishedBlog/:id", deletePublishedBlog);     // DELETE /api/published-blogs/:id
+/* ================= 3. Published Blog Routes (Live Public & CMS) ================= */
+router.get(["/publishedblogs", "/publishedblog", "/publishedblogs/:id", "/publishedblog/:id"], getPublishedBlogs);
+router.post(["/createpublishedblog", "/createpublishedblogs"], createPublishedBlog);
+router.put(["/updatepublishedblog/:id", "/updatePublishedBlog/:id"], updatePublishedBlog);
+router.delete(["/deletepublishedblog/:id", "/deletePublishedBlog/:id"], deletePublishedBlog);
 
-// ✅ Export router as default
 export default router;
+
+

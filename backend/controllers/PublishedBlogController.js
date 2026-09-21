@@ -1,80 +1,125 @@
-const Blog = require("../models/Blog");
+import mongoose from "mongoose";
+import Blog, { generateSlug } from "../models/Blog.js";
 
-// Get all published blogs or a single published blog by ID
-const getPublishedBlogs = async (req, res) => {
+/**
+ * Helper: Find a published blog by slug OR MongoDB ObjectId with title fallback
+ */
+const findPublishedByIdentifier = async (id) => {
+  const clean = decodeURIComponent(id).trim().toLowerCase();
+
+  // 1. Try finding by slug (case-insensitive regex)
+  let blog = await Blog.findOne({ status: "published", slug: { $regex: new RegExp(`^${clean}$`, "i") } });
+
+  // 2. If not found and id is valid Mongo ObjectId, query by _id
+  if (!blog && mongoose.Types.ObjectId.isValid(id)) {
+    blog = await Blog.findById(id);
+  }
+
+  // 3. Fallback: Check title-based slug matching across published collection
+  if (!blog) {
+    const list = await Blog.find({ status: "published" });
+    blog = list.find((b) => {
+      const s = (b.slug || "").toLowerCase();
+      const gen = generateSlug(b.title || "").toLowerCase();
+      return s === clean || b._id.toString() === clean || gen === clean || (clean.length > 5 && (clean.startsWith(gen) || gen.startsWith(clean)));
+    });
+    // Auto backfill slug if missing
+    if (blog && !blog.slug) {
+      blog.slug = generateSlug(blog.title);
+      await blog.save().catch(() => {});
+    }
+  }
+
+  return blog?.status === "published" ? blog : null;
+};
+
+/**
+ * @desc    Get all published blogs (or single blog if id/slug query or param provided)
+ * @route   GET /api/publishedblogs
+ * @access  Public
+ */
+export const getPublishedBlogs = async (req, res) => {
   try {
-    const { id } = req.query;
-
+    const id = req.params.slug || req.params.id || req.query.slug || req.query.id;
     if (id) {
-      const blog = await Blog.findById(id);
-      if (!blog || blog.status !== "published") {
-        return res.status(404).json({ success: false, message: "Published blog not found" });
-      }
+      const blog = await findPublishedByIdentifier(id);
+      if (!blog) return res.status(404).json({ success: false, message: "Published blog not found" });
       return res.status(200).json(blog);
     }
-
-    const publishedBlogs = await Blog.find({ status: "published" }).sort({ createdAt: -1 });
-    res.status(200).json(publishedBlogs);
+    const blogs = await Blog.find({ status: "published" }).sort({ createdAt: -1 });
+    res.status(200).json(blogs);
   } catch (error) {
-    console.error("Error fetching published blogs:", error);
     res.status(500).json({ success: false, error: "Server Error" });
   }
 };
 
-// Create a published blog
-const createPublishedBlog = async (req, res) => {
+/**
+ * @desc    Create and immediately publish a new blog article
+ * @route   POST /api/createpublishedblog
+ * @access  Protected / Admin
+ */
+export const createPublishedBlog = async (req, res) => {
   try {
-    const { title, content } = req.body;
-    const publishedBlog = await Blog.create({
+    const { title, content, category, coverImage, author, slug } = req.body;
+    const blog = await Blog.create({
       title: title || "Untitled Blog",
+      slug: slug || generateSlug(title || "untitled-article"),
       content: content || "",
+      category: category || "Digital Marketing",
+      coverImage: coverImage || "",
+      author: author || "DigLip7 Editorial Team",
       status: "published",
     });
-    res.status(201).json(publishedBlog);
+    res.status(201).json(blog);
   } catch (error) {
-    console.error("Error creating published blog:", error);
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-// Update a published blog by ID
-const updatePublishedBlog = async (req, res) => {
+/**
+ * @desc    Update an existing published blog by ID or Slug
+ * @route   PUT /api/updatepublishedblog/:id
+ * @access  Protected / Admin
+ */
+export const updatePublishedBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const { title, content, category, coverImage, author, slug } = req.body;
+    const updateData = { status: "published" };
 
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      id,
-      { title, content, status: "published" },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedBlog) {
-      return res.status(404).json({ success: false, message: "Published blog not found" });
+    if (title !== undefined) {
+      updateData.title = title;
+      updateData.slug = slug || generateSlug(title);
     }
+    if (content !== undefined) updateData.content = content;
+    if (category !== undefined) updateData.category = category;
+    if (coverImage !== undefined) updateData.coverImage = coverImage;
+    if (author !== undefined) updateData.author = author;
 
-    res.status(200).json(updatedBlog);
+    const query = mongoose.Types.ObjectId.isValid(id) ? { _id: id } : { slug: id };
+    const updated = await Blog.findOneAndUpdate(query, updateData, { new: true, runValidators: true });
+
+    if (!updated) return res.status(404).json({ success: false, message: "Published blog not found" });
+    res.status(200).json(updated);
   } catch (error) {
-    console.error("Error updating published blog:", error);
-    res.status(400).json({ success: false, error });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-// Delete a published blog by ID
-const deletePublishedBlog = async (req, res) => {
+/**
+ * @desc    Delete a published blog by ID or Slug
+ * @route   DELETE /api/deletepublishedblog/:id
+ * @access  Protected / Admin
+ */
+export const deletePublishedBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    await Blog.findByIdAndDelete(id);
+    const query = mongoose.Types.ObjectId.isValid(id) ? { _id: id } : { slug: id };
+    await Blog.findOneAndDelete(query);
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Error deleting published blog:", error);
-    res.status(400).json({ success: false });
+    res.status(400).json({ success: false, error: error.message });
   }
 };
 
-module.exports = {
-  getPublishedBlogs,
-  createPublishedBlog,
-  updatePublishedBlog,
-  deletePublishedBlog,
-};
+

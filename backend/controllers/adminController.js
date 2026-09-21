@@ -1,20 +1,23 @@
-// backend/controllers/adminController.js
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
-// Login
+/**
+ * POST /api/admin/login
+ * Authenticates admin credentials and returns a 1-day valid JWT token
+ */
 export const loginAdmin = async (req, res) => {
-  const { email, password } = req.body;
-
   try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg: "Invalid credentials" });
+    const { email, password } = req.body;
 
-    // Plain text password comparison
-    if (password !== user.password) {
+    // 1. Find user by email
+    const user = await User.findOne({ email });
+
+    // 2. Validate password
+    if (!user || user.password !== password) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
 
+    // 3. Sign JWT token
     const token = jwt.sign(
       { id: user._id, email: user.email, name: user.name, role: user.role },
       process.env.JWT_SECRET,
@@ -23,9 +26,8 @@ export const loginAdmin = async (req, res) => {
 
     res.json({ token });
   } catch (err) {
-      console.error(err); 
-    res.status(500).json({ msg: "Server error" });
+    res.status(500).json({ msg: "Server error", error: err.message });
   }
 };
 
-// Register Admin (plain text password storage)
+

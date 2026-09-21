@@ -1,0 +1,96 @@
+import { useEffect } from "react";
+
+/**
+ * Reusable SEO Component for DigLip7
+ * Dynamically updates document.title, meta descriptions, canonical URLs,
+ * OpenGraph, Twitter Cards, and Schema.org JSON-LD structured data.
+ */
+const SEO = ({
+  title,
+  description,
+  keywords,
+  canonical,
+  ogType = "website",
+  ogImage = "https://www.diglip7.com/favicon-32x32.png",
+  schema,
+  noindex = false,
+}) => {
+  const siteTitle = "DigLip7 – Leading Digital Marketing & Web Development Agency";
+  const fullTitle = title ? `${title} | DigLip7` : siteTitle;
+  const defaultDescription =
+    "DigLip7 is a results-driven Digital Marketing and Web Development Agency helping businesses boost online visibility, traffic, and revenue through expert SEO, PPC, ORM, and custom software.";
+  const metaDescription = description || defaultDescription;
+  const defaultKeywords =
+    "digital marketing agency, SEO services, PPC advertising, ORM, web development, UI UX design, custom software, Noida, India, DigLip7";
+  const metaKeywords = keywords || defaultKeywords;
+  const currentUrl = canonical || (typeof window !== "undefined" ? window.location.href : "https://diglip7.com");
+
+  useEffect(() => {
+    // 1. Update Title
+    document.title = fullTitle;
+
+    // Helper to update or create <meta> tags
+    const setMetaTag = (attribute, attrValue, content) => {
+      if (!content) return;
+      let element = document.querySelector(`meta[${attribute}="${attrValue}"]`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, attrValue);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    };
+
+    // 2. Standard Meta Tags
+    setMetaTag("name", "description", metaDescription);
+    setMetaTag("name", "keywords", metaKeywords);
+    setMetaTag("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+
+    // 3. Canonical Link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute("href", currentUrl);
+
+    // 4. OpenGraph Meta Tags
+    setMetaTag("property", "og:title", fullTitle);
+    setMetaTag("property", "og:description", metaDescription);
+    setMetaTag("property", "og:url", currentUrl);
+    setMetaTag("property", "og:type", ogType);
+    setMetaTag("property", "og:image", ogImage);
+    setMetaTag("property", "og:site_name", "DigLip7 Technologies");
+
+    // 5. Twitter Card Meta Tags
+    setMetaTag("name", "twitter:card", "summary_large_image");
+    setMetaTag("name", "twitter:title", fullTitle);
+    setMetaTag("name", "twitter:description", metaDescription);
+    setMetaTag("name", "twitter:image", ogImage);
+
+    // 6. Structured Data (JSON-LD Schema)
+    const scriptId = "dynamic-json-ld";
+    let existingScript = document.getElementById(scriptId);
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    if (schema) {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      const dynamicScript = document.getElementById(scriptId);
+      if (dynamicScript) dynamicScript.remove();
+    };
+  }, [fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, schema, noindex]);
+
+  return null;
+};
+
+export default SEO;
