@@ -22,6 +22,10 @@ import {
   Copy,
   Info,
   ArrowLeft,
+  Video,
+  Film,
+  PlayCircle,
+  HelpCircle,
 } from "lucide-react";
 
 export const generateSlug = (text = "") => {
@@ -61,8 +65,16 @@ export default function BlogEditor() {
   const [coverImageTab, setCoverImageTab] = useState("url"); // "url" | "upload"
   const [copiedSlug, setCopiedSlug] = useState(false);
 
+  // Custom Video Insertion Modal State
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [videoModalTab, setVideoModalTab] = useState("url"); // "url" | "upload"
+  const [videoUrlInput, setVideoUrlInput] = useState("");
+  const [videoFileBase64, setVideoFileBase64] = useState("");
+  const [videoFileName, setVideoFileName] = useState("");
+
   const quillRef = useRef(null);
   const fileInputRef = useRef(null);
+  const videoFileInputRef = useRef(null);
 
   const categories = [
     "Digital Marketing",
@@ -74,7 +86,7 @@ export default function BlogEditor() {
     "Strategy & Growth",
   ];
 
-  // Load article from URL query params on mount (e.g. ?id=xyz&type=draft or ?id=xyz&type=published)
+  // Load article from URL query params on mount
   useEffect(() => {
     const articleId = searchParams.get("id");
     const articleType = searchParams.get("type");
@@ -100,7 +112,6 @@ export default function BlogEditor() {
           populateEditor(data, "published");
         }
       } else {
-        // Fallback: try published first then draft
         try {
           const res = await axios.get(`${import.meta.env.VITE_API_URL}/publishedblogs?id=${id}`);
           const data = Array.isArray(res.data) ? res.data.find((b) => b._id === id) : res.data;
@@ -144,6 +155,49 @@ export default function BlogEditor() {
       showToast(`Published article "${data.title || "Untitled"}" loaded in studio`, "success");
     }
   };
+
+  // Attach hover purpose tooltips and badges to every toolbar button
+  useEffect(() => {
+    const attachToolbarTooltips = () => {
+      const toolbar = document.querySelector(".ql-toolbar");
+      if (!toolbar) return;
+
+      const tooltipMap = [
+        { selector: ".ql-header", label: "Heading Level (H1 - H6, Normal Text)" },
+        { selector: ".ql-size", label: "Font Size (Small, Normal, Large, Huge)" },
+        { selector: ".ql-bold", label: "Bold (Make text bold, Ctrl+B)" },
+        { selector: ".ql-italic", label: "Italic (Slanted text, Ctrl+I)" },
+        { selector: ".ql-underline", label: "Underline (Ctrl+U)" },
+        { selector: ".ql-strike", label: "Strikethrough (Cross out text)" },
+        { selector: ".ql-color", label: "Text Color" },
+        { selector: ".ql-background", label: "Text Highlight Color" },
+        { selector: ".ql-align", label: "Text Alignment (Left, Center, Right, Justify)" },
+        { selector: '.ql-list[value="ordered"]', label: "Numbered List (1, 2, 3...)" },
+        { selector: '.ql-list[value="bullet"]', label: "Bullet Point List (•)" },
+        { selector: '.ql-indent[value="-1"]', label: "Decrease Indent (Shift+Tab)" },
+        { selector: '.ql-indent[value="+1"]', label: "Increase Indent (Tab)" },
+        { selector: '.ql-script[value="sub"]', label: "Subscript (e.g. H₂O)" },
+        { selector: '.ql-script[value="super"]', label: "Superscript (e.g. E=mc²)" },
+        { selector: ".ql-blockquote", label: "Quote Block (Highlighted citation)" },
+        { selector: ".ql-code-block", label: "Code Block (Programming snippet)" },
+        { selector: ".ql-link", label: "Insert / Edit Hyperlink (Ctrl+K)" },
+        { selector: ".ql-image", label: "Insert Image from URL / Upload" },
+        { selector: ".ql-video", label: "Insert Video (YouTube, Vimeo, or Upload from Device / Gallery)" },
+        { selector: ".ql-clean", label: "Clear All Formatting from Selected Text" },
+      ];
+
+      tooltipMap.forEach(({ selector, label }) => {
+        const elements = toolbar.querySelectorAll(selector);
+        elements.forEach((el) => {
+          el.setAttribute("title", label);
+          el.setAttribute("aria-label", label);
+        });
+      });
+    };
+
+    const timer = setTimeout(attachToolbarTooltips, 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Content image double-click hyperlink handler
   useEffect(() => {
@@ -258,6 +312,91 @@ export default function BlogEditor() {
     setSelectedImage(null);
     setLinkUrl("");
     showToast("Image hyperlink updated successfully!", "success");
+  };
+
+  // Custom Video Toolbar Click Handler
+  const handleVideoToolbarClick = () => {
+    setVideoUrlInput("");
+    setVideoFileBase64("");
+    setVideoFileName("");
+    setVideoModalTab("url");
+    setShowVideoModal(true);
+  };
+
+  // Handle local video file upload (from gallery/computer)
+  const handleVideoFileUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("video/")) {
+      showToast("Please upload a valid video file (.mp4, .webm, .mov)", "warning");
+      return;
+    }
+
+    if (file.size > 50 * 1024 * 1024) {
+      showToast("Video size exceeds 50MB limit", "warning");
+      return;
+    }
+
+    setVideoFileName(file.name);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setVideoFileBase64(event.target?.result || "");
+      showToast(`Video "${file.name}" ready to insert!`, "success");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Format YouTube/Vimeo URLs to embeddable format
+  const formatEmbedVideoUrl = (url = "") => {
+    const clean = url.trim();
+    if (clean.includes("youtube.com/watch?v=")) {
+      const id = clean.split("watch?v=")[1].split("&")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    if (clean.includes("youtu.be/")) {
+      const id = clean.split("youtu.be/")[1].split("?")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    }
+    if (clean.includes("vimeo.com/") && !clean.includes("player.vimeo.com")) {
+      const id = clean.split("vimeo.com/")[1].split("?")[0];
+      return `https://player.vimeo.com/video/${id}`;
+    }
+    return clean;
+  };
+
+  // Insert Video into Quill Editor
+  const handleInsertVideoSubmit = () => {
+    const quill = quillRef.current?.getEditor();
+    if (!quill) return;
+
+    const range = quill.getSelection(true) || { index: quill.getLength() };
+
+    if (videoModalTab === "url") {
+      if (!videoUrlInput.trim()) {
+        showToast("Please enter a video URL", "warning");
+        return;
+      }
+      const embedUrl = formatEmbedVideoUrl(videoUrlInput);
+      quill.insertEmbed(range.index, "video", embedUrl, "user");
+      quill.setSelection(range.index + 1);
+      showToast("Video embedded successfully!", "success");
+    } else {
+      if (!videoFileBase64) {
+        showToast("Please select a video file from your computer/gallery", "warning");
+        return;
+      }
+
+      // Insert custom HTML5 video tag into editor
+      const videoHtml = `<p><video controls playsinline class="ql-custom-video" style="width:100%; max-width:760px; aspect-ratio:16/9; border-radius:16px; margin:16px auto; display:block; box-shadow:0 4px 12px rgba(0,0,0,0.1);" src="${videoFileBase64}"></video></p><p><br></p>`;
+      quill.clipboard.dangerouslyPasteHTML(range.index, videoHtml);
+      showToast("Gallery video uploaded & inserted!", "success");
+    }
+
+    setShowVideoModal(false);
+    setVideoUrlInput("");
+    setVideoFileBase64("");
+    setVideoFileName("");
   };
 
   // Handle Cover Image File Upload (Base64)
@@ -390,22 +529,27 @@ export default function BlogEditor() {
     navigate("/admin/blog", { replace: true });
   };
 
-  // Quill Toolbar Configuration
+  // Quill Toolbar Configuration with Custom Video Handler
   const modules = useMemo(
     () => ({
-      toolbar: [
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        [{ size: ["small", false, "large", "huge"] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ color: [] }, { background: [] }],
-        [{ align: [] }],
-        [{ list: "ordered" }, { list: "bullet" }],
-        [{ indent: "-1" }, { indent: "+1" }],
-        [{ script: "sub" }, { script: "super" }],
-        ["blockquote", "code-block"],
-        ["link", "image", "video"],
-        ["clean"],
-      ],
+      toolbar: {
+        container: [
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          [{ size: ["small", false, "large", "huge"] }],
+          ["bold", "italic", "underline", "strike"],
+          [{ color: [] }, { background: [] }],
+          [{ align: [] }],
+          [{ list: "ordered" }, { list: "bullet" }],
+          [{ indent: "-1" }, { indent: "+1" }],
+          [{ script: "sub" }, { script: "super" }],
+          ["blockquote", "code-block"],
+          ["link", "image", "video"],
+          ["clean"],
+        ],
+        handlers: {
+          video: handleVideoToolbarClick,
+        },
+      },
     }),
     []
   );
@@ -466,6 +610,126 @@ export default function BlogEditor() {
           </div>
         ))}
       </div>
+
+      {/* ================= VIDEO MODAL: URL OR GALLERY UPLOAD ================= */}
+      {showVideoModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl max-w-lg w-full border border-slate-100 space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+                  <Film className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900">Insert Video into Article</h3>
+                  <p className="text-[11px] text-slate-500">Add YouTube / Vimeo link or upload from your gallery</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowVideoModal(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Segmented Switcher */}
+            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+              <button
+                type="button"
+                onClick={() => setVideoModalTab("url")}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
+                  videoModalTab === "url"
+                    ? "bg-white text-slate-900 shadow-2xs font-extrabold"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                <Globe className="w-3.5 h-3.5 text-teal-700" />
+                <span>Web URL (YouTube / Vimeo)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setVideoModalTab("upload")}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
+                  videoModalTab === "upload"
+                    ? "bg-white text-slate-900 shadow-2xs font-extrabold"
+                    : "text-slate-600 hover:text-slate-900"
+                }`}
+              >
+                <Upload className="w-3.5 h-3.5 text-teal-700" />
+                <span>Upload from Gallery / Device</span>
+              </button>
+            </div>
+
+            {/* Content for Web URL */}
+            {videoModalTab === "url" ? (
+              <div className="space-y-3">
+                <label className="block text-xs font-bold text-slate-700">VIDEO WEB LINK</label>
+                <input
+                  type="url"
+                  placeholder="https://www.youtube.com/watch?v=... or https://vimeo.com/..."
+                  value={videoUrlInput}
+                  onChange={(e) => setVideoUrlInput(e.target.value)}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:bg-white transition"
+                />
+                <p className="text-[11px] text-slate-500 flex items-center gap-1.5">
+                  <PlayCircle className="w-3.5 h-3.5 text-teal-600" />
+                  <span>Accepts YouTube video URLs, Vimeo links, or direct MP4 links.</span>
+                </p>
+              </div>
+            ) : (
+              /* Content for Gallery / File Upload */
+              <div className="space-y-3">
+                <input
+                  type="file"
+                  ref={videoFileInputRef}
+                  onChange={handleVideoFileUpload}
+                  accept="video/mp4,video/webm,video/ogg,video/quicktime"
+                  className="hidden"
+                />
+
+                <div
+                  onClick={() => videoFileInputRef.current?.click()}
+                  className="border-2 border-dashed border-teal-500/40 hover:border-teal-600 bg-teal-50/40 hover:bg-teal-50/70 p-6 rounded-2xl text-center cursor-pointer transition space-y-2"
+                >
+                  <Film className="w-8 h-8 text-teal-700 mx-auto" />
+                  <div>
+                    <p className="text-xs font-bold text-slate-800">
+                      {videoFileName ? `Selected: ${videoFileName}` : "Click to select video from Gallery / Computer"}
+                    </p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">Supports MP4, WebM, MOV (Max 50MB)</p>
+                  </div>
+                </div>
+
+                {videoFileBase64 && (
+                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-black aspect-video max-h-48">
+                    <video src={videoFileBase64} controls className="w-full h-full object-contain" />
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Actions */}
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowVideoModal(false)}
+                className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleInsertVideoSubmit}
+                className="px-5 py-2.5 rounded-xl bg-teal-800 hover:bg-teal-900 text-white text-xs font-bold transition shadow-md shadow-teal-900/20 cursor-pointer"
+              >
+                Insert Video to Content
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ================= IMAGE LINK MODAL ================= */}
       {showLinkModal && (
@@ -648,7 +912,7 @@ export default function BlogEditor() {
                   onChange={setContent}
                   modules={modules}
                   formats={formats}
-                  placeholder="Draft your high-impact article content, insert images, format quotes, code, bullet points, and headings..."
+                  placeholder="Draft your high-impact article content, insert images, videos (URL or gallery upload), quotes, code, bullet points, and headings..."
                   className="min-h-[460px]"
                 />
               </div>
@@ -958,12 +1222,16 @@ export default function BlogEditor() {
           background: #f8fafc;
           padding: 10px 14px;
           border-radius: 16px 16px 0 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
         }
         .ql-container.ql-snow {
           border: none !important;
           font-family: inherit;
           font-size: 15px;
           min-height: 460px;
+          position: relative;
         }
         .ql-editor {
           min-height: 460px;
@@ -990,6 +1258,28 @@ export default function BlogEditor() {
           box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
           border: 1px solid #e2e8f0;
           padding: 6px;
+        }
+
+        /* Toolbar button hover feedback */
+        .ql-snow.ql-toolbar button:hover,
+        .ql-snow .ql-toolbar button:hover {
+          background-color: #f1f5f9;
+          border-radius: 8px;
+        }
+
+        /* Embedded Video iframe responsive styling */
+        .ql-editor iframe.ql-video,
+        .ql-editor video.ql-custom-video {
+          width: 100% !important;
+          max-width: 760px !important;
+          aspect-ratio: 16 / 9 !important;
+          height: auto !important;
+          min-height: 320px !important;
+          border-radius: 16px !important;
+          margin: 18px auto !important;
+          display: block !important;
+          border: 1px solid #e2e8f0 !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
         }
       `}</style>
     </div>
