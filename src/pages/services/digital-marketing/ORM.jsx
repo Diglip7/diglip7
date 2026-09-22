@@ -142,6 +142,7 @@ const caseStudies = {
       { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
     ],
   },
+  
   "HealthPlus Clinic": {
     title: "HealthPlus Clinic",
     industry: "Healthcare • 5 months",

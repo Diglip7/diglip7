@@ -182,7 +182,6 @@ const AdminLayout = () => {
                   </div>
                   <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-teal-400" />
                 </a>
-
                 <a
                   href="/blog"
                   target="_blank"
@@ -248,62 +247,133 @@ const AdminLayout = () => {
       </aside>
 
       {/* ================= MOBILE NAVIGATION ================= */}
-      <div className="lg:hidden sticky top-0 z-50 bg-[#0B1320] text-white px-4 py-3 flex items-center justify-between shadow-md">
+      <div className="lg:hidden sticky top-0 z-50 bg-[#0B1320] text-white px-4 py-3 flex items-center justify-between shadow-md border-b border-slate-800">
         <Link to="/admin" className="flex items-center gap-2.5">
-          <span className="font-black text-base tracking-tight text-white">
-            DigLip<span className="text-teal-400">7</span> Console
+          <div className="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 p-1 flex items-center justify-center shrink-0">
+            <img
+              src={projectLogo}
+              alt="DigLip7"
+              className="w-full h-full object-contain rounded-md"
+              onError={(e) => {
+                e.target.style.display = "none";
+                e.target.parentElement.innerHTML =
+                  '<span class="font-black text-teal-400 text-sm">D7</span>';
+              }}
+            />
+          </div>
+          <span className="font-black text-lg tracking-tight text-white">
+            DigLip<span className="text-teal-400">7</span>
           </span>
         </Link>
         <button
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
-          className="p-2 rounded-xl bg-slate-800 text-slate-300"
+          className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition cursor-pointer"
+          aria-label="Toggle navigation menu"
         >
-          {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileNavOpen ? <X className="w-5 h-5 text-teal-400" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
+      {/* Mobile Drawer Fixed Overlay */}
       {mobileNavOpen && (
-        <div className="lg:hidden bg-[#0B1320] text-slate-300 p-4 border-b border-slate-800 space-y-2">
-          <Link
-            to="/admin"
-            onClick={() => setMobileNavOpen(false)}
-            className="block px-3 py-2 rounded-xl text-xs font-bold hover:bg-slate-800"
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/admin/getcontact"
-            onClick={() => setMobileNavOpen(false)}
-            className={`block px-3 py-2 rounded-xl text-xs font-bold ${
-              location.pathname.includes("getcontact") ? "bg-[#0D8B7A] text-white" : "hover:bg-slate-800"
-            }`}
-          >
-            Contact Inquiries
-          </Link>
-          <Link
-            to="/admin/blogs"
-            onClick={() => setMobileNavOpen(false)}
-            className={`block px-3 py-2 rounded-xl text-xs font-bold ${
-              location.pathname === "/admin/blogs" ? "bg-[#0D8B7A] text-white" : "hover:bg-slate-800"
-            }`}
-          >
-            All Articles & Drafts
-          </Link>
-          <Link
-            to="/admin/blog"
-            onClick={() => setMobileNavOpen(false)}
-            className={`block px-3 py-2 rounded-xl text-xs font-bold ${
-              location.pathname === "/admin/blog" ? "bg-[#0D8B7A] text-white" : "hover:bg-slate-800"
-            }`}
-          >
-            Blog Studio
-          </Link>
-          <button
-            onClick={handleLogout}
-            className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-900/20"
-          >
-            Logout
-          </button>
+        <div className="lg:hidden fixed inset-x-0 top-[56px] bottom-0 z-50 bg-[#0B1320]/95 backdrop-blur-md text-slate-300 p-5 overflow-y-auto space-y-4 border-b border-slate-800 animate-in fade-in slide-in-from-top-3">
+          <div className="space-y-1.5">
+            <div className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">
+              Navigation
+            </div>
+            <Link
+              to="/admin"
+              onClick={() => setMobileNavOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                location.pathname === "/admin"
+                  ? "bg-[#0D8B7A] text-white shadow-md shadow-teal-900/30"
+                  : "text-slate-400 hover:bg-slate-800/80 hover:text-white"
+              }`}
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              <span>Dashboard</span>
+            </Link>
+
+            <Link
+              to="/admin/getcontact"
+              onClick={() => setMobileNavOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                location.pathname.includes("getcontact")
+                  ? "bg-[#0D8B7A] text-white shadow-md shadow-teal-900/30"
+                  : "text-slate-400 hover:bg-slate-800/80 hover:text-white"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>Contact Inquiries</span>
+            </Link>
+
+            <Link
+              to="/admin/blogs"
+              onClick={() => setMobileNavOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                location.pathname === "/admin/blogs"
+                  ? "bg-[#0D8B7A] text-white shadow-md shadow-teal-900/30"
+                  : "text-slate-400 hover:bg-slate-800/80 hover:text-white"
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              <span>All Articles & Drafts</span>
+            </Link>
+
+            <Link
+              to="/admin/blog"
+              onClick={() => setMobileNavOpen(false)}
+              className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition ${
+                location.pathname === "/admin/blog"
+                  ? "bg-[#0D8B7A] text-white shadow-md shadow-teal-900/30"
+                  : "text-slate-400 hover:bg-slate-800/80 hover:text-white"
+              }`}
+            >
+              <FileText className="w-4 h-4" />
+              <span>Blog Studio</span>
+            </Link>
+          </div>
+
+          <div className="space-y-1.5 pt-2 border-t border-slate-800/80">
+            <div className="px-3 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">
+              Quick Links
+            </div>
+            <a
+              href="/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-teal-400 hover:bg-slate-800/60 transition"
+            >
+              <div className="flex items-center gap-3">
+                <Globe className="w-4 h-4 text-slate-500" />
+                <span>View Website</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
+            </a>
+
+            <a
+              href="/blog"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-slate-400 hover:text-teal-400 hover:bg-slate-800/60 transition"
+            >
+              <div className="flex items-center gap-3">
+                <FileText className="w-4 h-4 text-slate-500" />
+                <span>Public Blog</span>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
+            </a>
+          </div>
+
+          <div className="pt-2 border-t border-slate-800/80">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-900/20 transition cursor-pointer"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Sign Out</span>
+            </button>
+          </div>
         </div>
       )}
 

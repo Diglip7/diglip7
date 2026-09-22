@@ -448,10 +448,23 @@ function Home() {
   return (
     <div className="bg-teal-50 overflow-x-hidden w-full">
       <SEO
-        title="Leading Digital Marketing & Web Development Agency"
-        description="DigLip7 is a results-driven digital marketing and web development agency. Boost your revenue with expert SEO, PPC, ORM, and custom web applications."
+        title="DigLip7 | Digital Marketing Agency – SEO, PPC & Web Design"
+        description="DigLip7 is a results-driven digital marketing agency offering SEO, PPC, web design & social media marketing. 1,500+ projects delivered. Get a free consultation."
         canonical="https://diglip7.com/"
-        keywords="digital marketing agency, best SEO agency, web development company, online reputation management, PPC marketing, Noida digital agency"
+        keywords="digital marketing agency, SEO services, PPC advertising, ORM, web development, UI UX design, custom software, Noida, India, DigLip7"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://diglip7.com/#faq",
+          "mainEntity": faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.answer
+            }
+          }))
+        }}
       />
       {/* Google Tag Manager (noscript) */}
       <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KHW2JJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />

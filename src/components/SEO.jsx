@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 /**
  * Reusable SEO Component for DigLip7
@@ -11,19 +12,27 @@ const SEO = ({
   keywords,
   canonical,
   ogType = "website",
-  ogImage = "https://www.diglip7.com/favicon-32x32.png",
+  ogImage = "https://diglip7.com/favicon-32x32.png",
   schema,
   noindex = false,
 }) => {
+  const location = useLocation();
+
   const siteTitle = "DigLip7 – Leading Digital Marketing & Web Development Agency";
-  const fullTitle = title ? `${title} | DigLip7` : siteTitle;
+  const fullTitle = title ? (title.includes("DigLip7") ? title : `${title} | DigLip7`) : siteTitle;
   const defaultDescription =
     "DigLip7 is a results-driven Digital Marketing and Web Development Agency helping businesses boost online visibility, traffic, and revenue through expert SEO, PPC, ORM, and custom software.";
   const metaDescription = description || defaultDescription;
   const defaultKeywords =
     "digital marketing agency, SEO services, PPC advertising, ORM, web development, UI UX design, custom software, Noida, India, DigLip7";
   const metaKeywords = keywords || defaultKeywords;
-  const currentUrl = canonical || (typeof window !== "undefined" ? window.location.href : "https://diglip7.com");
+
+  // Dynamically compute exact current page URL for canonical & social tags
+  const currentUrl =
+    canonical ||
+    (typeof window !== "undefined"
+      ? `${window.location.origin}${location.pathname}`
+      : `https://diglip7.com${location.pathname}`);
 
   useEffect(() => {
     // 1. Update Title
@@ -87,8 +96,15 @@ const SEO = ({
     return () => {
       const dynamicScript = document.getElementById(scriptId);
       if (dynamicScript) dynamicScript.remove();
+
+      // Remove dynamic canonical link on unmount so unconfigured subpages don't inherit previous page canonicals
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) canonicalLink.remove();
+
+      // Reset document title to default clean title
+      document.title = "DigLip7";
     };
-  }, [fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, schema, noindex]);
+  }, [location.pathname, fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, schema, noindex]);
 
   return null;
 };
