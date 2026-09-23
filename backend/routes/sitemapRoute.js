@@ -1,103 +1,158 @@
 import express from "express";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import Blog from "../models/Blog.js";
 
 const router = express.Router();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /**
- * Static marketing, design, development & legal routes indexed for SEO
+ * Escapes characters that are illegal in XML
  */
-const staticPages = [
-  { url: "/", priority: "1.0", changefreq: "weekly" },
-  { url: "/about", priority: "0.9", changefreq: "monthly" },
-  { url: "/contact", priority: "0.9", changefreq: "monthly" },
-  { url: "/blog", priority: "0.9", changefreq: "daily" },
-  { url: "/blogview", priority: "0.9", changefreq: "daily" },
+const escapeXml = (unsafe = "") =>
+  unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-  // Digital Marketing Services
-  { url: "/digital-market", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/seoservices", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/PPC-Advertising", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/social-media-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/content-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/email-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/online-repulation-management(ORM)", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/local-SEO-services", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/e-commerce-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/video-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/influencer-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/Ai-powered-Digital-Marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/voice-search-optimization", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/programmatic-advertising", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/Mobile-marketing", priority: "0.8", changefreq: "weekly" },
-  { url: "/digital-market/performance-marketing", priority: "0.8", changefreq: "weekly" },
-
-  // Design Services
-  { url: "/design", priority: "0.8", changefreq: "weekly" },
-  { url: "/design/UI-UX", priority: "0.8", changefreq: "weekly" },
-  { url: "/design/graphic-design", priority: "0.8", changefreq: "weekly" },
-
-  // Development Services
-  { url: "/development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/web-development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/mobile-app-development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/e-commerce-development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/custom-software_development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/cms-development", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/api-development&Integration", priority: "0.8", changefreq: "weekly" },
-  { url: "/development/cloud-application-development", priority: "0.8", changefreq: "weekly" },
-
-  // Legal Pages
-  { url: "/privacy-policy", priority: "0.5", changefreq: "monthly" },
-  { url: "/terms-and-conditions", priority: "0.5", changefreq: "monthly" },
+/**
+ * Fallback static routes in case App.jsx cannot be read
+ */
+const fallbackRoutes = [
+  "/",
+  "/about",
+  "/contact",
+  "/blog",
+  "/blogview",
+  "/privacy-policy",
+  "/terms-and-conditions",
+  "/digital-market",
+  "/design",
+  "/development",
 ];
 
-// Helper to format XML <url> entry
-const renderUrlTag = (loc, lastmod, changefreq, priority) => `  <url>
-    <loc>${loc}</loc>
+/**
+ * Priority and changefreq rules based on URL depth and type
+ */
+const getRouteMetadata = (url) => {
+  if (url === "/") return { priority: "1.0", changefreq: "weekly" };
+  if (url === "/about" || url === "/contact") return { priority: "0.9", changefreq: "monthly" };
+  if (url === "/blog" || url === "/blogview") return { priority: "0.9", changefreq: "daily" };
+  if (url.startsWith("/privacy") || url.startsWith("/terms")) return { priority: "0.5", changefreq: "monthly" };
+  return { priority: "0.8", changefreq: "weekly" };
+};
+
+/**
+ * AUTOMATIC ROUTE DISCOVERY:
+ * Scans src/App.jsx in real-time to find every public <Route path="..." /> definition.
+ * Any new page or route added to the React project is discovered automatically!
+ */
+const getAutoDiscoveredRoutes = () => {
+  try {
+    const appJsxPath = path.resolve(__dirname, "../../src/App.jsx");
+    if (!fs.existsSync(appJsxPath)) return fallbackRoutes;
+
+    const content = fs.readFileSync(appJsxPath, "utf-8");
+
+    // Extract only Public Routes inside <Route element={<PublicLayout />}>
+    const publicSectionMatch = content.match(
+      /<Route element=\{<PublicLayout \/>\}>([\s\S]*?)<\/Route>/
+    );
+    const targetSection = publicSectionMatch ? publicSectionMatch[1] : content;
+
+    const routeRegex = /<Route\s+path=["']([^"']+)["']/g;
+    const routes = new Set();
+    let match;
+
+    while ((match = routeRegex.exec(targetSection)) !== null) {
+      const routePath = match[1];
+
+      // Exclude admin routes, wildcards (*), and dynamic parameterized routes (/:slug)
+      if (
+        !routePath.includes("*") &&
+        !routePath.startsWith("/admin") &&
+        !routePath.includes("/:")
+      ) {
+        const formatted = routePath.startsWith("/") ? routePath : `/${routePath}`;
+        routes.add(formatted);
+      }
+    }
+
+    return routes.size > 0 ? Array.from(routes) : fallbackRoutes;
+  } catch (err) {
+    console.error("Error auto-discovering routes from App.jsx:", err);
+    return fallbackRoutes;
+  }
+};
+
+/**
+ * Helper to render an XML <url> entry
+ */
+const renderUrlNode = (loc, lastmod, changefreq, priority) => `  <url>
+    <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
 
 /**
- * GET /sitemap.xml or /api/sitemap.xml
- * Dynamically constructs valid XML sitemap of all static routes + live MongoDB published blogs
+ * Real-time dynamic XML sitemap generator
+ * - Automatically discovers all React pages from App.jsx
+ * - Automatically fetches all published blogs from MongoDB
  */
-router.get("/sitemap.xml", async (req, res) => {
+const generateSitemap = async (req, res) => {
   try {
     const baseUrl = "https://diglip7.com";
     const today = new Date().toISOString().split("T")[0];
 
-    // 1. Fetch live published blogs from MongoDB
-    const blogs = await Blog.find({ status: "published" }).sort({ createdAt: -1 }).catch(() => []);
+    // 1. AUTO-DISCOVER all React pages from App.jsx
+    const discoveredPages = getAutoDiscoveredRoutes();
 
-    // 2. Generate XML tags for static pages
-    const staticXml = staticPages
-      .map((p) => renderUrlTag(`${baseUrl}${p.url}`, today, p.changefreq, p.priority))
+    // 2. Generate XML for all discovered project pages
+    const pagesXml = discoveredPages
+      .map((urlPath) => {
+        const meta = getRouteMetadata(urlPath);
+        return renderUrlNode(`${baseUrl}${urlPath}`, today, meta.changefreq, meta.priority);
+      })
       .join("\n");
 
-    // 3. Generate XML tags for dynamic published blog articles
-    const dynamicXml = blogs
+    // 3. AUTO-FETCH all published blogs from MongoDB in real-time
+    const blogs = await Blog.find({ status: "published" })
+      .select("slug createdAt updatedAt _id")
+      .sort({ createdAt: -1 })
+      .lean()
+      .catch((err) => {
+        console.error("Error querying blogs for sitemap:", err);
+        return [];
+      });
+
+    const dynamicBlogXml = blogs
       .map((b) => {
-        const date = b.createdAt ? new Date(b.createdAt).toISOString().split("T")[0] : today;
-        const slug = b.slug || b._id;
-        return renderUrlTag(`${baseUrl}/blog/${slug}`, date, "daily", "0.7");
+        const dateRaw = b.updatedAt || b.createdAt || new Date();
+        const date = new Date(dateRaw).toISOString().split("T")[0];
+        const slug = b.slug || b._id.toString();
+        return renderUrlNode(`${baseUrl}/blog/${slug}`, date, "daily", "0.7");
       })
       .join("\n");
 
     // 4. Assemble complete XML document
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticXml}
-${dynamicXml}
+${pagesXml}
+${dynamicBlogXml ? `\n${dynamicBlogXml}` : ""}
 </urlset>`;
 
-    res.header("Content-Type", "application/xml").send(xml);
+    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    return res.status(200).send(xml);
   } catch (error) {
-    res.status(500).send("Error generating sitemap");
+    console.error("Sitemap generation error:", error);
+    return res.status(500).send("Error generating sitemap");
   }
-});
+};
+
+router.get("/sitemap.xml", generateSitemap);
+router.get("/sitemap", generateSitemap);
+router.get("/", generateSitemap);
 
 export default router;
-
-

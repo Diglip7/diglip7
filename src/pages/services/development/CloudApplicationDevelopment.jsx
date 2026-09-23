@@ -619,7 +619,7 @@ function Cloud_applicat_dev() {
         schema={cloudDevSchemas}
       />
       {/* Hero Section with Parallax */}
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-24 lg:pb-16 lg:min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-white flex flex-col justify-start lg:justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
@@ -632,17 +632,17 @@ function Cloud_applicat_dev() {
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
-          {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+        <div className="flex flex-col md:flex-row items-center max-w-7xl w-full gap-8 lg:gap-14">
+          {/* Left Section (60% width for optimal headline flow) */}
+          <div className="w-full md:w-7/12 lg:w-3/5 text-center md:text-left">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
               <span className="text-gray-900">Custom Cloud Development Services </span>
-              <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+              <br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
                 Built to Scale With Your Business
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 text-base sm:text-lg mt-4 mb-6 leading-relaxed max-w-2xl">
               Migrate, build, and scale on AWS, Azure, or Google Cloud with <span className="font-semibold text-blue-700">DigLip7</span>'s custom cloud development — secure, automated, and built to grow.
             </p>
 
@@ -656,36 +656,30 @@ function Cloud_applicat_dev() {
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                    Get Free Cloud Development Audit <ArrowRight size={18} />
-                  </button> */}
               <a href="/contact">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-7 sm:px-9 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
-                  Get Started
-                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <span>Get Started</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
-          {/* Right Section - Animated Chart */}
+          {/* Right Section (40% width illustration) */}
           <motion.div
-            className="flex-1"
+            className="w-full md:w-5/12 lg:w-2/5 flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
           >
             <img
               src={seo2}
               alt="Cloud Development concept showing developers coding and deploying applications in a secure cloud environment."
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-xl w-full max-w-md object-contain"
             />
           </motion.div>
         </div>
@@ -943,15 +937,10 @@ function Cloud_applicat_dev() {
           </div>
         </div>
       </div>
-      {/* added  */}
-
-
-
-
 
       {/* About Section with 3D Cards */}
-      <section id="about" className=" sm:py-16 lg: bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg: px-4 sm:px-6 lg:">
+      <section id="about" className="py-12 sm:py-16 bg-white overflow-hidden">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
           {/* Left Image with 3D effect */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -1036,8 +1025,8 @@ function Cloud_applicat_dev() {
       </section>
 
       {/* Difference Section */}
-      <section className=" sm:py-16 lg: bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section className="py-12 sm:py-16 bg-white overflow-hidden">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
           <motion.div
             className="flex-1 w-full"
             initial={{ opacity: 0, x: -50 }}
@@ -1115,8 +1104,8 @@ function Cloud_applicat_dev() {
       </section>
 
       {/* Results Section with Custom Shape */}
-      <section className="sm:py-16 lg: bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section className="py-12 sm:py-16 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1124,31 +1113,30 @@ function Cloud_applicat_dev() {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="relative w-full h-full sm:w-full sm:h-full lg:w-full lg:h-full">
+            <div className="relative w-full max-w-lg">
               <Card3D className="w-full h-full">
                 <img
                   src={aboutImg}
                   alt="About Diglip7"
-                  className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-
+                  className="w-full h-full object-cover rounded-2xl transition-transform duration-700 hover:scale-105"
                 />
               </Card3D>
 
               {/* Floating elements around the image */}
               <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
+                className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <Sparkles className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
+                className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 w-9 h-9 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-100"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
+                <Target className="w-4 h-4 sm:w-6 sm:h-6 text-teal-600" />
               </motion.div>
             </div>
           </motion.div>
@@ -1181,15 +1169,10 @@ function Cloud_applicat_dev() {
                   At{" "}
                   <span className="font-semibold text-teal-700">
                     The cloud is the backbone of modern digital transformation. But why choose custom cloud development over ready-made solutions?
-
                   </span>
                   , Scalability Without Limits – Scale resources instantly based on demand.
                   Tailored Security – Industry-specific compliance and custom security protocols.
-
-
                   Cost Efficiency – Pay only for what you use while avoiding unnecessary services.
-
-
                 </p>
               </motion.div>
 
@@ -1208,7 +1191,6 @@ function Cloud_applicat_dev() {
                     Connect with existing systems, CRMs, ERPs, and APIs.
                   </span>
                   Future-Proof Solutions – Built to evolve with your business growth.
-
                 </p>
               </motion.div>
 
@@ -1227,8 +1209,6 @@ function Cloud_applicat_dev() {
               </motion.div>
             </div>
           </motion.div>
-
-
         </div>
       </section>
 

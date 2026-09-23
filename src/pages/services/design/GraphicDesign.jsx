@@ -634,7 +634,6 @@ function GraphicDesign() {
             </h1>
             <p className="text-gray-700 mb-6">
               Boost your brand’s visual appeal with <span className="font-semibold text-blue-700">DigLip7</span> professional graphic design services. From logos and marketing materials to social media graphics and product packaging, we create impactful designs that engage your audience, enhance brand recognition, and drive business growth.
-
             </p>
 
             {/* Features */}
@@ -652,17 +651,14 @@ function GraphicDesign() {
                   </button> */}
               <a href="/contact">
                 <motion.button
-
                   className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
@@ -703,7 +699,6 @@ function GraphicDesign() {
           ))}
         </div>
       </div>
-
       {/* addedd */}
 
       <div className="bg-gray-50">

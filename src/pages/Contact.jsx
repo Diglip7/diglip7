@@ -336,7 +336,7 @@ function Contact() {
               Explore our full range of growth services below, select the one tailored to your business goals, and send us your query.
             </p>
           </div>
-
+          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
             
             {/* ---------------- LEFT COLUMN: EXPANSIVE CONTACT & CONNECT HUB (5 Cols) ---------------- */}
