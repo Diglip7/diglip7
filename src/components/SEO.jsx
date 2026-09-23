@@ -17,7 +17,6 @@ const SEO = ({
   noindex = false,
 }) => {
   const location = useLocation();
-
   const siteTitle = "DigLip7 – Leading Digital Marketing & Web Development Agency";
   const fullTitle = title ? (title.includes("DigLip7") ? title : `${title} | DigLip7`) : siteTitle;
   const defaultDescription =
@@ -74,37 +73,37 @@ const SEO = ({
 
     // 5. Twitter Card Meta Tags
     setMetaTag("name", "twitter:card", "summary_large_image");
+    setMetaTag("name", "twitter:site", "@diglip7");
     setMetaTag("name", "twitter:title", fullTitle);
     setMetaTag("name", "twitter:description", metaDescription);
     setMetaTag("name", "twitter:image", ogImage);
 
     // 6. Structured Data (JSON-LD Schema)
-    const scriptId = "dynamic-json-ld";
-    let existingScript = document.getElementById(scriptId);
-    if (existingScript) {
-      existingScript.remove();
-    }
+    // Clean up any previously injected dynamic schema scripts
+    document.querySelectorAll("script[data-dynamic-seo]").forEach((s) => s.remove());
 
     if (schema) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.type = "application/ld+json";
-      script.textContent = JSON.stringify(schema);
-      document.head.appendChild(script);
+      const schemasToInject = Array.isArray(schema) ? schema : [schema];
+      schemasToInject.forEach((schemaObj, i) => {
+        if (!schemaObj) return;
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.setAttribute("data-dynamic-seo", "true");
+        script.id = `dynamic-json-ld-${i}`;
+        script.textContent = JSON.stringify(schemaObj, null, 2);
+        document.head.appendChild(script);
+      });
     }
 
     return () => {
-      const dynamicScript = document.getElementById(scriptId);
-      if (dynamicScript) dynamicScript.remove();
-
+      document.querySelectorAll("script[data-dynamic-seo]").forEach((s) => s.remove());
       // Remove dynamic canonical link on unmount so unconfigured subpages don't inherit previous page canonicals
       const canonicalLink = document.querySelector('link[rel="canonical"]');
       if (canonicalLink) canonicalLink.remove();
-
       // Reset document title to default clean title
       document.title = "DigLip7";
     };
-  }, [location.pathname, fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, schema, noindex]);
+  }, [location.pathname, fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, JSON.stringify(schema), noindex]);
 
   return null;
 };

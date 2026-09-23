@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -530,9 +531,75 @@ function Ai_powered() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for AI-Powered Marketing Service, Offer Catalog, and FAQs
+  const aiSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "AI-Powered Digital Marketing",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers AI-powered digital marketing services including intelligent automation, predictive analytics, AI-driven ad campaigns, chatbots and virtual assistants, and data-driven personalization to help businesses grow efficiently.",
+      url: "https://diglip7.com/digital-market/Ai-powered-Digital-Marketing",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "AI-Powered Marketing Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic AI Marketing Package" },
+            price: "899",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro AI Marketing Package" },
+            price: "1799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium AI Marketing Package" },
+            price: "3499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className=" bg-white overflow-x-hidden pt-18 sm:pt-18">
+      <SEO
+        title="AI-Powered Digital Marketing Services | DigLip7"
+        description="Automate campaigns, predict trends, and personalize customer journeys with DigLip7's AI-powered marketing services. Get a free strategy session today."
+        canonical="https://diglip7.com/digital-market/Ai-powered-Digital-Marketing"
+        ogImage="https://diglip7.com/assets/ai-BZoxhzrl.jpeg"
+        ogType="website"
+        keywords="AI digital marketing services, AI marketing automation, predictive marketing analytics, machine learning marketing, AI chatbots, DigLip7"
+        schema={aiSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -552,19 +619,13 @@ function Ai_powered() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900"> Advanced AI-Powered Services to
-              </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">AI-Powered Digital Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Boost Business Efficiency
+                That Drive Smarter, Faster Growth
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               <span className="font-semibold text-blue-700"> Leverage DigLip 7’</span>AI-powered services to automate tasks, gain actionable insights, and enhance decision-making. Our innovative solutions drive efficiency, reduce costs, and deliver measurable growth for businesses in today’s competitive digital landscape.
-
             </p>
 
             {/* Features */}
@@ -587,12 +648,10 @@ function Ai_powered() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 

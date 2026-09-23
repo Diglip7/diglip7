@@ -221,17 +221,17 @@ const Footer = () => {
 
             {/* Map Embed */}
             <div className="relative w-full h-28 rounded-xl overflow-hidden border border-teal-700 shadow-sm">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30773064.05684503!2d61.04182762828652!3d19.69228278198373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3033cc37dae22c7%3A0xcbe7567481fa90ad!2sDiglip7!5e0!3m2!1sen!2sin!4v1789622130963!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="DigLip7 Location"
-            >
-            </iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30773064.05684503!2d61.04182762828652!3d19.69228278198373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3033cc37dae22c7%3A0xcbe7567481fa90ad!2sDiglip7!5e0!3m2!1sen!2sin!4v1789622130963!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="DigLip7 Location"
+              >
+              </iframe>
             </div>
           </div>
 

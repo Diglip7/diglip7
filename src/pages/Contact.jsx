@@ -82,6 +82,46 @@ const SERVICE_CATEGORIES = [
   },
 ];
 
+// Structured JSON-LD Schemas for Contact Page
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://diglip7.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://diglip7.com/contact"
+    }
+  ]
+};
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://diglip7.com/contact#webpage",
+  "url": "https://diglip7.com/contact",
+  "name": "Contact DigLip7 Tech",
+  "description": "Get in touch with DigLip7 Tech's Noida team for a free growth consultation, project estimate, or SEO audit.",
+  "isPartOf": {
+    "@id": "https://diglip7.com/#website"
+  },
+  "about": {
+    "@id": "https://diglip7.com/#organization"
+  },
+  "mainEntity": {
+    "@id": "https://diglip7.com/#organization"
+  }
+};
+
+const contactSchemas = [breadcrumbSchema, contactPageSchema];
+
 function Contact() {
   // Active Category tab state
   const [activeCategory, setActiveCategory] = useState("marketing");
@@ -185,10 +225,13 @@ function Contact() {
   return (
     <div className="w-full bg-white font-sans">
       <SEO
-        title="Contact Us – Get a Free Growth & Digital Audit"
-        description="Contact DigLip7 for expert SEO, PPC, web development, and ORM consultation. Visit our Noida office or call +91 9650608788 for immediate support."
+        title="Contact DigLip7 Tech"
+        description="Get in touch with DigLip7 Tech's Noida team for a free growth consultation, project estimate, or SEO audit."
         canonical="https://diglip7.com/contact"
+        ogType="website"
+        ogImage="https://diglip7.com/favicon-32x32.png"
         keywords="contact DigLip7, digital marketing consultation, hire SEO agency Noida, web development inquiry"
+        schema={contactSchemas}
       />
 
       {/* ================= TOP HERO BANNER (Enhanced Clear Contact Identification) ================= */}

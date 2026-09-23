@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -512,11 +513,77 @@ function Local_seo_ser() {
 
   const next = () => setIndex((index + 1) % testimonials.length);
   const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+   const testimonial = testimonials[index];
 
-  const testimonial = testimonials[index];
+  // Dynamically generate schemas for Local SEO Service, Offer Catalog, and FAQs
+  const localSeoSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Local Search Engine Optimization (Local SEO)",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service Local SEO including Google Business Profile optimization, local citation building, NAP consistency, local keyword targeting, review generation, and local backlink building.",
+      url: "https://diglip7.com/digital-market/local-SEO-services",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Local SEO Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic Local SEO Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro Local SEO Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium Local SEO Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className="overflow-x-hidden bg-white w-full ">
+      <SEO
+        title="Local SEO Services That Get You Found | DigLip7"
+        description="Rank higher in Google Maps and local search with DigLip7's Local SEO services — Google Business Profile optimization, citations, and review management."
+        canonical="https://diglip7.com/digital-market/local-SEO-services"
+        ogImage="https://diglip7.com/assets/lseo001-B5y1QA1T.png"
+        ogType="website"
+        keywords="local SEO services, Google Business Profile optimization, local map pack ranking, Google maps SEO, local citations, NAP consistency, DigLip7"
+        schema={localSeoSchemas}
+      />
       {/* Hero Section with Parallax */}
 
 

@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/cms005.png";
 import seoImage from "../../../images/cms1.png";
 import seo4 from "../../../images/cms2.png";
@@ -314,8 +315,64 @@ const faqs = [
   {
     question: "Can you handle my industry?",
     answer:
-      "Absolutely! Our team has experience across a wide range of industries, including tech, health, finance, real estate, and more. No matter how niche or complex your field is, our Content Marketing Service adapts to your audience and messaging. We conduct thorough industry research to ensure every piece of content is both accurate and impactful.",
+     "Absolutely! Our team has experience across a wide range of industries, including tech, health, finance, real estate, and more. No matter how niche or complex your field is, our Content Marketing Service adapts to your audience and messaging. We conduct thorough industry research to ensure every piece of content is both accurate and impactful.",
   },
+];
+
+const cmsDevSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "CMS Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers CMS development services including custom CMS builds, WordPress development, Drupal/Joomla/Shopify/Magento setups, CMS migration and upgrades, plugin and module development, and third-party CMS integrations.",
+    "url": "https://diglip7.com/development/cms-development",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "CMS Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic CMS Development Package" },
+          "price": "899",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro CMS Development Package" },
+          "price": "1799",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium CMS Development Package" },
+          "price": "3499",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
 ];
 
 // 3D Card Component
@@ -511,6 +568,15 @@ function Cms_dev() {
 
   return (
     <div className="bg-white w-full">
+      <SEO
+        title="CMS Development Services | DigLip7"
+        description="Build a scalable, SEO-friendly website with DigLip7's CMS development — WordPress, Drupal, Shopify, and custom platforms. Get a free consultation today."
+        canonical="https://diglip7.com/development/cms-development"
+        ogImage="https://diglip7.com/assets/cms005-B9L1y-iP.png"
+        ogType="website"
+        keywords="CMS development services, WordPress development, custom CMS, Drupal development, Shopify CMS, headless CMS, DigLip7"
+        schema={cmsDevSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -530,19 +596,14 @@ function Cms_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Professional CMS Development Services
-              </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">CMS Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                for Efficient Content Management
+                for Websites That Are Easy to Manage and Built to Scale
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>provides expert CMS development services to create scalable, secure, and user-friendly websites. From WordPress and Drupal to Joomla, our solutions streamline content management, improve SEO, and enhance user experience, driving long-term growth and digital success.
-
+              Build a scalable, SEO-friendly website with <span className="font-semibold text-blue-700">DigLip7</span>'s CMS development services — WordPress, Drupal, Shopify, and custom platforms built for effortless content management and high performance.
             </p>
 
             {/* Features */}

@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/api001.png";
 import seoImage from "../../../images/api1.png";
 import seo4 from "../../../images/api2.png";
@@ -336,6 +337,62 @@ const faqs = [
   },
 ];
 
+const apiDevelopmentSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "API Development & Integration",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers API development and integration services including custom REST and GraphQL API development, third-party API integration (Stripe, PayPal, Salesforce, Google Maps), SOAP API services, and enterprise-grade security and scalability.",
+    "url": "https://diglip7.com/development/api-development-integration",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "API Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic API Development Package" },
+          "price": "999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro API Development Package" },
+          "price": "1999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium API Development Package" },
+          "price": "3999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 // 3D Card Component
 const Card3D = ({ children, className }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -526,6 +583,15 @@ function Api_dev_integ() {
 
   return (
     <div className="bg-white w-full">
+      <SEO
+        title="API Development Services | DigLip7"
+        description="Connect your systems with DigLip7's custom API development — REST, GraphQL, and third-party integrations built secure and scalable. Get a free consult."
+        canonical="https://diglip7.com/development/api-development-integration"
+        ogImage="https://diglip7.com/assets/api001-C03Vf_rG.png"
+        ogType="website"
+        keywords="API development services, custom API integration, REST API development, GraphQL APIs, third-party API integration, SOAP API development, DigLip7"
+        schema={apiDevelopmentSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -544,17 +610,14 @@ function Api_dev_integ() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900"> Expert API Development Services</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">API Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                for Seamless Integration & Growth
+                Built for Secure, Scalable Integration
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>provides professional API development services to create secure, scalable, and efficient integrations. Our solutions streamline workflows, enhance connectivity between systems, and improve data accessibility, helping businesses boost productivity, innovation, and long-term growth.
+              Connect your systems with <span className="font-semibold text-blue-700">DigLip7</span>'s custom API development — REST, GraphQL, and third-party integrations built secure and scalable.
             </p>
 
             {/* Features */}

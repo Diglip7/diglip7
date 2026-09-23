@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -517,8 +518,75 @@ function Influencer() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Influencer Marketing Service, Offer Catalog, and FAQs
+  const influencerMarketingSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Influencer Marketing",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers influencer marketing services including influencer discovery and vetting, campaign strategy and planning, influencer outreach and management, content creation and briefing, and performance analytics to help brands grow reach, credibility, and sales.",
+      "url": "https://diglip7.com/digital-market/influencer-marketing",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Influencer Marketing Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Basic Influencer Marketing Package" },
+            "price": "799",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Pro Influencer Marketing Package" },
+            "price": "1499",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Premium Influencer Marketing Package" },
+            "price": "2999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className=" bg-white sm:pt-20">
+      <SEO
+        title="Influencer Marketing Services | DigLip7"
+        description="Grow your brand with DigLip7's influencer marketing — vetted creators, custom campaigns, and measurable ROI. Get a free strategy consultation today."
+        canonical="https://diglip7.com/digital-market/influencer-marketing"
+        ogImage="https://diglip7.com/assets/im001-Bf0BH2cf.png"
+        ogType="website"
+        keywords="influencer marketing services, social media influencers, influencer campaigns, micro influencer marketing, brand creator partnerships, DigLip7"
+        schema={influencerMarketingSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6  relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -537,15 +605,10 @@ function Influencer() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Effective Influencer Marketing
-              </span>
-
-
+              <span className="text-gray-900">Influencer Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Services to Grow Your Brand
+                That Turn Reach Into Revenue
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Boost your brand’s visibility and engagement with<span className="font-semibold text-blue-700">DigLip7</span> influencer marketing services. From influencer selection to campaign strategy and performance tracking, we help businesses achieve measurable results, stronger credibility, and sustainable growth online.

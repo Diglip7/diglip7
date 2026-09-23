@@ -427,24 +427,74 @@ function Sco() {
   }, []);
 
 
+  // Dynamically generate schemas for Service + Offer Catalog and FAQPage (using existing faqs array)
+  const seoSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Search Engine Optimization (SEO)",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers comprehensive SEO services including keyword research, on-page and technical SEO, link building, local SEO, and content optimization to help businesses grow organic traffic and revenue.",
+      url: "https://diglip7.com/digital-market/seoservices",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "SEO Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic SEO Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro SEO Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium SEO Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className="  w-full bg-white ">
       <SEO
-        title="Search Engine Optimization (SEO) Services"
-        description="Drive high-intent organic traffic, rank #1 on Google, and boost conversions with DigLip7's data-driven Technical, On-Page, and Off-Page SEO services."
+        title="SEO Services That Drive Traffic & Growth | DigLip7"
+        description="Boost visibility, attract the right audience, and grow revenue with DigLip7's proven SEO strategies. Get a free consultation and see real results."
         canonical="https://diglip7.com/digital-market/seoservices"
+        ogImage="https://diglip7.com/assets/seon3-CaKjyEB-.jpg"
+        ogType="website"
         keywords="SEO services, search engine optimization agency, technical SEO audit, link building, local SEO, keyword research, DigLip7"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "Search Engine Optimization (SEO)",
-          "provider": {
-            "@type": "Organization",
-            "name": "DigLip7 Technologies"
-          },
-          "areaServed": "Worldwide",
-          "description": "Comprehensive Search Engine Optimization (SEO) services including on-page optimization, technical audits, and link building."
-        }}
+        schema={seoSchemas}
       />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -464,18 +514,13 @@ function Sco() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Unlock Success with SEO: The Smart Choice for</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Unlock Business Success with Expert </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Your Business | DigLip 7
+                SEO Services That Deliver Real Results
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>Transform your business with powerful SEO. Increase online visibility, attract the right audience, and achieve sustainable growth with proven, results-driven SEO strategies.
-
+              At <span className="font-semibold text-blue-700">DigLip7</span>, transform your business with powerful SEO. Increase online visibility, attract the right audience, and achieve sustainable growth with proven, results-driven SEO strategies.
             </p>
 
             {/* Features */}

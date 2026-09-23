@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -522,9 +523,104 @@ function PpcAdvertising() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for PPC Service, Offer Catalog, FAQs, and Customer Reviews
+  const ppcSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Pay-Per-Click (PPC) Advertising",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service PPC advertising management including Google Ads, Meta Ads, LinkedIn Ads, remarketing, landing page optimization, and conversion rate optimization to drive measurable ROI.",
+      url: "https://diglip7.com/digital-market/PPC-Advertising",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "PPC Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic PPC Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro PPC Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium PPC Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "DigLip7",
+      url: "https://diglip7.com",
+      review: [
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "Sarah Johnson" },
+          reviewBody:
+            "Organic traffic increased significantly within months, with the team now ranking for main target keywords through professional, responsive service.",
+        },
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "Michael Chen" },
+          reviewBody:
+            "Search rankings and conversions improved significantly for this e-commerce business after partnering with the agency.",
+        },
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "Dr. Emily Rodriguez" },
+          reviewBody:
+            "Local SEO work moved the clinic from no online presence to a top-rated healthcare provider in the area.",
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="w-full  bg-white ">
+      <SEO
+        title="PPC Advertising Services That Maximize ROI | DigLip7"
+        description="Get instant visibility and measurable ROI with DigLip7's expert PPC management. Targeted Google, Meta & LinkedIn ad campaigns built to convert."
+        canonical="https://diglip7.com/digital-market/PPC-Advertising"
+        ogImage="https://diglip7.com/assets/ppc004-XSn0aQXK.jpeg"
+        ogType="website"
+        keywords="PPC services, pay per click agency, Google Ads management, Meta Ads, LinkedIn Ads, remarketing, conversion rate optimization, DigLip7"
+        schema={ppcSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -543,18 +639,13 @@ function PpcAdvertising() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Drive Instant Growth with </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Drive Instant Growth with Proven </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Proven PPC Strategies
+                PPC Strategies That Maximize ROI
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">DigLip7</span>, Explore real PPC success stories where businesses achieved higher traffic, improved conversions, and exceptional ROI. DigLip 7’s expert PPC strategies drive measurable growth and lasting impact for your brand.
-
             </p>
 
             {/* Features */}

@@ -514,24 +514,74 @@ function Web_dev() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Web Development Service, Offer Catalog, and FAQs
+  const webDevSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Web Development",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers full-service web development including custom website development, e-commerce development, responsive design, CMS development, web application development, and ongoing maintenance and support.",
+      "url": "https://diglip7.com/development/web-development",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Development Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Basic Web Development Package" },
+            "price": "999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Pro Web Development Package" },
+            "price": "1999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Premium Web Development Package" },
+            "price": "3999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className="bg-white">
       <SEO
-        title="Custom Web Development & Application Services"
-        description="Build high-performance, secure, and responsive web applications with DigLip7. Expert React, Node.js, Next.js, and Full-Stack development solutions."
+        title="Web Development Services That Drive Growth | DigLip7"
+        description="Get a fast, secure, and conversion-focused website with DigLip7's web development services — custom builds, e-commerce, CMS & web app development."
         canonical="https://diglip7.com/development/web-development"
-        keywords="web development company, custom web application, React developer, full stack development, enterprise web development Noida, DigLip7"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "Web Development Services",
-          "provider": {
-            "@type": "Organization",
-            "name": "DigLip7 Technologies"
-          },
-          "areaServed": "Worldwide",
-          "description": "Custom full-stack web application development, responsive web design, API integration, and cloud deployment."
-        }}
+        ogImage="https://diglip7.com/assets/wd001-DvLvKI6R.png"
+        ogType="website"
+        keywords="web development services, custom website development, e-commerce development, CMS development, responsive web design, web application development, DigLip7"
+        schema={webDevSchemas}
       />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -551,14 +601,10 @@ function Web_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Professional Web Development Services</span>
-
-
+              <span className="text-gray-900">Professional Web Development Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Grow Your Business
+                That Build Fast, Secure Websites to Grow Your Business
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Build a fast, secure, and user-friendly website with <span className="font-semibold text-blue-700">DigLip7</span>web development services. From custom websites and e-commerce platforms to web applications and responsive designs, we deliver solutions that enhance user experience, boost conversions, and drive measurable business growth.
@@ -629,12 +675,10 @@ function Web_dev() {
               }}
             >
               🌐
-
             </motion.div>
           ))}
         </div> */}
       </div>
-
       {/* addedd */}
 
       <div className="bg-white">

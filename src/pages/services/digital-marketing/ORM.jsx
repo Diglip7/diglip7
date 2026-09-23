@@ -142,7 +142,7 @@ const caseStudies = {
       { icon: <DollarSign className="w-5 h-5 text-orange-600" />, label: "Revenue", value: "+190%" },
     ],
   },
-  
+
   "HealthPlus Clinic": {
     title: "HealthPlus Clinic",
     industry: "Healthcare • 5 months",
@@ -531,30 +531,78 @@ function Online_rep_mana() {
 
   const next = () => setIndex((index + 1) % testimonials.length);
   const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
+   const testimonial = testimonials[index];
 
-  const testimonial = testimonials[index];
+  // Dynamically generate schemas for ORM Service, Offer Catalog, and FAQs
+  const ormSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Online Reputation Management (ORM)",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service online reputation management including brand monitoring, review management, crisis response, negative content suppression, and positive content creation to protect and strengthen brand image.",
+      url: "https://diglip7.com/digital-market/online-repulation-management(ORM)",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "ORM Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic ORM Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro ORM Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium ORM Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className=" w-full bg-white">
       <SEO
-        title="Online Reputation Management (ORM) Services"
-        description="Defend and elevate your digital brand with DigLip7's Online Reputation Management (ORM) services. Remove negative reviews, build brand trust, and dominate search results."
+        title="Online Reputation Management (ORM) Services | DigLip7"
+        description="Monitor, repair, and strengthen your brand's online image with DigLip7's ORM services — review management, crisis response & search result control."
         canonical="https://diglip7.com/digital-market/online-repulation-management(ORM)"
+        ogImage="https://diglip7.com/assets/orm-CkBmvAX2.png"
+        ogType="website"
         keywords="online reputation management, ORM services, brand reputation repair, review management, negative content suppression, DigLip7"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "serviceType": "Online Reputation Management",
-          "provider": {
-            "@type": "Organization",
-            "name": "DigLip7 Technologies"
-          },
-          "areaServed": "Worldwide",
-          "description": "Comprehensive Online Reputation Management (ORM) including review management, search suppression, and positive brand narrative construction."
-        }}
+        schema={ormSchemas}
       />
       {/* Hero Section with Parallax */}
-
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -573,17 +621,13 @@ function Online_rep_mana() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Grow Your Business</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Protect and Elevate Your Brand with </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                with ORM
+                Expert Online Reputation Management
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>,expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
+              At <span className="font-semibold text-blue-700">DigLip7</span>, we monitor, repair, and strengthen your brand's digital presence with proven ORM strategies that protect credibility and drive customer trust.
             </p>
 
             {/* Features */}

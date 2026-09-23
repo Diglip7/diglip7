@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/cs001.png";
 import seoImage from "../../../images/csdev1.png";
 import seo4 from "../../../images/csdev2.png";
@@ -333,6 +334,62 @@ const faqs = [
   },
 ];
 
+const customSoftwareSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Custom Software Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers full-service custom software development including enterprise software, web and mobile applications, cloud-based solutions, SaaS platforms, workflow automation, and third-party system integration.",
+    "url": "https://diglip7.com/development/custom-software_development",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Custom Software Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic Custom Software Package" },
+          "price": "1499",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro Custom Software Package" },
+          "price": "2999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium Custom Software Package" },
+          "price": "5999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 // 3D Card Component
 const Card3D = ({ children, className }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -525,6 +582,15 @@ function Custom_soft_dev() {
 
   return (
     <div className=" bg-white w-full">
+      <SEO
+        title="Custom Software Development Services | DigLip7"
+        description="Get scalable, secure custom software built around your workflow — DigLip7 delivers web, mobile, cloud, and enterprise software development."
+        canonical="https://diglip7.com/development/custom-software_development"
+        ogImage="https://diglip7.com/assets/cs001-C03Vf_rG.png"
+        ogType="website"
+        keywords="custom software development services, enterprise software development, bespoke web applications, cloud software solutions, SaaS development, software integration, DigLip7"
+        schema={customSoftwareSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -544,19 +610,14 @@ function Custom_soft_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Expert Custom Software Development Services</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Expert Custom Software Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Drive Business Growth
-
+                That Drive Business Growth
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span> delivers tailored custom software solutions that enhance efficiency, scalability, and productivity. From web and mobile apps to enterprise and cloud-based solutions, our services optimize workflows, improve user experience, and provide measurable ROI for long-term business success.
-
+              Get scalable, secure custom software built around your workflow. <span className="font-semibold text-blue-700">DigLip7</span> delivers web, mobile, cloud, and enterprise software development that streamlines operations and drives business growth.
             </p>
 
             {/* Features */}

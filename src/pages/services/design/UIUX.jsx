@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -322,7 +323,7 @@ const faqs = [
   {
     question: "Can You Design for Web and Mobile?",
     answer:
-      "Can You Design for Web and Mobile?",
+      "Yes — DigLip7 designs responsive websites and native mobile app interfaces, ensuring a consistent experience and visual identity across desktop, tablet, and smartphone.",
   },
   {
     question: "How Do You Ensure User Needs Are Met?",
@@ -537,9 +538,75 @@ function Uiux() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for UI/UX Design Service, Offer Catalog, and FAQs
+  const uiuxSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "UI/UX Design",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers full-service UI/UX design including user research, wireframing and prototyping, visual design, interaction design, usability testing, and cross-device optimization for websites, mobile apps, and SaaS products.",
+      "url": "https://diglip7.com/design/UI-UX",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "UI/UX Design Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Basic UI/UX Design Package" },
+            "price": "799",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Pro UI/UX Design Package" },
+            "price": "1499",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Premium UI/UX Design Package" },
+            "price": "2999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className="bg-white">
+      <SEO
+        title="UI/UX Design Services That Convert | DigLip7"
+        description="Elevate your website or app with DigLip7's UI/UX design services — user research, wireframing, prototyping & visual design built to boost engagement."
+        canonical="https://diglip7.com/design/UI-UX"
+        ogImage="https://diglip7.com/assets/uiux001-B-w4Kls5.png"
+        ogType="website"
+        keywords="UI UX design services, user interface design, user experience design, wireframing prototyping, website redesign, mobile app design, DigLip7"
+        schema={uiuxSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -558,15 +625,10 @@ function Uiux() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Professional UI/UX Design Services</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Professional UI/UX Design Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Enhance User Experience
-
+                That Enhance User Experience and Drive Conversions
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">DigLip7</span>Elevate your digital presence with DigLip7’s UI/UX design services. We create intuitive, visually appealing, and conversion-focused interfaces for websites, mobile apps, and products, ensuring higher engagement, improved user satisfaction, and measurable business growth.

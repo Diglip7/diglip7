@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -535,8 +536,75 @@ function Emailmarket() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Email Marketing Service, Offer Catalog, and FAQs
+  const emSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Email Marketing",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service email marketing including campaign management, list segmentation, automated workflows, custom template design, and performance analytics to drive engagement and conversions.",
+      url: "https://diglip7.com/digital-market/email-marketing",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Email Marketing Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic Email Marketing Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro Email Marketing Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium Email Marketing Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className=" w-full bg-white">
+      <SEO
+        title="Email Marketing Services That Maximize ROI | DigLip7"
+        description="Boost open rates, drive conversions, and grow customer loyalty with DigLip7's data-driven email marketing campaigns, automation, and segmentation."
+        canonical="https://diglip7.com/digital-market/email-marketing"
+        ogImage="https://diglip7.com/assets/e-m00-D8vJe1ti.jpeg"
+        ogType="website"
+        keywords="email marketing services, email automation, list segmentation, newsletter campaigns, email marketing agency, DigLip7"
+        schema={emSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -556,15 +624,10 @@ function Emailmarket() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Proven Email Marketing Success
-              </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Proven Email Marketing Strategies </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Stories That Deliver Maximum ROI
+                That Maximize ROI and Customer Engagement
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">DigLip7</span> Explore real results from DigLip 7’s email marketing campaigns. Boost open rates, drive conversions, and strengthen customer engagement with our data-driven, results-focused strategies.

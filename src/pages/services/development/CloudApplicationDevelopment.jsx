@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/cloud5.png";
 import seoImage from "../../../images/cad1.png";
 import seo4 from "../../../images/cad2.png";
@@ -359,6 +360,62 @@ const faqs = [
   },
 ];
 
+const cloudDevSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Cloud Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers custom cloud development services including cloud-native application development, cloud migration, cloud architecture and design, multi-cloud and hybrid cloud solutions, cloud security, and DevOps automation across AWS, Azure, and Google Cloud.",
+    "url": "https://diglip7.com/development/cloud-application-development",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cloud Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic Cloud Development Package" },
+          "price": "999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro Cloud Development Package" },
+          "price": "1999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium Cloud Development Package" },
+          "price": "3999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 // 3D Card Component
 const Card3D = ({ children, className }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -552,6 +609,15 @@ function Cloud_applicat_dev() {
 
   return (
     <div className="bg-white">
+      <SEO
+        title="Cloud Development Services | DigLip7"
+        description="Migrate, build, and scale on AWS, Azure, or Google Cloud with DigLip7's custom cloud development — secure, automated, and built to grow. Get a free audit."
+        canonical="https://diglip7.com/development/cloud-application-development"
+        ogImage="https://diglip7.com/assets/cloud5-BV72pL_9.png"
+        ogType="website"
+        keywords="cloud development services, custom cloud applications, cloud migration, AWS Azure Google Cloud development, DevOps automation, cloud infrastructure, DigLip7"
+        schema={cloudDevSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -570,18 +636,14 @@ function Cloud_applicat_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Expert Cloud Development Services </span>
-
-
+              <span className="text-gray-900">Custom Cloud Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Boost Efficiency & Scalability
-
+                Built to Scale With Your Business
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>offers professional cloud development services to build secure, scalable, and high-performing solutions. From cloud applications and migration to integration and automation, our services enhance collaboration, streamline operations, and drive long-term business growth.
+              Migrate, build, and scale on AWS, Azure, or Google Cloud with <span className="font-semibold text-blue-700">DigLip7</span>'s custom cloud development — secure, automated, and built to grow.
             </p>
 
             {/* Features */}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -528,8 +529,75 @@ function Mobile_marketing() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Mobile Marketing Service, Offer Catalog, and FAQs
+  const mobileMarketingSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Mobile Marketing",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers mobile marketing services including SMS marketing, push notifications, in-app advertising, mobile app marketing (ASO), geofencing and location-based campaigns, mobile-friendly website optimization, and mobile social media campaigns.",
+      "url": "https://diglip7.com/digital-market/Mobile-marketing",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Mobile Marketing Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Basic Mobile Marketing Package" },
+            "price": "799",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Pro Mobile Marketing Package" },
+            "price": "1499",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Premium Mobile Marketing Package" },
+            "price": "2999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className="bg-white w-full">
+      <SEO
+        title="Mobile Marketing Services | DigLip7"
+        description="Engage customers directly with DigLip7's mobile marketing — SMS, push notifications, in-app ads, and geofencing that drive real conversions. Start free."
+        canonical="https://diglip7.com/digital-market/Mobile-marketing"
+        ogImage="https://diglip7.com/assets/mm001-DR0yZfM3.png"
+        ogType="website"
+        keywords="mobile marketing services, SMS marketing, push notifications, in-app advertising, geofencing marketing, mobile website optimization, DigLip7"
+        schema={mobileMarketingSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -548,15 +616,10 @@ function Mobile_marketing() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Effective Mobile Marketing Services
-              </span>
-
-
+              <span className="text-gray-900">Mobile Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Boost Engagement & Conversions
+                That Meet Customers Where They Are
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Reach your customers anytime, <span className="font-semibold text-blue-700">anywhere with DigLip 7’s mobile marketing services</span>From SMS campaigns to push notifications and in-app ads, we help businesses drive engagement, increase conversions, and achieve measurable ROI with targeted, data-driven strategies.

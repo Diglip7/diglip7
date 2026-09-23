@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -313,7 +314,7 @@ const faqs = [
   },
   {
     question:
-      "What platforms does your voice Voice Search Optimization target?",
+      "What platforms does your voice search optimization target?",
     answer:
       "We optimize for major voice assistants, including Google Assistant Voice Search Optimization, Amazon Alexa, Apple Siri, and other emerging platforms, ensuring your brand reaches users across devices.",
   },
@@ -331,7 +332,7 @@ const faqs = [
   },
   {
     question:
-      "Can voice search optimization improve my mobile Voice Search Optimization too?",
+      "Can voice search optimization improve my mobile SEO too?",
     answer:
       "Yes! Since most voice searches happen on mobile, our mobile-first SEO—including site speed and responsiveness—boosts both voice and mobile performance, creating a seamless user experience.",
   },
@@ -527,8 +528,75 @@ function Voice() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Voice Search Optimization Service, Offer Catalog, and FAQs
+  const voiceSearchSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Voice Search Optimization",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers voice search optimization services including conversational keyword research, content optimization for voice queries, local SEO enhancement, structured data implementation, and smart device compatibility to help businesses rank in voice-first search results.",
+      "url": "https://diglip7.com/digital-market/voice-search-optimization",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Voice Search Optimization Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Basic Voice Search Package" },
+            "price": "799",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Pro Voice Search Package" },
+            "price": "1499",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Premium Voice Search Package" },
+            "price": "2999",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className=" bg-white sm:pt-18">
+      <SEO
+        title="Voice Search Optimization Services | DigLip7"
+        description="Rank in voice-first results with DigLip7's conversational SEO and local optimization strategies. Get a free voice search audit today."
+        canonical="https://diglip7.com/digital-market/voice-search-optimization"
+        ogImage="https://diglip7.com/assets/vim001-D1EJgK14.jpeg"
+        ogType="website"
+        keywords="voice search optimization services, conversational SEO, voice search ranking, voice SEO strategy, Alexa Google Siri optimization, DigLip7"
+        schema={voiceSearchSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6  overflow-hidden">
         {/* Animated Floating Objects */}
@@ -547,15 +615,10 @@ function Voice() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900"> Expert Voice Search Optimization Services
-              </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Voice Search Optimization Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Boost Your Business
+                That Get You Heard First
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Enhance your online presence with DigLip 7<span className="font-semibold text-blue-700">’s voice search optimization services.</span>Optimize for conversational queries, improve local SEO, and attract targeted traffic to drive engagement, increase visibility, and achieve measurable business growth.

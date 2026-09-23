@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -538,9 +539,75 @@ function GraphicDesign() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Graphic Design Service, Offer Catalog, and FAQs
+  const graphicDesignSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Graphic Design",
+      "provider": {
+        "@type": "Organization",
+        "name": "DigLip7",
+        "url": "https://diglip7.com",
+        "logo": "https://diglip7.com/favicon-32x32.png",
+      },
+      "areaServed": "Worldwide",
+      "description":
+        "DigLip7 offers full-service graphic design including logo design, social media graphics, brochures and flyers, posters and banners, infographics, and website/app UI mockups for brands across industries.",
+      "url": "https://diglip7.com/design/graphic-design",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Graphic Design Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Basic Graphic Design Package" },
+            "price": "699",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Pro Graphic Design Package" },
+            "price": "1299",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", name: "Premium Graphic Design Package" },
+            "price": "2499",
+            "priceCurrency": "USD",
+            "priceSpecification": { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className="bg-white">
+      <SEO
+        title="Graphic Design Services That Elevate Your Brand | DigLip7"
+        description="Stand out with DigLip7's graphic design services — logos, social media graphics, brochures & packaging designed to build recognition and drive growth."
+        canonical="https://diglip7.com/design/graphic-design"
+        ogImage="https://diglip7.com/assets/gd001-BBJ7nGae.png"
+        ogType="website"
+        keywords="graphic design services, logo design, brand identity design, social media graphics, brochure flyer design, packaging design, DigLip7"
+        schema={graphicDesignSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -560,14 +627,10 @@ function GraphicDesign() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Creative Graphic Design Services</span>
-
-
+              <span className="text-gray-900">Creative Graphic Design Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                Creative Graphic Design Services
+                That Strengthen Your Brand Identity
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Boost your brand’s visual appeal with <span className="font-semibold text-blue-700">DigLip7</span> professional graphic design services. From logos and marketing materials to social media graphics and product packaging, we create impactful designs that engage your audience, enhance brand recognition, and drive business growth.

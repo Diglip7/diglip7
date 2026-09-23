@@ -28,6 +28,25 @@ import {
   Download,
 } from "lucide-react";
 
+const privacyPolicySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://diglip7.com/privacy-policy",
+  "description": "Learn how DigLip7 Tech collects, uses, and protects your personal data across our website and services, and what rights you have under the DPDP Act.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "DigLip7",
+    "url": "https://diglip7.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DigLip7 Tech",
+    "url": "https://diglip7.com",
+    "logo": "https://diglip7.com/favicon-32x32.png"
+  }
+};
+
 const PrivacyPolicy = () => {
   const [activeSection, setActiveSection] = useState("who-we-are");
   const [searchQuery, setSearchQuery] = useState("");
@@ -155,10 +174,13 @@ const PrivacyPolicy = () => {
   return (
     <div className="w-full bg-slate-50 min-h-screen pt-24 pb-20 font-sans text-slate-800">
       <SEO
-        title="Privacy Policy – Data Protection & Security Practices"
-        description="Review the official Privacy Policy of DigLip7 Technologies. Learn how we collect, safeguard, and process your data in compliance with global privacy standards."
+        title="Privacy Policy | DigLip7"
+        description="Learn how DigLip7 Tech collects, uses, and protects your personal data across our website and services, and what rights you have under the DPDP Act."
         canonical="https://diglip7.com/privacy-policy"
-        keywords="DigLip7 privacy policy, data protection, cookies policy, GDPR compliance"
+        ogType="website"
+        ogImage="https://diglip7.com/favicon-32x32.png"
+        keywords="Privacy Policy, DigLip7 privacy, data protection, DPDP Act 2023, GDPR compliance, cookie policy"
+        schema={privacyPolicySchema}
       />
       {/* ================= HERO SECTION ================= */}
       <section className="relative overflow-hidden bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-950 text-white py-16 sm:py-20 px-6 sm:px-10 lg:px-20 border-b border-teal-800">

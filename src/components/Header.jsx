@@ -114,11 +114,10 @@ const Header = () => {
     widthClass = "w-72"
   }) => (
     <div
-      className={`absolute left-0 mt-2 ${widthClass} bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-2 border border-teal-700/60 transition-all duration-200 ease-out z-50 ${
-        isVisible
+      className={`absolute left-0 mt-2 ${widthClass} bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-2 border border-teal-700/60 transition-all duration-200 ease-out z-50 ${isVisible
           ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
           : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
-      }`}
+        }`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -147,9 +146,8 @@ const Header = () => {
 
   const MobileServiceDropdown = ({ services, isVisible, onItemClick }) => (
     <div
-      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-        isVisible ? "max-h-[500px] opacity-100 mt-2" : "max-h-0 opacity-0"
-      }`}
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${isVisible ? "max-h-[500px] opacity-100 mt-2" : "max-h-0 opacity-0"
+        }`}
     >
       <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-1 py-1 max-h-[360px] overflow-y-auto no-scrollbar">
         {services.map((service, index) => {
@@ -211,9 +209,8 @@ const Header = () => {
             >
               Digital Marketing
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                  activeDropdown === "digital" ? "rotate-180 text-teal-600" : ""
-                }`}
+                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "digital" ? "rotate-180 text-teal-600" : ""
+                  }`}
               />
             </span>
 
@@ -237,9 +234,8 @@ const Header = () => {
             >
               Design
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                  activeDropdown === "design" ? "rotate-180 text-teal-600" : ""
-                }`}
+                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "design" ? "rotate-180 text-teal-600" : ""
+                  }`}
               />
             </span>
 
@@ -263,9 +259,8 @@ const Header = () => {
             >
               Development
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                  activeDropdown === "development" ? "rotate-180 text-teal-600" : ""
-                }`}
+                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "development" ? "rotate-180 text-teal-600" : ""
+                  }`}
               />
             </span>
 

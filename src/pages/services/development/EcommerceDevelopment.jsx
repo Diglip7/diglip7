@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/e-comd1.jpeg";
 
 // Mock images - replace with your actual images
@@ -333,6 +334,62 @@ const faqs = [
   },
 ];
 
+const ecommerceDevSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "E-Commerce Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers full-service e-commerce development including custom online store builds, payment gateway integration, product catalog and inventory management, responsive design, and post-launch maintenance and support.",
+    "url": "https://diglip7.com/development/e-commerce-development",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "E-Commerce Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic E-Commerce Development Package" },
+          "price": "1299",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro E-Commerce Development Package" },
+          "price": "2499",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium E-Commerce Development Package" },
+          "price": "4999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 // 3D Card Component
 const Card3D = ({ children, className }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -526,6 +583,15 @@ function E_commerce_dev() {
 
   return (
     <div className="bg-white">
+      <SEO
+        title="E-Commerce Development Services | DigLip7"
+        description="Launch a secure, scalable online store with DigLip7's e-commerce development — custom builds, payment integration, inventory & ongoing support."
+        canonical="https://diglip7.com/development/e-commerce-development"
+        ogImage="https://diglip7.com/assets/e-comd1-C_uEfg3C.jpeg"
+        ogType="website"
+        keywords="e-commerce development services, online store development, custom ecommerce website, WooCommerce Shopify Magento development, payment gateway integration, DigLip7"
+        schema={ecommerceDevSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -544,17 +610,14 @@ function E_commerce_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Grow Your Business</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">E-Commerce Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                with E-commerce Services
+                That Build High-Performing Online Stores
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span>,expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.
+              Launch a secure, scalable online store with <span className="font-semibold text-blue-700">DigLip7</span>'s e-commerce development services. From custom builds and payment gateway integration to inventory management and ongoing maintenance, we create shopping experiences that convert.
             </p>
 
             {/* Features */}

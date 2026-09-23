@@ -65,6 +65,47 @@ const faqs = [
       "SEO improves your website’s visibility on search engines, driving organic traffic and increasing your chances of reaching customers."
   }
 ];
+
+const aboutSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DigLip7",
+    "url": "https://diglip7.com",
+    "logo": "https://diglip7.com/favicon-32x32.png",
+    "foundingDate": "2018",
+    "founder": {
+      "@type": "Person",
+      "name": "Sarah Chen"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "A-55, A Block, Sector-2",
+      "addressLocality": "Noida",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9650608788",
+      "email": "hello@diglip7.com",
+      "contactType": "customer service"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 function About() {
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -151,7 +192,6 @@ function About() {
       desc: "Gulshan Kumar is a Python Fullstack Developer with 1 year of experience. He specializes in developing web applications, working with both frontend and backend technologies, and building efficient, scalable solutions. He is passionate about clean code, problem-solving, and contributing to impactful software projects.",
       tags: ["Paid Media", "Analytics", "Automation"],
     },
-   
     {
       name: "Ankit Tyagi",
       role: "Fullstack Developer | 1 Years Experience",
@@ -217,10 +257,13 @@ function About() {
   return (
     <div className=" bg-white lg:pt-20">
       <SEO
-        title="About Us – Expert Digital Growth & Technology Team"
-        description="Learn about DigLip7 Technologies – our mission, story, and expert full-stack digital marketing and engineering team driving growth for 250+ clients."
+        title="About DigLip7 | Digital Marketing Agency"
+        description="Founded in 2016, DigLip7 has grown into a full-service digital marketing agency serving 250+ businesses worldwide. Meet our team and our story."
         canonical="https://diglip7.com/about"
-        keywords="about DigLip7, digital marketing team, SEO agency story, software engineering Noida, digital growth consultants"
+        ogImage="https://diglip7.com/assets/about001-B_716R_d.jpeg"
+        ogType="website"
+        keywords="about DigLip7, digital marketing agency, digital marketing team, SEO agency story, Noida digital agency, Sarah Chen DigLip7"
+        schema={aboutSchemas}
       />
       <section className="relative bg-gradient-to-r from-purple-100 via-pink-100 to-white py-16 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
 
@@ -237,10 +280,12 @@ function About() {
           </span>
 
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-            About DigLip7 <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Where Strategy Meets Creativity</span>
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            About DigLip7 —{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+              Where Strategy Meets Creativity
+            </span>
+          </h1>
 
           {/* Paragraph */}
           <p className="text-lg text-gray-900">

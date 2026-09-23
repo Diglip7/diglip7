@@ -36,6 +36,44 @@ import {
   ExternalLink,
 } from "lucide-react";
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://diglip7.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Terms & Conditions",
+      "item": "https://diglip7.com/terms-and-conditions"
+    }
+  ]
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://diglip7.com/terms-and-conditions#webpage",
+  "url": "https://diglip7.com/terms-and-conditions",
+  "name": "Terms & Conditions | DigLip7 Tech",
+  "description": "Terms & Conditions governing use of the DigLip7 Tech website and its digital marketing, web development, and design services.",
+  "isPartOf": {
+    "@id": "https://diglip7.com/#website"
+  },
+  "about": {
+    "@id": "https://diglip7.com/#organization"
+  },
+  "dateModified": "2026-09-17",
+  "inLanguage": "en-IN"
+};
+
+const termsSchemas = [breadcrumbSchema, webPageSchema];
+
 const TermsConditions = () => {
   const [activeSection, setActiveSection] = useState("who-these-terms-apply-to");
   const [searchQuery, setSearchQuery] = useState("");
@@ -193,10 +231,13 @@ const TermsConditions = () => {
   return (
     <div className="w-full bg-slate-50 min-h-screen pt-24 pb-20 font-sans text-slate-800">
       <SEO
-        title="Terms & Conditions – Service Agreement & Commercial Terms"
-        description="Official Terms and Conditions for DigLip7 Technologies digital marketing, SEO, ORM, and web development services."
+        title="Terms & Conditions | DigLip7 Tech"
+        description="Terms & Conditions governing use of the DigLip7 Tech website and its digital marketing, web development, and design services."
         canonical="https://diglip7.com/terms-and-conditions"
-        keywords="DigLip7 terms and conditions, service agreement, digital marketing terms"
+        ogType="website"
+        ogImage="https://diglip7.com/favicon-32x32.png"
+        keywords="Terms & Conditions, DigLip7 terms, service agreement, commercial terms, digital marketing terms"
+        schema={termsSchemas}
       />
       {/* ================= HERO SECTION ================= */}
       <section className="relative overflow-hidden bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-950 text-white py-16 sm:py-20 px-6 sm:px-10 lg:px-20 border-b border-teal-800">

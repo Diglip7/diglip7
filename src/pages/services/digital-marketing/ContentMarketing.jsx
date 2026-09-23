@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -523,8 +524,75 @@ function ContentMarketing() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Content Marketing Service, Offer Catalog, and FAQs
+  const cmSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Content Marketing",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service content marketing including strategy development, blog and article writing, video content, eBooks and whitepapers, infographics, and email newsletters to build brand authority and drive organic growth.",
+      url: "https://diglip7.com/digital-market/content-marketing",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Content Marketing Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic Content Marketing Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro Content Marketing Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium Content Marketing Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className=" w-full bg-white ">
+      <SEO
+        title="Content Marketing Services That Drive Real Growth | DigLip7"
+        description="Build authority, attract organic traffic, and convert readers into customers with DigLip7's strategic content marketing — blogs, video, email & more."
+        canonical="https://diglip7.com/digital-market/content-marketing"
+        ogImage="https://diglip7.com/assets/cm00-lx_0-qyJ.jpeg"
+        ogType="website"
+        keywords="content marketing services, content strategy, blog writing, video marketing, email newsletters, copy creation, DigLip7"
+        schema={cmSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -544,14 +612,10 @@ function ContentMarketing() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Grow Your Business</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Content Marketing Services That </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                with Sco Services
+                Drive Growth Through Strategic Storytelling
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">DigLip7</span>,expert team builds web solutions that combine performance, security, and stunning design—perfectly aligned with your brand and business goals.

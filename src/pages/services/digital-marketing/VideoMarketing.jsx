@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -518,8 +519,75 @@ function Video_market() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for Video Marketing Service, Offer Catalog, and FAQs
+  const videoSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Video Marketing",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service video marketing including strategy development, scriptwriting, professional production, animation, and multi-platform distribution across YouTube, social media, and paid video ad campaigns.",
+      url: "https://diglip7.com/digital-market/video-marketing",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Video Marketing Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic Video Marketing Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro Video Marketing Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium Video Marketing Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
+
   return (
     <div className="overflow-x-hidden bg-white sm:pt-18">
+      <SEO
+        title="Video Marketing Services That Drive Engagement | DigLip7"
+        description="Grow your brand with DigLip7's video marketing — strategy, production, editing & distribution across YouTube, social, and ad platforms that convert."
+        canonical="https://diglip7.com/digital-market/video-marketing"
+        ogImage="https://diglip7.com/assets/vm003-CGKwYU_Y.jpeg"
+        ogType="website"
+        keywords="video marketing services, video production, YouTube video SEO, social media video ads, explainer video production, DigLip7"
+        schema={videoSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -538,19 +606,13 @@ function Video_market() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900"> Professional Video Marketing Services </span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Professional Video Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Boost Your Brand
-
+                That Boost Engagement and Brand Growth
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
               Elevate your brand with<span className="font-semibold text-blue-700">DigLip7</span> video marketing services. From creative video production to targeted campaigns, we help businesses increase engagement, drive traffic, and achieve measurable ROI with impactful, results-driven video strategies.
-
             </p>
 
             {/* Features */}
@@ -568,17 +630,14 @@ function Video_market() {
                         </button> */}
               <a href="/contact">
                 <motion.button
-
                   className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 

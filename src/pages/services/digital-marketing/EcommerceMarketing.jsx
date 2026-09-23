@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../../../components/SEO";
 import {
   TrendingUp,
   BarChart3,
@@ -589,9 +590,75 @@ function E_commerce() {
 
   const testimonial = testimonials[index];
 
+  // Dynamically generate schemas for E-Commerce Marketing Service, Offer Catalog, and FAQs
+  const ecommerceSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "E-Commerce Marketing",
+      provider: {
+        "@type": "Organization",
+        name: "DigLip7",
+        url: "https://diglip7.com",
+        logo: "https://diglip7.com/favicon-32x32.png",
+      },
+      areaServed: "Worldwide",
+      description:
+        "DigLip7 offers full-service e-commerce marketing including store optimization, product feed management, paid advertising (Google, Meta, TikTok), email and SMS automation, and conversion rate optimization for online stores.",
+      url: "https://diglip7.com/digital-market/e-commerce-marketing",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "E-Commerce Marketing Packages",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Basic E-Commerce Package" },
+            price: "799",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Pro E-Commerce Package" },
+            price: "1499",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Premium E-Commerce Package" },
+            price: "2999",
+            priceCurrency: "USD",
+            priceSpecification: { "@type": "UnitPriceSpecification", billingDuration: "P1M" },
+          },
+        ],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+    },
+  ];
 
   return (
     <div className="overflow-x-hidden bg-white  w-full ">
+      <SEO
+        title="E-Commerce Marketing Services That Drive Sales | DigLip7"
+        description="Grow your online store with DigLip7's e-commerce marketing — SEO, paid ads, email/SMS automation & CRO built to increase traffic and conversions."
+        canonical="https://diglip7.com/digital-market/e-commerce-marketing"
+        ogImage="https://diglip7.com/assets/e-com00-CDcSddQ2.jpeg"
+        ogType="website"
+        keywords="e-commerce marketing, ecommerce SEO, online store advertising, Shopify marketing, WooCommerce marketing, product feed management, DigLip7"
+        schema={ecommerceSchemas}
+      />
       {/* Hero Section with Parallax */}
 
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
@@ -611,14 +678,10 @@ function E_commerce() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Proven E-Commerce Strategies
-              </span>
-
-
+              <span className="text-gray-900">Proven E-Commerce Marketing Strategies </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                That Drive Business Growth
+                That Drive Sales and Business Growth
               </span>
-              <br />
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">DigLip7</span>

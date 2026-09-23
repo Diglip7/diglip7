@@ -469,7 +469,6 @@ function Home() {
       {/* Google Tag Manager (noscript) */}
       <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3KHW2JJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
       {/* End Google Tag Manager (noscript) */}
-      {/* Hero Section */}
 
       {/* Hero Section */}
       <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-white">

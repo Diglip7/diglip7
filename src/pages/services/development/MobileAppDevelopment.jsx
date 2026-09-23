@@ -23,6 +23,7 @@ import {
 
   PlayCircle, BarChart, Settings, FileText, Quote
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/mad005.jpeg";
 import seoImage from "../../../images/mob1.png";
 import seo4 from "../../../images/mob2.png";
@@ -333,6 +334,62 @@ const faqs = [
   },
 ];
 
+const mobileAppSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Mobile App Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "DigLip7",
+      "url": "https://diglip7.com",
+      "logo": "https://diglip7.com/assets/logo.png"
+    },
+    "areaServed": "Worldwide",
+    "description": "DigLip7 offers end-to-end mobile app development including iOS, Android, cross-platform, and hybrid app development, UI/UX app design, app store optimization, and ongoing maintenance and support.",
+    "url": "https://diglip7.com/development/mobile-app-development",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Mobile App Development Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Basic Mobile App Development Package" },
+          "price": "1299",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Pro Mobile App Development Package" },
+          "price": "2499",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": "Premium Mobile App Development Package" },
+          "price": "4999",
+          "priceCurrency": "USD",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+];
+
 // 3D Card Component
 const Card3D = ({ children, className }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -526,6 +583,15 @@ function Mobile_app_dev() {
 
   return (
     <div className="bg-white w-full">
+      <SEO
+        title="Mobile App Development Services | DigLip7"
+        description="Launch a high-performing iOS, Android, or cross-platform app with DigLip7's mobile app development services — design, build, launch, and support."
+        canonical="https://diglip7.com/development/mobile-app-development"
+        ogImage="https://diglip7.com/assets/mad005-BxXWGQTy.jpeg"
+        ogType="website"
+        keywords="mobile app development services, iOS app development, Android app development, cross-platform apps, Flutter React Native apps, mobile app design, DigLip7"
+        schema={mobileAppSchemas}
+      />
       {/* Hero Section with Parallax */}
       <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
@@ -544,19 +610,14 @@ function Mobile_app_dev() {
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Expert Mobile App Development Services</span>
-              <br className="text-gray-600" />
-
+              <span className="text-gray-900">Expert Mobile App Development Services </span>
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                to Boost Engagement & Growth
-
+                That Boost Engagement and Growth
               </span>
-              <br />
-
             </h1>
             <p className="text-gray-700 mb-6">
-              Transform your business with<span className="font-semibold text-blue-700">DigLip7</span>mobile app development services. From iOS and Android apps to cross-platform solutions, we create engaging, user-friendly, and feature-rich apps that enhance customer experience, drive retention, and deliver measurable business growth.
-
+              Transform your business with <span className="font-semibold text-blue-700">DigLip7</span> mobile app development services. From iOS and Android apps to cross-platform solutions, we create engaging, user-friendly, and feature-rich apps that enhance customer experience, drive retention, and deliver measurable business growth.
             </p>
 
             {/* Features */}
