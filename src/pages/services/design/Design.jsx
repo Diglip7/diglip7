@@ -129,7 +129,7 @@ const ourDesignServices = [
       "Every page is designed to answer a visitor's questions and lead them toward action, whether that is calling, booking, requesting a quote, or buying.",
     ],
     linkText: "Explore our web design service",
-    linkUrl: "/services/design/web-design",
+    linkUrl: "/development/web-development",
     icon: Globe,
   },
   {
@@ -142,19 +142,19 @@ const ourDesignServices = [
       "The result is a website or app that feels natural, even to first-time visitors.",
     ],
     linkText: "Learn about UI and UX design",
-    linkUrl: "/services/design/ui-ux",
+    linkUrl: "/design/UI-UX",
     icon: Layout,
   },
   {
     title: "Landing Page Design That Turns Clicks Into Leads",
     description:
-      "A landing page has one job. We design them with a single, clear message, persuasive but honest copy areas, trust signals such as testimonials and guarantees, and forms that are short and simple.",
+      "A landing page has one job. We design them with a single, clear message, persuasive but honest copy areas, trust signals such as testimonials and guarantees, and forms that are short and simple. We also align them with PPC advertising campaigns for maximum return.",
     bullets: [
       "Because a landing page often receives paid traffic, small design improvements can lower your cost per lead noticeably.",
       "We also build pages so they can be tested and refined over time.",
     ],
-    linkText: "See our landing page design",
-    linkUrl: "/services/design/landing-page-design",
+    linkText: "See our landing page design & PPC services",
+    linkUrl: "/digital-market/PPC-Advertising",
     icon: MousePointerClick,
   },
   {
@@ -166,8 +166,8 @@ const ourDesignServices = [
       "Then we create a logo and identity system that is distinctive, flexible across sizes and platforms, and built to last.",
       "You receive clear guidelines so anyone on your team can use the brand correctly.",
     ],
-    linkText: "Discover our branding service",
-    linkUrl: "/services/design/logo-branding",
+    linkText: "Discover our branding & graphic design",
+    linkUrl: "/design/graphic-design",
     icon: Palette,
   },
   {
@@ -178,7 +178,7 @@ const ourDesignServices = [
       "We prepare files correctly for both digital and print use, so you avoid blurry images, wrong colors, and last-minute surprises at the printer.",
     ],
     linkText: "View our graphic design work",
-    linkUrl: "/services/design/graphic-design",
+    linkUrl: "/design/graphic-design",
     icon: PenTool,
   },
   {
@@ -188,8 +188,8 @@ const ourDesignServices = [
     bullets: [
       "We also create variations for testing, because the best-performing visual is often not the one anyone expected.",
     ],
-    linkText: "Explore social media design",
-    linkUrl: "/services/design/social-media-creative",
+    linkText: "Explore social media marketing & design",
+    linkUrl: "/digital-market/social-media-marketing",
     icon: Sparkles,
   },
   {
@@ -199,22 +199,22 @@ const ourDesignServices = [
     bullets: [
       "On mobile, every tap counts, so we test the full purchase path on real devices.",
     ],
-    linkText: "See our e-commerce design service",
-    linkUrl: "/services/design/ecommerce-design",
+    linkText: "See our e-commerce design & marketing",
+    linkUrl: "/digital-market/e-commerce-marketing",
     icon: ShoppingCart,
   },
   {
     title: "Design for SEO and Accessibility",
     description:
-      "We treat these as part of good design rather than extras.",
+      "We treat these as part of good design rather than extras. Combined with our proven SEO services and digital marketing strategies, your brand gains sustainable organic reach.",
     bullets: [
       "Logical heading structure and readable font sizes.",
       "Sufficient color contrast and descriptive image alt text.",
       "Keyboard-friendly navigation and compressed images that load quickly.",
       "These choices help more people use your site and give search engines a clear, well-organized page to understand.",
     ],
-    linkText: "Learn more about our accessible design",
-    linkUrl: "/contact",
+    linkText: "Explore our SEO services",
+    linkUrl: "/digital-market/seoservices",
     icon: Eye,
   },
 ];
@@ -500,63 +500,181 @@ function Design() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Structured Data Schema for Design Services
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Design Services | UI/UX, Web & Branding",
-    provider: {
-      "@type": "Organization",
-      name: "DigLip7",
-      url: "https://diglip7.com",
-    },
-    description:
-      "Professional design service creating high-converting websites, UI/UX, logos, brand identities, graphics, and app interfaces that turn brands into trusted market leaders.",
-    areaServed: "Global",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Design Services",
-      itemListElement: [
+  // Structured Data Schema Graph for Design Services
+  const designSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
         {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Web Design",
+          "@type": "Organization",
+          "@id": "https://diglip7.com/#organization",
+          "name": "DigLip7",
+          "legalName": "DigLip7 Tech Private Limited",
+          "url": "https://diglip7.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://diglip7.com/favicon-32x32.png",
+            "width": 512,
+            "height": 512
           },
+          "description": "DigLip7 is a digital agency offering design, SEO, PPC, social media marketing and content marketing services.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+91-9650608788",
+            "email": "Admin@diglip7.com",
+            "availableLanguage": ["English"]
+          },
+          "sameAs": [
+            "https://www.facebook.com/DigLip7/",
+            "https://www.instagram.com/diglip7",
+            "https://www.linkedin.com/company/diglip7",
+            "https://twitter.com/diglip7",
+            "https://www.youtube.com/@diglip7"
+          ]
         },
         {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "UI/UX Design",
-          },
+          "@type": "WebSite",
+          "@id": "https://diglip7.com/#website",
+          "url": "https://diglip7.com/",
+          "name": "DigLip7",
+          "publisher": { "@id": "https://diglip7.com/#organization" },
+          "inLanguage": "en"
         },
         {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Branding & Logo Design",
+          "@type": "WebPage",
+          "@id": "https://diglip7.com/design#webpage",
+          "url": "https://diglip7.com/design",
+          "name": "Design Service | Web, Brand & UI/UX Design | DigLip7",
+          "description": "Need a design service that drives results? DigLip7 offers web, UI/UX, branding and graphic design. Original work, clear process. Get a free consultation.",
+          "isPartOf": { "@id": "https://diglip7.com/#website" },
+          "about": { "@id": "https://diglip7.com/design#service" },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://diglip7.com/images/design-service-og.jpg"
           },
+          "breadcrumb": { "@id": "https://diglip7.com/design#breadcrumb" },
+          "inLanguage": "en",
+          "datePublished": "2026-09-24",
+          "dateModified": "2026-09-24"
         },
         {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "E-Commerce & Landing Page Design",
-          },
+          "@type": "BreadcrumbList",
+          "@id": "https://diglip7.com/design#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://diglip7.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Design Service",
+              "item": "https://diglip7.com/design"
+            }
+          ]
         },
-      ],
-    },
-  };
+        {
+          "@type": "Service",
+          "@id": "https://diglip7.com/design#service",
+          "name": "Design Service",
+          "serviceType": "Web and Graphic Design",
+          "description": "Professional design services including web design, UI/UX design, landing page design, logo and brand identity design, graphic design, social media creative and e-commerce design.",
+          "provider": { "@id": "https://diglip7.com/#organization" },
+          "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
+          "url": "https://diglip7.com/design",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Design Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Web Design",
+                  "description": "Mobile-first, fast and conversion-focused website design."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "UI and UX Design",
+                  "description": "User research, wireframes, prototypes and interface design for websites and apps."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Landing Page Design",
+                  "description": "Focused landing pages designed to turn visitors into leads or customers."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Logo and Brand Identity Design",
+                  "description": "Logos, color and typography systems, and brand guidelines."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Graphic Design",
+                  "description": "Print and digital marketing materials, presentations and packaging."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Social Media and Ad Creative",
+                  "description": "Post templates, carousels, stories and ad creatives."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "E-Commerce Design",
+                  "description": "Product page, category and checkout design for online stores."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://diglip7.com/design#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        }
+      ]
+    }
+  ];
 
   return (
     <div className="overflow-x-hidden pt-18 sm:pt-18 bg-white text-gray-800">
       <SEO
-        title="Design Service That Turns Your Brand Into Something People Remember and Trust"
-        description="Professional design services by DigLip7: Web design, UI/UX, logos, branding, graphics, and landing pages that build trust, engage users, and drive high conversions."
-        keywords="design services, UI UX design agency, web design service, brand identity design, logo design company, landing page design, ecommerce design, graphic design"
-        canonical="https://diglip7.com/services/design"
-        schema={schema}
+        title="Design Service | Web, Brand & UI/UX Design | DigLip7"
+        description="Need a design service that drives results? DigLip7 offers web, UI/UX, branding and graphic design. Original work, clear process. Get a free consultation."
+        keywords="Design service, design services, web design service, UI/UX design, logo and brand identity design, graphic design, landing page design, e-commerce design, social media design, creative design agency, responsive web design, DigLip7"
+        canonical="https://diglip7.com/design"
+        ogImage="https://diglip7.com/images/design-service-og.jpg"
+        ogImageAlt="DigLip7 design service: web design, branding, UI/UX and graphic design"
+        ogType="website"
+        schema={designSchemas}
       />
 
       {/* Hero Section */}
@@ -632,7 +750,7 @@ function Design() {
           <div className="p-6 inset-0 w-full h-full">
             <img
               src={seo2}
-              alt="Design Services by DigLip7"
+              alt="Design service team reviewing a website layout"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0"></div>
@@ -678,7 +796,7 @@ function Design() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src={seoImage}
-                  alt="What Is a Design Service"
+                  alt="Responsive web design shown on desktop and mobile"
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20"></div>
@@ -840,7 +958,7 @@ function Design() {
               <div className="relative">
                 <img
                   src={seo4}
-                  alt="Why Design Matters"
+                  alt="Brochure, business card and packaging design mockups"
                   className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-[#c89d5a]/20 rounded-2xl"></div>
@@ -931,7 +1049,7 @@ function Design() {
               <div className="relative">
                 <img
                   src={aboutImg}
-                  alt="How Design and SEO Work Together"
+                  alt="Seven-step design process infographic"
                   className="rounded-2xl shadow-xl w-full h-80 lg:h-[480px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20 rounded-2xl"></div>
@@ -956,7 +1074,7 @@ function Design() {
                 </h2>
               </FloatingElement>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-                Many businesses treat design and SEO as separate projects, then wonder why a beautiful website does not rank. The two are closely connected.
+                Many businesses treat design and <a href="/digital-market/seoservices" className="text-teal-700 underline font-semibold hover:text-teal-900">SEO services</a> as separate projects, then wonder why a beautiful website does not rank. As part of our comprehensive <a href="/digital-market" className="text-teal-700 underline font-semibold hover:text-teal-900">digital marketing services</a>, the two are closely connected.
               </p>
               <ul className="space-y-2 text-sm text-gray-600 mb-4">
                 <li className="flex items-start gap-2">
@@ -1299,97 +1417,6 @@ function Design() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Section 13: Final CTA Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden text-white">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 border border-white/20 rounded-full"
-              style={{
-                left: `${(i * 7.3) % 100}%`,
-                top: `${(i * 6.5) % 100}%`,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">
-                Ready to Upgrade Your{" "}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
-                  Design Service Experience?
-                </span>
-              </h2>
-            </FloatingElement>
-            <p className="text-base sm:text-lg text-white/95 mb-4 max-w-2xl mx-auto">
-              Your customers are forming an impression of your business right now, and design is a big part of it. If that impression does not match the quality of what you offer, it is worth fixing.
-            </p>
-            <p className="text-sm sm:text-base text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Tell us about your business and goals. We will review your current website or brand, share honest recommendations, and suggest the most useful next step, whether or not we end up working together.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/contact">
-                <motion.button
-                  className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base cursor-pointer"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Request Your Free Design Consultation
-                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.button>
-              </a>
-              <a href="/contact">
-                <motion.button
-                  className="px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full shadow-md hover:bg-white/10 transition-all duration-300 text-sm sm:text-base cursor-pointer"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Schedule a Call
-                </motion.button>
-              </a>
-            </div>
-
-            <motion.div
-              className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/90"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">Free Design Audit</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">No Long-term Contracts</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">Original Custom Work</span>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
     </div>

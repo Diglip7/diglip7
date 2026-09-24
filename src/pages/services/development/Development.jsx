@@ -4,7 +4,10 @@ import {
   TrendingUp,
   BarChart3,
   Search,
-  Handshake, DollarSign, RefreshCw, Eye,
+  Handshake,
+  DollarSign,
+  RefreshCw,
+  Eye,
   ShoppingCart,
   Building2,
   MapPin,
@@ -20,190 +23,396 @@ import {
   Users,
   Award,
   ChevronDown,
-
-  PlayCircle, BarChart, Settings, FileText, Quote
+  Code2,
+  Layers,
+  Layout,
+  Smartphone,
+  Shield,
+  FileCheck,
+  Compass,
+  Cpu,
+  MousePointerClick,
+  Sparkle,
+  Server,
+  Database,
+  Lock,
+  Wrench,
 } from "lucide-react";
+import SEO from "../../../components/SEO";
 import seo2 from "../../../images/pd1.png";
+import webd1 from "../../../images/webd1.png";
+import webd2 from "../../../images/webd2.png";
+import webd3 from "../../../images/webd3.png";
 
-// Mock images - replace with your actual images
-const seoImage =
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
-// const seo2 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop";
-const seo4 =
-  "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=600&fit=crop";
-const aboutImg =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop";
-
-const advantages = [
+// What a Development Service Includes
+const devServiceIncludes = [
   {
-    title: "Discovery & Briefing",
-    description:
-      "We dive into your brand, goals, and audience, gathering insights through discussions to shape your visual branding vision.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Concept & Sketching",
-    description:
-      "Our team brainstorms and sketches initial ideas, sharing rough drafts to align with your expectations early in the process.",
-    icon: BarChart3,
-  },
-  {
-    title: "Design & Revisions",
-    description:
-      "We craft polished designs with colors, typography, and layouts that reflect your brand, offering revisions to perfect every element.",
-    icon: Search,
-  },
-  {
-    title: "Final Delivery",
-    description:
-      "Once approved, we deliver files in formats like PNG, JPEG, PDF, and vector, optimized for print and digital media, ready for use.",
-    icon: Handshake,
-  },
-];
-
-const solutions = [
-  {
-    title: "E-commerce",
-    description:
-      "Vibrant product images, banners, and packaging that boost online sales and customer loyalty.",
-    icon: ShoppingCart,
-    points: [
-      "UI/UX Product Pages: Keywords, descriptions, and CTAs.",
-      "Improving Category Listings: Better search engine hierarchy.",
-      "Enhancing User Experience: Fast, mobile-friendly design.",
-    ],
-  },
-  {
-    title: "Health & Fitness",
-    description:
-      "Motivational graphics, app mockups, and posters that inspire wellness and engagement.",
-    icon: Building2,
-    points: [
-      "Advanced Keyword Strategies: In-depth research and optimization.",
-      "Improving Crawlability: Technical SEO for efficient indexing.",
-      "Scalable Solutions: Systems that grow with your business.",
-    ],
-  },
-  {
-    title: "Real Estate",
-    description:
-      "Professional brochures and digital ads that showcase properties and attract buyers.",
-    icon: MapPin,
-    points: [
-      "Design Business Profile: Easy discovery for locals.",
-      "Enhance Local Listings: Consistent NAP and citations.",
-      "Targeted Content Strategies: Engage your local audience.",
-    ],
-  },
-  {
-    title: "Startups",
-    description: "Memorable logos and marketing materials to build a strong brand identity from the start.",
-    icon: Link2,
-    points: [
-      "Data-Driven Outreach: AI-targeted high-authority sites.",
-      "Strategic Content Placement: Earn natural links.",
-      "Boosting Domain Authority: Improve rankings and trust.",
-    ],
-  },
-  {
-    title: "Coaches & Consultants",
-    description:
-      "Sleek decks and business cards that convey expertise and foster trust.",
-    icon: HelpCircle,
-    points: [
-      "Optimize Content Structure: Snippet-friendly formatting.",
-      "FAQ & Structured Data: Boost zero-click search chances.",
-      "Improve Visibility: Stand out in voice and AI searches.",
-    ],
-  },
-  {
-    title: "Education",
-    description:
-      "Engaging infographics and posters that simplify learning and captivate students.",
-    icon: Mic,
-    points: [
-      "Natural Language Processing: Conversational queries.",
-      "Content Reformatting: Long-tail, question-based content.",
-      "Voice Assistant Compatibility: Optimized for Siri, Alexa.",
-    ],
-  },
-];
-
-const steps = [
-  {
-    number: "1",
-    title: "Logo Design",
-    description:
-      "We create distinctive logos that define your brand identity, versatile for both digital and print use.",
-    icon: Target,
-  },
-  {
-    number: "2",
-    title: "Social Media Graphics",
-    description:
-      " Eye-catching posts, stories, and ads designed to boost your online presence and engage followers.",
-    icon: Search,
-  },
-  {
-    number: "3",
-    title: "Brochures & Flyers",
-    description:
-      "Professional marketing materials that communicate clearly, driving action for promotions or events.",
-    icon: Zap,
-  },
-  {
-    number: "4",
-    title: "Posters & Banners",
-    description:
-      "Bold designs for storefronts, trade shows, or campaigns, grab attention wherever they’re displayed.",
+    title: "Website development",
+    description: "Business sites, landing pages, and content-driven websites.",
     icon: Globe,
   },
   {
-    number: "5",
-    title: "Infographics",
-    description:
-      "Data-driven visuals that simplify information, are ideal for reports, blogs, or social media.",
-    icon: BarChart3,
+    title: "Web application development",
+    description: "Portals, dashboards, booking systems, and tools that run in the browser.",
+    icon: Layout,
   },
   {
-    number: "6",
-    title: "Website & App UI Mockups",
-    description:
-      "Stunning digital design layouts that enhance user experience and align with your brand.",
-    icon: Award,
+    title: "Mobile app development",
+    description: "Apps for iOS and Android, either native or cross-platform.",
+    icon: Smartphone,
+  },
+  {
+    title: "E-commerce development",
+    description: "Online stores, payment integration, inventory, and order management.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "CMS development",
+    description: "Content management systems your team can update without writing code.",
+    icon: Layers,
+  },
+  {
+    title: "Custom software development",
+    description: "Systems built around your specific workflow, such as CRMs, internal tools, and automation.",
+    icon: Code2,
+  },
+  {
+    title: "API and third-party integration",
+    description: "Connecting your software to payment gateways, CRMs, ERPs, email platforms, and other services.",
+    icon: Link2,
+  },
+  {
+    title: "Maintenance and support",
+    description: "Updates, security patches, backups, monitoring, and bug fixes.",
+    icon: Wrench,
   },
 ];
 
+// Why Choosing the Right Development Service Matters
+const whyDevMatters = [
+  {
+    title: "Speed affects revenue",
+    description:
+      "Slow pages lose visitors. People leave sites that take too long to load, and search engines take notice of that behavior.",
+    icon: Zap,
+  },
+  {
+    title: "Security protects trust",
+    description:
+      "Customer data, payments, and logins must be handled carefully. A single breach can cost far more than the project itself.",
+    icon: Shield,
+  },
+  {
+    title: "Scalability saves money later",
+    description:
+      "Software built without planning for growth often has to be replaced when the business succeeds. Building it well from the start avoids that.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Search visibility depends on how a site is built",
+    description:
+      "Search engines need to read your content. If your pages depend heavily on scripts to show their main text, or if the structure is messy, rankings can suffer even when the content is excellent.",
+    icon: Search,
+  },
+  {
+    title: "Maintainability keeps you independent",
+    description:
+      "Clean, documented code lets you or any competent developer continue the work. Poorly written code traps you with whoever wrote it.",
+    icon: FileCheck,
+  },
+];
+
+// Our Development Services (Cards)
+const ourDevelopmentServices = [
+  {
+    title: "Website Development",
+    paragraphs: [
+      "Your website should be fast, secure, mobile-friendly, and easy to manage. We build sites that follow modern standards for performance and accessibility, with clean code and well-organized page structure.",
+      "We pay close attention to how each page loads, how it behaves on small screens, and how it appears to search engines. Where it makes sense, we render key content on the server so it is available immediately to both visitors and crawlers.",
+    ],
+    linkText: "Explore our website development",
+    linkUrl: "/development/web-development",
+    icon: Globe,
+  },
+  {
+    title: "Web Application Development",
+    paragraphs: [
+      "When your business needs more than a brochure site, a web application can automate work, serve customers, and centralize data. We build customer portals, booking and scheduling systems, admin dashboards, marketplaces, and internal tools.",
+      "We start by mapping your workflow and identifying what to include first. That lets us launch a useful version quickly and expand it based on real feedback instead of guesses.",
+    ],
+    linkText: "See our web application development",
+    linkUrl: "/development/cloud-application-development",
+    icon: Layout,
+  },
+  {
+    title: "Mobile App Development",
+    paragraphs: [
+      "Apps live on a very personal device, so expectations are high. We build mobile apps that feel smooth, load quickly, and respect battery and data use. Depending on your goals and budget, we can recommend native development for maximum performance or cross-platform development to reach both iOS and Android from a shared codebase.",
+      "We also plan for app store requirements, testing on real devices, and post-launch updates.",
+    ],
+    linkText: "Learn about mobile app development",
+    linkUrl: "/development/mobile-app-development",
+    icon: Smartphone,
+  },
+  {
+    title: "E-Commerce Development",
+    paragraphs: [
+      "Online stores need to do many things well at once: display products clearly, calculate prices and taxes, process payments securely, manage stock, and handle orders and returns. We build and customize stores on established platforms as well as fully custom solutions.",
+      "We focus on the buying journey, so checkout is simple, pages load quickly, and product information is structured in a way that supports search visibility.",
+    ],
+    linkText: "Discover our e-commerce development",
+    linkUrl: "/development/e-commerce-development",
+    icon: ShoppingCart,
+  },
+  {
+    title: "CMS and WordPress Development",
+    paragraphs: [
+      "If your team publishes content regularly, you need a system that makes editing easy. We set up and customize content management systems so non-technical staff can update pages, publish posts, and manage media without breaking the layout.",
+      "We build custom themes and plugins only when needed, and we avoid heavy add-ons that slow a site down.",
+    ],
+    linkText: "See our CMS development",
+    linkUrl: "/development/cms-development",
+    icon: Layers,
+  },
+  {
+    title: "Custom Software Development",
+    paragraphs: [
+      "Sometimes off-the-shelf tools cannot match how your business operates. Custom software fits your process exactly, whether that means a client management system, an inventory tool, a reporting dashboard, or an automation that removes repetitive manual work.",
+      "We begin with a discovery phase to define requirements, users, and priorities, then build in stages so you can see and test progress regularly.",
+    ],
+    linkText: "Explore custom software development",
+    linkUrl: "/development/custom-software_development",
+    icon: Code2,
+  },
+  {
+    title: "API and Third-Party Integration",
+    paragraphs: [
+      "Most businesses use several tools that should talk to each other. We connect your website or app with payment gateways, CRM platforms, accounting software, email tools, analytics, and shipping providers. Good integrations reduce manual entry, prevent errors, and give you a single view of your data.",
+    ],
+    linkText: "Learn about API integration",
+    linkUrl: "/development/api-development&Integration",
+    icon: Link2,
+  },
+  {
+    title: "Website Maintenance and Support",
+    paragraphs: [
+      "Launching is not the finish line. Software needs updates, security patches, backups, and monitoring. Our maintenance plans keep your site or application healthy, fast, and secure, and give you a reliable team to call when something needs attention.",
+    ],
+    linkText: "See our maintenance and support plans",
+    linkUrl: "/contact",
+    icon: Wrench,
+  },
+];
+
+// 7-Step Development Process
+const devProcessSteps = [
+  {
+    number: "01",
+    title: "Discovery",
+    description:
+      "We learn about your business, users, goals, budget, and any existing systems. We ask questions until the requirements are clear.",
+    icon: Compass,
+  },
+  {
+    number: "02",
+    title: "Planning and scoping",
+    description:
+      "We define features, priorities, and a realistic timeline. Large projects are divided into phases so you can launch sooner and improve continuously.",
+    icon: Target,
+  },
+  {
+    number: "03",
+    title: "Design and prototyping",
+    description:
+      "We create wireframes and interface designs, so you can see and approve how the product will work before development begins.",
+    icon: Layout,
+  },
+  {
+    number: "04",
+    title: "Development",
+    description:
+      "We build in short cycles and share progress regularly. You see working software early, not only at the end.",
+    icon: Code2,
+  },
+  {
+    number: "05",
+    title: "Testing and quality assurance",
+    description:
+      "We test features, security, speed, and compatibility, then fix issues before release.",
+    icon: FileCheck,
+  },
+  {
+    number: "06",
+    title: "Launch",
+    description:
+      "We deploy carefully, with backups, monitoring, and a rollback plan ready.",
+    icon: Server,
+  },
+  {
+    number: "07",
+    title: "Support and growth",
+    description:
+      "After launch, we monitor performance, fix issues, and plan the next improvements based on real usage.",
+    icon: TrendingUp,
+  },
+];
+
+// Service Selection Matrix
+const serviceMatrix = [
+  {
+    situation: "New business needing an online presence",
+    service: "Website development",
+    gain: "A fast, professional, search-friendly site",
+  },
+  {
+    situation: "Outdated or slow website",
+    service: "Redesign and rebuild",
+    gain: "Better speed, security, and conversion",
+  },
+  {
+    situation: "Want to sell products online",
+    service: "E-commerce development",
+    gain: "A complete, secure store",
+  },
+  {
+    situation: "Manual processes slowing your team",
+    service: "Custom software or web application",
+    gain: "Automation and saved time",
+  },
+  {
+    situation: "Customers want to use your service on their phones",
+    service: "Mobile app development",
+    gain: "A convenient, branded experience",
+  },
+  {
+    situation: "Tools that do not talk to each other",
+    service: "API and integration",
+    gain: "Connected data, fewer errors",
+  },
+  {
+    situation: "Site is live but neglected",
+    service: "Maintenance and support",
+    gain: "Security, stability, and peace of mind",
+  },
+];
+
+// Why Businesses Choose DigLip7 for Development
+const whyChooseUs = [
+  {
+    title: "Development connected to growth",
+    description:
+      "We are a digital marketing and design team as well as developers, so what we build is ready to attract visitors and convert them.",
+    icon: Award,
+  },
+  {
+    title: "Clear communication",
+    description:
+      "We speak plainly, avoid unnecessary jargon, and keep you informed at each stage.",
+    icon: Users,
+  },
+  {
+    title: "Quality you can verify",
+    description:
+      "We test thoroughly, document our work, and follow modern security and performance practices.",
+    icon: Shield,
+  },
+  {
+    title: "Flexible engagement",
+    description:
+      "Hire us for a single project or an ongoing partnership, without unnecessary lock-in.",
+    icon: Handshake,
+  },
+  {
+    title: "You own what we build",
+    description:
+      "Code, designs, and assets are handed over as agreed in your proposal, so you are never locked in.",
+    icon: Sparkles,
+  },
+  {
+    title: "Support after launch",
+    description:
+      "We remain available for improvements, fixes, and questions.",
+    icon: CheckCircle,
+  },
+];
+
+// How to Choose a Development Company Checklist
+const companyChecks = [
+  {
+    title: "Ask for relevant examples",
+    description: "Look at live projects similar to yours, and test them on your phone.",
+  },
+  {
+    title: "Ask about process",
+    description: "Good teams explain how they plan, build, test, and communicate.",
+  },
+  {
+    title: "Clarify ownership",
+    description: "You should own the code, or at least have clear rights to use and modify it.",
+  },
+  {
+    title: "Check security practices",
+    description: "Ask how they protect data, handle updates, and manage backups.",
+  },
+  {
+    title: "Understand the technology choices",
+    description: "A good partner explains why a tool fits your needs, rather than pushing whatever they already know.",
+  },
+  {
+    title: "Discuss post-launch support",
+    description: "Know who fixes issues and how quickly.",
+  },
+  {
+    title: "Look for honest timelines",
+    description: "Realistic estimates are a better sign than the fastest promise.",
+  },
+  {
+    title: "Talk to past clients",
+    description: "Real feedback tells you more than any sales page.",
+  },
+];
+
+// FAQs
 const faqs = [
   {
-    question: "What does a Web Development Service include?",
+    question: "What is a development service?",
     answer:
-      "A Web Development Service is about creating a website that reflects your brand and meets your business needs. At DigLip7, we design custom visuals that capture your unique identity, ensuring your site stands out in a crowded digital space. Our team handles front-end development for user-friendly interfaces and back-end development for secure, dynamic functionality. We integrate content management systems like WordPress or Shopify for easy updates, build responsive designs for all devices, and develop e-commerce platforms with secure payment systems. API connections enhance functionality by linking to tools like CRMs or analytics, delivering a tailored solution that grows with your business.",
+      "A development service is a professional service that designs, builds, tests, and maintains software for a business. It includes websites, web applications, mobile apps, e-commerce stores, and custom systems, along with the integration and support needed to keep them running well.",
   },
   {
-    question: "How long does it take to build a website?",
+    question: "How much does a development service cost?",
     answer:
-      "The timeline for a Web Development Service depends on your project’s complexity and goals. A simple website, like a portfolio or small business page, typically takes 4 to 6 weeks from planning to launch, ensuring quality without rushing the process. More intricate sites, such as e-commerce platforms or custom applications with advanced features, may require 8 to 12 weeks to perfect every detail. During our initial consultation, we analyze your needs and provide a clear schedule, keeping you informed at every stage. Our efficient process balances speed and precision, delivering a website that’s ready to perform on time.",
+      "Cost depends on the type of project, its features, design complexity, integrations, and timeline. A simple website costs far less than a custom application or a large online store. We provide a written proposal after a discovery conversation so you know what is included.",
   },
   {
-    question: "Will my website work on mobile devices?",
+    question: "How long does it take to build a website or app?",
     answer:
-      "Yes, mobile compatibility is a core part of our Web Development Service. With most users browsing on smartphones, we ensure your website performs flawlessly across all devices, from phones to desktops. Our responsive designs adapt to any screen size, offering intuitive navigation and fast load times that keep visitors engaged. This approach not only enhances user experience but also improves your search engine rankings, as Google prioritizes mobile-friendly sites. We test rigorously to guarantee consistency across browsers like Chrome and Safari so your audience enjoys a seamless experience, whether they’re at home or on the go, building trust in your brand.",
+      "A simple website can take a few weeks. Larger websites and online stores usually take one to three months, while custom web or mobile applications can take several months. Timelines depend on scope and how quickly feedback and content are provided.",
   },
   {
-    question: "How does your Web Development Service help with SEO?",
+    question: "Which technologies do you use?",
     answer:
-      "Our Web Development Service prioritizes search engine optimization to boost your website’s visibility. We optimize for speed, ensuring fast load times that reduce bounce rates and improve rankings. Mobile-friendly designs align with Google’s standards, while clean, structured code makes it easy for search engines to crawl your site. We incorporate proper metadata, like title tags and descriptions, to attract clicks from search results. By building with SEO in mind, we help your site reach more customers organically, driving traffic and leads. For broader strategies, we can connect you with our marketing team to amplify your online presence further.",
+      "We choose technology based on your project, not our habits. Depending on your needs, that may include a CMS such as WordPress, an e-commerce platform, modern JavaScript frameworks, or custom back-end systems. We explain the reasons for each recommendation.",
+  },
+  {
+    question: "Will my website be good for SEO?",
+    answer:
+      "We build with SEO in mind, including fast loading, clean structure, mobile-first layouts, and proper technical setup. Rankings also depend on content, authority, and competition, so we recommend combining development with SEO services for the best results.",
+  },
+  {
+    question: "Do I own the code and the final product?",
+    answer:
+      "Yes. Ownership and usage rights are defined in your proposal and handed over when the project is complete and paid for. We also provide documentation so your project can be maintained by others.",
+  },
+  {
+    question: "Can you fix or improve my existing website or app?",
+    answer:
+      "Yes. We audit existing code and performance, recommend fixes, and either improve what you have or suggest a rebuild if that is the more sensible option. We protect existing search visibility during any migration.",
   },
   {
     question: "Do you provide support after launch?",
     answer:
-      "Absolutely. Our Web Development Service extends beyond launch to keep your website thriving. We offer ongoing maintenance to ensure your site stays secure, fast, and compatible with new technologies. Regular updates protect against vulnerabilities, while performance monitoring helps us suggest improvements over time. If you need to add content, like new pages or products, our team handles it efficiently. Technical support is always available via email or phone, addressing issues promptly to minimize downtime. Whether you’re a small business or a large enterprise, our flexible support plans ensure your website remains a reliable asset for your growth.",
-  },
-  {
-    question: "How much does a website cost?",
-    answer:
-      "The cost of a Web Development Service varies based on your project’s needs. A simple site with basic features is more affordable, while complex platforms like e-commerce stores or custom systems with integrations cost more due to added functionality. Design complexity and ongoing support also influence pricing. At DigLip7, we believe in clear pricing with no surprises. During a free consultation, we assess your goals and provide a detailed quote tailored to your vision. This ensures you get a high-quality website that delivers value without breaking your budget. Contact us today to explore your options.",
+      "Yes. We offer maintenance and support plans covering updates, security patches, backups, monitoring, and fixes, and we can also handle new features as your needs evolve.",
   },
 ];
 
@@ -218,8 +427,8 @@ const Card3D = ({ children, className }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateXValue = (y - centerY) / 10;
-    const rotateYValue = (centerX - x) / 10;
+    const rotateXValue = (y - centerY) / 12;
+    const rotateYValue = (centerX - x) / 12;
 
     setRotateX(rotateXValue);
     setRotateY(rotateYValue);
@@ -232,7 +441,7 @@ const Card3D = ({ children, className }) => {
 
   return (
     <motion.div
-      className={`transform-gpu ${className}`}
+      className={`transform-gpu ${className || ""}`}
       style={{
         transformStyle: "preserve-3d",
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
@@ -273,7 +482,7 @@ const ParallaxBg = ({ children }) => {
   }, []);
 
   return (
-    <div style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+    <div style={{ transform: `translateY(${offsetY * 0.4}px)` }}>
       {children}
     </div>
   );
@@ -281,36 +490,202 @@ const ParallaxBg = ({ children }) => {
 
 function Development() {
   const [openIndex, setOpenIndex] = useState(null);
-  const [isVisible, setIsVisible] = useState({});
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Intersection Observer for scroll animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsVisible((prev) => ({
-            ...prev,
-            [entry.target.id]: entry.isIntersecting,
-          }));
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll("[id]").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  // Structured Data Schema Graph for Development Services
+  const devSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://diglip7.com/#organization",
+          "name": "DigLip7",
+          "legalName": "DigLip7 Tech Private Limited",
+          "url": "https://diglip7.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://diglip7.com/favicon-32x32.png",
+            "width": 512,
+            "height": 512,
+          },
+          "description":
+            "DigLip7 is a digital agency offering software development, web application development, mobile apps, e-commerce, SEO, and marketing services.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+91-9650608788",
+            "email": "Admin@diglip7.com",
+            "availableLanguage": ["English"],
+          },
+          "sameAs": [
+            "https://www.facebook.com/DigLip7/",
+            "https://www.instagram.com/diglip7",
+            "https://www.linkedin.com/company/diglip7",
+            "https://twitter.com/diglip7",
+            "https://www.youtube.com/@diglip7",
+          ],
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://diglip7.com/#website",
+          "url": "https://diglip7.com/",
+          "name": "DigLip7",
+          "publisher": { "@id": "https://diglip7.com/#organization" },
+          "inLanguage": "en",
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://diglip7.com/development#webpage",
+          "url": "https://diglip7.com/development",
+          "name": "Development Service | Web, App & Custom Software | DigLip7",
+          "description":
+            "Fast, secure, and scalable development services from DigLip7: websites, web apps, mobile apps, e-commerce, and custom software. Get a free consultation.",
+          "isPartOf": { "@id": "https://diglip7.com/#website" },
+          "about": { "@id": "https://diglip7.com/development#service" },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://diglip7.com/images/development-service-og.jpg",
+          },
+          "breadcrumb": { "@id": "https://diglip7.com/development#breadcrumb" },
+          "inLanguage": "en",
+          "datePublished": "2026-09-24",
+          "dateModified": "2026-09-24",
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://diglip7.com/development#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://diglip7.com/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Development Service",
+              "item": "https://diglip7.com/development",
+            },
+          ],
+        },
+        {
+          "@type": "Service",
+          "@id": "https://diglip7.com/development#service",
+          "name": "Development Service",
+          "serviceType": "Software and Web Development",
+          "description":
+            "Professional software development services including web development, web applications, mobile apps, e-commerce development, CMS development, custom software, API integration, and ongoing maintenance.",
+          "provider": { "@id": "https://diglip7.com/#organization" },
+          "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
+          "url": "https://diglip7.com/development",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Software Development Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Website Development",
+                  "description": "Fast, secure, and mobile-friendly website development.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Web Application Development",
+                  "description": "Portals, dashboards, booking systems, and browser-based software.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mobile App Development",
+                  "description": "Native and cross-platform mobile apps for iOS and Android.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "E-Commerce Development",
+                  "description": "Online stores, payment integrations, inventory, and order management.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "CMS and WordPress Development",
+                  "description": "Content management systems that make publishing and managing content easy.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom Software Development",
+                  "description": "Tailored business software, CRMs, internal tools, and automation.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "API and Third-Party Integration",
+                  "description": "Connecting software to payment gateways, CRMs, ERPs, and email tools.",
+                },
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Website Maintenance and Support",
+                  "description": "Updates, security patches, backups, monitoring, and bug fixes.",
+                },
+              },
+            ],
+          },
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://diglip7.com/development#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer,
+            },
+          })),
+        },
+      ],
+    },
+  ];
 
   return (
-    <div className="overflow-x-hidden pt-18 sm:pt-18">
-      {/* Hero Section with Parallax */}
-      <section className="relative w-full h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden">
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 max-w-6xl mx-auto">
+    <div className="overflow-x-hidden pt-18 sm:pt-18 bg-white text-gray-800">
+      <SEO
+        title="Development Service | Web, App & Custom Software | DigLip7"
+        description="Fast, secure, and scalable development services from DigLip7: websites, web apps, mobile apps, e-commerce, and custom software. Get a free consultation."
+        keywords="Development service, web development service, custom software development, mobile app development, ecommerce development, CMS development, API integration, website maintenance, DigLip7"
+        canonical="https://diglip7.com/development"
+        ogImage="https://diglip7.com/images/development-service-og.jpg"
+        ogImageAlt="DigLip7 development service: websites, web apps, mobile apps, and custom software"
+        ogType="website"
+        schema={devSchemas}
+      />
+
+      {/* Hero Section */}
+      <section className="relative w-full min-h-[90vh] flex flex-col lg:flex-row items-center justify-center overflow-hidden py-12 lg:py-20 px-4 sm:px-6 md:px-12">
+        <div className="relative z-10 text-center max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -321,25 +696,33 @@ function Development() {
           </motion.div>
 
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6 leading-tight"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            Grow Your Business with{" "}
+            Development Service That Turns Your Idea Into{" "}
             <span className="text-transparent bg-clip-text bg-[#c89d5a] to-teal-300">
-              Graphic Design Services
+              Fast, Secure, and Scalable Software
             </span>
           </motion.h1>
 
-          <motion.p
-            className="text-lg sm:text-xl md:text-2xl text-teal-700 max-w-2xl lg:max-w-4xl mx-auto mb-6 sm:mb-8"
+          <motion.div
+            className="space-y-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 1 }}
           >
-            Crafting bold, creative visuals that bring your brand to life.
-          </motion.p>
+            <p className="text-teal-800">
+              A great idea is only the starting point. What separates businesses that grow from businesses that stall is often what happens next: whether the website loads quickly, whether the app works on every phone, whether the system can handle ten times the traffic without breaking, and whether the person who built it is still around when something goes wrong.
+            </p>
+            <p className="text-teal-700">
+              That is where a reliable development service makes the difference. At <span className="font-bold text-teal-900">DigLip7</span>, we build websites, web applications, mobile apps, online stores, and custom business software that work well today and can grow with you tomorrow. We write clean code, explain our decisions in plain language, and stay involved after launch.
+            </p>
+            <p className="text-teal-800">
+              <span className="font-semibold text-teal-900">For anyone who wants the short answer, here it is.</span> A development service is a professional service that designs, builds, tests, and maintains software for a business, such as websites, web applications, mobile apps, e-commerce stores, and custom systems, so that the business can operate, sell, and serve customers online. Read on to see what that covers, how a project runs, and how to choose the right team.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -349,38 +732,46 @@ function Development() {
           >
             <a href="/contact">
               <motion.button
-
-                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-
-                Get Started
+                Get a Free Project Consultation
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </a>
+            <a href="/portfolio">
+              <motion.button
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-800 border-2 border-teal-700 text-lg font-semibold rounded-full shadow-md hover:bg-teal-50 transition-all duration-300 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Our Portfolio
               </motion.button>
             </a>
           </motion.div>
         </div>
+
         <ParallaxBg>
           <div className="p-6 inset-0 w-full h-full">
             <img
               src={seo2}
-              alt="Digital Marketing Background"
+              alt="Development Service by DigLip7"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 "></div>
+            <div className="absolute inset-0"></div>
           </div>
         </ParallaxBg>
 
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-2 h-2 bg-white/20 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 5.2) % 100}%`,
+                top: `${(i * 7.1) % 100}%`,
               }}
               animate={{
                 y: [0, -100, 0],
@@ -396,9 +787,9 @@ function Development() {
         </div>
       </section>
 
-      {/* About Section with 3D Cards */}
+      {/* Section 2: What Does a Development Service Include? */}
       <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg: px-4 sm:px-6 lg:">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Left Image with 3D effect */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -410,8 +801,8 @@ function Development() {
             <Card3D className="w-full">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
-                  src={seoImage}
-                  alt="ui/ux Service"
+                  src={webd1}
+                  alt="What Does a Development Service Include"
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20"></div>
@@ -428,58 +819,61 @@ function Development() {
             className="flex-1 w-full"
           >
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-                Graphic Design Services |{" "}
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                What Does a{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  Diglip7 – Elevate Your Brand with Stunning Visuals
+                  Development Service Include?
                 </span>
               </h2>
             </FloatingElement>
-            {/* UI/UX Design Services | Diglip7 – Crafting Seamless Digital Experiences */}
             <div className="space-y-4 sm:space-y-6">
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                At Diglip7, our graphic design services transform your ideas
-                into bold, memorable visuals. From logos to social media
-                graphics, we create designs that strengthen your brand identity
-                and drive results. Whether you’re a startup, retailer, or global
-                enterprise, our creative design services help you shine.
+              <p className="text-teal-800 leading-relaxed text-sm sm:text-base lg:text-lg">
+                Software development is a broad field, so it helps to understand the main parts. Most businesses need some combination of the following:
               </p>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                Ready to make a lasting impression? Let’s explore how Diglip7’s
-                graphic design services can elevate your brand and spark growth.
+              <p className="text-teal-800 leading-relaxed text-sm sm:text-base lg:text-lg">
+                <span className="font-semibold text-teal-900">You may need only one of these, or several working together.</span> A good development partner helps you choose what you actually need instead of selling everything at once.
               </p>
             </div>
-
-            <motion.div
-              className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              {[
-                { icon: Users, text: "1000+ Projects" },
-                { icon: Award, text: "2+ Years Experience" },
-                { icon: Target, text: "5 Month Results" },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3 sm:px-4 py-2 rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-700" />
-                  <span className="text-sm sm:text-base font-medium text-gray-700">
-                    {item.text}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Difference Section */}
-      <section className="bg-gradient-to-br from-teal-50 to-[#c89d5a]/10 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      {/* What a Development Service Includes Grid */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-teal-50 to-[#c89d5a]/10 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {devServiceIncludes.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                viewport={{ once: true }}
+              >
+                <Card3D className="h-full">
+                  <div className="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/40 shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                      <div className="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center mb-4 text-teal-700">
+                        <item.icon className="w-6 h-6" />
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </Card3D>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Why Choosing the Right Development Service Matters */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             className="flex-1 w-full"
             initial={{ opacity: 0, x: -50 }}
@@ -489,52 +883,39 @@ function Development() {
           >
             <FloatingElement delay={0.2}>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
-                What Is Graphic{" "}
+                Why Choosing the Right{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
-                  Design Services?
+                  Development Service Matters
                 </span>
               </h2>
             </FloatingElement>
 
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              Graphic design is the art of visual communication, blending
-              creativity, color, and typography to convey your message
-              effectively. It’s about crafting visuals that capture attention
-              and tell your story. At Diglip7, our graphic design services span
-              digital design and print media, supporting branding, marketing,
-              and engagement. From a striking logo to a vibrant social media
-              post, graphic design shapes how audiences perceive your business.
-              It’s more than aesthetics—it’s strategic, aligning visuals with
-              your goals to build trust and recognition. Whether for a website
-              banner or a printed flyer, our professional graphic design ensures
-              every element reflects your brand, making it unforgettable in a
-              crowded market.
+            <p className="text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6">
+              Software is expensive to build and even more expensive to rebuild. The choices made in the first few weeks affect your costs, speed, security, and search visibility for years.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              {[
-                { number: "500%", label: "Traffic Increase" },
-                { number: "95%", label: "Client Satisfaction" },
-                { number: "24/7", label: "Support Available" },
-                { number: "50+", label: "Team Experts" },
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-700">
-                    {stat.number}
+            <div className="space-y-4">
+              {whyDevMatters.map((point, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="mt-1 w-6 h-6 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0 text-teal-700">
+                    <CheckCircle className="w-4 h-4" />
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
-                    {stat.label}
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-base">
+                      {point.title}.
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {point.description}
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
+            </div>
+
+            <div className="mt-8 p-4 bg-teal-50 rounded-xl border border-teal-100">
+              <p className="text-teal-900 font-semibold text-sm sm:text-base">
+                Development is not just a technical task. It is a business decision with long-term consequences.
+              </p>
             </div>
           </motion.div>
 
@@ -548,8 +929,8 @@ function Development() {
             <Card3D className="w-full max-w-md lg:max-w-none">
               <div className="relative">
                 <img
-                  src={seo4}
-                  alt="ui/ux Service"
+                  src={webd2}
+                  alt="Why Development Matters"
                   className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-[#c89d5a]/20 rounded-2xl"></div>
@@ -559,312 +940,417 @@ function Development() {
         </div>
       </section>
 
-      {/* Results Section with Custom Shape */}
-      <section className="w-full bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2"
-          >
-            <FloatingElement delay={0.3}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
-                Why Graphic Design{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
-                  Matters for Businesses
+      {/* Section 4: Our Development Services Cards */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Our Development{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Services
                 </span>
               </h2>
             </FloatingElement>
-            {/* Why Graphic Design Matters for Businesses */}
-            <div className="space-y-4 sm:space-y-6">
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  At{" "}
-                  <span className="font-semibold text-teal-700">Diglip7</span>,
-                  In today’s competitive landscape, graphic design services are
-                  vital for success. High-quality visuals build trust, giving
-                  your brand an edge. Here’s why graphic design is a
-                  game-changer: A strong design creates instant credibility.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Graphic (User Experience) Design{" "}
-                  <span className="font-semibold text-[#c89d5a]">
-                    A 2024 study found 75% of consumers judge a brand based on
-                    its visuals.
-                  </span>
-                  A polished logo or cohesive website signals professionalism,
-                  fostering confidence. Memorable designs improve brand recall,
-                  ensuring customers remember you.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  At Diglip7, our graphic design services deliver these
-                  benefits, helping businesses of all sizes stand out and
-                  thrive.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 flex justify-center"
-          >
-            <div className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-[420px] lg:h-[500px]">
-              <Card3D className="w-full h-full">
-                <img
-                  src={aboutImg}
-                  alt="About Diglip7"
-                  className="w-full h-full object-cover shadow-2xl transition-transform duration-700 hover:scale-105"
-                  style={{
-                    clipPath:
-                      "path('M 0 80 Q 200 -50 400 80 L 400 500 Q 200 600 0 500 Z')",
-                    borderRadius: "20px",
-                  }}
-                />
-              </Card3D>
-
-              {/* Floating elements around the image */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Advantages Section with 3D Cards */}
-      <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-              Our Process
-            </h2>
-          </FloatingElement>
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-            At Diglip7, our graphic design process is clear and collaborative, ensuring stunning results. Here’s how we create visuals you’ll love:
-          </p>
-        </motion.div>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
-          {advantages.map((adv, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
-                  <FloatingElement delay={index * 0.1}>
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
-                      <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                    </div>
-                  </FloatingElement>
-
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 text-center">
-                    {adv.title}
-                  </h3>
-                  <p className="text-white/90 text-xs sm:text-sm leading-relaxed text-center flex-grow">
-                    {adv.description}
-                  </p>
-                </div>
-              </Card3D>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-              Graphic Design for Different Industries
-            </h2>
-          </FloatingElement>
-          <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
-            Our graphic design services cater to a wide range of industries, delivering visuals that connect with specific audiences. We’ve designed for:
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-          {solutions.map((solution, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card3D className="h-full">
-                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 h-full flex flex-col">
-                  <FloatingElement delay={index * 0.1}>
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-100 to-[#c89d5a]/20 rounded-full mb-4">
-                      <solution.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />
-                    </div>
-                  </FloatingElement>
-
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
-                    {solution.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-xs sm:text-sm flex-grow">
-                    {solution.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {solution.points.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 text-xs sm:text-sm text-gray-600"
-                      >
-                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-teal-600 mt-0.5 flex-shrink-0" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Card3D>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
-                Our Graphic Design Services at Diglip7
-              </h2>
-            </FloatingElement>
-            <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto">
-              Diglip7 offers a comprehensive suite of graphic design services tailored to your unique needs. Our creative design services make your brand shine across platforms. Here’s what we provide:
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg">
+              We match the solution to the problem. Here is how we work across each area.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {steps.map((step, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {ourDevelopmentServices.map((service, idx) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
                 viewport={{ once: true }}
               >
                 <Card3D className="h-full">
-                  <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
-                    <div className="flex items-start gap-4 mb-4">
-                      <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
-                        whileHover={{ scale: 1.1, rotate: 360 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {step.number}
-                      </motion.div>
-                      <div className="flex-1">
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
-                          {step.title}
-                        </h3>
-                        <div className="flex items-center gap-2 mb-3">
-                          <step.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600" />
+                  <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-100 to-[#c89d5a]/20 flex items-center justify-center text-teal-700 flex-shrink-0">
+                          <service.icon className="w-6 h-6" />
                         </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <div className="space-y-3 mb-6">
+                        {service.paragraphs.map((p, pIdx) => (
+                          <p key={pIdx} className="text-gray-600 text-sm leading-relaxed">
+                            {p}
+                          </p>
+                        ))}
                       </div>
                     </div>
-                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                      {step.description}
-                    </p>
+                    <a
+                      href={service.linkUrl}
+                      className="inline-flex items-center text-sm font-semibold text-teal-700 hover:text-teal-900 group"
+                    >
+                      {service.linkText}
+                      <ArrowRight className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+                    </a>
                   </div>
                 </Card3D>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* Section 5 & 6: Development That Is Built for SEO & Security/AI */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
           <motion.div
-            className="mt-8 sm:mt-12 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6">
-              This process is built for simplicity, effectiveness, and rapid
-              growth.
-            </p>
-            <a href="/contact">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Start Your Journey
-                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
-            </a>
+            <Card3D className="w-full">
+              <div className="relative">
+                <img
+                  src={webd3}
+                  alt="Development That Is Built for SEO"
+                  className="rounded-2xl shadow-xl w-full h-80 lg:h-[520px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20 rounded-2xl"></div>
+              </div>
+            </Card3D>
+          </motion.div>
+
+          <motion.div
+            className="w-full lg:w-1/2 space-y-8"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div>
+              <FloatingElement delay={0.3}>
+                <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                  Development That Is{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
+                    Built for SEO
+                  </span>
+                </h2>
+              </FloatingElement>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
+                Many businesses discover too late that their new website is hard for search engines to understand. We build with search visibility in mind from the first line of code.
+              </p>
+              <p className="text-gray-700 text-sm sm:text-base font-semibold mb-2">
+                That includes:
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Clean, semantic HTML with a logical heading structure.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Fast loading through optimized images, efficient code, caching, and careful use of scripts.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Server-side or pre-rendered content so important text is present in the page source rather than appearing only after scripts run.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Mobile-first layouts that work well on every screen size.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Proper technical setup, including canonical tags, XML sitemaps, robots directives, and clean URL structure.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Structured data so search engines can understand your business, services, and content.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-teal-600 mt-1 flex-shrink-0" />
+                  <span>Redirect planning during migrations, so existing rankings are protected.</span>
+                </li>
+              </ul>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed bg-teal-50/70 p-3 rounded-lg border border-teal-100">
+                Because we also provide <a href="/digital-market/seoservices" className="text-teal-700 underline font-semibold hover:text-teal-900">SEO</a> and <a href="/digital-market" className="text-teal-700 underline font-semibold hover:text-teal-900">digital marketing</a>, our developers and marketers work from the same plan. You do not have to translate between separate teams.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 mb-3">
+                Security, Performance, and{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Quality Standards
+                </span>
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3">
+                Good development is not only about features. It is also about the invisible qualities that keep software trustworthy.
+              </p>
+              <div className="space-y-2 text-xs sm:text-sm text-gray-600 mb-3">
+                <p>
+                  <strong>Security.</strong> We use HTTPS everywhere, validate and sanitize user input, protect against common attacks, apply secure authentication, and follow the principle of giving users only the access they need. Sensitive data is handled carefully and stored responsibly.
+                </p>
+                <p>
+                  <strong>Performance.</strong> We measure real-world performance using tools such as Lighthouse and Core Web Vitals, and we fix bottlenecks before launch rather than after complaints.
+                </p>
+                <p>
+                  <strong>Accessibility.</strong> We build with keyboard navigation, readable contrast, proper labels, and screen-reader support in mind, so more people can use what we build.
+                </p>
+                <p>
+                  <strong>Testing.</strong> We test functionality, compatibility, and edge cases on real browsers and devices, not only in a development environment.
+                </p>
+                <p>
+                  <strong>Documentation.</strong> We document code and setup so your project is not a black box.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-teal-900 mb-3">
+                How We Use AI in Development, and{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Where People Lead
+                </span>
+              </h3>
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3">
+                We use AI-assisted tools to speed up routine work such as boilerplate code, test generation, code review suggestions, and documentation drafts. This helps us move faster and catch issues earlier.
+              </p>
+              <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                Architecture, security decisions, and quality review stay with experienced engineers. Every line that goes into your product is reviewed by a person who understands the context. AI is a useful assistant, but accountability for your software belongs to our team.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="w-full mx-auto">
+      {/* Section 7: Our Development Process (7 Steps) */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-teal-50 to-[#c89d5a]/10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Our Development{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Process
+                </span>
+              </h2>
+            </FloatingElement>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg">
+              A clear process keeps projects predictable. This is how we work.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {devProcessSteps.map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                viewport={{ once: true }}
+              >
+                <Card3D className="h-full">
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl border border-white/60 transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-[#c89d5a]">
+                          {step.number}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700">
+                          <step.icon className="w-5 h-5" />
+                        </div>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </Card3D>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8: Which Development Service Do You Need? Matrix Table */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Which Development Service{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Do You Need?
+                </span>
+              </h2>
+            </FloatingElement>
+          </div>
+
+          <div className="overflow-x-auto shadow-xl rounded-2xl border border-gray-100 bg-white">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-gradient-to-r from-teal-700 to-teal-800 text-white text-sm sm:text-base">
+                  <th className="p-4 sm:p-5 font-semibold">Your situation</th>
+                  <th className="p-4 sm:p-5 font-semibold">Best starting point</th>
+                  <th className="p-4 sm:p-5 font-semibold">What you gain</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 text-xs sm:text-sm">
+                {serviceMatrix.map((row, idx) => (
+                  <tr
+                    key={idx}
+                    className={idx % 2 === 0 ? "bg-white" : "bg-teal-50/30 hover:bg-teal-50/60 transition-colors"}
+                  >
+                    <td className="p-4 sm:p-5 font-medium text-gray-900">
+                      {row.situation}
+                    </td>
+                    <td className="p-4 sm:p-5 text-teal-700 font-semibold">
+                      {row.service}
+                    </td>
+                    <td className="p-4 sm:p-5 text-gray-600">
+                      {row.gain}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-center text-xs sm:text-sm text-gray-600 mt-6 max-w-2xl mx-auto">
+            If you are not sure, describe your problem to us. We will suggest the simplest solution that solves it, even if that means a smaller project than you expected.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 9: Timeline & Cost Section */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-teal-50/30 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Timelines and Cost:{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  What to Expect
+                </span>
+              </h2>
+            </FloatingElement>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                We would rather be direct than vague. A simple business website can take a few weeks. A larger website or online store often takes one to three months. Custom web applications and mobile apps usually take several months, depending on features and complexity.
+              </p>
+            </div>
+
+            <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Cost depends on scope, number of features, design complexity, integrations, security needs, and timeline. After discovery, we provide a written proposal that lists what is included, the phases, and the estimated timeline, so you can make a confident decision.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 bg-teal-50 rounded-xl border border-teal-200 text-center">
+            <p className="text-xs sm:text-sm text-teal-900 font-medium">
+              Be careful with quotes that are far below everyone else&apos;s or that promise a complex product in days. Software built on shortcuts often costs more to fix than it saved. It is better to start with a smaller, well-built first version and grow it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 10: Why Businesses Choose DigLip7 for Development */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Why Businesses Choose{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  DigLip7 for Development
+                </span>
+              </h2>
+            </FloatingElement>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card3D className="h-full">
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-teal-50/50 to-white border border-teal-100 shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between">
+                    <div>
+                      <div className="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center text-teal-700 mb-4">
+                        <item.icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">
+                        {item.title}.
+                      </h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </Card3D>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 11: How to Choose a Development Company */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-teal-50 to-[#c89d5a]/10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <FloatingElement>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                How to Choose a{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Development Company
+                </span>
+              </h2>
+            </FloatingElement>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
+              Use these checks before you sign a contract.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {companyChecks.map((chk, idx) => (
+              <div
+                key={idx}
+                className="p-4 sm:p-5 bg-white rounded-xl shadow-sm border border-gray-100 flex items-start gap-3"
+              >
+                <div className="mt-1 w-5 h-5 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 flex-shrink-0">
+                  <CheckCircle className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm sm:text-base">
+                    {chk.title}.
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                    {chk.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 12: Frequently Asked Questions */}
+      <section className="w-full bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="w-full mx-auto max-w-4xl">
           <motion.div
             className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: -30 }}
@@ -873,31 +1359,30 @@ function Development() {
             viewport={{ once: true }}
           >
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
-                Frequently Asked Questions (FAQs)
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+                Frequently Asked Questions About{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
+                  Development Service
+                </span>
               </h2>
             </FloatingElement>
-            <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital
-              marketing services.
-            </p>
           </motion.div>
 
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                className="bg-gray-50/60 rounded-xl shadow-sm border border-gray-100 overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.05, duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-5 hover:bg-teal-50/40 transition-colors duration-200 cursor-pointer"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold text-teal-700 pr-4">
+                  <span className="text-sm sm:text-base font-semibold text-teal-800 pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -915,10 +1400,10 @@ function Development() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="border-t border-gray-100"
+                      transition={{ duration: 0.3 }}
+                      className="border-t border-gray-100 bg-white"
                     >
-                      <div className="p-4 sm:p-6 text-gray-600 leading-relaxed text-xs sm:text-sm lg:text-base">
+                      <div className="p-4 sm:p-5 text-gray-600 leading-relaxed text-xs sm:text-sm">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -929,95 +1414,8 @@ function Development() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-32 h-32 border border-white/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6">
-                Final Call-
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
-                  to-Action
-                </span>
-              </h2>
-            </FloatingElement>
-            {/* Final Call-to-Action */}
-            <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Your users deserve a digital experience that’s intuitive,
-              engaging, and conversion-focused. Diglip7’s UI/UX design services
-              combine creativity, data, and technology to deliver just that.
-              From wireframes and prototypes to polished user interface design,
-              we’re here to make your product stand out.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Free Consultation
-                <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.button>
-            </div>
-
-            <motion.div
-              className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/80"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">Free Website Audit</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">
-                  No Long-term Contracts
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">Results in 5 Months</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
 
-
-
-export default Development
+export default Development;

@@ -54,9 +54,18 @@ const SEO = ({
     // 2. Standard Meta Tags
     setMetaTag("name", "description", metaDescription);
     setMetaTag("name", "keywords", metaKeywords);
-    setMetaTag("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
+    setMetaTag(
+      "name",
+      "robots",
+      noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    );
+    setMetaTag("name", "author", "DigLip7 Tech Private Limited");
+    setMetaTag("name", "theme-color", "#115e59");
+    setMetaTag("http-equiv", "content-language", "en");
 
-    // 3. Canonical Link
+    // 3. Canonical & Hreflang Links
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement("link");
@@ -65,18 +74,38 @@ const SEO = ({
     }
     canonicalLink.setAttribute("href", currentUrl);
 
+    // Hreflang alternates
+    const setAlternateLink = (hreflang, href) => {
+      let altLink = document.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      if (!altLink) {
+        altLink = document.createElement("link");
+        altLink.setAttribute("rel", "alternate");
+        altLink.setAttribute("hreflang", hreflang);
+        document.head.appendChild(altLink);
+      }
+      altLink.setAttribute("href", href);
+    };
+    setAlternateLink("en", currentUrl);
+    setAlternateLink("x-default", currentUrl);
+
     // 4. OpenGraph Meta Tags
     setMetaTag("property", "og:title", fullTitle);
     setMetaTag("property", "og:description", metaDescription);
     setMetaTag("property", "og:url", currentUrl);
     setMetaTag("property", "og:type", ogType);
+    setMetaTag("property", "og:site_name", "DigLip7");
+    setMetaTag("property", "og:locale", "en_US");
     setMetaTag("property", "og:image", ogImage);
+    setMetaTag("property", "og:image:secure_url", ogImage);
+    setMetaTag("property", "og:image:type", "image/jpeg");
+    setMetaTag("property", "og:image:width", "1200");
+    setMetaTag("property", "og:image:height", "630");
     setMetaTag("property", "og:image:alt", imageAltText);
-    setMetaTag("property", "og:site_name", "DigLip7 Technologies");
 
     // 5. Twitter Card Meta Tags
     setMetaTag("name", "twitter:card", "summary_large_image");
     setMetaTag("name", "twitter:site", "@diglip7");
+    setMetaTag("name", "twitter:creator", "@diglip7");
     setMetaTag("name", "twitter:title", fullTitle);
     setMetaTag("name", "twitter:description", metaDescription);
     setMetaTag("name", "twitter:image", ogImage);
@@ -101,10 +130,9 @@ const SEO = ({
 
     return () => {
       document.querySelectorAll("script[data-dynamic-seo]").forEach((s) => s.remove());
-      // Remove dynamic canonical link on unmount so unconfigured subpages don't inherit previous page canonicals
       const canonicalLink = document.querySelector('link[rel="canonical"]');
       if (canonicalLink) canonicalLink.remove();
-      // Reset document title to default clean title
+      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((l) => l.remove());
       document.title = "DigLip7";
     };
   }, [location.pathname, fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, JSON.stringify(schema), noindex]);

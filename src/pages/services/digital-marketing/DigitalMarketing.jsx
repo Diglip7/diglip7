@@ -119,6 +119,7 @@ const solutions = [
     ],
     closing: "We focus on rankings that bring the right visitors, not just more visitors.",
     linkText: "Explore our SEO services.",
+    linkUrl: "/digital-market/seoservices",
     icon: Search,
   },
   {
@@ -128,6 +129,7 @@ const solutions = [
     closing:
       "Local visibility is especially powerful for clinics, restaurants, service providers, retailers, and any business with a physical location or service area.",
     linkText: "Learn more about local SEO.",
+    linkUrl: "/digital-market/local-SEO-services",
     icon: MapPin,
   },
   {
@@ -137,6 +139,7 @@ const solutions = [
     closing:
       "The goal is not vanity metrics. We track saves, shares, inquiries, and conversions, because a large audience that never buys is not a business result.",
     linkText: "See our social media marketing services.",
+    linkUrl: "/digital-market/social-media-marketing",
     icon: Share2,
   },
   {
@@ -146,6 +149,7 @@ const solutions = [
     closing:
       "We set up tracking before spending a rupee, test multiple ad variations, and adjust bids and audiences weekly. Reports show cost per lead and return on ad spend, not just clicks.",
     linkText: "Discover our PPC services.",
+    linkUrl: "/digital-market/PPC-Advertising",
     icon: DollarSign,
   },
   {
@@ -155,6 +159,7 @@ const solutions = [
     closing:
       "Every piece is planned around search intent, written for real people, and reviewed for accuracy. We also refresh older content, because updating a strong page often beats publishing a new one.",
     linkText: "Read about content marketing.",
+    linkUrl: "/digital-market/content-marketing",
     icon: FileText,
   },
   {
@@ -165,18 +170,24 @@ const solutions = [
       "That means clear definitions near the top of a page, question-based headings, concise and accurate answers, well-implemented structured data, and strong signals of who wrote the content and why they can be trusted. It also means conversational, long-tail phrasing that matches how people speak.",
     closing:
       "No one can guarantee inclusion in an AI-generated answer. What we can do is make your content the kind that these systems are most likely to trust and reference.",
+    linkText: "Learn about AEO & Voice Search.",
+    linkUrl: "/digital-market/voice-search-optimization",
     icon: HelpCircle,
   },
   {
     title: "E-Commerce Digital Marketing",
     description:
       "Online stores face a specific challenge: hundreds or thousands of pages competing for attention. We optimize product pages with unique descriptions and clear calls to action, improve category structure so search engines understand your catalog, and speed up the shopping experience on mobile. Paid shopping ads and remarketing then help recover visitors who left without buying.",
+    linkText: "Explore E-commerce marketing.",
+    linkUrl: "/digital-market/e-commerce-marketing",
     icon: ShoppingCart,
   },
   {
     title: "Link Building and Digital PR",
     description:
       "Backlinks remain a trust signal, but only when they are earned naturally. We focus on relevant, high-quality placements through helpful resources, partnerships, and outreach. We do not buy links or use private blog networks, because the risk is never worth the reward.",
+    linkText: "Contact our link building team.",
+    linkUrl: "/contact",
     icon: Link2,
   },
 ];
@@ -393,12 +404,12 @@ const digitalMarketingSchemas = [
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
-          "telephone": "+91 99999 99999",
-          "email": "info@diglip7.com",
+          "telephone": "+91-9650608788",
+          "email": "Admin@diglip7.com",
           "availableLanguage": ["English"]
         },
         "sameAs": [
-          "https://www.facebook.com/diglip7",
+          "https://www.facebook.com/DigLip7/",
           "https://www.instagram.com/diglip7",
           "https://www.linkedin.com/company/diglip7",
           "https://twitter.com/diglip7",
@@ -1078,7 +1089,7 @@ function DigitalMarkit() {
                     {solution.linkText && (
                       <div className="pt-4 border-t border-gray-100 mt-auto">
                         <a
-                          href="/contact"
+                          href={solution.linkUrl || "/contact"}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-900 transition-colors"
                         >
                           {solution.linkText}
