@@ -693,15 +693,6 @@ function Development() {
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col lg:flex-row items-center justify-center overflow-hidden py-12 lg:py-20 px-4 sm:px-6 md:px-12">
         <div className="relative z-10 text-center max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, type: "spring" }}
-            className="mb-6"
-          >
-            <Sparkles className="w-16 h-16 sm:w-20 sm:h-20 text-[#c89d5a] mx-auto mb-4" />
-          </motion.div>
-
           <motion.h1
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-teal-700 mb-4 sm:mb-6 leading-tight"
             initial={{ opacity: 0, y: -50 }}
@@ -715,7 +706,7 @@ function Development() {
           </motion.h1>
 
           <motion.div
-            className="space-y-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
+            className="text-left space-y-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 1 }}
