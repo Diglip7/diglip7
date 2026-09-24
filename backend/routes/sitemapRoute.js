@@ -41,7 +41,6 @@ const getRouteMetadata = (url) => {
   if (url.startsWith("/privacy") || url.startsWith("/terms")) return { priority: "0.5", changefreq: "monthly" };
   return { priority: "0.8", changefreq: "weekly" };
 };
-
 /**
  * AUTOMATIC ROUTE DISCOVERY:
  * Scans src/App.jsx in real-time to find every public <Route path="..." /> definition.
@@ -51,7 +50,6 @@ const getAutoDiscoveredRoutes = () => {
   try {
     const appJsxPath = path.resolve(__dirname, "../../src/App.jsx");
     if (!fs.existsSync(appJsxPath)) return fallbackRoutes;
-
     const content = fs.readFileSync(appJsxPath, "utf-8");
 
     // Extract only Public Routes inside <Route element={<PublicLayout />}>
@@ -88,6 +86,7 @@ const getAutoDiscoveredRoutes = () => {
 /**
  * Helper to render an XML <url> entry
  */
+
 const renderUrlNode = (loc, lastmod, changefreq, priority) => `  <url>
     <loc>${escapeXml(loc)}</loc>
     <lastmod>${lastmod}</lastmod>
@@ -100,6 +99,7 @@ const renderUrlNode = (loc, lastmod, changefreq, priority) => `  <url>
  * - Automatically discovers all React pages from App.jsx
  * - Automatically fetches all published blogs from MongoDB
  */
+
 const generateSitemap = async (req, res) => {
   try {
     const baseUrl = "https://diglip7.com";

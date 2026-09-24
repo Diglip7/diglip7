@@ -592,150 +592,142 @@ function Online_rep_mana() {
   ];
 
   return (
-    <div className=" w-full bg-white">
+    <div className="w-full bg-white overflow-x-hidden">
       <SEO
         title="Online Reputation Management (ORM) Services | DigLip7"
         description="Monitor, repair, and strengthen your brand's online image with DigLip7's ORM services — review management, crisis response & search result control."
         canonical="https://diglip7.com/digital-market/online-repulation-management(ORM)"
         ogImage="https://diglip7.com/assets/orm-CkBmvAX2.png"
-        ogType="website"
         keywords="online reputation management, ORM services, brand reputation repair, review management, negative content suppression, DigLip7"
         schema={ormSchemas}
       />
       {/* Hero Section with Parallax */}
-
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="relative pt-24 sm:pt-28 pb-16 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
-          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="relative z-10 flex flex-col md:flex-row items-center w-full max-w-6xl gap-8 md:gap-10">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+          <div className="w-full md:flex-1 text-center md:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight break-words">
               <span className="text-gray-900">Protect and Elevate Your Brand with </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 Expert Online Reputation Management
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 text-sm sm:text-base mt-4 mb-6 leading-relaxed">
               At <span className="font-semibold text-blue-700">DigLip7</span>, we monitor, repair, and strengthen your brand's digital presence with proven ORM strategies that protect credibility and drive customer trust.
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
-              <div>🚀 Boost organic traffic</div>
-              <div>📈 Improve search ranking</div>
-              <div>🎯 Target right audience</div>
-              <div>📊 Transparent reporting</div>
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-gray-800 text-xs sm:text-sm mb-6">
+              <div className="flex items-center gap-1.5">🚀 Boost organic traffic</div>
+              <div className="flex items-center gap-1.5">📈 Improve search ranking</div>
+              <div className="flex items-center gap-1.5">🎯 Target right audience</div>
+              <div className="flex items-center gap-1.5">📊 Transparent reporting</div>
             </div>
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                          Get Free orm Audit <ArrowRight size={18} />
-                        </button> */}
-              <a href="/contact">
+              <a href="/contact" className="inline-block">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            className="w-full md:flex-1 flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             <img
               src={seo2}
               alt="Professional ORM concept showing customer reviews and brand reputation analysis"
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-lg w-full max-w-lg md:max-w-none h-auto object-cover"
             />
           </motion.div>
         </div>
+
         {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full"
+              className="absolute w-2 h-2 bg-white/30 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 7) % 100}%`,
+                top: `${(i * 13) % 100}%`,
               }}
               animate={{
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
+                y: [0, -60, 0],
+                opacity: [0.2, 0.8, 0.2],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3 + (i % 3),
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: (i % 5) * 0.5,
               }}
             />
           ))}
         </div>
       </div>
 
-      {/* addedd */}
-
-      <div className="bg-gray-50">
-        {/* orm Section */}
-        <div className="py-16 px-6 md:px-12 lg:px-20">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
-            <motion.img
-              src={ppc4}
-              alt="Digital illustration of online reputation management with rating stars and feedback icons"
-              className="rounded-2xl shadow-lg w-full md:w-1/2"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div className="bg-gray-50 overflow-hidden">
+        {/* Why ORM Section */}
+        <div className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10 mb-16 sm:mb-20">
+            <div className="w-full md:w-1/2 flex justify-center overflow-hidden rounded-2xl">
+              <motion.img
+                src={ppc4}
+                alt="Digital illustration of online reputation management with rating stars and feedback icons"
+                className="rounded-2xl shadow-lg w-full h-auto object-cover"
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+            </div>
+            <div className="w-full md:flex-1 text-center md:text-left">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-snug">
                 Why ORM is the Best Investment for Your Business
               </h2>
-              <p className="text-gray-700 mb-4">
-                ORM delivers instant visibility by placing your <span className="font-semibold text-blue-700">DigLip7</span>,
-                business at the top of search results. It drives targeted traffic, offers complete budget control, and provides measurable ROI, making it a fast, cost-effective strategy for growth and brand exposure.
-
+              <p className="text-gray-700 text-sm sm:text-base mb-4 leading-relaxed">
+                ORM delivers instant visibility by placing your <span className="font-semibold text-blue-700">DigLip7</span> business at the top of search results. It drives targeted traffic, offers complete budget control, and provides measurable ROI, making it a fast, cost-effective strategy for growth and brand exposure.
               </p>
-              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
-                <li>✅ Immediate Results</li>
-                <li>✅ Targeted Reach</li>
-                <li>✅ Budget Control</li>
-                <li>✅ Measurable ROI</li>
-                <li>✅ Brand Exposure</li>
+              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0 max-w-sm md:max-w-none text-sm sm:text-base">
+                <li className="flex items-center gap-2">✅ Immediate Results</li>
+                <li className="flex items-center gap-2">✅ Targeted Reach</li>
+                <li className="flex items-center gap-2">✅ Budget Control</li>
+                <li className="flex items-center gap-2">✅ Measurable ROI</li>
+                <li className="flex items-center gap-2">✅ Brand Exposure</li>
               </ul>
             </div>
           </div>
 
-          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+          {/* Process Section */}
+          <div className="bg-white py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-20 text-center rounded-2xl shadow-sm overflow-hidden">
             {/* Header */}
-            <div className="max-w-4xl mx-auto mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <div className="max-w-4xl mx-auto mb-10 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
                 Our Proven ORM Process
               </h2>
-              <p className="text-gray-600 mt-3">
+              <p className="text-gray-600 text-sm sm:text-base mt-3">
                 A systematic approach that delivers consistent results for our clients
               </p>
             </div>
@@ -746,18 +738,18 @@ function Online_rep_mana() {
               <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
 
               {/* Steps */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 relative z-10">
                 {stepss.map((step, index) => (
                   <motion.div
                     key={step.id}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
                     viewport={{ once: true }}
-                    className="flex flex-col items-center text-center"
+                    className="flex flex-col items-center text-center p-4 bg-gray-50/50 rounded-xl md:bg-transparent md:p-0"
                   >
                     {/* Icon Circle */}
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-blue-300 bg-white shadow-md mb-4 flex-shrink-0">
                       {step.icon}
                       <span className="absolute -top-2 -right-2 bg-teal-500 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
                         {step.id}
@@ -765,9 +757,9 @@ function Online_rep_mana() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                    <h3 className="font-semibold text-gray-900 text-base sm:text-lg">{step.title}</h3>
                     {/* Description */}
-                    <p className="text-gray-600 text-sm mt-2 leading-relaxed max-w-[200px]">
+                    <p className="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed max-w-xs sm:max-w-[200px] mx-auto">
                       {step.description}
                     </p>
                   </motion.div>
@@ -776,26 +768,27 @@ function Online_rep_mana() {
             </div>
           </div>
 
-          {/* orm Services */}
-          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
-            <div className="max-w-6xl mx-auto text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          {/* ORM Success Stories */}
+          <div className="py-12 sm:py-16 text-center overflow-hidden">
+            <div className="max-w-6xl mx-auto mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
                 Proven ORM Success Stories
               </h2>
-              <p className="text-gray-600 mt-3">
+              <p className="text-gray-600 text-sm sm:text-base mt-3">
                 Real results from real businesses that trusted <span className="font-semibold text-teal-600">DigLip7</span> with their ORM journey.
               </p>
 
               {/* Tabs */}
-              <div className="flex justify-center gap-4 mt-8 flex-wrap">
+              <div className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8 flex-wrap">
                 {Object.keys(caseStudies).map((key) => (
                   <button
                     key={key}
                     onClick={() => setActive(key)}
-                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
-                      ? "bg-teal-600 text-white shadow-md"
-                      : "bg-white text-gray-700 hover:bg-teal-50"
-                      }`}
+                    className={`px-5 sm:px-7 py-2.5 sm:py-3.5 text-sm sm:text-base font-semibold rounded-full shadow-md transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                      active === key
+                        ? "bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-teal-500/30"
+                        : "bg-white text-gray-700 hover:bg-teal-50 border border-gray-200"
+                    }`}
                   >
                     {key}
                   </button>
@@ -809,165 +802,156 @@ function Online_rep_mana() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10 text-left bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100"
             >
               {/* Left: Image & Info */}
-              <div className="flex-1">
+              <div className="w-full md:flex-1">
                 <img
                   src={study.image}
                   alt={study.title}
-                  className="rounded-2xl shadow-md w-full object-cover"
+                  className="rounded-2xl shadow-md w-full h-auto object-cover max-h-80 md:max-h-96"
                 />
-
               </div>
 
               {/* Right: Stats */}
-              <div className="flex-1 space-y-4">
-                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
-                <p className="text-sm text-gray-600">
-                  Transformed a struggling tech startup into an industry leader through advanced ORM.
+              <div className="w-full md:flex-1 space-y-4">
+                <h3 className="font-semibold text-gray-900 text-xl sm:text-2xl">{study.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  {study.description}
                 </p>
-                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
-
-
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full pt-2">
                   {study.stats.map((stat, idx) => (
                     <div
                       key={idx}
-                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                      className="bg-gray-50 rounded-xl border border-gray-100 p-4 flex flex-col justify-center items-start shadow-sm"
                     >
-
                       <div className="flex items-center gap-2">{stat.icon}</div>
-                      <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
-                      <p className="text-gray-500 text-sm">{stat.label}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-xs sm:text-sm">{stat.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
           </div>
-
         </div>
 
-        {/* orm Services Section */}
-        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
-          <div className="max-w-6xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our ORM Services</h2>
-            <p className="text-gray-600 mb-10">
+        {/* ORM Services Section */}
+        <div className="bg-white py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
+          <div className="max-w-6xl mx-auto text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our ORM Services</h2>
+            <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
               ORM services designed to maximize ROI and drive targeted traffic.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-10">
               {ppcServices.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
-                  whileHover={{ scale: 1.05 }}
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="bg-gray-50 rounded-xl shadow-md p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100 flex flex-col items-center text-center"
+                  whileHover={{ scale: 1.03 }}
                 >
-                  <div className="flex justify-center mb-4">
-                    <service.icon className="text-teal-600 w-10 h-10" />
+                  <div className="flex justify-center mb-4 w-14 h-14 rounded-full bg-teal-50 items-center">
+                    <service.icon className="text-teal-600 w-8 h-8" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600 text-sm">{service.description}</p>
+                  <h3 className="font-semibold text-gray-900 text-lg mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{service.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* orm Pricing Section */}
-        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
+        {/* ORM Pricing Section */}
+        <div className="bg-gray-50 py-12 sm:py-16 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">ORM Packages Designed for Every Stage</h2>
-            <p className="text-gray-600 mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">ORM Packages Designed for Every Stage</h2>
+            <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mb-10">
               Choose the perfect ORM package that fits your business needs and budget.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
               {seoPackages.map((pkg, index) => (
                 <motion.div
                   key={index}
-                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                  className={`rounded-2xl p-6 sm:p-8 shadow-lg transition-all flex flex-col justify-between ${
+                    pkg.popular ? "border-2 border-teal-500 bg-white ring-2 ring-teal-500/20" : "bg-white border border-gray-100"
+                  }`}
+                  whileHover={{ y: -5 }}
                 >
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
-                    {pkg.popular && (
-                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
-                        🌟 Most Popular
-                      </span>
-                    )}
+                  <div>
+                    <div className="mb-4 flex justify-between items-center">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{pkg.name}</h3>
+                      {pkg.popular && (
+                        <span className="text-xs bg-teal-100 text-teal-800 px-3 py-1 rounded-full font-semibold">
+                          🌟 Popular
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-baseline gap-1 mb-4">
+                      <span className="text-3xl sm:text-4xl font-extrabold text-teal-800">{pkg.price}</span>
+                      <span className="text-gray-500 text-sm">{pkg.duration}</span>
+                    </div>
+                    <ul className="text-gray-700 text-xs sm:text-sm space-y-2.5 mb-6 text-left">
+                      {pkg.features.map((feat, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-teal-600 flex-shrink-0">✓</span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-4xl font-bold text-teal-900 mb-2">{pkg.price}</p>
-                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
-                  <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
-                    {pkg.features.map((feat, i) => (
-                      <li key={i}>✅ {feat}</li>
-                    ))}
-                  </ul>
-                  <a href="/contact">
+                  <a href="/contact" className="w-full block mt-auto">
                     <button
-                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                      className="w-full py-3 px-6 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-full shadow-md hover:shadow-teal-500/40 transition-all duration-300 text-sm sm:text-base"
                     >
                       {pkg.button}
-                    </button></a>
+                    </button>
+                  </a>
                 </motion.div>
               ))}
             </div>
 
-            <p className="mt-10 text-gray-500 text-sm">
+            <p className="mt-10 text-gray-500 text-xs sm:text-sm">
               All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
-              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+              <a href="/contact" className="text-teal-600 font-semibold underline">Contact us</a>.
             </p>
           </div>
         </div>
       </div>
-      {/* added  */}
 
-
-
-
-
-
-
-
-
-
-      {/* About Section with 3D Cards */}
-      <section id="about" className=" sm:py-16 lg: bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
-          {/* Left Image with 3D effect */}
+      {/* About Section */}
+      <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
+        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
+          {/* Left Image */}
           <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 w-full"
+            className="w-full lg:flex-1"
           >
             <Card3D className="w-full">
-              <div className="relative overflow-hidden rounded-2xl ">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl border border-gray-100">
                 <img
                   src={seoImage}
-                  alt="orm Service"
-                  className="w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-110"
+                  alt="ORM Service DigLip7"
+                  className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 "></div>
               </div>
             </Card3D>
           </motion.div>
 
           {/* Right Content */}
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 w-full"
+            className="w-full lg:flex-1 text-left"
           >
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6 leading-snug">
                 Command Your Digital Destiny with Diglip7’s{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
                   Unmatched ORM Expertise
@@ -975,28 +959,29 @@ function Online_rep_mana() {
               </h2>
             </FloatingElement>
 
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+            <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base">
+              <p>
                 In today’s hyper-connected world, your online reputation isn’t
                 just a reflection of who you are—it’s the foundation of your
                 success. One Google search can determine whether customers trust
                 your business, employers hire you, or partners collaborate with
                 you.
               </p>
-              <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
-                At Diglip7, we’re masters of [ORM]—Online Reputation
-                Management—delivering cutting-edge solutions to shape, protect,
+              <p>
+                At Diglip7, we’re masters of Online Reputation
+                Management (ORM)—delivering cutting-edge solutions to shape, protect,
                 and elevate your digital presence. Ready to turn your online
-                image into your greatest asset? Our [ORM] services are your key
+                image into your greatest asset? Our ORM services are your key
                 to unlocking a world of opportunities.
               </p>
             </div>
 
             <motion.div
-              className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4"
+              className="mt-6 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
             >
               {[
                 { icon: Users, text: "1000+ Projects" },
@@ -1005,11 +990,11 @@ function Online_rep_mana() {
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
-                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3 sm:px-4 py-2 rounded-full"
+                  className="flex items-center gap-2 bg-gradient-to-r from-teal-50 to-[#c89d5a]/10 px-3.5 py-2 rounded-full border border-teal-100"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-700" />
-                  <span className="text-sm sm:text-base font-medium text-gray-700">
+                  <item.icon className="w-4 h-4 text-teal-700" />
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">
                     {item.text}
                   </span>
                 </motion.div>
@@ -1020,17 +1005,17 @@ function Online_rep_mana() {
       </section>
 
       {/* Difference Section */}
-      <section className=" sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 overflow-hidden">
+        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
-            className="flex-1 w-full"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="w-full lg:flex-1"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <FloatingElement delay={0.2}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-700 leading-tight mb-4 sm:mb-6">
                 What is ORM,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-[#c89d5a]">
                   and Why Does It Matter?
@@ -1038,23 +1023,20 @@ function Online_rep_mana() {
               </h2>
             </FloatingElement>
 
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
-              [ORM], short for Online Reputation Management, is the strategic
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
+              ORM, short for Online Reputation Management, is the strategic
               process of monitoring, enhancing, and maintaining how you or your
               brand appear across the digital landscape. From search engine
               results to social media chatter, customer reviews to blog
-              mentions, [ORM] ensures that what people find online paints you in
+              mentions, ORM ensures that what people find online paints you in
               the best possible light. It’s not just about fixing problems—it’s
               about proactively building a reputation that opens doors. At
-              Diglip7, we take [ORM] to the next level. We don’t just clean up
-              messes; we craft a digital story that showcases your strengths,
+              Diglip7, we craft a digital story that showcases your strengths,
               drowns out negativity, and positions you as a leader in your
-              space. Whether you’re a business fighting for market share or an
-              individual reclaiming your narrative, our [ORM] services are your
-              secret weapon
+              space.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
               {[
                 { number: "500%", label: "Traffic Increase" },
                 { number: "95%", label: "Client Satisfaction" },
@@ -1063,17 +1045,17 @@ function Online_rep_mana() {
               ].map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
-                  initial={{ opacity: 0, scale: 0.5 }}
+                  className="text-center p-3 sm:p-5 bg-white rounded-xl border border-gray-100 shadow-sm"
+                  initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  transition={{ delay: idx * 0.1, duration: 0.4 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.03 }}
                 >
                   <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-teal-700">
                     {stat.number}
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
+                  <div className="text-xs sm:text-sm text-gray-600 mt-1">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -1082,38 +1064,37 @@ function Online_rep_mana() {
           </motion.div>
 
           <motion.div
-            className="flex-1 flex justify-center w-full"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="w-full lg:flex-1 flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-100">
                 <img
                   src={seo4}
-                  alt="orm Service"
-                  className="rounded-2xl  w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-105"
+                  alt="ORM Service Solutions"
+                  className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0  rounded-2xl"></div>
               </div>
             </Card3D>
           </motion.div>
         </div>
       </section>
 
-      {/* Results Section with Custom Shape */}
-      <section className="w-full  sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+      {/* Results Section */}
+      <section className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2"
           >
             <FloatingElement delay={0.3}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-teal-700 leading-tight mb-6">
                 The Diglip7 Difference:{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
                   Your ORM Advantage
@@ -1121,92 +1102,78 @@ function Online_rep_mana() {
               </h2>
             </FloatingElement>
 
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-4 sm:space-y-5">
               <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <CheckCircle className="w-5 h-5 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                  At <span className="font-semibold text-teal-700">Diglip7</span>, we’re not just another agency—we’re your reputation’s fiercest ally, equipped with industry-leading strategies.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  At{" "}
-                  <span className="font-semibold text-teal-700">Diglip7</span>,
-                  Why trust Diglip7 with your [ORM]? Because we’re not just
-                  another agency—we’re your reputation’s fiercest ally. Here’s
-                  what sets us apart:
+                <CheckCircle className="w-5 h-5 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                  <strong className="text-teal-800">Battle-Tested Expertise:</strong> Our ORM team has conquered reputation challenges across industries, delivering bespoke solutions crafted specifically for your brand.
                 </p>
               </motion.div>
 
               <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Battle-Tested Expertise{" "}
-                  <span className="font-semibold text-[#c89d5a]">
-                    Our [ORM] team has conquered reputation challenges across
-                    industries, delivering jaw-dropping results every time.
-                  </span>
-                  Bespoke Brilliance: No generic fixes here—every [ORM] plan is
-                  a custom-crafted masterpiece designed for you.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex items-start gap-3 sm:gap-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Transparency You Can Trust:We demystify [ORM] with detailed,
-                  easy-to-read reports that keep you in the loop.
+                <CheckCircle className="w-5 h-5 text-teal-600 mt-1 flex-shrink-0" />
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                  <strong className="text-teal-800">Transparency You Can Trust:</strong> We demystify ORM with detailed, easy-to-read monthly reports that keep you completely informed.
                 </p>
               </motion.div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="relative w-72 h-full sm:w-full sm:h-full lg:w-[420px] lg:h-[500px]">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-[420px] aspect-[4/5] mx-auto">
               <Card3D className="w-full h-full">
-                <img
-                  src={aboutImg}
-                  alt="About Diglip7"
-                  className="w-full h-full object-cover shadow-2xl transition-transform duration-700 hover:scale-105"
-                  style={{
-                    clipPath:
-                      "path('M 0 80 Q 200 -50 400 80 L 400 500 Q 200 600 0 500 Z')",
-                    borderRadius: "20px",
-                  }}
-                />
+                <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-teal-50">
+                  <img
+                    src={aboutImg}
+                    alt="About Diglip7"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
               </Card3D>
 
               {/* Floating elements around the image */}
               <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <Sparkles className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
-                animate={{ y: [0, -10, 0] }}
+                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-9 h-9 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center border border-teal-100"
+                animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
@@ -1217,43 +1184,41 @@ function Online_rep_mana() {
       </section>
 
       {/* Advantages Section with 3D Cards */}
-      <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gray-50/50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <motion.div
-          className="text-center mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: -50 }}
+          className="text-center mb-8 sm:mb-12 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-3 sm:mb-4">
               Who Can Transform Their Future with Diglip7’s ORM?
             </h2>
           </FloatingElement>
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-            Our [ORM] at Diglip7 is a game-changer for all walks of life:
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            Our ORM at Diglip7 is a game-changer for all walks of life:
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 max-w-7xl mx-auto">
           {advantages.map((adv, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-gradient-to-br from-[#c89d5a] to-[#c89d5a]/80 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
-                  <FloatingElement delay={index * 0.1}>
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
-                      <adv.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                    </div>
-                  </FloatingElement>
+                <div className="bg-gradient-to-br from-[#c89d5a] to-[#a87d3a] p-5 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col text-white">
+                  <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full mb-4 mx-auto">
+                    <adv.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                  </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 text-center">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2.5 text-center">
                     {adv.title}
                   </h3>
                   <p className="text-white/90 text-xs sm:text-sm leading-relaxed text-center flex-grow">
@@ -1267,60 +1232,52 @@ function Online_rep_mana() {
       </section>
 
       {/* Solutions Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <motion.div
-          className="text-center mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: -50 }}
+          className="text-center mb-8 sm:mb-12 max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-3 sm:mb-4">
               Why You Need Diglip7’s ORM Services Today
             </h2>
           </FloatingElement>
-          <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
-            Your online reputation is a living, breathing entity—constantly
-            evolving with every click, comment, and review. Ignore it, and you
-            risk losing control. Studies reveal that 91% of consumers read
-            online reviews before making a purchase, and 84% trust them as much
-            as a friend’s recommendation. A single negative post can ripple
-            through the web, costing you credibility and cash. That’s where
-            Diglip7’s [ORM] comes in. Here’s why it’s non-negotiable:
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            Your online reputation is constantly evolving with every click, comment, and review. Studies reveal that 91% of consumers read online reviews before making a purchase, and 84% trust them as much as a friend’s recommendation. That’s where Diglip7’s ORM comes in.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 max-w-7xl mx-auto">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
               <Card3D className="h-full">
-                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 h-full flex flex-col">
-                  <FloatingElement delay={index * 0.1}>
-                    <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-100 to-[#c89d5a]/20 rounded-full mb-4">
-                      <solution.icon className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600" />
-                    </div>
-                  </FloatingElement>
+                <div className="bg-gray-50/70 p-5 sm:p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-500 h-full flex flex-col">
+                  <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-teal-100/70 rounded-full mb-4">
+                    <solution.icon className="w-6 h-6 sm:w-7 sm:h-7 text-teal-700" />
+                  </div>
 
                   <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
                     {solution.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-xs sm:text-sm flex-grow">
+                  <p className="text-gray-600 mb-4 text-xs sm:text-sm flex-grow leading-relaxed">
                     {solution.description}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 pt-2 border-t border-gray-200/60">
                     {solution.points.map((point, i) => (
                       <li
                         key={i}
                         className="flex items-start gap-2 text-xs sm:text-sm text-gray-600"
                       >
-                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-teal-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-teal-600 mt-0.5 flex-shrink-0" />
                         <span>{point}</span>
                       </li>
                     ))}
@@ -1333,51 +1290,44 @@ function Online_rep_mana() {
       </section>
 
       {/* Process Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gray-50/50 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-3">
                 How Diglip7 Redefines ORM Excellence
               </h2>
             </FloatingElement>
-            <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto">
-              At Diglip7, we don’t settle for ordinary. Our [ORM] services are a
-              powerhouse of innovation, precision, and passion, tailored to your
-              unique needs. Here’s how we turn your reputation into a
-              masterpiece:
+            <p className="text-xs sm:text-sm sm:text-base text-gray-600 leading-relaxed">
+              At Diglip7, our ORM services are a powerhouse of innovation, precision, and passion, tailored to your unique needs. Here’s how we turn your reputation into a masterpiece:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <Card3D className="h-full">
-                  <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-2xl transition-all duration-500 h-full">
-                    <div className="flex items-start gap-4 mb-4">
-                      <motion.div
-                        className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm sm:text-base flex-shrink-0"
-                        whileHover={{ scale: 1.1, rotate: 360 }}
-                        transition={{ duration: 0.3 }}
-                      >
+                  <div className="bg-white shadow-md rounded-2xl p-5 sm:p-6 border border-gray-100 hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+                    <div className="flex items-start gap-3.5 mb-3.5">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-bold text-sm flex-shrink-0">
                         {step.number}
-                      </motion.div>
+                      </div>
                       <div className="flex-1">
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
                           {step.title}
                         </h3>
-                        <div className="flex items-center gap-2 mb-3">
-                          <step.icon className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600" />
+                        <div className="flex items-center gap-2">
+                          <step.icon className="w-4 h-4 text-teal-600" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed flex-grow">
                       {step.description}
                     </p>
                   </div>
@@ -1386,64 +1336,58 @@ function Online_rep_mana() {
             ))}
           </div>
 
-          <motion.div
-            className="mt-8 sm:mt-12 text-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6">
-              This process is built for simplicity, effectiveness, and rapid
-              growth.
+          <div className="mt-8 sm:mt-12 text-center">
+            <p className="text-sm sm:text-base text-gray-700 mb-4">
+              This process is built for simplicity, effectiveness, and rapid growth.
             </p>
-            <a href="/contact">
+            <a href="/contact" className="inline-block">
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Start Your Journey
-                <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                <ArrowRight className="w-4 h-4" />
               </motion.button>
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <div className="bg-gradient-to-b from-blue-50 to-white py-20 px-4 md:px-10 lg:px-20 text-center relative">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+      {/* Testimonial Section */}
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-10 lg:px-20 text-center relative overflow-hidden">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3">
           Trusted by Businesses Worldwide
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Don’t just take our word for it. See what our clients say about their orm success with DigLip7.
+        <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto mb-8 sm:mb-10">
+          Don’t just take our word for it. See what our clients say about their ORM success with DigLip7.
         </p>
 
         <motion.div
           key={testimonial.name}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-8 md:p-10 relative overflow-hidden"
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 relative border border-gray-100"
         >
           <div className="flex justify-center mb-4">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="text-yellow-400 fill-yellow-400" size={20} />
+              <Star key={i} className="text-yellow-400 fill-yellow-400" size={18} />
             ))}
           </div>
-          <p className="text-gray-700 text-lg md:text-xl italic mb-6">{testimonial.text}</p>
+          <p className="text-gray-700 text-base sm:text-lg md:text-xl italic mb-6 leading-relaxed">{testimonial.text}</p>
           <div className="flex flex-col items-center">
             <img
               src={testimonial.image}
               alt={testimonial.name}
-              className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-blue-500"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover mb-3 border-2 border-teal-500"
             />
-            <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
-            <p className="text-sm text-gray-500">{testimonial.role}</p>
+            <h3 className="font-semibold text-gray-900 text-base sm:text-lg">{testimonial.name}</h3>
+            <p className="text-xs sm:text-sm text-gray-500">{testimonial.role}</p>
             {testimonial.link && (
               <a
                 href={testimonial.link}
-                className="text-blue-500 text-sm mt-1 hover:underline"
+                className="text-teal-600 text-xs sm:text-sm mt-1 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1453,83 +1397,92 @@ function Online_rep_mana() {
           </div>
         </motion.div>
 
-        <div className="flex justify-center items-center mt-8 gap-4">
+        <div className="flex justify-center items-center mt-6 sm:mt-8 gap-3">
           <button
             onClick={prev}
-            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
-          />
+            aria-label="Previous testimonial"
+            className="w-8 h-8 rounded-full bg-gray-200 hover:bg-teal-500 hover:text-white transition-all flex items-center justify-center text-gray-600 text-xs cursor-pointer"
+          >
+            ←
+          </button>
           {testimonials.map((_, i) => (
-            <div
+            <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === i ? "bg-blue-500 w-6" : "bg-gray-300"
-                }`}
-            ></div>
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
+                index === i ? "bg-teal-600 w-6" : "bg-gray-300 w-2.5"
+              }`}
+            ></button>
           ))}
           <button
             onClick={next}
-            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
-          />
+            aria-label="Next testimonial"
+            className="w-8 h-8 rounded-full bg-gray-200 hover:bg-teal-500 hover:text-white transition-all flex items-center justify-center text-gray-600 text-xs cursor-pointer"
+          >
+            →
+          </button>
         </div>
 
         {/* Floating small cards */}
-        <div className="hidden md:flex justify-center gap-6 mt-12 flex-wrap">
+        <div className="hidden md:flex justify-center gap-4 lg:gap-6 mt-10 flex-wrap">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.05 }}
-              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border ${i === index ? "border-blue-500" : "border-gray-100"
-                }`}
+              whileHover={{ scale: 1.03 }}
+              onClick={() => setIndex(i)}
+              className={`bg-white shadow-md p-4 rounded-xl w-60 text-left border cursor-pointer transition-all ${
+                i === index ? "border-teal-500 ring-2 ring-teal-500/20" : "border-gray-100 opacity-70 hover:opacity-100"
+              }`}
             >
-              <div className="flex gap-3 items-center mb-3">
-                <img src={t.image} className="w-10 h-10 rounded-full" alt="" />
-                <div>
-                  <p className="font-semibold text-sm">{t.name}</p>
-                  <p className="text-xs text-gray-500">{t.role}</p>
+              <div className="flex gap-3 items-center mb-2.5">
+                <img src={t.image} className="w-9 h-9 rounded-full object-cover" alt={t.name} />
+                <div className="overflow-hidden">
+                  <p className="font-semibold text-xs sm:text-sm text-gray-900 truncate">{t.name}</p>
+                  <p className="text-[11px] text-gray-500 truncate">{t.role}</p>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 line-clamp-3">{t.text}</p>
+              <p className="text-xs text-gray-600 line-clamp-2">{t.text}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* FAQ Section */}
-      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="w-full mx-auto">
+      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-8 sm:mb-12"
-            initial={{ opacity: 0, y: -30 }}
+            initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-3">
                 Frequently Asked Questions (FAQs)
               </h2>
             </FloatingElement>
-            <p className="text-gray-600 text-sm sm:text-base">
-              Get answers to the most common questions about our digital marketing services.
+            <p className="text-gray-600 text-xs sm:text-sm sm:text-base">
+              Get answers to the most common questions about our online reputation management services.
             </p>
           </motion.div>
 
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg  overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
+                className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
                 viewport={{ once: true }}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
-                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
+                  className="w-full flex justify-between items-center text-left p-4 sm:p-5 bg-gradient-to-r from-teal-900 to-teal-700 text-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-teal-500/20 transition-all duration-300 cursor-pointer"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
+                  <span className="text-sm sm:text-base font-semibold pr-3 sm:pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -1547,10 +1500,10 @@ function Online_rep_mana() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.3 }}
                       className="border-t border-gray-100"
                     >
-                      <div className="p-4 sm:p-6 text-gray-600 leading-relaxed text-xs sm:text-sm lg:text-base">
+                      <div className="p-4 sm:p-5 text-gray-600 leading-relaxed text-xs sm:text-sm sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -1565,23 +1518,23 @@ function Online_rep_mana() {
       {/* CTA Section */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(15)].map((_, i) => (
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-32 h-32 border border-white/20 rounded-full"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${(i * 11) % 100}%`,
+                top: `${(i * 17) % 100}%`,
               }}
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
-                duration: 4 + Math.random() * 2,
+                duration: 4 + (i % 3),
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: (i % 4) * 0.5,
               }}
             />
           ))}
@@ -1589,62 +1542,59 @@ function Online_rep_mana() {
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <FloatingElement>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6">
-                our Reputation Is
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">
+                Your Reputation Is
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white">
                   Your Superpower—Unleash It
                 </span>
               </h2>
             </FloatingElement>
 
-            <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
               Your online reputation isn’t just data—it’s your digital DNA, the
               first impression that shapes your future. At Diglip7, we’re
-              obsessed with making it extraordinary through our unrivaled [ORM]
+              obsessed with making it extraordinary through our unrivaled ORM
               services. Whether you’re erasing past blunders, building
-              unshakable trust, or staying one step ahead, our [ORM] is your
+              unshakable trust, or staying one step ahead, our ORM is your
               ticket to digital dominance.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contact">
                 <motion.button
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  className="px-6 sm:px-8 py-3.5 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Get Free Consultation
-                  <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                  <Sparkles className="w-4 h-4 text-teal-600" />
                 </motion.button>
               </a>
-
-
             </div>
 
             <motion.div
-              className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-6 sm:gap-8 text-white/80"
+              className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-4 sm:gap-6 text-white/90"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
             >
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                <CheckCircle className="w-4 h-4 text-green-300 flex-shrink-0" />
                 <span className="text-xs sm:text-sm">Free Website Audit</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
-                <span className="text-xs sm:text-sm">
-                  No Long-term Contracts
-                </span>
+                <CheckCircle className="w-4 h-4 text-green-300 flex-shrink-0" />
+                <span className="text-xs sm:text-sm">No Long-term Contracts</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                <CheckCircle className="w-4 h-4 text-green-300 flex-shrink-0" />
                 <span className="text-xs sm:text-sm">Results in 5 Months</span>
               </div>
             </motion.div>

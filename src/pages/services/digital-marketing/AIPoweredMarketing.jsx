@@ -590,7 +590,7 @@ function Ai_powered() {
   ];
 
   return (
-    <div className=" bg-white overflow-x-hidden pt-18 sm:pt-18">
+    <div className="bg-white overflow-x-hidden w-full">
       <SEO
         title="AI-Powered Digital Marketing Services | DigLip7"
         description="Automate campaigns, predict trends, and personalize customer journeys with DigLip7's AI-powered marketing services. Get a free strategy session today."
@@ -602,30 +602,30 @@ function Ai_powered() {
       />
       {/* Hero Section with Parallax */}
 
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 bg-gradient-to-r from-purple-100 via-pink-100 to-white flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full">
         {/* Animated Floating Objects */}
         <motion.div
-          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="w-full lg:w-[58%] text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">AI-Powered Digital Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 That Drive Smarter, Faster Growth
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
-              <span className="font-semibold text-blue-700"> Leverage DigLip 7’</span>AI-powered services to automate tasks, gain actionable insights, and enhance decision-making. Our innovative solutions drive efficiency, reduce costs, and deliver measurable growth for businesses in today’s competitive digital landscape.
+            <p className="text-gray-700 my-6 text-base sm:text-lg leading-relaxed">
+              <span className="font-semibold text-blue-700">Leverage DigLip7’s</span> AI-powered services to automate tasks, gain actionable insights, and enhance decision-making. Our innovative solutions drive efficiency, reduce costs, and deliver measurable growth for businesses in today’s competitive digital landscape.
             </p>
 
             {/* Features */}
@@ -637,14 +637,10 @@ function Ai_powered() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                          Get Free AI POWERED Audit <ArrowRight size={18} />
-                        </button> */}
-              <a href="/contact">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <a href="/contact" className="inline-block">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -657,7 +653,7 @@ function Ai_powered() {
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
+            className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -665,12 +661,12 @@ function Ai_powered() {
             <img
               src={seo2}
               alt="Analytics"
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-lg w-full max-w-lg lg:max-w-full"
             />
           </motion.div>
         </div>
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}

@@ -584,7 +584,7 @@ function Web_dev() {
         schema={webDevSchemas}
       />
       {/* Hero Section with Parallax */}
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-24 lg:pb-16 lg:min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-white flex flex-col justify-start lg:justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
@@ -597,18 +597,18 @@ function Web_dev() {
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
-          {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+        <div className="flex flex-col md:flex-row items-center max-w-7xl w-full gap-8 lg:gap-14">
+          {/* Left Section (60% width for optimal headline flow) */}
+          <div className="w-full md:w-7/12 lg:w-3/5 text-center md:text-left">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
               <span className="text-gray-900">Professional Web Development Services </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+              <br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
                 That Build Fast, Secure Websites to Grow Your Business
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
-              Build a fast, secure, and user-friendly website with <span className="font-semibold text-blue-700">DigLip7</span>web development services. From custom websites and e-commerce platforms to web applications and responsive designs, we deliver solutions that enhance user experience, boost conversions, and drive measurable business growth.
-
+            <p className="text-gray-700 text-base sm:text-lg mt-4 mb-6 leading-relaxed max-w-2xl">
+              Build a fast, secure, and user-friendly website with <span className="font-semibold text-blue-700">DigLip7</span> web development services. From custom websites and e-commerce platforms to web applications and responsive designs, we deliver solutions that enhance user experience, boost conversions, and drive measurable business growth.
             </p>
 
             {/* Features */}
@@ -621,36 +621,30 @@ function Web_dev() {
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                    Get Free Web Development  Audit <ArrowRight size={18} />
-                  </button> */}
               <a href="/contact">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-7 sm:px-9 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
-                  Get Started
-                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <span>Get Started</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
-          {/* Right Section - Animated Chart */}
+          {/* Right Section (40% width illustration) */}
           <motion.div
-            className="flex-1"
+            className="w-full md:w-5/12 lg:w-2/5 flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
           >
             <img
               src={seo2}
               alt="Modern illustration of developers creating a mobile app interface on smartphones and tablets."
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-xl w-full max-w-md object-contain"
             />
           </motion.div>
         </div>
@@ -699,8 +693,6 @@ function Web_dev() {
               <p className="text-gray-700 mb-4">
                 Professional web development builds a fast, secure, and user-friendly<span className="font-semibold text-blue-700">website that boosts credibility, attracts customers, and increases conversions.</span>,
                 It supports digital marketing efforts and delivers long-term ROI, making it a smart investment for business growth.
-
-
               </p>
               <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
                 <li>✅ Immediate Results</li>

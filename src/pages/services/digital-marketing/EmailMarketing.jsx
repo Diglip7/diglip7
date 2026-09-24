@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "../../../components/SEO";
 import {
@@ -607,35 +608,34 @@ function Emailmarket() {
       />
       {/* Hero Section with Parallax */}
 
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
-          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="relative z-10 w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 py-8">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+          <div className="w-full lg:w-7/12 flex-1 text-center md:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight md:leading-tight mb-4">
               <span className="text-gray-900">Proven Email Marketing Strategies </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 That Maximize ROI and Customer Engagement
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
-              At <span className="font-semibold text-blue-700">DigLip7</span> Explore real results from DigLip 7’s email marketing campaigns. Boost open rates, drive conversions, and strengthen customer engagement with our data-driven, results-focused strategies.
-
+            <p className="text-gray-700 mb-6 max-w-2xl">
+              At <span className="font-semibold text-blue-700">DigLip7</span>, explore real results from our email marketing campaigns. Boost open rates, drive conversions, and strengthen customer engagement with our data-driven, results-focused strategies.
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6 max-w-lg mx-auto md:mx-0">
               <div>🚀 Boost organic traffic</div>
               <div>📈 Improve search ranking</div>
               <div>🎯 Target right audience</div>
@@ -644,28 +644,22 @@ function Emailmarket() {
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                          Get Free E-mail Audit <ArrowRight size={18} />
-                        </button> */}
-              <a href="/contact">
+              <Link to="/contact" className="inline-block relative z-20">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
-              </a>
-
+              </Link>
             </div>
           </div>
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
+            className="w-full lg:w-5/12 flex-1 max-w-lg lg:max-w-none mx-auto"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -678,7 +672,7 @@ function Emailmarket() {
           </motion.div>
         </div>
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -915,19 +909,20 @@ function Emailmarket() {
                       <li key={i}>✅ {feat}</li>
                     ))}
                   </ul>
-                  <a href="/contact">
+                  <Link to="/contact" className="inline-block">
                     <button
-                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     >
                       {pkg.button}
-                    </button></a>
+                    </button>
+                  </Link>
                 </motion.div>
               ))}
             </div>
 
             <p className="mt-10 text-gray-500 text-sm">
               All plans include a 30-day money-back guarantee. Need a custom plan?{" "}
-              <a href="/contact" className="text-blue-600 underline">Contact us</a>.
+              <Link to="/contact" className="text-blue-600 underline">Contact us</Link>.
             </p>
           </div>
         </div>
@@ -1024,8 +1019,8 @@ function Emailmarket() {
       </section>
 
       {/* Difference Section */}
-      <section className=" sm:py-16 lg: px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             className="flex-1 w-full"
             initial={{ opacity: 0, x: -50 }}
@@ -1093,9 +1088,9 @@ function Emailmarket() {
                 <img
                   src={seo4}
                   alt="E-mail Service"
-                  className="rounded-2xl shadow-2x w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-105"
+                  className="rounded-2xl shadow-xl w-full h-auto max-h-[420px] object-cover transform transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0  rounded-2xl"></div>
+                <div className="absolute inset-0 rounded-2xl"></div>
               </div>
             </Card3D>
           </motion.div>
@@ -1103,7 +1098,7 @@ function Emailmarket() {
       </section>
 
       {/* Results Section with Custom Shape */}
-      <section className="w-full  sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -1112,31 +1107,30 @@ function Emailmarket() {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="relative w-72 h-full sm:w-full sm:h-full lg:w-[420px] lg:h-[500px]">
+            <div className="relative w-full max-w-xs sm:max-w-md lg:max-w-[420px] h-[300px] sm:h-[400px] lg:h-[480px]">
               <Card3D className="w-full h-full">
                 <img
                   src={aboutImg}
                   alt="About Diglip7"
-                  className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-
+                  className="w-full h-full object-cover rounded-2xl shadow-xl transition-transform duration-700 hover:scale-105"
                 />
               </Card3D>
 
               {/* Floating elements around the image */}
               <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r from-teal-600 to-[#c89d5a] rounded-full flex items-center justify-center shadow-lg pointer-events-none"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <Sparkles className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center"
+                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-9 h-9 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center pointer-events-none"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
+                <Target className="w-4 h-4 sm:w-6 sm:h-6 text-teal-600" />
               </motion.div>
             </div>
           </motion.div>
@@ -1148,7 +1142,7 @@ function Emailmarket() {
             className="w-full lg:w-1/2"
           >
             <FloatingElement delay={0.3}>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-teal-700 leading-tight mb-6">
                 Email Marketing for Small Business:{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-teal-600 to-[#c89d5a]">
                   Establish Your Reputation and Improve Your Response Rates
@@ -1380,16 +1374,16 @@ function Emailmarket() {
               This process is built for simplicity, effectiveness, and rapid
               growth.
             </p>
-            <a href="/contact">
+            <Link to="/contact" className="inline-block">
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Start Your Journey
                 <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -1590,19 +1584,17 @@ function Emailmarket() {
               Ready to supercharge your business? Our email marketing service at Diglip7 is your ticket to growth.
             </p>
 
-            <div className="flex flex-col  texl sm:flex-row gap-4 justify-center items-center">
-              <a href="/contact">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Get Free Consultation
                   <Sparkles className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                 </motion.button>
-              </a>
-
-
+              </Link>
             </div>
 
             <motion.div

@@ -595,20 +595,20 @@ function Socialmedia() {
         schema={smmSchemas}
       />
 
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="relative pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
-          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="relative z-10 flex flex-col md:flex-row items-center max-w-6xl gap-10">
           {/* Left Section */}
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
@@ -619,7 +619,6 @@ function Socialmedia() {
             </h1>
             <p className="text-gray-700 mb-6">
               At <span className="font-semibold text-blue-700">Engage your audience, </span> boost brand visibility, and drive measurable results with DigLip 7’s social media marketing services. Discover strategies that increase traffic, leads, and long-term business growth.
-
             </p>
 
             {/* Features */}
@@ -632,22 +631,16 @@ function Socialmedia() {
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-              Get Free social media  Audit <ArrowRight size={18} />
-            </button> */}
-              <a href="/contact">
+              <a href="/contact" className="inline-block">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
                   <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
@@ -666,7 +659,7 @@ function Socialmedia() {
           </motion.div>
         </div>
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}

@@ -578,7 +578,7 @@ function Video_market() {
   ];
 
   return (
-    <div className="overflow-x-hidden bg-white sm:pt-18">
+    <div className="overflow-x-hidden bg-white w-full">
       <SEO
         title="Video Marketing Services That Drive Engagement | DigLip7"
         description="Grow your brand with DigLip7's video marketing — strategy, production, editing & distribution across YouTube, social, and ad platforms that convert."
@@ -589,30 +589,30 @@ function Video_market() {
         schema={videoSchemas}
       />
       {/* Hero Section with Parallax */}
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 bg-gradient-to-r from-purple-100 via-pink-100 to-white flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full">
         {/* Animated Floating Objects */}
         <motion.div
-          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
+          className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl"
+          className="absolute bottom-10 right-10 w-20 h-20 bg-white/20 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="w-full lg:w-[58%] text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">Professional Video Marketing Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 That Boost Engagement and Brand Growth
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
-              Elevate your brand with<span className="font-semibold text-blue-700">DigLip7</span> video marketing services. From creative video production to targeted campaigns, we help businesses increase engagement, drive traffic, and achieve measurable ROI with impactful, results-driven video strategies.
+            <p className="text-gray-700 my-6 text-base sm:text-lg leading-relaxed">
+              Elevate your brand with <span className="font-semibold text-blue-700">DigLip7</span> video marketing services. From creative video production to targeted campaigns, we help businesses increase engagement, drive traffic, and achieve measurable ROI with impactful, results-driven video strategies.
             </p>
 
             {/* Features */}
@@ -624,13 +624,10 @@ function Video_market() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                          Get Free SEO Audit <ArrowRight size={18} />
-                        </button> */}
-              <a href="/contact">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <a href="/contact" className="inline-block">
                 <motion.button
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -643,7 +640,7 @@ function Video_market() {
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
+            className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -651,12 +648,12 @@ function Video_market() {
             <img
               src={seo2}
               alt="Creative video production concept showing camera and editing software"
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-lg w-full max-w-lg lg:max-w-full"
             />
           </motion.div>
         </div>
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -683,26 +680,24 @@ function Video_market() {
 
       <div className="bg-gray-50">
         {/* SEO Section */}
-        <div className="py-16 px-6 md:px-12 lg:px-20">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
+        <div className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-20">
             <motion.img
               src={ppc3}
               alt="Digital video marketing strategy with play icon and analytics dashboard"
-              className="rounded-2xl shadow-lg w-full md:w-1/2"
-              animate={{ scale: [1, 1.05, 1] }}
+              className="rounded-2xl shadow-lg w-full lg:w-1/2 object-cover"
+              animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
             />
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 text-center lg:text-left">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Why Video Marketing Service is the Best Investment for Your Business
               </h2>
-              <p className="text-gray-700 mb-4">
-                Video marketing boosts brand visibility,<span className="font-semibold text-blue-700">DigLip7</span>,
+              <p className="text-gray-700 mb-4 text-base sm:text-lg leading-relaxed">
+                Video marketing boosts brand visibility with <span className="font-semibold text-blue-700">DigLip7</span>,
                 engages audiences, and drives conversions. With measurable results and optimized campaigns, it delivers higher ROI, strengthens customer connections, and ensures sustainable business growth in the digital landscape.
-
-
               </p>
-              <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
+              <ul className="text-gray-800 space-y-2 text-left mx-auto lg:mx-0 max-w-md">
                 <li>✅ Immediate Results</li>
                 <li>✅ Targeted Reach</li>
                 <li>✅ Budget Control</li>
@@ -712,20 +707,19 @@ function Video_market() {
             </div>
           </div>
 
-          <div className="bg-white py-16 px-6 md:px-12 lg:px-20 text-center">
+          <div className="bg-white py-16 px-4 sm:px-6 lg:px-8 text-center rounded-3xl max-w-7xl mx-auto shadow-sm">
             {/* Header */}
             <div className="max-w-4xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Our Proven Video Marketing Service Process
               </h2>
-              <p className="text-gray-600 mt-3">
-                At DigLip 7, our video marketing process is designed to maximize engagement and ROI. We start with audience research and strategy planning, create compelling video content, and distribute it across the right platforms. Continuous tracking and optimization ensure higher views, increased engagement, and measurable business growth.
-
+              <p className="text-gray-600 mt-3 text-base sm:text-lg">
+                At DigLip7, our video marketing process is designed to maximize engagement and ROI. We start with audience research and strategy planning, create compelling video content, and distribute it across the right platforms. Continuous tracking and optimization ensure higher views, increased engagement, and measurable business growth.
               </p>
             </div>
 
             {/* Steps Section */}
-            <div className="relative max-w-6xl mx-auto">
+            <div className="relative max-w-7xl mx-auto">
               {/* Blue Line (Desktop only) */}
               <div className="hidden md:block absolute top-10 left-0 w-full border-t-4 border-blue-100 z-0"></div>
 
@@ -761,14 +755,13 @@ function Video_market() {
           </div>
 
           {/* SEO Services */}
-          <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
-            <div className="max-w-6xl mx-auto text-center mb-10">
+          <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Proven Video Marketing Service Success Stories
               </h2>
-              <p className="text-gray-600 mt-3">
-                See how DigLip 7’s video marketing services have helped businesses achieve outstanding results.<span className="font-semibold text-teal-600">DigLip7</span>From increased brand awareness and higher engagement to boosted conversions, our creative, data-driven strategies deliver measurable ROI and long-term growth.
-
+              <p className="text-gray-600 mt-3 text-base sm:text-lg max-w-4xl mx-auto">
+                See how DigLip7’s video marketing services have helped businesses achieve outstanding results. From increased brand awareness and higher engagement to boosted conversions, our creative, data-driven strategies deliver measurable ROI and long-term growth.
               </p>
 
               {/* Tabs */}
@@ -777,7 +770,7 @@ function Video_market() {
                   <button
                     key={key}
                     onClick={() => setActive(key)}
-                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
+                    className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer ${active === key
                       ? "bg-teal-600 text-white shadow-md"
                       : "bg-white text-gray-700 hover:bg-teal-50"
                       }`}
@@ -794,33 +787,29 @@ function Video_market() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10"
+              className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12"
             >
               {/* Left: Image & Info */}
-              <div className="flex-1">
+              <div className="w-full lg:w-1/2">
                 <img
                   src={study.image}
                   alt={study.title}
-                  className="rounded-2xl shadow-md w-full object-cover"
+                  className="rounded-2xl shadow-md w-full object-cover max-h-[400px]"
                 />
-
               </div>
 
               {/* Right: Stats */}
-              <div className="flex-1 space-y-4">
-                <h3 className="font-semibold text-gray-800 text-lg">TechStart Inc.</h3>
-                <p className="text-sm text-gray-600">
-                  Transformed a struggling tech startup into an industry leader through advanced Video Marketing Service.
+              <div className="w-full lg:w-1/2 space-y-4">
+                <h3 className="font-semibold text-gray-800 text-xl">{study.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  {study.description}
                 </p>
-                <div className="grid grid-cols-2 gap-4 flex-1 w-full">
-
-
+                <div className="grid grid-cols-2 gap-4 w-full">
                   {study.stats.map((stat, idx) => (
                     <div
                       key={idx}
-                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start"
+                      className="bg-white rounded-xl shadow-md p-5 flex flex-col justify-center items-start border border-gray-100"
                     >
-
                       <div className="flex items-center gap-2">{stat.icon}</div>
                       <p className="text-2xl font-bold text-black mt-1">{stat.value}</p>
                       <p className="text-gray-500 text-sm">{stat.label}</p>
@@ -830,16 +819,14 @@ function Video_market() {
               </div>
             </motion.div>
           </div>
-
         </div>
 
         {/* Graphic Design Services Section */}
-        <div className="bg-white py-16 px-6 md:px-12 lg:px-20">
-          <div className="max-w-6xl mx-auto text-center mb-16">
+        <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Video Marketing Service</h2>
-            <p className="text-gray-600 mb-10">
-              At DigLip 7, we offer comprehensive video marketing services designed to elevate your brand and drive results. Our services include professional video production, social media video campaigns, YouTube marketing, animated videos, promotional videos, and performance tracking to maximize engagement, reach, and ROI.
-
+            <p className="text-gray-600 mb-10 max-w-4xl mx-auto text-base sm:text-lg">
+              At DigLip7, we offer comprehensive video marketing services designed to elevate your brand and drive results. Our services include professional video production, social media video campaigns, YouTube marketing, animated videos, promotional videos, and performance tracking to maximize engagement, reach, and ROI.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -847,9 +834,7 @@ function Video_market() {
                 <motion.div
                   key={index}
                   className="bg-gray-50 rounded-xl shadow-lg p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100"
-                  whileHover={{ scale: 1.05 }}
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  whileHover={{ scale: 1.03 }}
                 >
                   <div className="flex justify-center mb-4">
                     <service.icon className="text-teal-600 w-10 h-10" />
@@ -863,10 +848,10 @@ function Video_market() {
         </div>
 
         {/* SEO Pricing Section */}
-        <div className="bg-gray-50 py-16 px-6 md:px-12 lg:px-20">
-          <div className="max-w-6xl mx-auto text-center">
+        <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Video Marketing Service Packages Designed for Every Stage</h2>
-            <p className="text-gray-600 mb-10">
+            <p className="text-gray-600 mb-10 max-w-3xl mx-auto">
               Choose the perfect Video Marketing Service package that fits your business needs and budget.
             </p>
 
@@ -874,14 +859,13 @@ function Video_market() {
               {seoPackages.map((pkg, index) => (
                 <motion.div
                   key={index}
-                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-gray-50"}`}
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
+                  className={`rounded-2xl p-8 shadow-lg transition-all ${pkg.popular ? "border-4 border-blue-500 bg-white" : "bg-white"}`}
+                  whileHover={{ scale: 1.02 }}
                 >
                   <div className="mb-6">
                     <h3 className="text-2xl font-semibold text-gray-900">{pkg.name}</h3>
                     {pkg.popular && (
-                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium">
+                      <span className="text-sm bg-blue-100 text-teal-900 px-3 py-1 rounded-full font-medium inline-block mt-2">
                         🌟 Most Popular
                       </span>
                     )}
@@ -895,7 +879,7 @@ function Video_market() {
                   </ul>
                   <a href="/contact">
                     <button
-                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                      className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     >
                       {pkg.button}
                     </button></a>
@@ -912,28 +896,24 @@ function Video_market() {
       </div>
       {/* added  */}
 
-
-
-
       {/* About Section with 3D Cards */}
       <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg: px-4 sm:px-6 lg:">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-4 sm:px-6 lg:px-8">
           {/* Left Image with 3D effect */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 w-full"
+            className="w-full lg:w-1/2"
           >
             <Card3D className="w-full">
-              <div className="relative overflow-hidden rounded-2xl ">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl">
                 <img
                   src={seoImage}
                   alt="ui/ux Service"
-                  className="w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-110"
+                  className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 "></div>
               </div>
             </Card3D>
           </motion.div>
@@ -944,7 +924,7 @@ function Video_market() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 w-full"
+            className="w-full lg:w-1/2"
           >
             <FloatingElement>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
@@ -954,7 +934,6 @@ function Video_market() {
                 </span>
               </h2>
             </FloatingElement>
-            {/* UI/UX Design Services | Diglip7 – Crafting Seamless Digital Experiences */}
             <div className="space-y-4 sm:space-y-6">
               <p className="text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
                 In a world where attention spans are shrinking and competition
@@ -1002,10 +981,10 @@ function Video_market() {
       </section>
 
       {/* Difference Section */}
-      <section className=" sm:py-16 lg: px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
-            className="flex-1 w-full"
+            className="w-full lg:w-1/2"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -1019,7 +998,6 @@ function Video_market() {
                 </span>
               </h2>
             </FloatingElement>
-            {/* What Are UI/UX Design Services? */}
             <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8">
               So, what exactly is a Video Marketing Service? It’s a
               full-spectrum approach to creating, optimizing, and promoting
@@ -1043,7 +1021,7 @@ function Video_market() {
               ].map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  className="text-center p-3 sm:p-4 bg-white/50 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg"
+                  className="text-center p-3 sm:p-4 bg-white rounded-xl border border-gray-100 shadow-lg"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
@@ -1062,20 +1040,19 @@ function Video_market() {
           </motion.div>
 
           <motion.div
-            className="flex-1 flex justify-center w-full"
+            className="w-full lg:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card3D className="w-full max-w-md lg:max-w-none">
-              <div className="relative">
+            <Card3D className="w-full max-w-lg">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl">
                 <img
                   src={seo4}
                   alt="ui/ux Service"
-                  className="rounded-2xl  w-full h-full sm:h-full lg:h-full object-cover transform transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0  rounded-2xl"></div>
               </div>
             </Card3D>
           </motion.div>
@@ -1083,7 +1060,7 @@ function Video_market() {
       </section>
 
       {/* Results Section with Custom Shape */}
-      <section className="w-full  sm:py-16 lg: px-4 sm:px-6 lg:px-8">
+      <section className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -1092,17 +1069,12 @@ function Video_market() {
             viewport={{ once: true }}
             className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="relative w-72 h-full sm:w-full sm:h-full lg:w-[420px] lg:h-[500px]">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:w-[420px]">
               <Card3D className="w-full h-full">
                 <img
                   src={aboutImg}
                   alt="About Diglip7"
-                  className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
-                  style={{
-                    clipPath:
-                      "path('M 0 80 Q 200 -50 400 80 L 400 500 Q 200 600 0 500 Z')",
-                    borderRadius: "20px",
-                  }}
+                  className="w-full h-auto rounded-3xl shadow-xl object-cover transition-transform duration-700 hover:scale-105"
                 />
               </Card3D>
 
@@ -1139,7 +1111,6 @@ function Video_market() {
                 </span>
               </h2>
             </FloatingElement>
-            {/* Ready to Grow Your Business? */}
             <div className="space-y-4 sm:space-y-6">
               <motion.div
                 className="flex items-start gap-3 sm:gap-4"
@@ -1151,7 +1122,7 @@ function Video_market() {
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                   At{" "}
-                  <span className="font-semibold text-teal-700">Diglip7</span>,
+                  <span className="font-semibold text-teal-700">DigLip7</span>,
                   our Video Marketing Service covers every step of the process.
                   Here’s how we bring your vision to life:
                 </p>
@@ -1165,18 +1136,9 @@ function Video_market() {
                 viewport={{ once: true }}
               >
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
-                <p className="text-teal-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Video Strategy Development{" "}
-                  <span className="font-semibold text-[#c89d5a]">
-                    Great videos start with a plan. We craft a digital video
-                    marketing strategy tailored to your goals—brand awareness,
-                    lead gen, or sales—and your audience, whether they’re in
-                    Mumbai or Miami.
-                  </span>
-                  Scriptwriting & Storyboarding Words and visuals matter. Our
-                  team writes scripts that hook viewers and storyboards that map
-                  out every frame, ensuring your video storytelling hits the
-                  mark.
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                  <span className="font-bold text-teal-700 block mb-1">Video Strategy Development & Scriptwriting</span>
+                  Great videos start with a plan. We craft a digital video marketing strategy tailored to your goals and audience, while writing scripts that hook viewers and storyboards that map out every frame.
                 </p>
               </motion.div>
 
@@ -1189,16 +1151,12 @@ function Video_market() {
               >
                 <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 mt-1 flex-shrink-0" />
                 <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  Professional Video Production & Filming Lights, camera,
-                  action! Our professional video marketing team shoots
-                  high-quality footage, whether it’s on-site at your business or
-                  in a studio, capturing your brand’s essence.
+                  <span className="font-bold text-teal-700 block mb-1">Professional Video Production & Filming</span>
+                  Lights, camera, action! Our professional video marketing team shoots high-quality footage, whether it’s on-site at your business or in a studio, capturing your brand’s essence.
                 </p>
               </motion.div>
             </div>
           </motion.div>
-
-
         </div>
       </section>
 
@@ -1266,17 +1224,12 @@ function Video_market() {
         >
           <FloatingElement>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-teal-700 mb-4 sm:mb-6">
-              Why You Need Diglip7’s ORM Services Today
+              Why You Need DigLip7’s Video Marketing Services Today
             </h2>
           </FloatingElement>
           <p className="text-gray-600 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed">
-            Your online reputation is a living, breathing entity—constantly
-            evolving with every click, comment, and review. Ignore it, and you
-            risk losing control. Studies reveal that 91% of consumers read
-            online reviews before making a purchase, and 84% trust them as much
-            as a friend’s recommendation. A single negative post can ripple
-            through the web, costing you credibility and cash. That’s where
-            Diglip7’s [ORM] comes in. Here’s why it’s non-negotiable:
+            Your brand presence is a living, breathing entity—constantly
+            evolving with every click, view, and share. Studies reveal that videos increase user understanding of a product or service by 94% and drive significantly higher conversion rates. Here’s why partnering with DigLip7 is your growth advantage:
           </p>
         </motion.div>
 
@@ -1386,7 +1339,7 @@ function Video_market() {
             </p>
             <a href="/contact">
               <motion.button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-[#c89d5a] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -1402,8 +1355,8 @@ function Video_market() {
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
           Trusted by Businesses Worldwide
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Don’t just take our word for it. See what our clients say about their SEO success with DigLip7.
+        <p className="text-gray-600 max-w-2xl mx-auto mb-10 text-base sm:text-lg">
+          Don’t just take our word for it. See what our clients say about their video marketing success with DigLip7.
         </p>
 
         <motion.div
@@ -1443,7 +1396,7 @@ function Video_market() {
         <div className="flex justify-center items-center mt-8 gap-4">
           <button
             onClick={prev}
-            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all cursor-pointer"
           />
           {testimonials.map((_, i) => (
             <div
@@ -1455,7 +1408,7 @@ function Video_market() {
           ))}
           <button
             onClick={next}
-            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all"
+            className="w-3 h-3 rounded-full bg-gray-300 hover:bg-blue-400 transition-all cursor-pointer"
           />
         </div>
 
@@ -1483,7 +1436,7 @@ function Video_market() {
 
       {/* FAQ Section */}
       <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="w-full mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: -30 }}
@@ -1505,7 +1458,7 @@ function Video_market() {
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-lg  overflow-hidden"
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -1514,9 +1467,9 @@ function Video_market() {
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex justify-between items-center text-left p-4 sm:p-6 hover:bg-gray-50 transition-colors duration-200 
-                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102"
+                  group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-900 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-102 cursor-pointer"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-semibold  pr-4">
+                  <span className="text-sm sm:text-base lg:text-lg font-semibold pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -1601,7 +1554,7 @@ function Video_market() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contact">
                 <motion.button
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-teal-700 font-semibold rounded-full shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 text-sm sm:text-base cursor-pointer"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >

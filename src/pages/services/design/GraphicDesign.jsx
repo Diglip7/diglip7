@@ -610,7 +610,7 @@ function GraphicDesign() {
       />
       {/* Hero Section with Parallax */}
 
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-24 lg:pb-16 lg:min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-white flex flex-col justify-start lg:justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
@@ -623,9 +623,9 @@ function GraphicDesign() {
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="flex flex-col md:flex-row items-center max-w-7xl w-full gap-8 lg:gap-14 relative z-10">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="w-full md:w-7/12 lg:w-3/5 text-center md:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">Creative Graphic Design Services </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
@@ -664,7 +664,7 @@ function GraphicDesign() {
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
+            className="w-full md:w-5/12 lg:w-2/5 flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
@@ -672,12 +672,12 @@ function GraphicDesign() {
             <img
               src={seo2}
               alt="Modern web development concept showing a laptop with code, website layout, and UI elements."
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-xl w-full max-w-md object-contain"
             />
           </motion.div>
         </div>
         {/* Floating particles */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
@@ -719,7 +719,6 @@ function GraphicDesign() {
               <p className="text-gray-700 mb-4">
                 Professional<span className="font-semibold text-blue-700">graphic design</span>,
                 enhances brand identity, communicates your message effectively, and engages your audience. Quality visuals build credibility, increase recognition, and support marketing efforts, making it a smart investment for long-term business growth.
-
 
               </p>
               <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
