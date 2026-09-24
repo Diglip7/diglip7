@@ -223,8 +223,15 @@ const devProcessSteps = [
   {
     number: "03",
     title: "Design and prototyping",
-    description:
-      "We create wireframes and interface designs, so you can see and approve how the product will work before development begins.",
+    description: (
+      <span>
+        We create wireframes and interface designs with our{" "}
+        <a href="/design" className="text-teal-700 underline font-semibold hover:text-teal-900">
+          design service
+        </a>
+        , so you can see and approve how the product will work before development begins.
+      </span>
+    ),
     icon: Layout,
   },
   {
@@ -382,22 +389,22 @@ const faqs = [
   {
     question: "How much does a development service cost?",
     answer:
-      "Cost depends on the type of project, its features, design complexity, integrations, and timeline. A simple website costs far less than a custom application or a large online store. We provide a written proposal after a discovery conversation so you know what is included.",
+      "Cost depends on the type of project, its features, design complexity, integrations, and timeline. A simple website costs far less than a custom application or a large online store. We provide a written proposal after a discovery conversation.",
   },
   {
     question: "How long does it take to build a website or app?",
     answer:
-      "A simple website can take a few weeks. Larger websites and online stores usually take one to three months, while custom web or mobile applications can take several months. Timelines depend on scope and how quickly feedback and content are provided.",
+      "A simple website can take a few weeks. Larger websites and online stores usually take one to three months, while custom web or mobile applications can take several months, depending on scope and how quickly feedback and content are provided.",
   },
   {
     question: "Which technologies do you use?",
     answer:
-      "We choose technology based on your project, not our habits. Depending on your needs, that may include a CMS such as WordPress, an e-commerce platform, modern JavaScript frameworks, or custom back-end systems. We explain the reasons for each recommendation.",
+      "We choose technology based on your project. Depending on your needs, that may include a CMS such as WordPress, an e-commerce platform, modern JavaScript frameworks, or custom back-end systems. We explain the reasons for each recommendation.",
   },
   {
     question: "Will my website be good for SEO?",
     answer:
-      "We build with SEO in mind, including fast loading, clean structure, mobile-first layouts, and proper technical setup. Rankings also depend on content, authority, and competition, so we recommend combining development with SEO services for the best results.",
+      "We build with SEO in mind, including fast loading, clean structure, mobile-first layouts, and proper technical setup. Rankings also depend on content, authority, and competition, so we recommend combining development with SEO services.",
   },
   {
     question: "Do I own the code and the final product?",
@@ -513,7 +520,7 @@ function Development() {
             "height": 512,
           },
           "description":
-            "DigLip7 is a digital agency offering software development, web application development, mobile apps, e-commerce, SEO, and marketing services.",
+            "DigLip7 is a digital agency offering web and software development, design, SEO, PPC, social media marketing and content marketing services.",
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer support",
@@ -543,7 +550,7 @@ function Development() {
           "url": "https://diglip7.com/development",
           "name": "Development Service | Web, App & Custom Software | DigLip7",
           "description":
-            "Fast, secure, and scalable development services from DigLip7: websites, web apps, mobile apps, e-commerce, and custom software. Get a free consultation.",
+            "Reliable development service from DigLip7: websites, web apps, mobile apps, e-commerce and custom software. Secure and SEO-ready. Free consultation.",
           "isPartOf": { "@id": "https://diglip7.com/#website" },
           "about": { "@id": "https://diglip7.com/development#service" },
           "primaryImageOfPage": {
@@ -577,22 +584,22 @@ function Development() {
           "@type": "Service",
           "@id": "https://diglip7.com/development#service",
           "name": "Development Service",
-          "serviceType": "Software and Web Development",
+          "serviceType": "Web and Software Development",
           "description":
-            "Professional software development services including web development, web applications, mobile apps, e-commerce development, CMS development, custom software, API integration, and ongoing maintenance.",
+            "Professional development services including website development, web application development, mobile app development, e-commerce development, CMS development, custom software, API integration and maintenance.",
           "provider": { "@id": "https://diglip7.com/#organization" },
           "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
           "url": "https://diglip7.com/development",
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Software Development Services",
+            "name": "Development Services",
             "itemListElement": [
               {
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Website Development",
-                  "description": "Fast, secure, and mobile-friendly website development.",
+                  "description": "Fast, secure, mobile-friendly and search-friendly websites.",
                 },
               },
               {
@@ -600,7 +607,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Web Application Development",
-                  "description": "Portals, dashboards, booking systems, and browser-based software.",
+                  "description": "Portals, dashboards, booking systems and internal tools that run in the browser.",
                 },
               },
               {
@@ -608,7 +615,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Mobile App Development",
-                  "description": "Native and cross-platform mobile apps for iOS and Android.",
+                  "description": "Native and cross-platform apps for iOS and Android.",
                 },
               },
               {
@@ -616,7 +623,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "E-Commerce Development",
-                  "description": "Online stores, payment integrations, inventory, and order management.",
+                  "description": "Online stores with secure payments, inventory and order management.",
                 },
               },
               {
@@ -624,7 +631,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "CMS and WordPress Development",
-                  "description": "Content management systems that make publishing and managing content easy.",
+                  "description": "Content management systems and custom themes and plugins that teams can edit easily.",
                 },
               },
               {
@@ -632,7 +639,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Custom Software Development",
-                  "description": "Tailored business software, CRMs, internal tools, and automation.",
+                  "description": "Custom systems, automation and internal tools built around your workflow.",
                 },
               },
               {
@@ -640,7 +647,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "API and Third-Party Integration",
-                  "description": "Connecting software to payment gateways, CRMs, ERPs, and email tools.",
+                  "description": "Connections to payment gateways, CRMs, accounting, email and shipping tools.",
                 },
               },
               {
@@ -648,7 +655,7 @@ function Development() {
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Website Maintenance and Support",
-                  "description": "Updates, security patches, backups, monitoring, and bug fixes.",
+                  "description": "Updates, security patches, backups, monitoring and bug fixes.",
                 },
               },
             ],
@@ -674,11 +681,11 @@ function Development() {
     <div className="overflow-x-hidden pt-18 sm:pt-18 bg-white text-gray-800">
       <SEO
         title="Development Service | Web, App & Custom Software | DigLip7"
-        description="Fast, secure, and scalable development services from DigLip7: websites, web apps, mobile apps, e-commerce, and custom software. Get a free consultation."
-        keywords="Development service, web development service, custom software development, mobile app development, ecommerce development, CMS development, API integration, website maintenance, DigLip7"
+        description="Reliable development service from DigLip7: websites, web apps, mobile apps, e-commerce and custom software. Secure and SEO-ready. Free consultation."
+        keywords="Development service, web development service, website development, web application development, mobile app development, e-commerce development, custom software development, CMS development, API integration, website maintenance and support, DigLip7"
         canonical="https://diglip7.com/development"
         ogImage="https://diglip7.com/images/development-service-og.jpg"
-        ogImageAlt="DigLip7 development service: websites, web apps, mobile apps, and custom software"
+        ogImageAlt="DigLip7 development service: web, mobile app and custom software development"
         ogType="website"
         schema={devSchemas}
       />
@@ -756,7 +763,7 @@ function Development() {
           <div className="p-6 inset-0 w-full h-full">
             <img
               src={seo2}
-              alt="Development Service by DigLip7"
+              alt="Development service team building a website and app"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0"></div>
@@ -802,7 +809,7 @@ function Development() {
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   src={webd1}
-                  alt="What Does a Development Service Include"
+                  alt="Responsive website shown on desktop, tablet and mobile"
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20"></div>
@@ -930,7 +937,7 @@ function Development() {
               <div className="relative">
                 <img
                   src={webd2}
-                  alt="Why Development Matters"
+                  alt="Web application dashboard interface"
                   className="rounded-2xl shadow-2xl w-full h-64 sm:h-80 lg:h-96 object-cover transform transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-[#c89d5a]/20 rounded-2xl"></div>
@@ -1014,7 +1021,7 @@ function Development() {
               <div className="relative">
                 <img
                   src={webd3}
-                  alt="Development That Is Built for SEO"
+                  alt="Seven-step software development process infographic"
                   className="rounded-2xl shadow-xl w-full h-80 lg:h-[520px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-teal-700/20 to-[#c89d5a]/20 rounded-2xl"></div>
@@ -1075,7 +1082,7 @@ function Development() {
                 </li>
               </ul>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed bg-teal-50/70 p-3 rounded-lg border border-teal-100">
-                Because we also provide <a href="/digital-market/seoservices" className="text-teal-700 underline font-semibold hover:text-teal-900">SEO</a> and <a href="/digital-market" className="text-teal-700 underline font-semibold hover:text-teal-900">digital marketing</a>, our developers and marketers work from the same plan. You do not have to translate between separate teams.
+                Because we also provide <a href="/digital-market/seoservices" className="text-teal-700 underline font-semibold hover:text-teal-900">SEO services</a> and <a href="/digital-market" className="text-teal-700 underline font-semibold hover:text-teal-900">digital marketing services</a>, our developers and marketers work from the same plan. You do not have to translate between separate teams.
               </p>
             </div>
 
@@ -1166,9 +1173,9 @@ function Development() {
                       <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
                         {step.title}
                       </h3>
-                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                      <div className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                         {step.description}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </Card3D>
