@@ -582,7 +582,7 @@ function Api_dev_integ() {
   const testimonial = testimonials[index];
 
   return (
-    <div className="bg-white w-full">
+    <div className="overflow-x-hidden bg-white w-full">
       <SEO
         title="API Development Services | DigLip7"
         description="Connect your systems with DigLip7's custom API development — REST, GraphQL, and third-party integrations built secure and scalable. Get a free consult."
@@ -593,7 +593,7 @@ function Api_dev_integ() {
         schema={apiDevelopmentSchemas}
       />
       {/* Hero Section with Parallax */}
-      <div className=" pt-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-screen flex flex-col justify-center items-center px-6 md:px-16 relative overflow-hidden">
+      <div className="pt-24 sm:pt-28 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
@@ -606,9 +606,9 @@ function Api_dev_integ() {
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-6xl gap-10">
+        <div className="flex flex-col lg:flex-row items-center w-full max-w-7xl mx-auto gap-8 lg:gap-12 relative z-10">
           {/* Left Section */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="w-full lg:w-[58%] text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">API Development Services </span>
               <br className="hidden md:block" />
@@ -616,50 +616,44 @@ function Api_dev_integ() {
                 Built for Secure, Scalable Integration
               </span>
             </h1>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-4 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Connect your systems with <span className="font-semibold text-blue-700">DigLip7</span>'s custom API development — REST, GraphQL, and third-party integrations built secure and scalable.
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-2 gap-3 text-gray-800 text-sm mb-6">
-              <div>🚀 Boost organic traffic</div>
-              <div>📈 Improve search ranking</div>
-              <div>🎯 Target right audience</div>
-              <div>📊 Transparent reporting</div>
+            <div className="grid grid-cols-2 gap-3 text-gray-800 text-xs sm:text-sm mb-6 max-w-lg mx-auto lg:mx-0">
+              <div className="flex items-center gap-2">🚀 Boost organic traffic</div>
+              <div className="flex items-center gap-2">📈 Improve search ranking</div>
+              <div className="flex items-center gap-2">🎯 Target right audience</div>
+              <div className="flex items-center gap-2">📊 Transparent reporting</div>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md transition-transform hover:scale-105">
-                    Get Free API Development Audit <ArrowRight size={18} />
-                  </button> */}
-              <a href="/contact">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <a href="/contact" className="inline-block">
                 <motion.button
-
-                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105"
+                  className="group px-7 sm:px-9 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-
                   Get Started
-                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </a>
-
             </div>
           </div>
 
           {/* Right Section - Animated Chart */}
           <motion.div
-            className="flex-1"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
+            className="w-full lg:w-[42%] flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             <img
               src={seo2}
               alt="API Development concept showing developers building and integrating applications with secure APIs."
-              className="rounded-2xl shadow-lg w-full"
+              className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover"
             />
           </motion.div>
         </div>
@@ -708,8 +702,6 @@ function Api_dev_integ() {
               <p className="text-gray-700 mb-4">
                 API development enables seamless system integration, improved efficiency <span className="font-semibold text-blue-700">DigLip7</span>,
                 and better data accessibility. It supports automation, enhances user experiences, and drives innovation, making it a smart investment for long-term business growth and competitive advantage.
-
-
               </p>
               <ul className="text-gray-800 space-y-2 text-left mx-auto md:mx-0">
                 <li>✅ Immediate Results</li>
@@ -729,7 +721,6 @@ function Api_dev_integ() {
               </h2>
               <p className="text-gray-600 mt-3">
                 Discover how DigLip7’s API development services have transformed businesses. From seamless system integrations to enhanced workflow automation, our clients have experienced improved efficiency, faster processes, and measurable ROI. Our APIs consistently deliver secure, scalable, and reliable solutions that drive business growth.
-
               </p>
             </div>
 

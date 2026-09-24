@@ -583,7 +583,7 @@ function Cloud_applicat_dev() {
       ],
       button: "Contact Sales",
     },
-  ];
+  ]; 
 
   // Cloud Development Services
   const ppcServices = [
@@ -606,9 +606,8 @@ function Cloud_applicat_dev() {
 
   const testimonial = testimonials[index];
 
-
   return (
-    <div className="bg-white">
+    <div className="overflow-x-hidden bg-white w-full">
       <SEO
         title="Cloud Development Services | DigLip7"
         description="Migrate, build, and scale on AWS, Azure, or Google Cloud with DigLip7's custom cloud development — secure, automated, and built to grow. Get a free audit."
@@ -619,7 +618,7 @@ function Cloud_applicat_dev() {
         schema={cloudDevSchemas}
       />
       {/* Hero Section with Parallax */}
-      <div className="pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-24 lg:pb-16 lg:min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-white flex flex-col justify-start lg:justify-center items-center px-4 sm:px-6 md:px-12 lg:px-16 relative overflow-hidden">
+      <div className="pt-20 sm:pt-24 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 min-h-[90vh] bg-gradient-to-r from-purple-100 via-pink-100 to-white flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
         {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/20 rounded-full blur-xl"
@@ -632,7 +631,7 @@ function Cloud_applicat_dev() {
           transition={{ duration: 5, repeat: Infinity }}
         />
 
-        <div className="flex flex-col md:flex-row items-center max-w-7xl w-full gap-8 lg:gap-14">
+        <div className="flex flex-col md:flex-row items-center max-w-7xl w-full mx-auto gap-8 lg:gap-14 relative z-10">
           {/* Left Section (60% width for optimal headline flow) */}
           <div className="w-full md:w-7/12 lg:w-3/5 text-center md:text-left">
             <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
@@ -679,7 +678,7 @@ function Cloud_applicat_dev() {
             <img
               src={seo2}
               alt="Cloud Development concept showing developers coding and deploying applications in a secure cloud environment."
-              className="rounded-2xl shadow-xl w-full max-w-md object-contain"
+              className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-contain"
             />
           </motion.div>
         </div>

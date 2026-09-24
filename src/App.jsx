@@ -105,10 +105,7 @@ function App() {
           <Route path="/digital-market/social-media-marketing" element={<SocialMedia />} />
           <Route path="/digital-market/content-marketing" element={<ContentMarketing />} />
           <Route path="/digital-market/email-marketing" element={<EmailMarketing />} />
-          <Route
-            path="/digital-market/online-repulation-management(ORM)"
-            element={<ORM />}
-          />
+          <Route path="/digital-market/online-repulation-management(ORM)" element={<ORM />} />
           <Route path="/digital-market/local-SEO-services" element={<LocalSEO />} />
           <Route path="/digital-market/e-commerce-marketing" element={<EcommerceMarketing />} />
           <Route path="/digital-market/video-marketing" element={<VideoMarketing />} />

@@ -13,6 +13,7 @@ const SEO = ({
   canonical,
   ogType = "website",
   ogImage = "https://diglip7.com/favicon-32x32.png",
+  ogImageAlt,
   schema,
   noindex = false,
 }) => {
@@ -25,6 +26,7 @@ const SEO = ({
   const defaultKeywords =
     "digital marketing agency, SEO services, PPC advertising, ORM, web development, UI UX design, custom software, Noida, India, DigLip7";
   const metaKeywords = keywords || defaultKeywords;
+  const imageAltText = ogImageAlt || `${fullTitle} - DigLip7`;
 
   // Dynamically compute exact current page URL for canonical & social tags
   const currentUrl =
@@ -69,6 +71,7 @@ const SEO = ({
     setMetaTag("property", "og:url", currentUrl);
     setMetaTag("property", "og:type", ogType);
     setMetaTag("property", "og:image", ogImage);
+    setMetaTag("property", "og:image:alt", imageAltText);
     setMetaTag("property", "og:site_name", "DigLip7 Technologies");
 
     // 5. Twitter Card Meta Tags
@@ -77,6 +80,7 @@ const SEO = ({
     setMetaTag("name", "twitter:title", fullTitle);
     setMetaTag("name", "twitter:description", metaDescription);
     setMetaTag("name", "twitter:image", ogImage);
+    setMetaTag("name", "twitter:image:alt", imageAltText);
 
     // 6. Structured Data (JSON-LD Schema)
     // Clean up any previously injected dynamic schema scripts

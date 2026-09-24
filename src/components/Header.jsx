@@ -204,7 +204,8 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("digital")}
             onMouseLeave={handleDropdownLeave}
           >
-            <span
+            <Link
+              to="/digital-market"
               className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
             >
               Digital Marketing
@@ -212,7 +213,7 @@ const Header = () => {
                 className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "digital" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
-            </span>
+            </Link>
 
             <ServiceDropdown
               services={digitalMarketingServices}
@@ -229,7 +230,8 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("design")}
             onMouseLeave={handleDropdownLeave}
           >
-            <span
+            <Link
+              to="/design"
               className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
             >
               Design
@@ -237,7 +239,7 @@ const Header = () => {
                 className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "design" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
-            </span>
+            </Link>
 
             <ServiceDropdown
               services={designServices}
@@ -254,7 +256,8 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("development")}
             onMouseLeave={handleDropdownLeave}
           >
-            <span
+            <Link
+              to="/development"
               className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
             >
               Development
@@ -262,7 +265,7 @@ const Header = () => {
                 className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "development" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
-            </span>
+            </Link>
 
             <ServiceDropdown
               services={developmentServices}
@@ -322,26 +325,36 @@ const Header = () => {
 
           {/* Mobile Digital Marketing Dropdown */}
           <li className="border-b border-gray-100 pb-2">
-            <button
-              onClick={() => toggleMobileDropdown("digital")}
-              className="w-full text-left py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg flex justify-between items-center transition-colors duration-200 text-base"
-            >
-              Digital Marketing
-              <svg
-                className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "digital" ? "rotate-180" : ""
-                  }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex items-center justify-between">
+              <Link
+                to="/digital-market"
+                onClick={() => setIsOpen(false)}
+                className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
+                Digital Marketing
+              </Link>
+              <button
+                type="button"
+                onClick={() => toggleMobileDropdown("digital")}
+                aria-label="Toggle Digital Marketing sub-menu"
+                className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
+              >
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "digital" ? "rotate-180 text-teal-600" : ""
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
             <MobileServiceDropdown
               services={digitalMarketingServices}
               isVisible={mobileDropdown === "digital"}
@@ -351,26 +364,36 @@ const Header = () => {
 
           {/* Mobile Design Dropdown */}
           <li className="border-b border-gray-100 pb-2">
-            <button
-              onClick={() => toggleMobileDropdown("design")}
-              className="w-full text-left py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg flex justify-between items-center transition-colors duration-200 text-base"
-            >
-              Design
-              <svg
-                className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "design" ? "rotate-180" : ""
-                  }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex items-center justify-between">
+              <Link
+                to="/design"
+                onClick={() => setIsOpen(false)}
+                className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
+                Design
+              </Link>
+              <button
+                type="button"
+                onClick={() => toggleMobileDropdown("design")}
+                aria-label="Toggle Design sub-menu"
+                className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
+              >
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "design" ? "rotate-180 text-teal-600" : ""
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
             <MobileServiceDropdown
               services={designServices}
               isVisible={mobileDropdown === "design"}
@@ -380,26 +403,36 @@ const Header = () => {
 
           {/* Mobile Development Dropdown */}
           <li className="border-b border-gray-100 pb-2">
-            <button
-              onClick={() => toggleMobileDropdown("development")}
-              className="w-full text-left py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg flex justify-between items-center transition-colors duration-200 text-base"
-            >
-              Development
-              <svg
-                className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "development" ? "rotate-180" : ""
-                  }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex items-center justify-between">
+              <Link
+                to="/development"
+                onClick={() => setIsOpen(false)}
+                className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
+                Development
+              </Link>
+              <button
+                type="button"
+                onClick={() => toggleMobileDropdown("development")}
+                aria-label="Toggle Development sub-menu"
+                className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
+              >
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "development" ? "rotate-180 text-teal-600" : ""
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
             <MobileServiceDropdown
               services={developmentServices}
               isVisible={mobileDropdown === "development"}
