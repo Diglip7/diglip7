@@ -22,7 +22,8 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // Dynamic XML Sitemap for SEO (Accessible via /sitemap.xml and /api/sitemap.xml)
-app.use(["/", "/api"], sitemapRoute);
+app.use(sitemapRoute);
+app.use("/api", sitemapRoute);
 
 // Public API Routes: Contact form inquiries & Blog fetching
 app.use("/api", contactRoutes);

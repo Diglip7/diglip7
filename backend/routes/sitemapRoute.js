@@ -16,19 +16,48 @@ const escapeXml = (unsafe = "") =>
   unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /**
- * Fallback static routes in case App.jsx cannot be read
+ * Comprehensive fallback static routes in case App.jsx cannot be read in production
  */
 const fallbackRoutes = [
   "/",
   "/about",
   "/contact",
-  "/blog",
   "/blogview",
   "/privacy-policy",
   "/terms-and-conditions",
+
+  // Digital Marketing Services
   "/digital-market",
+  "/digital-market/seoservices",
+  "/digital-market/PPC-Advertising",
+  "/digital-market/social-media-marketing",
+  "/digital-market/content-marketing",
+  "/digital-market/email-marketing",
+  "/digital-market/online-repulation-management(ORM)",
+  "/digital-market/local-SEO-services",
+  "/digital-market/e-commerce-marketing",
+  "/digital-market/video-marketing",
+  "/digital-market/influencer-marketing",
+  "/digital-market/Ai-powered-Digital-Marketing",
+  "/digital-market/voice-search-optimization",
+  "/digital-market/programmatic-advertising",
+  "/digital-market/Mobile-marketing",
+  "/digital-market/performance-marketing",
+
+  // Design Services
   "/design",
+  "/design/UI-UX",
+  "/design/graphic-design",
+
+  // Development Services
   "/development",
+  "/development/web-development",
+  "/development/mobile-app-development",
+  "/development/e-commerce-development",
+  "/development/custom-software_development",
+  "/development/cms-development",
+  "/development/api-development&Integration",
+  "/development/cloud-application-development",
 ];
 
 /**
@@ -65,11 +94,13 @@ const getAutoDiscoveredRoutes = () => {
     while ((match = routeRegex.exec(targetSection)) !== null) {
       const routePath = match[1];
 
-      // Exclude admin routes, wildcards (*), and dynamic parameterized routes (/:slug)
+      // Exclude admin routes, wildcards (*), dynamic parameterized routes (/:slug), and duplicate aliases
+      const ignoredAliases = new Set(["/privacy", "/terms", "/terms-conditions", "/blog"]);
       if (
         !routePath.includes("*") &&
         !routePath.startsWith("/admin") &&
-        !routePath.includes("/:")
+        !routePath.includes("/:") &&
+        !ignoredAliases.has(routePath.startsWith("/") ? routePath : `/${routePath}`)
       ) {
         const formatted = routePath.startsWith("/") ? routePath : `/${routePath}`;
         routes.add(formatted);
@@ -153,6 +184,5 @@ ${dynamicBlogXml ? `\n${dynamicBlogXml}` : ""}
 
 router.get("/sitemap.xml", generateSitemap);
 router.get("/sitemap", generateSitemap);
-router.get("/", generateSitemap);
 
 export default router;
