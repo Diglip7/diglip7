@@ -51,6 +51,18 @@ import CMSDevelopment from "./pages/services/development/CMSDevelopment";
 import APIDevelopment from "./pages/services/development/APIDevelopment";
 import CloudApplicationDevelopment from "./pages/services/development/CloudApplicationDevelopment";
 
+// Location Pages & SEO Services
+import UAESEOServices from "./pages/locations/uae/UAESEOServices";
+import DubaiSEOServices from "./pages/locations/uae/dubai/DubaiSEOServices";
+import DubaiLocalSEO from "./pages/locations/uae/dubai/DubaiLocalSEO";
+import DubaiEcommerceSEO from "./pages/locations/uae/dubai/DubaiEcommerceSEO";
+import DubaiHealthcareSEO from "./pages/locations/uae/dubai/DubaiHealthcareSEO";
+import DubaiRealEstateSEO from "./pages/locations/uae/dubai/DubaiRealEstateSEO";
+import DubaiRestaurantSEO from "./pages/locations/uae/dubai/DubaiRestaurantSEO";
+import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
+import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
+import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
+
 // Admin Pages
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -124,7 +136,6 @@ function App() {
             path="/digital-market/performance-marketing"
             element={<PerformanceMarketing />}
           />
-
           {/* Design Services */}
           <Route path="/design" element={<Design />} />
           <Route path="/design/UI-UX" element={<UIUX />} />
@@ -148,6 +159,25 @@ function App() {
             path="/development/cloud-application-development"
             element={<CloudApplicationDevelopment />}
           />
+          {/* Location SEO Main Pages & Sub-services */}
+          <Route path="/uae" element={<Navigate to="/uae/seo-services" replace />} />
+          <Route path="/uae/seo-services" element={<UAESEOServices />} />
+          <Route path="/uae/dubai" element={<Navigate to="/uae/dubai/seo-services" replace />} />
+          <Route path="/uae/dubai/seo-services" element={<DubaiSEOServices />} />
+          <Route path="/uae/dubai/local-seo" element={<DubaiLocalSEO />} />
+          <Route path="/uae/dubai/ecommerce-seo" element={<DubaiEcommerceSEO />} />
+          <Route path="/uae/dubai/healthcare-seo" element={<DubaiHealthcareSEO />} />
+          <Route path="/uae/dubai/real-estate-seo" element={<DubaiRealEstateSEO />} />
+          <Route path="/uae/dubai/restaurant-seo" element={<DubaiRestaurantSEO />} />
+
+          <Route path="/india" element={<Navigate to="/india/seo-services" replace />} />
+          <Route path="/india/seo-services" element={<IndiaSEOServices />} />
+
+          <Route path="/saudi-arabia" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
+          <Route path="/saudi-arabia/seo-services" element={<SaudiSEOServices />} />
+
+          <Route path="/qatar" element={<Navigate to="/qatar/seo-services" replace />} />
+          <Route path="/qatar/seo-services" element={<QatarSEOServices />} />
 
           {/* Fallback route */}
           <Route path="*" element={<Navigate to="/" replace />} />

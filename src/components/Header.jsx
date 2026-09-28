@@ -21,6 +21,7 @@ import {
   Settings,
   Wrench,
   ChevronDown,
+  ChevronRight,
   Menu,
   X,
   Users,
@@ -32,6 +33,7 @@ import logo from "../images/logo1.jpeg";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState("UAE");
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const timeoutRef = useRef(null);
 
@@ -106,6 +108,76 @@ const Header = () => {
     { name: "Cloud Application Development", href: "/development/cloud-application-development", icon: Globe },
   ];
 
+  const locationData = [
+    {
+      name: "UAE",
+      mainPage: {
+        name: "SEO Services UAE",
+        href: "/uae/seo-services",
+        badge: "Country Main Page",
+      },
+      cities: [
+        {
+          name: "Dubai",
+          mainPage: {
+            name: "Dubai SEO Services",
+            href: "/uae/dubai/seo-services",
+            badge: "City Main Page",
+          },
+          subServices: [
+            {
+              name: "Local SEO Dubai",
+              href: "/uae/dubai/local-seo",
+            },
+            {
+              name: "E-commerce SEO Dubai",
+              href: "/uae/dubai/ecommerce-seo",
+            },
+            {
+              name: "Healthcare SEO Dubai",
+              href: "/uae/dubai/healthcare-seo",
+            },
+            {
+              name: "Real Estate SEO Dubai",
+              href: "/uae/dubai/real-estate-seo",
+            },
+            {
+              name: "Restaurant SEO Dubai",
+              href: "/uae/dubai/restaurant-seo",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "India",
+      mainPage: {
+        name: "SEO Services India",
+        href: "/india/seo-services",
+        badge: "Country Main Page",
+      },
+      cities: [],
+    },
+    {
+      name: "Saudi Arabia",
+      mainPage: {
+        name: "SEO Services Saudi Arabia",
+        href: "/saudi-arabia/seo-services",
+        badge: "Country Main Page",
+      },
+      cities: [],
+    },
+    {
+      name: "Qatar",
+      mainPage: {
+        name: "SEO Services Qatar",
+        href: "/qatar/seo-services",
+        badge: "Country Main Page",
+      },
+      cities: [],
+    },
+  ];
+
   const ServiceDropdown = ({
     services,
     isVisible,
@@ -114,7 +186,7 @@ const Header = () => {
     widthClass = "w-72"
   }) => (
     <div
-      className={`absolute left-0 mt-2 ${widthClass} bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-2 border border-teal-700/60 transition-all duration-200 ease-out z-50 ${isVisible
+      className={`absolute left-0 mt-2 ${widthClass} max-w-[calc(100vw-2rem)] bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-2 border border-teal-700/60 transition-all duration-200 ease-out z-50 ${isVisible
           ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
           : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
         }`}
@@ -274,6 +346,139 @@ const Header = () => {
               onMouseLeave={handleDropdownLeave}
               widthClass="w-72"
             />
+          </li>
+
+          {/* Locations Dropdown */}
+          <li
+            className="relative"
+            onMouseEnter={() => handleDropdownEnter("locations")}
+            onMouseLeave={handleDropdownLeave}
+          >
+            <div className="flex items-center text-teal-800 hover:text-black transition-colors duration-200 cursor-pointer text-sm lg:text-base xl:text-lg font-medium">
+              <span>Locations</span>
+              <ChevronDown
+                className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                  activeDropdown === "locations" ? "rotate-180 text-teal-600" : ""
+                }`}
+              />
+            </div>
+
+            <div
+              className={`absolute right-0 mt-2 w-[420px] max-w-[calc(100vw-2rem)] bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-3 border border-teal-700/60 transition-all duration-200 ease-out z-50 origin-top-right ${
+                activeDropdown === "locations"
+                  ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
+                  : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
+              }`}
+              onMouseEnter={() => handleDropdownEnter("locations")}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <div className="grid grid-cols-5 gap-2">
+                {/* Left column: Countries */}
+                <div className="col-span-2 border-r border-teal-800/80 pr-2 space-y-1">
+                  <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-2 py-1">
+                    Countries
+                  </div>
+                  {locationData.map((loc) => (
+                    <div
+                      key={loc.name}
+                      onMouseEnter={() => setSelectedLocation(loc.name)}
+                      className={`flex items-center justify-between px-2.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition cursor-pointer ${
+                        selectedLocation === loc.name
+                          ? "bg-white/20 text-white font-semibold"
+                          : "text-white/80 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      <Link
+                        to={loc.mainPage.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="hover:underline flex-1"
+                      >
+                        {loc.name}
+                      </Link>
+                      <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right column: Country Main Page + Cities & Sub-services */}
+                <div className="col-span-3 pl-1 space-y-2.5">
+                  {(() => {
+                    const currentLoc =
+                      locationData.find((l) => l.name === selectedLocation) || locationData[0];
+                    return (
+                      <div>
+                        {/* Country Main Page Banner */}
+                        <div className="mb-2.5">
+                          <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1 mb-1">
+                            {currentLoc.name} Main Page
+                          </div>
+                          <Link
+                            to={currentLoc.mainPage.href}
+                            onClick={() => setActiveDropdown(null)}
+                            className="flex items-center justify-between p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition group border border-teal-700/50"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-teal-400 group-hover:scale-125 transition-transform shrink-0" />
+                              <span className="text-xs sm:text-sm font-semibold">{currentLoc.mainPage.name}</span>
+                            </div>
+                            <span className="text-[10px] text-teal-200 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5 shrink-0">
+                              Country Hub <ChevronRight className="w-3 h-3" />
+                            </span>
+                          </Link>
+                        </div>
+
+                        {/* Cities & Sub-services (e.g. Dubai) */}
+                        {currentLoc.cities && currentLoc.cities.length > 0 && (
+                          <div className="space-y-1.5">
+                            <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1">
+                              Cities / Emirates
+                            </div>
+                            {currentLoc.cities.map((city) => (
+                              <div key={city.name} className="space-y-1">
+                                {/* City Main Page */}
+                                <Link
+                                  to={city.mainPage.href}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white/95 hover:text-white hover:bg-white/15 transition group bg-white/5"
+                                >
+                                  <div className="flex items-center gap-1.5">
+                                    <MapPin className="w-3.5 h-3.5 text-teal-300 shrink-0" />
+                                    <span>{city.mainPage.name}</span>
+                                  </div>
+                                  <span className="text-[10px] text-teal-300 font-normal group-hover:translate-x-0.5 transition-transform shrink-0">
+                                    Main Page →
+                                  </span>
+                                </Link>
+
+                                {/* Sub-services under this city (e.g. Local SEO Dubai) */}
+                                {city.subServices && city.subServices.length > 0 && (
+                                  <div className="ml-3 pl-2.5 border-l-2 border-teal-700/60 space-y-1 py-0.5">
+                                    <div className="text-[10px] text-teal-200/70 px-1 font-medium">
+                                      {city.name} Services
+                                    </div>
+                                    {city.subServices.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        to={sub.href}
+                                        onClick={() => setActiveDropdown(null)}
+                                        className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/85 hover:text-white hover:bg-white/15 transition group"
+                                      >
+                                        <Search className="w-3 h-3 text-teal-300 shrink-0 group-hover:scale-110 transition-transform" />
+                                        <span className="truncate">{sub.name}</span>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+            </div>
           </li>
 
           <li>
@@ -438,6 +643,88 @@ const Header = () => {
               isVisible={mobileDropdown === "development"}
               onItemClick={() => setIsOpen(false)}
             />
+          </li>
+
+          {/* Mobile Locations Dropdown */}
+          <li className="border-b border-gray-100 pb-2">
+            <div className="flex items-center justify-between">
+              <span className="flex-1 py-3 px-2 text-black font-medium text-base">
+                Locations
+              </span>
+              <button
+                type="button"
+                onClick={() => toggleMobileDropdown("locations")}
+                aria-label="Toggle Locations sub-menu"
+                className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
+              >
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    mobileDropdown === "locations" ? "rotate-180 text-teal-600" : ""
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                mobileDropdown === "locations" ? "max-h-[600px] opacity-100 mt-1" : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-2 py-1 text-sm">
+                {/* UAE */}
+                <div className="space-y-1">
+                  <div className="font-semibold text-teal-900 flex items-center justify-between pr-2">
+                    <Link to="/uae/seo-services" onClick={() => setIsOpen(false)} className="hover:text-teal-700">
+                      SEO Services UAE
+                    </Link>
+                    <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-medium">UAE Main</span>
+                  </div>
+                  <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                    <Link to="/uae/dubai/seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ Dubai SEO Services (Main)
+                    </Link>
+                    <div className="pl-3 border-l border-teal-200/60 space-y-1">
+                      <Link to="/uae/dubai/local-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Local SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/ecommerce-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • E-commerce SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/healthcare-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Healthcare SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/real-estate-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Real Estate SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/restaurant-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Restaurant SEO Dubai
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* India */}
+                <div className="space-y-1">
+                  <Link to="/india/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
+                    SEO Services India
+                  </Link>
+                </div>
+
+                {/* Saudi Arabia */}
+                <div className="space-y-1">
+                  <Link to="/saudi-arabia/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
+                    SEO Services Saudi Arabia
+                  </Link>
+                </div>
+
+                {/* Qatar */}
+                <div className="space-y-1">
+                  <Link to="/qatar/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
+                    SEO Services Qatar
+                  </Link>
+                </div>
+              </div>
+            </div>
           </li>
 
           <li>

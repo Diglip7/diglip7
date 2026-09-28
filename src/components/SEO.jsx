@@ -14,6 +14,8 @@ const SEO = ({
   ogType = "website",
   ogImage = "https://diglip7.com/favicon-32x32.png",
   ogImageAlt,
+  ogDescription,
+  twitterDescription,
   schema,
   noindex = false,
 }) => {
@@ -23,6 +25,8 @@ const SEO = ({
   const defaultDescription =
     "DigLip7 is a results-driven Digital Marketing and Web Development Agency helping businesses boost online visibility, traffic, and revenue through expert SEO, PPC, ORM, and custom software.";
   const metaDescription = description || defaultDescription;
+  const ogDesc = ogDescription || metaDescription;
+  const twDesc = twitterDescription || metaDescription;
   const defaultKeywords =
     "digital marketing agency, SEO services, PPC advertising, ORM, web development, UI UX design, custom software, Noida, India, DigLip7";
   const metaKeywords = keywords || defaultKeywords;
@@ -90,7 +94,7 @@ const SEO = ({
 
     // 4. OpenGraph Meta Tags
     setMetaTag("property", "og:title", fullTitle);
-    setMetaTag("property", "og:description", metaDescription);
+    setMetaTag("property", "og:description", ogDesc);
     setMetaTag("property", "og:url", currentUrl);
     setMetaTag("property", "og:type", ogType);
     setMetaTag("property", "og:site_name", "DigLip7");
@@ -107,7 +111,7 @@ const SEO = ({
     setMetaTag("name", "twitter:site", "@diglip7");
     setMetaTag("name", "twitter:creator", "@diglip7");
     setMetaTag("name", "twitter:title", fullTitle);
-    setMetaTag("name", "twitter:description", metaDescription);
+    setMetaTag("name", "twitter:description", twDesc);
     setMetaTag("name", "twitter:image", ogImage);
     setMetaTag("name", "twitter:image:alt", imageAltText);
 
@@ -135,7 +139,7 @@ const SEO = ({
       document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((l) => l.remove());
       document.title = "DigLip7";
     };
-  }, [location.pathname, fullTitle, metaDescription, metaKeywords, currentUrl, ogType, ogImage, JSON.stringify(schema), noindex]);
+  }, [location.pathname, fullTitle, metaDescription, ogDesc, twDesc, metaKeywords, currentUrl, ogType, ogImage, JSON.stringify(schema), noindex]);
 
   return null;
 };

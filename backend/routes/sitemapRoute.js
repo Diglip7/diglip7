@@ -58,6 +58,14 @@ const fallbackRoutes = [
   "/development/cms-development",
   "/development/api-development&Integration",
   "/development/cloud-application-development",
+
+  // Location SEO Main Pages & Sub-services
+  "/uae/seo-services",
+  "/uae/dubai/seo-services",
+  "/uae/dubai/local-seo",
+  "/india/seo-services",
+  "/saudi-arabia/seo-services",
+  "/qatar/seo-services",
 ];
 
 /**
