@@ -16,35 +16,31 @@ import {
   Layers,
   Globe,
   Share2,
-  Calendar,
   CheckCircle2,
   ArrowRight,
   ChevronRight,
   ChevronDown,
   FolderTree,
   Scale,
-  Award,
   AlertTriangle,
   Clock,
   Compass,
   BarChart3,
-  HelpCircle,
-  PhoneCall,
-  Flame,
-  Smartphone,
   BookOpen,
   Home,
+  Check,
+  Building2,
+  TrendingUp,
 } from "lucide-react";
 
-// Image paths with smart fallbacks
-const heroImgSrc = "/src/images/home0.jpg";
-const whatIsImgSrc = "/src/images/seo1.webp";
-const whyMattersImgSrc = "/src/images/lseo1.png";
-const structureImgSrc = "/src/images/webd1.png";
-const menuImgSrc = "/src/images/lseo2.png";
-const competitorImgSrc = "/src/images/seo11.png";
-const reportingImgSrc = "/src/images/cad1.png";
-const technicalImgSrc = "/src/images/cad2.png";
+// 7 Required Images strictly matching Section 8 Image SEO specification
+const heroImgSrc = "/src/images/restaurant-seo-dubai.jpg";
+const keywordImgSrc = "/src/images/restaurant-keyword-research-dubai.jpg";
+const structureImgSrc = "/src/images/restaurant-website-seo-dubai.jpg";
+const localImgSrc = "/src/images/restaurant-local-seo-dubai.jpg";
+const menuImgSrc = "/src/images/restaurant-menu-seo-dubai.jpg";
+const branchImgSrc = "/src/images/restaurant-branch-seo-dubai.jpg";
+const reportingImgSrc = "/src/images/restaurant-seo-reporting-dubai.jpg";
 
 // Automatic fallback
 const handleImgFallback = (e, fallback) => {
@@ -163,6 +159,8 @@ const services = [
   {
     icon: Search,
     title: "Restaurant Keyword Research",
+    image: keywordImgSrc,
+    imageAlt: "Restaurant keyword research strategy for Dubai search queries",
     description:
       "Restaurant Keyword Research Dubai accounts for cuisine terms, community names, meal-related searches, dish-specific queries, and intent signals like reservation, takeaway or delivery. It also means mapping keywords to the right page and checking for cannibalization between similar pages. Keyword selection has to reflect what the restaurant actually offers. If a cuisine or service isn't part of the business, we don't build pages chasing that search — it misleads both users and search engines.",
   },
@@ -175,6 +173,8 @@ const services = [
   {
     icon: MapPin,
     title: "Local SEO for Restaurants in Dubai",
+    image: localImgSrc,
+    imageAlt: "Local SEO strategy for a Dubai restaurant Google Business Profile",
     description:
       "Local SEO for Restaurants Dubai centres on the Google Business Profile — accurate name, address, phone, hours, website and menu URL, the right categories, relevant attributes, and real photos — plus local landing pages and NAP consistency across directories. Google Business Profile information should represent the real business. We don't recommend fake reviews or inaccurate hours or categories to game visibility — beyond breaking Google's guidelines, it tends to backfire with real customers.",
   },
@@ -193,12 +193,16 @@ const services = [
   {
     icon: FileText,
     title: "Restaurant Menu SEO",
+    image: menuImgSrc,
+    imageAlt: "Restaurant menu SEO optimization for a Dubai restaurant website",
     description:
       "Menu information should be genuinely accessible — real HTML content, not locked exclusively in a PDF, an image, or a third-party delivery platform. PDF-only and image-only menus are common and make it hard for search engines, and some users, to understand what's on offer. Good menu SEO means clear categories, accurate names and descriptions, dietary information where available, appropriate pricing, and a mobile-friendly layout. We wouldn't promise any individual dish page will rank for its own search term — the aim is a menu that's genuinely usable and crawlable.",
   },
   {
     icon: Layers,
     title: "Restaurant Location & Branch SEO",
+    image: branchImgSrc,
+    imageAlt: "SEO architecture for multiple restaurant locations in Dubai",
     description:
       "Each branch needs its own page with real, distinct value — accurate address, hours, directions, and ideally branch-specific photos rather than a copy-pasted template. Thin, near-identical location pages create duplicate content issues rather than strengthening visibility, so fewer, better pages beat dozens of shallow ones.",
   },
@@ -278,15 +282,15 @@ const processSteps = [
   },
   {
     step: "04",
-    title: "Website Architecture & Internal Linking",
+    title: "On-Page & Menu Content Optimisation",
     description:
-      "Improving how menu, cuisine, location, branch and content pages connect.",
+      "Building crawlable HTML menu pages, cuisine pages, location pages, and title/heading structures.",
   },
   {
     step: "05",
-    title: "On-Page & Menu Optimisation",
+    title: "Location & Branch Architecture",
     description:
-      "Optimising titles, headings, content, URLs, images, internal links and menu content.",
+      "Structuring unique, distinct pages for each branch with individual address, contact, and direction signals.",
   },
   {
     step: "06",
@@ -333,51 +337,51 @@ const mistakes = [
   "Building pages for cuisines or services the restaurant doesn't offer",
 ];
 
-// 14 FAQs
+// 14 FAQs verbatim matching Section 17.8 Schema
 const faqs = [
   {
     q: "What is Restaurant SEO Dubai?",
-    a: "Restaurant SEO Dubai is search engine optimisation tailored to restaurants, cafés and food businesses in Dubai — covering keyword research, website and menu optimisation, local SEO and Google Business Profile management, aimed at improving relevant search and Maps visibility.",
+    a: "Restaurant SEO Dubai is search engine optimisation tailored to restaurants, cafes and food businesses in Dubai, covering keyword research, website and menu optimisation, local SEO and Google Business Profile management, aimed at improving relevant search and Maps visibility.",
   },
   {
     q: "Why do restaurants in Dubai need SEO?",
-    a: "Dubai's dining market is dense and competitive, with search behaviour that's largely local, mobile and time-sensitive. Without deliberate SEO, a restaurant's website and Google Business Profile may struggle to appear for the cuisine and \"near me\" searches that drive real decisions.",
+    a: "Dubai's dining market is dense and competitive, with search behaviour that's largely local, mobile and time-sensitive. Without deliberate SEO, a restaurant's website and Google Business Profile may struggle to appear for the cuisine and 'near me' searches that drive real decisions.",
   },
   {
     q: "What does a restaurant SEO agency in Dubai do?",
-    a: "It researches relevant keywords, optimises website structure and content, manages local SEO and Google Business Profile accuracy, improves technical health, and monitors performance — shaped around how restaurant searches and customers behave.",
+    a: "It researches relevant keywords, optimises website structure and content, manages local SEO and Google Business Profile accuracy, improves technical health, and monitors performance, shaped around how restaurant searches and customers behave.",
   },
   {
     q: "How does restaurant SEO differ from regular SEO?",
-    a: "It places more weight on local search, Google Maps visibility, cuisine and menu-related keywords, dietary and dining-occasion intent, and location or branch-level content — areas central to how people find places to eat.",
+    a: "It places more weight on local search, Google Maps visibility, cuisine and menu-related keywords, dietary and dining-occasion intent, and location or branch-level content, areas central to how people find places to eat.",
   },
   {
     q: "Can SEO help restaurants appear in local searches?",
-    a: "Yes — an accurate Google Business Profile, consistent business information and location-specific content are aimed at improving relevance for local and \"near me\" searches, though actual rankings depend on many factors outside anyone's control.",
+    a: "Yes. An accurate Google Business Profile, consistent business information and location-specific content are aimed at improving relevance for local and 'near me' searches, though actual rankings depend on many factors outside anyone's control.",
   },
   {
     q: "What is Restaurant Website SEO Dubai?",
-    a: "It's on-site optimisation for Dubai-relevant searches — titles, headings, menu pages, cuisine and location pages, internal linking, URLs, and making sure the site is technically sound and mobile-friendly.",
+    a: "It's on-site optimisation for Dubai-relevant searches: titles, headings, menu pages, cuisine and location pages, internal linking, URLs, and making sure the site is technically sound and mobile-friendly.",
   },
   {
     q: "How does Google Maps SEO help restaurants?",
-    a: "It focuses on making a Google Business Profile as complete, accurate and relevant as possible, since much restaurant discovery happens through the Maps pack — though no agency can guarantee a specific Maps position.",
+    a: "It focuses on making a Google Business Profile as complete, accurate and relevant as possible, since much restaurant discovery happens through the Maps pack, though no agency can guarantee a specific Maps position.",
   },
   {
     q: "What is Restaurant Google Business Profile SEO?",
-    a: "Optimising the profile's category, description, services, menu link, hours, attributes and photos, plus proper review management — while keeping information accurate and avoiding fake reviews or duplicate listings.",
+    a: "Optimising the profile's category, description, services, menu link, hours, attributes and photos, plus proper review management, while keeping information accurate and avoiding fake reviews or duplicate listings.",
   },
   {
     q: "Can SEO improve restaurant menu visibility?",
-    a: "Making menu content genuinely crawlable — real text rather than only a PDF or image — gives search engines a much better chance of understanding it. It doesn't guarantee individual dishes will rank for their own searches.",
+    a: "Making menu content genuinely crawlable, real text rather than only a PDF or image, gives search engines a much better chance of understanding it. It doesn't guarantee individual dishes will rank for their own searches.",
   },
   {
     q: "How should restaurant branch pages be optimised?",
-    a: "Each branch should have its own page with distinct, accurate information — address, hours, directions and ideally branch-specific details — rather than a duplicated template, which avoids duplicate content issues.",
+    a: "Each branch should have its own page with distinct, accurate information: address, hours, directions and ideally branch-specific details, rather than a duplicated template, which avoids duplicate content issues.",
   },
   {
-    q: "Does restaurant SEO work for cafés?",
-    a: "Yes. Café SEO Dubai follows the same principles but typically emphasises coffee and brunch-related searches, workspace queries, and strong local and Maps visibility.",
+    q: "Does restaurant SEO work for cafes?",
+    a: "Yes. Cafe SEO Dubai follows the same principles but typically emphasises coffee and brunch-related searches, workspace queries, and strong local and Maps visibility.",
   },
   {
     q: "Can SEO help cloud kitchens?",
@@ -385,25 +389,26 @@ const faqs = [
   },
   {
     q: "How long does restaurant SEO take?",
-    a: "There's no fixed timeline — it depends on the website's current state, competition, location, content depth and implementation speed. SEO is generally ongoing, and specific outcomes or timeframes can't be guaranteed.",
+    a: "There's no fixed timeline. It depends on the website's current state, competition, location, content depth and implementation speed. SEO is generally ongoing, and specific outcomes or timeframes can't be guaranteed.",
   },
   {
     q: "How do you measure restaurant SEO performance?",
-    a: "Through a combination of signals — organic impressions and clicks, local visibility, Google Business Profile actions, website engagement and conversion actions — rather than any single metric.",
+    a: "Through a combination of signals: organic impressions and clicks, local visibility, Google Business Profile actions, website engagement and conversion actions, rather than any single metric.",
   },
 ];
 
-// Internal Links
+// Internal Links matching Section 6
 const internalLinks = [
+  { name: "UAE SEO Services", url: "/uae/seo-services" },
   { name: "Dubai SEO Services", url: "/uae/dubai/seo-services" },
+  { name: "SEO Services", url: "/digital-market/seoservices" },
   { name: "Local SEO Dubai", url: "/uae/dubai/local-seo" },
   { name: "E-commerce SEO Dubai", url: "/uae/dubai/ecommerce-seo" },
-  { name: "Healthcare SEO Dubai", url: "/uae/dubai/healthcare-seo" },
+  { name: "PPC Advertising Dubai", url: "/digital-market/PPC-Advertising" },
+  { name: "Content Marketing Dubai", url: "/digital-market/content-marketing" },
+  { name: "Social Media Marketing Dubai", url: "/digital-market/social-media-marketing" },
   { name: "Real Estate SEO Dubai", url: "/uae/dubai/real-estate-seo" },
-  { name: "SEO Services UAE", url: "/uae/seo-services" },
-  { name: "PPC Advertising", url: "/digital-market/PPC-Advertising" },
-  { name: "Content Marketing", url: "/digital-market/content-marketing" },
-  { name: "Social Media Marketing", url: "/digital-market/social-media-marketing" },
+  { name: "Healthcare SEO Dubai", url: "/uae/dubai/healthcare-seo" },
 ];
 
 function DubaiRestaurantSEO() {
@@ -422,34 +427,77 @@ function DubaiRestaurantSEO() {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Restaurant SEO Dubai | Restaurants, Cafés & Food Businesses | DigLip7",
+        name: "Restaurant SEO Dubai | Local SEO Services for Restaurants | DigLip7",
         description:
-          "Restaurant SEO Dubai services for restaurants, cafés, cloud kitchens and food businesses. Improve your Google Search and Maps visibility with DigLip7.",
-        isPartOf: { "@id": "https://diglip7.com/#website" },
-        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
-        mainEntity: { "@id": `${pageUrl}#service` },
+          "Grow your restaurant's organic and local search visibility with Restaurant SEO Dubai services from DigLip7. SEO for restaurants, cafes, food businesses and hospitality brands.",
+        inLanguage: "en-AE",
+        isPartOf: {
+          "@id": "https://diglip7.com/#website",
+        },
+        about: {
+          "@id": `${pageUrl}#service`,
+        },
+        breadcrumb: {
+          "@id": `${pageUrl}#breadcrumb`,
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          url: "https://diglip7.com/images/restaurant-seo-dubai.jpg",
+        },
       },
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: "Restaurant SEO Services in Dubai",
-        serviceType: "Restaurant Search Engine Optimization",
+        name: "Restaurant SEO Dubai",
+        serviceType: "Restaurant SEO Services",
+        description:
+          "Restaurant SEO Dubai services covering keyword research, website optimisation, menu content, local SEO and Google Business Profile management for restaurants, cafes and food businesses in Dubai.",
         url: pageUrl,
-        provider: { "@id": "https://diglip7.com/#organization" },
         areaServed: {
           "@type": "City",
           name: "Dubai",
-          containedInPlace: { "@type": "Country", name: "United Arab Emirates" },
+          containedInPlace: {
+            "@type": "Country",
+            name: "United Arab Emirates",
+          },
+        },
+        audience: {
+          "@type": "Audience",
+          audienceType:
+            "Restaurants, cafes, cloud kitchens, restaurant chains and food businesses",
+        },
+        provider: {
+          "@id": "https://diglip7.com/#organization",
         },
       },
       {
         "@type": "BreadcrumbList",
         "@id": `${pageUrl}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://diglip7.com/" },
-          { "@type": "ListItem", position: 2, name: "UAE", item: "https://diglip7.com/uae/" },
-          { "@type": "ListItem", position: 3, name: "Dubai", item: "https://diglip7.com/uae/dubai/" },
-          { "@type": "ListItem", position: 4, name: "Restaurant SEO Dubai" },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://diglip7.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "UAE",
+            item: "https://diglip7.com/uae/seo-services/",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Dubai",
+            item: "https://diglip7.com/uae/dubai/seo-services/",
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: "Restaurant SEO Dubai",
+            item: pageUrl,
+          },
         ],
       },
       {
@@ -470,16 +518,23 @@ function DubaiRestaurantSEO() {
   return (
     <div className="overflow-x-hidden bg-white w-full">
       <SEO
-        title="Restaurant SEO Dubai | Restaurants, Cafés & Food Businesses | DigLip7"
-        description="Restaurant SEO Dubai services for restaurants, cafés, cloud kitchens and food businesses. Improve your Google Search and Maps visibility with DigLip7."
+        title="Restaurant SEO Dubai | Local SEO Services for Restaurants | DigLip7"
+        description="Grow your restaurant's organic and local search visibility with Restaurant SEO Dubai services from DigLip7. SEO for restaurants, cafes, food businesses and hospitality brands."
         canonical={pageUrl}
         ogType="website"
+        ogImage="https://diglip7.com/images/restaurant-seo-dubai.jpg"
+        ogImageAlt="Restaurant SEO services for restaurants in Dubai"
+        ogDescription="Grow your restaurant's organic and local search visibility with Restaurant SEO Dubai services from DigLip7. SEO for restaurants, cafes, food businesses and hospitality brands."
+        twitterDescription="Restaurant SEO services for restaurants, cafes, food businesses and hospitality brands in Dubai."
         schema={jsonLdGraph}
       />
 
       {/* Breadcrumb Bar */}
       <div className="w-full bg-gradient-to-r from-purple-100 via-pink-100 to-white border-b border-purple-200/60 py-3 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <nav className="max-w-7xl mx-auto flex items-center flex-wrap gap-2 text-xs sm:text-sm text-gray-600">
+        <nav
+          aria-label="Breadcrumb"
+          className="max-w-7xl mx-auto flex items-center flex-wrap gap-2 text-xs sm:text-sm text-gray-600"
+        >
           {breadcrumbTrail.map((crumb, i) => (
             <span key={crumb.label} className="flex items-center gap-2">
               {i === 0 ? (
@@ -524,7 +579,7 @@ function DubaiRestaurantSEO() {
               </span>
             </h1>
 
-            {/* Direct Answer */}
+            {/* Direct Answer (50-80 words per AEO spec) */}
             <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
               <strong>Direct Answer:</strong> Restaurant SEO Dubai is the practice of improving how restaurants, cafés, cloud kitchens and food businesses appear in Google Search and Google Maps within the Dubai market. It covers keyword research, website optimisation, menu content, local SEO and Google Business Profile management, aimed at helping the right diners find accurate restaurant information — not at guaranteeing any specific ranking or booking outcome.
             </p>
@@ -562,7 +617,7 @@ function DubaiRestaurantSEO() {
             </div>
           </div>
 
-          {/* Right Section - Hero Image */}
+          {/* Right Section - Hero Image (Image 1 of 7) */}
           <motion.div
             className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, y: 30 }}
@@ -576,10 +631,10 @@ function DubaiRestaurantSEO() {
               >
                 <img
                   src={heroImgSrc}
-                  onError={(e) => handleImgFallback(e, "/images/home0.jpg")}
-                  alt="Restaurant SEO Dubai for restaurants, cafés and food businesses"
-                  width="800"
-                  height="600"
+                  onError={(e) => handleImgFallback(e, "/images/restaurant-seo-dubai.jpg")}
+                  alt="Restaurant SEO services for restaurants in Dubai"
+                  width="1200"
+                  height="630"
                   loading="eager"
                   className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-white border border-purple-100"
                 />
@@ -588,7 +643,7 @@ function DubaiRestaurantSEO() {
           </motion.div>
         </div>
 
-        {/* Floating particles */}
+        {/* Floating background particles */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
             <motion.div
@@ -612,13 +667,13 @@ function DubaiRestaurantSEO() {
         </div>
       </div>
 
-      {/* Section 1: Overview & Search Dynamics (Full-Width bg-white) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Introduction: Dubai Restaurant Search Dynamics (Styled div, not H2 per Section 3) */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-4xl mx-auto text-center md:text-left">
           <FloatingElement>
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6 text-center">
+            <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6 text-center">
               Dubai Restaurant Search Dynamics
-            </h2>
+            </div>
           </FloatingElement>
           <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
             A diner in Business Bay at 7pm doesn't search "digital marketing services" — they search "restaurant near me", "Indian restaurant in Dubai", or "café in JVC". Someone planning a birthday might look for "family restaurant Dubai"; someone in a meeting might just want "restaurant delivery near me". These searches look nothing alike, but they all come from the same place: a person deciding where to eat, usually on a phone, usually soon.
@@ -627,93 +682,121 @@ function DubaiRestaurantSEO() {
             That's what makes restaurant search behaviour different. It's heavily local, often cuisine-specific, frequently time-sensitive, and almost always mobile. A restaurant in Al Barsha competing for "restaurant near me" isn't really competing with one in Downtown Dubai — the two rarely appear for the same searcher. And "Japanese restaurant Dubai" carries very different intent from "restaurant reservation Dubai" or "restaurant menu Dubai", even when they lead to the same business.
           </p>
           <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-            This is why a generic SEO approach, built around a few broad commercial keywords, tends to fall short for restaurants. A restaurant website needs to be found for its cuisine, neighbourhood, dining occasions and menu — not just its category. <span className="font-semibold text-teal-700">DigLip7</span>'s Restaurant SEO Dubai is meant to close that gap: a structured approach to Restaurant Website SEO Dubai, Local SEO for Restaurants Dubai, and Café SEO Dubai that reflects how people actually search for places to eat in this city.
+            This is why a generic SEO approach, built around a few broad commercial keywords, tends to fall short for restaurants. A restaurant website needs to be found for its cuisine, neighbourhood, dining occasions and menu — not just its category. <span className="font-semibold text-teal-700">DigLip7</span>'s Restaurant SEO Dubai is meant to close that gap: a structured approach to{" "}
+            <Link to="/uae/dubai/seo-services" className="text-teal-700 underline font-medium hover:text-teal-900">
+              Dubai SEO Services
+            </Link>
+            ,{" "}
+            <Link to="/uae/dubai/local-seo" className="text-teal-700 underline font-medium hover:text-teal-900">
+              Local SEO Dubai
+            </Link>
+            , and specialized hospitality SEO across the{" "}
+            <Link to="/uae/seo-services" className="text-teal-700 underline font-medium hover:text-teal-900">
+              UAE SEO Services
+            </Link>{" "}
+            landscape that reflects how people actually search for places to eat in this city.
           </p>
         </div>
       </section>
 
-      {/* Section 2: What Is Restaurant SEO? (Full-Width bg-gray-50 with Moving Image) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
-                src={whatIsImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/seo1.webp")}
-                alt="What Is Restaurant SEO Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
-              />
-            </Card3D>
-          </motion.div>
-
-          <div className="w-full md:w-1/2 text-left">
+      {/* Section 1: What Is Restaurant SEO? */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-10">
             <FloatingElement>
-              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-4">
                 What Is Restaurant SEO?
               </h2>
             </FloatingElement>
-            <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
               Restaurant SEO applies the standard building blocks of SEO — keyword research, on-page optimisation, technical SEO, content and local signals — through a restaurant-specific lens. Restaurant keyword research has to account for cuisine type, dish names, dietary terms, meal occasions, delivery intent and location, often down to the neighbourhood.
             </p>
-            <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
-              Local SEO and Google Maps visibility usually matter more for restaurants than for most businesses, since a large share of discovery happens through the Maps pack and "near me" searches. Google Business Profile accuracy — correct category, hours, menu link, photos — becomes central rather than an afterthought.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              On the website, this covers menu pages, cuisine and location pages, content SEO, internal linking, structured data, image SEO for food photography, mobile usability, and a structure that supports calls, directions and reservations. In short: restaurant SEO differs from generic SEO because the underlying searches are different — cuisine, location, meal type, dietary needs, atmosphere and reviews all shape how someone finds a restaurant.
-            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Local & Google Maps First</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Local SEO and Google Maps visibility usually matter more for restaurants than for most businesses, since a large share of discovery happens through the Maps pack and "near me" searches.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
+                <Store className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Google Business Profile Accuracy</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Google Business Profile accuracy — correct category, opening hours, crawlable menu links, and high-quality photography — becomes central rather than an afterthought.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-sm space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
+                <UtensilsCrossed className="w-5 h-5" />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900">Menu & Cuisine Architecture</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Covers crawlable HTML menu pages, cuisine and location pages, structured data, mobile usability, and a frictionless path for customer phone calls, directions, and reservations.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Section 3: Why Restaurant SEO Matters in Dubai (Full-Width bg-white with Moving Image) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
-                src={whyMattersImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/lseo1.png")}
-                alt="Why Restaurant SEO Matters in Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
-              />
-            </Card3D>
-          </motion.div>
-
-          <div className="w-full md:w-1/2 text-left">
+      {/* Section 2: Why Restaurant SEO Matters in Dubai */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-10">
             <FloatingElement>
-              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-4">
                 Why Restaurant SEO Matters in Dubai
               </h2>
             </FloatingElement>
-            <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
               Dubai's dining scene is dense and competitive. A restaurant in Jumeirah competing for "restaurants in Jumeirah" is up against cafés, fine dining venues and delivery-only kitchens, all appearing in the same local results. Search behaviour leans heavily local and mobile — "café in JVC" or "Italian restaurant Downtown Dubai" almost always means someone wants something nearby, right now.
             </p>
-            <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
-              Restaurant discovery typically spans several overlapping channels: Google Search, Google Maps, the restaurant's own website, and increasingly AI-powered search. A restaurant strong in only one of these — a decent website but a thin, inconsistent Google Business Profile — tends to lose visibility to competitors covering all the bases.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              We won't quote specific search volumes for terms like "restaurants in Jumeirah" without verified, current data for your business, and we won't invent numbers to sound impressive. What we can say is that visibility depends on website relevance, local signals, content depth, technical health and competition — and a deliberate SEO approach gives a restaurant a stronger foundation than relying solely on delivery apps or word of mouth.
-            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4 text-gray-700 text-sm sm:text-base leading-relaxed">
+              <p>
+                Restaurant discovery typically spans several overlapping channels: Google Search, Google Maps, the restaurant's own website, and increasingly AI-powered search. A restaurant strong in only one of these — a decent website but a thin, inconsistent Google Business Profile — tends to lose visibility to competitors covering all the bases.
+              </p>
+              <p>
+                We won't quote specific search volumes for terms like "restaurants in Jumeirah" without verified, current data for your business, and we won't invent numbers to sound impressive. What we can say is that visibility depends on website relevance, local signals, content depth, technical health and competition — and a deliberate SEO approach gives a restaurant a stronger foundation than relying solely on delivery apps or word of mouth.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 bg-teal-50/60 border border-teal-200/80 rounded-2xl p-6 sm:p-8 space-y-4">
+              <div className="flex items-center gap-3 text-teal-900 font-bold text-lg">
+                <TrendingUp className="w-6 h-6 text-teal-700" />
+                <span>Dubai Search Behavior Highlights</span>
+              </div>
+              <ul className="space-y-3 text-sm text-gray-700">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
+                  <span><strong>Near-Me Immediacy:</strong> Searchers looking for lunch, dinner, or coffee want proximate solutions within 15–30 minutes.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
+                  <span><strong>Cuisine Specificity:</strong> Generic "food" queries are rare; diners search specifically by regional cuisine, dietary filter, or signature dish.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
+                  <span><strong>Multi-Surface Verification:</strong> Guests check Google Maps ratings, read genuine menu items, and confirm hours before booking.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Section 4: Restaurant Businesses We Support (Full-Width bg-gray-50) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
+      {/* Section 3: Restaurant Businesses We Support */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -749,8 +832,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 5: Restaurant SEO Services in Dubai (Full-Width bg-white) */}
-      <section id="services" className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Section 4: Restaurant SEO Services in Dubai */}
+      <section id="services" className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -763,7 +846,7 @@ function DubaiRestaurantSEO() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((srv) => {
               const Icon = srv.icon;
               return (
@@ -772,7 +855,22 @@ function DubaiRestaurantSEO() {
                   className="p-6 sm:p-8 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                   whileHover={{ y: -3 }}
                 >
-                  <div className="space-y-3">
+                  <div className="space-y-4">
+                    {/* Visual Illustration for the 4 Dedicated Service Graphics */}
+                    {srv.image && (
+                      <div className="overflow-hidden rounded-xl border border-teal-100 shadow-sm bg-white">
+                        <img
+                          src={srv.image}
+                          onError={(e) => handleImgFallback(e, srv.image.replace("/src", ""))}
+                          alt={srv.imageAlt}
+                          width="800"
+                          height="450"
+                          loading="lazy"
+                          className="w-full h-48 sm:h-56 object-cover transform hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5" />
@@ -788,8 +886,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 6: Restaurant Website Structure That Supports SEO (Full-Width bg-gray-50) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
+      {/* Section 5: Restaurant Website Structure That Supports SEO */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
@@ -798,7 +896,7 @@ function DubaiRestaurantSEO() {
                   <FolderTree className="w-3.5 h-3.5 text-teal-600" />
                   <span>Architecture & Hierarchy</span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600">
+                <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mt-2">
                   Restaurant Website Structure That Supports SEO
                 </h2>
               </FloatingElement>
@@ -810,6 +908,21 @@ function DubaiRestaurantSEO() {
                 <p className="text-teal-800 font-medium">
                   The principle is a clean parent-child hierarchy, with breadcrumbs and internal links reinforcing it — this supports crawlability and helps avoid the duplicate or orphaned pages that tend to appear when a site is bolted together over time.
                 </p>
+              </div>
+
+              {/* Image 3 of 7: Structure Graphic */}
+              <div className="pt-2">
+                <Card3D className="w-full">
+                  <img
+                    src={structureImgSrc}
+                    onError={(e) => handleImgFallback(e, "/images/restaurant-website-seo-dubai.jpg")}
+                    alt="SEO structure for a Dubai restaurant website"
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    className="rounded-2xl shadow-md w-full object-cover bg-white border border-teal-100"
+                  />
+                </Card3D>
               </div>
             </div>
 
@@ -849,8 +962,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 7: Targeting Different Restaurant Search Intents (Full-Width bg-white) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Section 6: Targeting Different Restaurant Search Intents */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -871,9 +984,11 @@ function DubaiRestaurantSEO() {
                 whileHover={{ y: -3 }}
               >
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-100 px-2.5 py-1 rounded-full">
-                    {item.intent}
-                  </span>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100 px-2.5 py-1 rounded-full">
+                      {item.intent}
+                    </span>
+                  </h3>
                   <ul className="mt-4 space-y-2">
                     {item.queries.map((q, qIdx) => (
                       <li key={qIdx} className="flex items-center gap-2 text-sm text-gray-800 font-semibold">
@@ -892,45 +1007,27 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 8: Restaurant Search Competitor Analysis (Full-Width bg-gray-50 with Moving Image) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
-                src={competitorImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/seo11.png")}
-                alt="Restaurant Search Competitor Analysis Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
-              />
-            </Card3D>
-          </motion.div>
-
-          <div className="w-full md:w-1/2 text-left">
-            <FloatingElement>
-              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
-                Restaurant Search Competitor Analysis
-              </h2>
-            </FloatingElement>
-            <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
+      {/* Section 7: Restaurant Search Competitor Analysis */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto text-left">
+          <FloatingElement>
+            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6 text-center md:text-left">
+              Restaurant Search Competitor Analysis
+            </h2>
+          </FloatingElement>
+          <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+            <p>
               This means reviewing Google and Maps results for key terms, competitor websites, menu and location pages, internal linking, Google Business Profiles, review patterns and technical SEO quality — to spot genuine gaps rather than to copy what competitors have done.
             </p>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              We won't claim DigLip7 outranks specific competitors, or cite competitor statistics, without being able to verify them.
+            <p>
+              We won't claim DigLip7 outranks specific competitors, or cite competitor statistics, without being able to verify them. Instead, our audit breaks down search visibility across direct competitors in your neighborhood, showing where their menus or local profiles leave room for your brand to stand out.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Section 9: Our Restaurant SEO Process (Full-Width bg-white) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Section 8: Our Restaurant SEO Process */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -963,8 +1060,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 10: How Restaurant SEO Performance Is Measured (Full-Width bg-gray-50) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
+      {/* Section 9: How Restaurant SEO Performance Is Measured */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -977,19 +1074,36 @@ function DubaiRestaurantSEO() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {measurementMetrics.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-white border border-gray-200 flex items-start gap-3.5 hover:border-teal-300 transition-all"
-              >
-                <CheckCircle2 className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-sm font-bold text-gray-900">{item.metric}</h4>
-                  <p className="text-xs text-gray-600 mt-1">{item.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+            {/* Reporting Dashboard Image (Image 7 of 7) */}
+            <div className="lg:col-span-5">
+              <Card3D className="w-full">
+                <img
+                  src={reportingImgSrc}
+                  onError={(e) => handleImgFallback(e, "/images/restaurant-seo-reporting-dubai.jpg")}
+                  alt="Restaurant SEO performance reporting dashboard"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                />
+              </Card3D>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {measurementMetrics.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-white border border-gray-200 flex items-start gap-3 hover:border-teal-300 transition-all shadow-sm"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-gray-900">{item.metric}</h4>
+                    <p className="text-xs text-gray-600 mt-1">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-white border border-teal-200 text-center">
@@ -1000,8 +1114,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 11: Restaurant SEO vs Paid Advertising (Full-Width bg-white) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Section 10: Restaurant SEO vs Paid Advertising */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -1014,7 +1128,11 @@ function DubaiRestaurantSEO() {
               </h2>
             </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base">
-              Comparing long-term organic presence against immediate paid campaign channels.
+              Comparing long-term organic presence against immediate paid campaign channels like{" "}
+              <Link to="/digital-market/PPC-Advertising" className="text-teal-700 underline font-medium hover:text-teal-900">
+                PPC Advertising Dubai
+              </Link>
+              .
             </p>
           </div>
 
@@ -1057,8 +1175,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 12: Common Restaurant SEO Mistakes (Full-Width bg-gray-50) */}
-      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
+      {/* Section 11: Common Restaurant SEO Mistakes */}
+      <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <FloatingElement>
@@ -1089,8 +1207,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 13: How Long Does Restaurant SEO Take? (Full-Width bg-white) */}
-      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
+      {/* Section 12: How Long Does Restaurant SEO Take? */}
+      <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <FloatingElement>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold">
@@ -1113,8 +1231,8 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 14: Frequently Asked Questions (Full-Width Gradient Container Matching Older Pages) */}
-      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-gray-100">
+      {/* Section 13: Frequently Asked Questions */}
+      <section className="w-full bg-gradient-to-br from-gray-50 to-teal-50/30 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <FloatingElement>
@@ -1134,7 +1252,7 @@ function DubaiRestaurantSEO() {
                 className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
+                transition={{ delay: index * 0.03, duration: 0.4 }}
                 viewport={{ once: true }}
               >
                 <button
@@ -1175,7 +1293,7 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 15: Bottom CTA Banner (Full-Width Gradient Matching Older Pages) */}
+      {/* Section 14: Final CTA Section (Final H2 per Section 3) */}
       <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-teal-700 to-[#c89d5a] overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -1240,13 +1358,13 @@ function DubaiRestaurantSEO() {
         </div>
       </section>
 
-      {/* Section 16: Suggested Internal Links (Full-Width bg-gray-50) */}
+      {/* Suggested Internal Links (Styled div, not H2 per Section 3) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto text-center">
           <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
+            <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
               Suggested Internal Links
-            </h2>
+            </div>
           </FloatingElement>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
             {internalLinks.map((link) => (

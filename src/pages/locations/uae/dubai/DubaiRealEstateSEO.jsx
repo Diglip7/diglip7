@@ -29,15 +29,14 @@ import {
   Award,
 } from "lucide-react";
 
-// Image Paths with smart fallbacks
-const heroImgSrc = "/src/images/home0.jpg";
-const whatIsImgSrc = "/src/images/seo1.webp";
-const whyMattersImgSrc = "/src/images/lseo1.png";
-const structureImgSrc = "/src/images/webd1.png";
-const localImgSrc = "/src/images/lseo2.png";
-const competitorImgSrc = "/src/images/seo11.png";
-const reportingImgSrc = "/src/images/cad1.png";
-const technicalImgSrc = "/src/images/cad2.png";
+// Image Paths strictly matching Section 10 Image SEO specification
+const heroImgSrc = "/src/images/re-estate-seo-dubai-overview.jpg";
+const keywordImgSrc = "/src/images/property-keyword-research-dubai.jpg";
+const listingImgSrc = "/src/images/property-listing-seo-optimization.jpg";
+const localImgSrc = "/src/images/local-seo-real-estate-dubai.jpg";
+const structureImgSrc = "/src/images/real-estate-website-seo-structure.jpg";
+const portalImgSrc = "/src/images/property-portal-technical-seo.jpg";
+const reportingImgSrc = "/src/images/real-estate-seo-reporting-dashboard.jpg";
 
 // Automatic fallback
 const handleImgFallback = (e, fallback) => {
@@ -419,15 +418,14 @@ const faqs = [
 ];
 
 const internalLinks = [
-  { name: "Dubai SEO Services", url: "/uae/dubai/seo-services/" },
-  { name: "SEO Services UAE", url: "/uae/seo-services/" },
-  { name: "SEO Services", url: "/digital-market/seoservices/" },
-  { name: "Local SEO Dubai", url: "/uae/dubai/local-seo/" },
-  { name: "E-commerce SEO Dubai", url: "/uae/dubai/ecommerce-seo/" },
-  { name: "Healthcare SEO Dubai", url: "/uae/dubai/healthcare-seo/" },
-  { name: "PPC Advertising", url: "/digital-market/PPC-Advertising" },
-  { name: "content marketing", url: "/digital-market/content-marketing" },
-  { name: "social media marketing", url: "/digital-market/social-media-marketing" },
+  { name: "UAE SEO Services", url: "/uae/seo-services" },
+  { name: "Dubai SEO Services", url: "/uae/dubai/seo-services" },
+  { name: "SEO Services", url: "/digital-market/seoservices" },
+  { name: "Local SEO Dubai", url: "/uae/dubai/local-seo" },
+  { name: "E-commerce SEO Dubai", url: "/uae/dubai/ecommerce-seo" },
+  { name: "PPC Advertising Dubai", url: "/digital-market/PPC-Advertising" },
+  { name: "Content Marketing Dubai", url: "/digital-market/content-marketing" },
+  { name: "Social Media Marketing Dubai", url: "/digital-market/social-media-marketing" },
 ];
 
 function DubaiRealEstateSEO() {
@@ -446,25 +444,30 @@ function DubaiRealEstateSEO() {
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: "Real Estate SEO Dubai | Property Companies & Agencies | DigLip7",
+        name: "Real Estate SEO Dubai | Property SEO Services | DigLip7",
         description:
-          "Real Estate SEO Dubai services for property agencies, brokers, developers and portals. Grow your organic visibility across Dubai communities with DigLip7.",
+          "Grow your property website's organic visibility with Real Estate SEO Dubai services from DigLip7. SEO for agencies, brokers, developers and property websites.",
+        inLanguage: "en-AE",
         isPartOf: { "@id": "https://diglip7.com/#website" },
+        about: { "@id": `${pageUrl}#service` },
         breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
-        mainEntity: { "@id": `${pageUrl}#service` },
       },
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: "Real Estate SEO Services in Dubai",
+        name: "Real Estate SEO Services Dubai",
         serviceType: "Real Estate Search Engine Optimization",
-        url: pageUrl,
         provider: { "@id": "https://diglip7.com/#organization" },
         areaServed: {
           "@type": "City",
           name: "Dubai",
-          containedInPlace: { "@type": "Country", name: "United Arab Emirates" },
         },
+        audience: {
+          "@type": "Audience",
+          audienceType:
+            "Real estate agencies, brokers, property developers, property investment businesses and property portals",
+        },
+        url: pageUrl,
       },
       {
         "@type": "BreadcrumbList",
@@ -473,7 +476,7 @@ function DubaiRealEstateSEO() {
           { "@type": "ListItem", position: 1, name: "Home", item: "https://diglip7.com/" },
           { "@type": "ListItem", position: 2, name: "UAE", item: "https://diglip7.com/uae/" },
           { "@type": "ListItem", position: 3, name: "Dubai", item: "https://diglip7.com/uae/dubai/" },
-          { "@type": "ListItem", position: 4, name: "Real Estate SEO Dubai" },
+          { "@type": "ListItem", position: 4, name: "Real Estate SEO Dubai", item: pageUrl },
         ],
       },
       {
@@ -494,12 +497,15 @@ function DubaiRealEstateSEO() {
   return (
     <div className="overflow-x-hidden bg-white w-full">
       <SEO
-        title="Real Estate SEO Dubai | Property Companies & Agencies | DigLip7"
-        description="Real Estate SEO Dubai services for property agencies, brokers, developers and portals. Grow your organic visibility across Dubai communities with DigLip7."
+        title="Real Estate SEO Dubai | Property SEO Services | DigLip7"
+        description="Grow your property website's organic visibility with Real Estate SEO Dubai services from DigLip7. SEO for agencies, brokers, developers and property websites."
         canonical={pageUrl}
         ogType="website"
-        ogImage="https://diglip7.com/images/home0.jpg"
-        keywords="Real Estate SEO Dubai, Property SEO Dubai, Real Estate SEO Agency Dubai, Real Estate SEO Company Dubai, Real Estate Marketing Dubai, Real Estate Website SEO Dubai, Property Portal SEO Dubai, Local SEO for Real Estate Dubai, SEO for Property Developers Dubai, SEO for Real Estate Brokers Dubai, DigLip7"
+        ogImage="https://diglip7.com/images/real-estate-seo-dubai.jpg"
+        ogImageAlt="Real estate SEO services for property companies in Dubai"
+        ogDescription="Grow your property website's organic visibility with Real Estate SEO Dubai services from DigLip7. SEO for agencies, brokers, developers and property websites."
+        twitterDescription="Real Estate SEO services for property companies, agencies, brokers and developers in Dubai."
+        keywords="Real Estate SEO Dubai, Real Estate SEO Services Dubai, Real Estate SEO Agency in Dubai, Real Estate SEO Company Dubai, Property SEO Dubai, Real Estate Website SEO Dubai, Property Website SEO Dubai, Real Estate Marketing SEO Dubai, Local SEO for Real Estate Dubai, Real Estate Keyword Research Dubai, Property Portal SEO Dubai"
         schema={jsonLdGraph}
       />
 
@@ -601,8 +607,8 @@ function DubaiRealEstateSEO() {
             <Card3D className="w-full max-w-md lg:max-w-none">
               <img
                 src={heroImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/home0.jpg")}
-                alt="Real Estate SEO Dubai for property agencies, developers and brokers"
+                onError={(e) => handleImgFallback(e, "/images/re-estate-seo-dubai-overview.jpg")}
+                alt="Real estate SEO services for property companies in Dubai"
                 width="800"
                 height="600"
                 loading="eager"
@@ -646,9 +652,9 @@ function DubaiRealEstateSEO() {
           >
             <Card3D className="w-full max-w-lg">
               <img
-                src={whyMattersImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/lseo1.png")}
-                alt="Dubai real estate search dynamics and community visibility"
+                src={keywordImgSrc}
+                onError={(e) => handleImgFallback(e, "/images/property-keyword-research-dubai.jpg")}
+                alt="Real estate keyword research strategy for Dubai properties"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -659,18 +665,18 @@ function DubaiRealEstateSEO() {
 
           <div className="flex-1 text-center md:text-left">
             <FloatingElement>
-              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
+              <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 Understanding Dubai Real Estate Search Dynamics
-              </h2>
+              </div>
             </FloatingElement>
             <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
               Dubai's property market moves across dozens of communities and buyer profiles at once, and most of that activity starts with a search box. Someone comparing apartments in <span className="text-teal-700 font-semibold">Dubai Marina</span> searches differently than someone buying a villa in <span className="text-teal-700 font-semibold">Arabian Ranches</span>, and an investor scanning yields in <span className="text-teal-700 font-semibold">JVC</span> types very different queries than a tenant hunting for a two-bedroom near a specific school. That range of intent is why real estate SEO Dubai work looks different from SEO in most other industries — the same website often has to serve buyers, renters, sellers and investors at once, sometimes on the same page.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
-              Search behaviour here is heavily location-specific: people search by community, by building, and increasingly by property type combined with a neighborhood. A generic "properties for sale in Dubai" page rarely satisfies any of these well, which is why community pages matter so much to a <span className="text-teal-800 font-semibold">property SEO Dubai</span> strategy.
+              Search behaviour here is heavily location-specific: people search by community, by building, and increasingly by property type combined with a neighborhood. A generic "properties for sale in Dubai" page rarely satisfies any of these well, which is why community pages matter so much to a broader <Link to="/uae/dubai/seo-services" className="text-teal-800 font-semibold hover:underline">Dubai SEO Services</Link> and <Link to="/digital-market/seoservices" className="text-teal-800 font-semibold hover:underline">SEO Services</Link> strategy.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base">
-              Technical SEO carries extra weight too, since property websites are often large and filter-heavy, generating URLs faster than a small business site ever would. Without a plan for indexation and crawl budget, that scale works against a site rather than for it — which is part of why <span className="text-teal-700 font-semibold">local SEO for real estate Dubai</span> and technical SEO tend to sit side by side in a real strategy.
+              Technical SEO carries extra weight too, since property websites are often large and filter-heavy, generating URLs faster than a small business site ever would. Without a plan for indexation and crawl budget, that scale works against a site rather than for it — which is part of why <Link to="/uae/seo-services" className="text-teal-700 font-semibold hover:underline">UAE SEO Services</Link> and technical SEO tend to sit side by side in a real strategy.
             </p>
             <p className="text-teal-900 font-medium text-sm sm:text-base italic">
               This page walks through what real estate SEO actually involves for Dubai property businesses — how it's researched, structured, built and measured.
@@ -689,9 +695,9 @@ function DubaiRealEstateSEO() {
           >
             <Card3D className="w-full max-w-lg">
               <img
-                src={whatIsImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/seo1.webp")}
-                alt="What is Real Estate SEO for property websites"
+                src={listingImgSrc}
+                onError={(e) => handleImgFallback(e, "/images/property-listing-seo-optimization.jpg")}
+                alt="Property listing SEO optimization"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -738,9 +744,9 @@ function DubaiRealEstateSEO() {
           >
             <Card3D className="w-full max-w-lg">
               <img
-                src={competitorImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/seo11.png")}
-                alt="Why real estate SEO matters in Dubai property market"
+                src={localImgSrc}
+                onError={(e) => handleImgFallback(e, "/images/local-seo-real-estate-dubai.jpg")}
+                alt="Local SEO strategy for a Dubai real estate agency"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -762,7 +768,7 @@ function DubaiRealEstateSEO() {
               Intent varies just as much as location. A buyer is weighing ownership and community fit; a renter is working against a shorter timeline; a seller wants a sense of value; an investor is comparing areas and yields, sometimes without ever viewing a property in person. Developers and agencies are often searched by name once a shortlist has formed — a different query to the discovery-stage search that built it.
             </p>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              Mobile and local search compound the effect, since a large share of research happens on a phone and <span className="text-teal-800 font-semibold">Google Maps</span> carries real weight for agencies competing on "near me" searches. Pages that are thin or poorly structured technically tend to lose that competition regardless of the property itself.
+              Mobile and local search compound the effect, since a large share of research happens on a phone and dedicated <Link to="/uae/dubai/local-seo" className="text-teal-800 font-semibold hover:underline">Local SEO Dubai</Link> on Google Maps carries real weight for agencies competing on "near me" searches. Pages that are thin or poorly structured technically tend to lose that competition regardless of the property itself.
             </p>
           </div>
         </div>
@@ -863,8 +869,8 @@ function DubaiRealEstateSEO() {
             <Card3D className="w-full max-w-lg">
               <img
                 src={structureImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/webd1.png")}
-                alt="Real estate website architecture and SEO structure"
+                onError={(e) => handleImgFallback(e, "/images/real-estate-website-seo-structure.jpg")}
+                alt="SEO structure for a Dubai real estate website"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -951,9 +957,10 @@ function DubaiRealEstateSEO() {
               >
                 <div>
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 border ${item.badgeColor}`}>
-                    {item.type}
+                    Search Intent
                   </span>
-                  <h3 className="text-base font-bold text-gray-900 mb-2">{item.query}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{item.type}</h3>
+                  <p className="text-teal-800 font-semibold text-xs sm:text-sm mb-2 font-mono">{item.query}</p>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                     {item.mapping}
                   </p>
@@ -978,9 +985,9 @@ function DubaiRealEstateSEO() {
           >
             <Card3D className="w-full max-w-lg">
               <img
-                src={localImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/lseo2.png")}
-                alt="Real estate search competitor analysis in Dubai"
+                src={portalImgSrc}
+                onError={(e) => handleImgFallback(e, "/images/property-portal-technical-seo.jpg")}
+                alt="Technical SEO architecture for a property portal"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -1078,8 +1085,8 @@ function DubaiRealEstateSEO() {
             <Card3D className="w-full max-w-lg">
               <img
                 src={reportingImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/cad1.png")}
-                alt="How real estate SEO performance is measured in Dubai"
+                onError={(e) => handleImgFallback(e, "/images/real-estate-seo-reporting-dashboard.jpg")}
+                alt="Real estate SEO reporting dashboard"
                 width="800"
                 height="600"
                 loading="lazy"
@@ -1121,7 +1128,7 @@ function DubaiRealEstateSEO() {
           </div>
 
           <p className="text-center text-gray-700 text-sm sm:text-base max-w-3xl mx-auto">
-            Neither approach is universally better — many businesses run both together, using paid advertising for immediate visibility while SEO builds a more durable base underneath it.
+            Neither approach is universally better — many businesses run both together, using targeted <Link to="/digital-market/PPC-Advertising" className="text-teal-800 font-semibold hover:underline">PPC Advertising Dubai</Link> for immediate visibility while SEO builds a more durable base underneath it.
           </p>
         </div>
       </section>
@@ -1159,46 +1166,28 @@ function DubaiRealEstateSEO() {
 
       {/* Section 13: How Long Does Real Estate SEO Take? (Full-Width bg-white) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <div className="flex-1 text-center md:text-left">
-            <FloatingElement>
-              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
-                How Long Does Real Estate SEO Take?
-              </h2>
-            </FloatingElement>
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">
-              There's no universal timeline for real estate SEO, and any figure quoted without knowing a specific site should be treated with caution. What a project takes depends on:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-left">
-              {timelineFactors.map((factor, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
-                  <span className="text-gray-700 text-xs sm:text-sm">{factor}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic">
+        <div className="max-w-4xl mx-auto text-center md:text-left">
+          <FloatingElement>
+            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6 text-center">
+              How Long Does Real Estate SEO Take?
+            </h2>
+          </FloatingElement>
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-6 text-center max-w-3xl mx-auto">
+            There's no universal timeline for real estate SEO, and any figure quoted without knowing a specific site should be treated with caution. What a project takes depends on:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+            {timelineFactors.map((factor, idx) => (
+              <div key={idx} className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
+                <span className="text-gray-700 text-xs sm:text-sm font-medium">{factor}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 bg-teal-50/60 rounded-2xl border border-teal-100 text-center">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic max-w-3xl mx-auto">
               SEO is best understood as ongoing optimization rather than a project with a fixed end date. No responsible agency will guarantee page-one placement, a specific traffic number, a lead volume or a Google Maps ranking.
             </p>
           </div>
-
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
-                src={technicalImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/cad2.png")}
-                alt="Technical SEO and timelines for real estate in Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-gray-50 border border-teal-100"
-              />
-            </Card3D>
-          </motion.div>
         </div>
       </section>
 
@@ -1353,9 +1342,9 @@ function DubaiRealEstateSEO() {
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto text-center">
           <FloatingElement>
-            <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
-              Suggested Internal Links
-            </h2>
+            <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
+              Explore Related Services & Internal Links
+            </div>
           </FloatingElement>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
             {internalLinks.map((link) => (
