@@ -60,7 +60,7 @@ const Header = () => {
   // Close mobile menu on window resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1280) {
         setIsOpen(false);
         setMobileDropdown(null);
       }
@@ -144,6 +144,10 @@ const Header = () => {
             {
               name: "Restaurant SEO Dubai",
               href: "/uae/dubai/restaurant-seo",
+            },
+            {
+              name: "Hotel SEO Dubai",
+              href: "/uae/dubai/hotel-seo",
             },
           ],
         },
@@ -258,15 +262,15 @@ const Header = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-4 lg:space-x-10 xl:space-x-10 font-medium">
+        <ul className="hidden xl:flex items-center space-x-5 2xl:space-x-8 font-medium">
           <li>
             <Link to="/">
-              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Home</span>
+              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">Home</span>
             </Link>
           </li>
           <li>
             <Link to="/about">
-              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">About</span>
+              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">About</span>
             </Link>
           </li>
 
@@ -278,11 +282,11 @@ const Header = () => {
           >
             <Link
               to="/digital-market"
-              className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+              className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Digital Marketing
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "digital" ? "rotate-180 text-teal-600" : ""
+                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${activeDropdown === "digital" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
             </Link>
@@ -304,11 +308,11 @@ const Header = () => {
           >
             <Link
               to="/design"
-              className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+              className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Design
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "design" ? "rotate-180 text-teal-600" : ""
+                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${activeDropdown === "design" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
             </Link>
@@ -330,11 +334,11 @@ const Header = () => {
           >
             <Link
               to="/development"
-              className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium"
+              className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Development
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${activeDropdown === "development" ? "rotate-180 text-teal-600" : ""
+                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${activeDropdown === "development" ? "rotate-180 text-teal-600" : ""
                   }`}
               />
             </Link>
@@ -354,10 +358,10 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("locations")}
             onMouseLeave={handleDropdownLeave}
           >
-            <div className="flex items-center text-teal-800 hover:text-black transition-colors duration-200 cursor-pointer text-sm lg:text-base xl:text-lg font-medium">
+            <div className="flex items-center text-teal-800 hover:text-black transition-colors duration-200 cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">
               <span>Locations</span>
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${
                   activeDropdown === "locations" ? "rotate-180 text-teal-600" : ""
                 }`}
               />
@@ -391,11 +395,11 @@ const Header = () => {
                       <Link
                         to={loc.mainPage.href}
                         onClick={() => setActiveDropdown(null)}
-                        className="hover:underline flex-1"
+                        className="hover:underline flex-1 truncate"
                       >
                         {loc.name}
                       </Link>
-                      <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+                      <ChevronRight className="w-3.5 h-3.5 opacity-60 shrink-0" />
                     </div>
                   ))}
                 </div>
@@ -483,19 +487,19 @@ const Header = () => {
 
           <li>
             <Link to="/contact">
-              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Contact</span>
+              <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">Contact</span>
             </Link>
           </li>
           <li>
             <Link to="/blogview">
-              <span className="pr-6 text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm lg:text-base xl:text-lg font-medium">Blog</span>
+              <span className="pr-6 text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">Blog</span>
             </Link>
           </li>
         </ul>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile & Tablet Menu Button */}
         <button
-          className="md:hidden text-teal-900 p-2 rounded-lg hover:bg-black/5 transition-colors duration-200"
+          className="xl:hidden text-teal-900 p-2 rounded-lg hover:bg-black/5 transition-colors duration-200 focus:outline-none"
           onClick={toggleMenu}
           aria-label="Toggle mobile menu"
         >
@@ -503,10 +507,11 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile & Tablet Menu Drawer */}
       <div
-        className={`md:hidden bg-white shadow-lg transition-all duration-300 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-          }`}
+        className={`xl:hidden bg-white shadow-lg border-t border-teal-100 transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-[calc(100vh-75px)] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
       >
         <ul className="flex flex-col space-y-1 p-4 font-medium">
           <li>
@@ -698,6 +703,9 @@ const Header = () => {
                       </Link>
                       <Link to="/uae/dubai/restaurant-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
                         • Restaurant SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/hotel-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Hotel SEO Dubai
                       </Link>
                     </div>
                   </div>

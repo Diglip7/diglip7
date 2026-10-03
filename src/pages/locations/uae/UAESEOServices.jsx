@@ -33,28 +33,56 @@ const localSeoImgSrc = "/src/images/local-seo-services-uae.webp";
 const strategyImgSrc = "/src/images/seo-strategy-uae.webp";
 const reportingImgSrc = "/src/images/seo-reporting-uae.webp";
 
-// Empty image slot: completely clean and empty until the image is placed in src/images
-const EmptyImageSlot = ({ src, alt, className = "", aspect = "aspect-[4/3]" }) => {
-  const [hasError, setHasError] = useState(false);
+// Resilient Image Slot Component: Displays full image cleanly with edge-to-edge presentation
+const SEOImageSlot = ({
+  src,
+  filename,
+  alt,
+  className = "",
+  aspect = "aspect-[16/10] w-full",
+  width = 800,
+  height = 600,
+  objectFit = "object-cover",
+}) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
+  const handleError = () => {
+    if (currentSrc.includes("/src/images/")) {
+      setCurrentSrc(`/images/${filename || currentSrc.split("/").pop()}`);
+    } else {
+      setFailed(true);
+    }
+  };
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl bg-white/40 border-2 border-dashed border-gray-300 flex items-center justify-center ${aspect} ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-xl flex items-center justify-center ${aspect} ${className}`}
     >
-      {!hasError && (
+      {!failed ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
           onLoad={() => setLoaded(true)}
-          onError={() => setHasError(true)}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          onError={handleError}
+          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         />
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-teal-50 to-white">
+          <Sparkles className="w-10 h-10 text-teal-600 mb-2 opacity-60" />
+          <p className="text-xs sm:text-sm font-semibold text-gray-700 max-w-xs">{alt}</p>
+        </div>
       )}
-      {(!loaded || hasError) && (
-        <div className="absolute inset-0 flex items-center justify-center p-4 text-center text-gray-300" />
+      {!loaded && !failed && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-50/50">
+          <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
+        </div>
       )}
     </div>
   );
@@ -73,9 +101,10 @@ const FloatingElement = ({ children, delay = 0 }) => (
   </motion.div>
 );
 
-const Card3D = ({ children, className = "" }) => {
+const Card3D = ({ children, className = "", intensity = 25 }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -83,13 +112,15 @@ const Card3D = ({ children, className = "" }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    setRotateX((y - centerY) / 14);
-    setRotateY((centerX - x) / 14);
+    // Tilts dynamically on hover when cursor approaches corners/edges
+    setRotateX(((y - centerY) / centerY) * -intensity);
+    setRotateY(((x - centerX) / centerX) * intensity);
   };
 
   const handleMouseLeave = () => {
     setRotateX(0);
     setRotateY(0);
+    setIsHovered(false);
   };
 
   return (
@@ -97,11 +128,16 @@ const Card3D = ({ children, className = "" }) => {
       className={`transform-gpu ${className}`}
       style={{
         transformStyle: "preserve-3d",
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+      }}
+      animate={{
+        rotateX,
+        rotateY,
+        scale: isHovered ? 1.02 : 1,
       }}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      transition={{ type: "spring", stiffness: 100, damping: 15 }}
+      transition={{ type: "spring", stiffness: 280, damping: 22 }}
     >
       {children}
     </motion.div>
@@ -533,19 +569,20 @@ function SeoServicesUAE() {
 
           {/* Right Hero Image (Image Plan #1: Hero) */}
           <motion.div
-            className="w-full lg:w-[42%] flex justify-center"
+            className="w-full lg:w-[46%] flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              <EmptyImageSlot
+            <Card3D intensity={25} className="w-full max-w-lg lg:max-w-xl">
+              <SEOImageSlot
                 src={heroImgSrc}
+                filename="seo-services-uae-diglip7.webp"
                 alt="SEO Services UAE strategy for businesses"
-                aspect="aspect-[4/3]"
+                aspect="aspect-[16/10] w-full"
                 className="rounded-3xl shadow-2xl"
               />
-            </div>
+            </Card3D>
           </motion.div>
         </div>
 
@@ -597,25 +634,27 @@ function SeoServicesUAE() {
       </section>
 
       {/* Why SEO Matters for UAE Businesses (Image Plan #2: Technical SEO) */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
             {/* Left Image (Image Plan #2: Technical SEO) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex-1 w-full flex justify-center"
+              className="w-full lg:w-[40%] flex justify-center"
             >
-              <div className="w-full max-w-lg">
-                <EmptyImageSlot
+              <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+                <SEOImageSlot
                   src={techSeoImgSrc}
+                  filename="technical-seo-services-uae.webp"
                   alt="Technical SEO services for UAE websites"
-                  aspect="aspect-[4/3]"
-                  className="rounded-2xl shadow-xl"
+                  aspect="aspect-[16/10] w-full"
+                  objectFit="object-cover"
+                  className="shadow-2xl"
                 />
-              </div>
+              </Card3D>
             </motion.div>
 
             {/* Right Content */}
@@ -624,18 +663,18 @@ function SeoServicesUAE() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex-1 w-full"
+              className="w-full lg:w-[60%]"
             >
               <FloatingElement>
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight text-[#005d52] mb-5">
-                  Why SEO Matters |
-                  <span className="block text-[#b8864a] mt-1.5">
-                    For UAE Businesses
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold leading-tight text-[#005d52] mb-5">
+                  Why SEO Matters{" "}
+                  <span className="text-[#b8864a] block sm:inline">
+                    | For UAE Businesses
                   </span>
                 </h2>
               </FloatingElement>
 
-              <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+              <div className="space-y-3.5 text-gray-600 leading-relaxed text-sm sm:text-base">
                 <p>
                   The UAE has one of the most digitally active populations in the region, and mobile search behaviour drives a large share of how people find local businesses, compare services and make purchase decisions. Whether someone is looking for a clinic in Abu Dhabi, a contractor in Sharjah or an online store that ships across the Emirates, search is usually the starting point.
                 </p>
@@ -645,9 +684,12 @@ function SeoServicesUAE() {
                 <p>
                   Service-based businesses depend on local intent: searches tied to a neighbourhood, city or “near me” phrasing that lead directly to enquiries. E-commerce businesses need category and product pages that are both technically sound and aligned with commercial search intent. B2B companies in the UAE, meanwhile, often compete on more specific, lower-volume searches where content depth and topical relevance matter more than sheer traffic volume.
                 </p>
-                <p>
+                <div className="p-4 rounded-xl bg-teal-50/70 border border-teal-100 text-teal-900 text-sm leading-relaxed mt-2 shadow-sm">
+                  <strong className="text-[#005248] font-semibold block mb-1">
+                    Realistic Expectations & Long-Term Compounding:
+                  </strong>
                   None of this happens overnight, and no responsible SEO provider can promise that it will. SEO is a long-term investment in visibility that compounds over time — the value isn't just in ranking for a keyword, but in attracting qualified traffic that converts, sustaining that visibility as algorithms and competitors change, and building a website that keeps earning organic attention rather than depending entirely on paid channels. For UAE businesses, this distinction between generic traffic and qualified, intent-matched traffic is often what separates SEO that pays off from SEO that doesn't.
-                </p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -683,8 +725,8 @@ function SeoServicesUAE() {
                 transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card3D className="h-full">
-                  <div className="bg-white p-7 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 h-full flex flex-col">
+                <Card3D intensity={32} className="h-full">
+                  <div className="bg-white p-7 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-4 border border-gray-100 transition-all duration-300 h-full flex flex-col">
                     <div className="flex items-center justify-center w-14 h-14 rounded-full bg-teal-50 mb-5">
                       <service.icon className="w-7 h-7 text-[#005d52]" />
                     </div>
@@ -708,54 +750,59 @@ function SeoServicesUAE() {
       </section>
 
       {/* A UAE-Focused SEO Strategy Built Around Search Intent (Image Plan #4: Strategy) */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* Left Content */}
           <motion.div
-            className="flex-1 w-full space-y-5"
+            className="w-full lg:w-[60%] space-y-4"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <FloatingElement>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight text-[#005d52] mb-5">
-                A UAE-Focused SEO Strategy |
-                <span className="block text-[#b8864a] mt-1.5">
-                  Built Around Search Intent
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold leading-tight text-[#005d52] mb-5">
+                A UAE-Focused SEO Strategy{" "}
+                <span className="text-[#b8864a] block sm:inline">
+                  | Built Around Search Intent
                 </span>
               </h2>
             </FloatingElement>
 
-            <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+            <div className="space-y-3.5 text-gray-600 leading-relaxed text-sm sm:text-base">
               <p>
                 A strategy built for the UAE market has to account for how differently people search across the country. Some searches are broad and UAE-wide; others are specific to Dubai, Abu Dhabi or another emirate; many combine a service with a location, and intent shifts depending on whether someone is comparing options, ready to buy, or just researching.
               </p>
               <p>
                 We map keyword clusters against this mix of commercial and informational intent, along with brand-specific searches, so that content and page structure reflect how your actual audience searches rather than a generic template. Industry context matters too — a real estate search in Dubai behaves differently from a healthcare search in Abu Dhabi, and content should reflect that difference rather than treat every UAE search the same way.
               </p>
-              <p>
+              <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/70 text-amber-950 text-sm leading-relaxed mt-2 shadow-sm">
+                <strong className="text-[#b8864a] font-semibold block mb-1">
+                  Deliberate Location Strategy:
+                </strong>
                 This is also where we're deliberate about location pages. A dedicated page for a city or emirate only earns its place when it offers genuinely unique, useful information for that market — different local context, different examples, different practical detail. We don't create location pages by swapping a city name into an otherwise identical template, because that approach tends to create thin content that neither users nor search engines find valuable. Where a city like Dubai has enough distinct commercial activity to justify its own page, we build it with content specific to that market and link it clearly from the broader UAE page.
-              </p>
+              </div>
             </div>
           </motion.div>
 
           {/* Right Image (Image Plan #4: Strategy) */}
           <motion.div
-            className="flex-1 w-full flex justify-center"
+            className="w-full lg:w-[40%] flex justify-center"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="w-full max-w-lg">
-              <EmptyImageSlot
+            <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+              <SEOImageSlot
                 src={strategyImgSrc}
+                filename="seo-strategy-uae.webp"
                 alt="SEO strategy for UAE businesses"
-                aspect="aspect-[4/3]"
-                className="rounded-2xl shadow-xl"
+                aspect="aspect-[16/10] w-full"
+                objectFit="object-cover"
+                className="shadow-2xl"
               />
-            </div>
+            </Card3D>
           </motion.div>
         </div>
       </section>
@@ -783,7 +830,7 @@ function SeoServicesUAE() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center p-3 rounded-2xl transition-all duration-300 hover:-translate-y-3 hover:shadow-xl hover:bg-white"
                 >
                   <div className="relative flex items-center justify-center w-20 h-20 rounded-full border-4 border-teal-300 bg-white shadow-md mb-4">
                     <span className="text-xl font-bold text-[#005248]">{step.number}</span>
@@ -819,15 +866,17 @@ function SeoServicesUAE() {
                 transition={{ duration: 0.4, delay: (index % 5) * 0.05 }}
                 viewport={{ once: true }}
               >
-                <div className="bg-gray-50/80 hover:bg-teal-50/40 border border-gray-100 rounded-2xl p-5 h-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
-                  <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center mb-3">
-                    <item.icon className="w-5 h-5 text-[#005d52]" />
+                <Card3D intensity={24} className="h-full">
+                  <div className="bg-gray-50/80 hover:bg-teal-50/40 border border-gray-100 rounded-2xl p-5 h-full shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
+                    <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center mb-3">
+                      <item.icon className="w-5 h-5 text-[#005d52]" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-sm mb-2">{item.title}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed flex-grow">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-xs leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-                </div>
+                </Card3D>
               </motion.div>
             ))}
           </div>
@@ -873,29 +922,31 @@ function SeoServicesUAE() {
       </section>
 
       {/* SEO Services Across the UAE (Image Plan #3: Local SEO) */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* Left: Image Plan #3 Local SEO */}
           <motion.div
-            className="flex-1 w-full flex justify-center"
+            className="w-full lg:w-[40%] flex justify-center"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="w-full max-w-lg">
-              <EmptyImageSlot
+            <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+              <SEOImageSlot
                 src={localSeoImgSrc}
+                filename="local-seo-services-uae.webp"
                 alt="Local SEO services in UAE"
-                aspect="aspect-[4/3]"
-                className="rounded-2xl shadow-xl"
+                aspect="aspect-[16/10] w-full"
+                objectFit="object-cover"
+                className="shadow-2xl"
               />
-            </div>
+            </Card3D>
           </motion.div>
 
           {/* Right Content */}
           <motion.div
-            className="flex-1 w-full space-y-6"
+            className="w-full lg:w-[60%] space-y-6"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -939,7 +990,7 @@ function SeoServicesUAE() {
 
       {/* SEO Results That Can Be Measured & Clear SEO Reporting (Image Plan #5: Reporting) */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-teal-50/30">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left: Measurable Results */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -983,14 +1034,17 @@ function SeoServicesUAE() {
               </p>
             </div>
 
-            {/* Reporting Image (Image Plan #5) with Increased Height */}
+            {/* Reporting Image (Image Plan #5) */}
             <div className="pt-2 w-full">
-              <EmptyImageSlot
-                src={reportingImgSrc}
-                alt="SEO performance reporting for UAE businesses"
-                aspect="aspect-[16/10] sm:aspect-[4/3]"
-                className="rounded-2xl shadow-lg w-full min-h-[260px] sm:min-h-[320px]"
-              />
+              <Card3D intensity={25} className="w-full">
+                <SEOImageSlot
+                  src={reportingImgSrc}
+                  filename="seo-reporting-uae.webp"
+                  alt="SEO performance reporting for UAE businesses"
+                  aspect="aspect-[16/10] sm:aspect-[4/3] w-full"
+                  className="rounded-2xl shadow-lg"
+                />
+              </Card3D>
             </div>
           </motion.div>
         </div>

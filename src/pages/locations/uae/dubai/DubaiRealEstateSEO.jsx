@@ -29,7 +29,7 @@ import {
   Award,
 } from "lucide-react";
 
-// Image Paths strictly matching Section 10 Image SEO specification
+// 7 Required Images strictly matching Section 10 Image SEO specification
 const heroImgSrc = "/src/images/re-estate-seo-dubai-overview.jpg";
 const keywordImgSrc = "/src/images/property-keyword-research-dubai.jpg";
 const listingImgSrc = "/src/images/property-listing-seo-optimization.jpg";
@@ -38,14 +38,45 @@ const structureImgSrc = "/src/images/real-estate-website-seo-structure.jpg";
 const portalImgSrc = "/src/images/property-portal-technical-seo.jpg";
 const reportingImgSrc = "/src/images/real-estate-seo-reporting-dashboard.jpg";
 
-// Automatic fallback
-const handleImgFallback = (e, fallback) => {
-  if (e.currentTarget.src !== fallback) {
-    e.currentTarget.src = fallback;
-  }
+// Simple Image Slot with clean placeholder and responsive vertical expansion
+const SEOImageSlot = ({
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  aspect = "aspect-[4/3]",
+  className = "",
+  priority = false,
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50/40 via-white to-gray-50 border border-teal-100/80 shadow-md flex items-center justify-center ${aspect} ${className}`}
+    >
+      {!hasError ? (
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          onError={() => setHasError(true)}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="p-8 text-center text-sm font-medium text-teal-900/60 select-none flex flex-col items-center justify-center gap-3 w-full h-full bg-gradient-to-b from-white/90 to-teal-50/50">
+          <div className="w-12 h-12 rounded-full bg-teal-100/70 text-teal-700 flex items-center justify-center shadow-xs">
+            <Building2 className="w-6 h-6" />
+          </div>
+          <span className="max-w-xs leading-relaxed">{alt}</span>
+        </div>
+      )}
+    </div>
+  );
 };
 
-// 3D Interactive Tilt Card Component
+// 3D Interactive Card Component (matches DubaiEcommerceSEO)
 const Card3D = ({ children, className = "" }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -70,23 +101,31 @@ const Card3D = ({ children, className = "" }) => {
 
   return (
     <motion.div
-      className={`relative transform-gpu transition-transform duration-200 ease-out ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className={`transform-gpu ${className}`}
       style={{
+        transformStyle: "preserve-3d",
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
       }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      transition={{ type: "spring", stiffness: 100, damping: 15 }}
     >
       {children}
     </motion.div>
   );
 };
 
-// Subtle floating element wrapper
+// Floating Animation Component (matches DubaiEcommerceSEO)
 const FloatingElement = ({ children, delay = 0 }) => (
   <motion.div
-    animate={{ y: [0, -7, 0] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
+    animate={{
+      y: [0, -10, 0],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      delay: delay,
+    }}
   >
     {children}
   </motion.div>
@@ -535,8 +574,8 @@ function DubaiRealEstateSEO() {
       </div>
 
       {/* Hero Section */}
-      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[80vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
-        {/* Animated Floating Blur Orbs */}
+      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[85vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
+        {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/30 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
@@ -551,53 +590,44 @@ function DubaiRealEstateSEO() {
         <div className="flex flex-col lg:flex-row items-center w-full max-w-7xl mx-auto gap-8 lg:gap-12 relative z-10">
           {/* Left Text */}
           <div className="w-full lg:w-[58%] text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">Real Estate SEO Dubai </span>
-              <br className="hidden sm:block" />
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 for Property Companies, Agencies & Developers
               </span>
             </h1>
 
             {/* Direct Answer */}
-            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              <strong className="text-teal-800">Real Estate SEO Dubai</strong> is the practice of optimizing property websites — agency sites, developer platforms, broker profiles and listing portals — so they appear in relevant search results across Dubai's communities and property types. It covers keyword research, on-page and technical optimization, local search visibility, and content built around how buyers, tenants, sellers and investors actually search, with the goal of building sustainable organic visibility over time.
+            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <span className="font-semibold text-blue-700">Real Estate SEO Dubai</span> is the practice of optimizing property websites — agency sites, developer platforms, broker profiles and listing portals — so they appear in relevant search results across Dubai's communities and property types. It covers keyword research, on-page and technical optimization, local search visibility, and content built around how buyers, tenants, sellers and investors actually search, with the goal of building sustainable organic visibility over time.
             </p>
 
             {/* Hero CTAs */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="group px-5 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+                  className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Request an SEO Consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-teal-800 border-2 border-teal-700 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-teal-500/20 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
+                  className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-teal-700 border-2 border-teal-700 text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Discuss Your Property Website
                 </motion.button>
               </Link>
-              <Link to="/contact" className="inline-block">
-                <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-teal-50 text-teal-900 border border-teal-300 text-sm sm:text-base font-semibold rounded-full hover:bg-teal-100 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Request a Technical SEO Audit
-                </motion.button>
-              </Link>
             </div>
           </div>
 
-          {/* Right Section - Hero Image */}
+          {/* Right Section - 3D Hero Image */}
           <motion.div
             className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, y: 30 }}
@@ -605,14 +635,14 @@ function DubaiRealEstateSEO() {
             transition={{ duration: 0.8 }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <img
+              <SEOImageSlot
                 src={heroImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/re-estate-seo-dubai-overview.jpg")}
                 alt="Real estate SEO services for property companies in Dubai"
-                width="800"
-                height="600"
-                loading="eager"
-                className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-white border border-purple-100"
+                width={800}
+                height={600}
+                priority={true}
+                aspect="aspect-auto h-[480px] lg:h-[580px]"
+                className="shadow-2xl"
               />
             </Card3D>
           </motion.div>
@@ -644,26 +674,22 @@ function DubaiRealEstateSEO() {
 
       {/* Section 1: Overview & Search Dynamics (Full-Width bg-white) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={keywordImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/property-keyword-research-dubai.jpg")}
+                filename="property-keyword-research-dubai.jpg"
                 alt="Real estate keyword research strategy for Dubai properties"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-gray-50 border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-left flex flex-col justify-center">
             <FloatingElement>
               <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 Understanding Dubai Real Estate Search Dynamics
@@ -687,26 +713,22 @@ function DubaiRealEstateSEO() {
 
       {/* Section 2: What Is Real Estate SEO? (Full-Width bg-gray-50) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={listingImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/property-listing-seo-optimization.jpg")}
+                filename="property-listing-seo-optimization.jpg"
                 alt="Property listing SEO optimization"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[560px] lg:min-h-[680px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-left flex flex-col justify-center">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 What Is Real Estate SEO?
@@ -736,24 +758,20 @@ function DubaiRealEstateSEO() {
 
       {/* Section 3: Why Real Estate SEO Matters in Dubai (Full-Width bg-white) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={localImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/local-seo-real-estate-dubai.jpg")}
+                filename="local-seo-real-estate-dubai.jpg"
                 alt="Local SEO strategy for a Dubai real estate agency"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-gray-50 border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
           <div className="flex-1 text-center md:text-left">
             <FloatingElement>
@@ -797,8 +815,8 @@ function DubaiRealEstateSEO() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card3D className="h-full">
-                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
+                <Card3D intensity={32} className="h-full">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full border border-gray-100 shadow-md hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-300 flex flex-col justify-between">
                     <div>
                       <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mb-4 text-teal-700">
                         <item.icon className="w-6 h-6" />
@@ -832,27 +850,23 @@ function DubaiRealEstateSEO() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
             {realEstateServices.map((service, index) => (
-              <motion.div
-                key={service.title}
-                className="bg-gray-50 rounded-2xl shadow-md p-6 hover:shadow-xl transition-all cursor-pointer border border-gray-100 flex flex-col justify-between"
-                whileHover={{ scale: 1.02 }}
-                animate={{ scale: [1, 1.01, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: (index % 4) * 0.2 }}
-              >
-                <div>
-                  <div className="flex justify-center mb-4">
-                    <div className="flex items-center justify-center w-14 h-14 rounded-full bg-teal-50 text-teal-700">
-                      <service.icon className="w-8 h-8" />
+              <Card3D key={service.title} intensity={28} className="h-full">
+                <div className="bg-gray-50 rounded-2xl shadow-md p-6 hover:shadow-2xl hover:border-teal-400 transition-all duration-300 border border-gray-100 flex flex-col justify-between h-full transform hover:-translate-y-4">
+                  <div>
+                    <div className="flex justify-center mb-4">
+                      <div className="flex items-center justify-center w-14 h-14 rounded-full bg-teal-50 text-teal-700">
+                        <service.icon className="w-8 h-8" />
+                      </div>
                     </div>
+                    <h3 className="font-semibold text-gray-900 text-base mb-2 text-center">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-base mb-2 text-center">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4">
-                    {service.description}
-                  </p>
                 </div>
-              </motion.div>
+              </Card3D>
             ))}
           </div>
         </div>
@@ -860,26 +874,22 @@ function DubaiRealEstateSEO() {
 
       {/* Section 6: Real Estate Website Structure That Supports SEO (Full-Width bg-gray-50) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={structureImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/real-estate-website-seo-structure.jpg")}
+                filename="real-estate-website-seo-structure.jpg"
                 alt="SEO structure for a Dubai real estate website"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[460px] lg:min-h-[560px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-left flex flex-col justify-center">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-4">
                 Real Estate Website Structure That Supports SEO
@@ -951,21 +961,20 @@ function DubaiRealEstateSEO() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {searchIntents.map((item) => (
-              <div
-                key={item.type}
-                className="bg-gray-50 rounded-2xl p-6 shadow-md border border-gray-100 flex flex-col justify-between"
-              >
-                <div>
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 border ${item.badgeColor}`}>
-                    Search Intent
-                  </span>
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">{item.type}</h3>
-                  <p className="text-teal-800 font-semibold text-xs sm:text-sm mb-2 font-mono">{item.query}</p>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                    {item.mapping}
-                  </p>
+              <Card3D key={item.type} intensity={24} className="h-full">
+                <div className="bg-gray-50 rounded-2xl p-6 shadow-md border border-gray-100 hover:border-teal-400 hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 border ${item.badgeColor}`}>
+                      Search Intent
+                    </span>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">{item.type}</h3>
+                    <p className="text-teal-800 font-semibold text-xs sm:text-sm mb-2 font-mono">{item.query}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                      {item.mapping}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Card3D>
             ))}
           </div>
 
@@ -977,26 +986,22 @@ function DubaiRealEstateSEO() {
 
       {/* Section 8: Real Estate Search Competitor Analysis (Full-Width bg-gray-50) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={portalImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/property-portal-technical-seo.jpg")}
+                filename="property-portal-technical-seo.jpg"
                 alt="Technical SEO architecture for a property portal"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 text-center md:text-left flex flex-col justify-center">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 Real Estate Search Competitor Analysis
@@ -1033,17 +1038,18 @@ function DubaiRealEstateSEO() {
                   key={step.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -12, scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 16 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center cursor-pointer group"
                 >
-                  <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-teal-100 bg-white shadow-md mb-4">
+                  <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-teal-100 bg-white shadow-md mb-4 group-hover:scale-110 group-hover:border-teal-500 group-hover:shadow-2xl transition-all duration-300">
                     <step.icon className="w-7 h-7 text-teal-700" />
                     <span className="absolute -top-2 -right-2 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow">
                       {step.id}
                     </span>
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-1">{step.title}</h3>
+                  <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-teal-700 transition-colors">{step.title}</h3>
                   <p className="text-gray-600 text-xs leading-relaxed">{step.description}</p>
                 </motion.div>
               ))}
@@ -1054,8 +1060,8 @@ function DubaiRealEstateSEO() {
 
       {/* Section 10: How Real Estate SEO Performance Is Measured (Full-Width bg-gray-50) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <div className="flex-1 text-center md:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="flex-1 text-center md:text-left flex flex-col justify-center">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 How Real Estate SEO Performance Is Measured
@@ -1077,23 +1083,19 @@ function DubaiRealEstateSEO() {
             </p>
           </div>
 
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={reportingImgSrc}
-                onError={(e) => handleImgFallback(e, "/images/real-estate-seo-reporting-dashboard.jpg")}
+                filename="real-estate-seo-reporting-dashboard.jpg"
                 alt="Real estate SEO reporting dashboard"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                width={800}
+                height={600}
+                aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1146,15 +1148,17 @@ function DubaiRealEstateSEO() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
             {commonMistakes.map((mistake, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="p-4 rounded-xl border border-red-100 bg-white shadow-sm flex items-center gap-3 text-gray-800 text-sm font-medium"
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                className="p-4 rounded-xl border border-red-100 bg-white shadow-sm hover:shadow-xl hover:border-red-300 transition-all flex items-center gap-3 text-gray-800 text-sm font-medium cursor-pointer"
               >
                 <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 text-red-600 font-bold text-xs">
                   ✕
                 </div>
                 <span>{mistake}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
 

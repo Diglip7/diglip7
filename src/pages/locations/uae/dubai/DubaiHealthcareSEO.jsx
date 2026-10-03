@@ -35,14 +35,52 @@ const architectureImgSrc = "/src/images/medical-website-seo-structure-dubai.webp
 const reportingImgSrc = "/src/images/healthcare-seo-reporting-dubai.webp";
 const technicalImgSrc = "/src/images/healthcare-technical-seo-dubai.webp";
 
-// Automatic fallback between /src/images/ and /images/
-const handleImgFallback = (e, filename) => {
-  if (e.currentTarget.src.includes("/src/images/")) {
-    e.currentTarget.src = `/images/${filename}`;
-  }
+// Simple Image Slot with clean placeholder and responsive vertical expansion
+const SEOImageSlot = ({
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  aspect = "aspect-[4/3]",
+  className = "",
+  priority = false,
+  filename = "",
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50/40 via-white to-gray-50 border border-teal-100/80 shadow-md flex items-center justify-center ${aspect} ${className}`}
+    >
+      {!hasError ? (
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          onError={(e) => {
+            if (filename && e.currentTarget.src.includes("/src/images/")) {
+              e.currentTarget.src = `/images/${filename}`;
+            } else {
+              setHasError(true);
+            }
+          }}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="p-8 text-center text-sm font-medium text-teal-900/60 select-none flex flex-col items-center justify-center gap-3 w-full h-full bg-gradient-to-b from-white/90 to-teal-50/50">
+          <div className="w-12 h-12 rounded-full bg-teal-100/70 text-teal-700 flex items-center justify-center shadow-xs">
+            <Stethoscope className="w-6 h-6" />
+          </div>
+          <span className="max-w-xs leading-relaxed">{alt}</span>
+        </div>
+      )}
+    </div>
+  );
 };
 
-// 3D Interactive Tilt Card Component
+// 3D Interactive Card Component (matches DubaiEcommerceSEO)
 const Card3D = ({ children, className = "" }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -67,23 +105,31 @@ const Card3D = ({ children, className = "" }) => {
 
   return (
     <motion.div
-      className={`relative transform-gpu transition-transform duration-200 ease-out ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className={`transform-gpu ${className}`}
       style={{
+        transformStyle: "preserve-3d",
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
       }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      transition={{ type: "spring", stiffness: 100, damping: 15 }}
     >
       {children}
     </motion.div>
   );
 };
 
-// Subtle floating element wrapper
+// Floating Animation Component (matches DubaiEcommerceSEO)
 const FloatingElement = ({ children, delay = 0 }) => (
   <motion.div
-    animate={{ y: [0, -7, 0] }}
-    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
+    animate={{
+      y: [0, -10, 0],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      delay: delay,
+    }}
   >
     {children}
   </motion.div>
@@ -459,8 +505,8 @@ function DubaiHealthcareSEO() {
       </div>
 
       {/* Hero Section */}
-      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[80vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
-        {/* Animated Floating Blur Orbs */}
+      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[85vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
+        {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/30 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
@@ -475,24 +521,24 @@ function DubaiHealthcareSEO() {
         <div className="flex flex-col lg:flex-row items-center w-full max-w-7xl mx-auto gap-8 lg:gap-12 relative z-10">
           {/* Left Text */}
           <div className="w-full lg:w-[58%] text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">Healthcare SEO Dubai </span>
-              <br className="hidden sm:block" />
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 for Clinics, Hospitals & Medical Practices
               </span>
             </h1>
 
             {/* Direct Answer */}
-            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              <strong>Direct Answer:</strong> Healthcare SEO Dubai helps clinics, hospitals, doctors and other healthcare businesses improve their visibility in relevant Google searches. A healthcare SEO strategy combines technical SEO, medical content optimization, local SEO, Google Business Profile optimization, keyword research, website structure and authority building to help qualified users discover healthcare services online.
+            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <span className="font-semibold text-blue-700">Healthcare SEO Dubai</span> helps clinics, hospitals, doctors and other healthcare businesses improve their visibility in relevant Google searches. A healthcare SEO strategy combines technical SEO, medical content optimization, local SEO, Google Business Profile optimization, keyword research, website structure and authority building to help qualified users discover healthcare services online.
             </p>
 
             {/* Hero CTAs */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="group px-5 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+                  className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -502,20 +548,11 @@ function DubaiHealthcareSEO() {
               </Link>
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-teal-800 border-2 border-teal-700 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-teal-500/20 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
+                  className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-teal-700 border-2 border-teal-700 text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Discuss Your Website
-                </motion.button>
-              </Link>
-              <Link to="/contact" className="inline-block">
-                <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-teal-50 text-teal-900 border border-teal-300 text-sm sm:text-base font-semibold rounded-full hover:bg-teal-100 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Request an SEO Audit
                 </motion.button>
               </Link>
             </div>
@@ -529,14 +566,12 @@ function DubaiHealthcareSEO() {
             transition={{ duration: 0.8 }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <img
+              <SEOImageSlot
                 src={heroImgSrc}
-                onError={(e) => handleImgFallback(e, "healthcare-seo-dubai-overview.webp")}
+                filename="healthcare-seo-dubai-overview.webp"
                 alt="Healthcare SEO services for clinics and medical practices in Dubai"
-                width="800"
-                height="600"
-                loading="eager"
-                className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-white border border-purple-100"
+                aspect="aspect-[4/3] w-full"
+                className="shadow-2xl"
               />
             </Card3D>
           </motion.div>
@@ -588,26 +623,20 @@ function DubaiHealthcareSEO() {
 
       {/* Section 2: What Is Healthcare SEO? (Full-Width bg-gray-50 with Content Optimization Image from Section 9) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={contentImgSrc}
-                onError={(e) => handleImgFallback(e, "healthcare-content-optimization-dubai.webp")}
+                filename="healthcare-content-optimization-dubai.webp"
                 alt="Medical content optimization for a healthcare website"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                aspect="h-full min-h-[480px] lg:min-h-[560px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 What Is Healthcare SEO?
@@ -627,26 +656,20 @@ function DubaiHealthcareSEO() {
 
       {/* Section 3: Why Healthcare SEO Matters for Healthcare Businesses in Dubai (Full-Width bg-white with Keyword Research Image from Section 9) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={keywordImgSrc}
-                onError={(e) => handleImgFallback(e, "healthcare-seo-keyword-research-dubai.webp")}
+                filename="healthcare-seo-keyword-research-dubai.webp"
                 alt="Healthcare SEO keyword research and strategy in Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-gray-50 border border-teal-100"
+                aspect="h-full min-h-[480px] lg:min-h-[560px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 Why Healthcare SEO Matters for Healthcare Businesses in Dubai
@@ -682,8 +705,8 @@ function DubaiHealthcareSEO() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card3D className="h-full">
-                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full border border-gray-100 shadow-md hover:shadow-xl transition-all flex flex-col justify-between">
+                <Card3D intensity={32} className="h-full">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full border border-gray-100 shadow-md hover:shadow-2xl hover:-translate-y-4 transition-all duration-300 flex flex-col justify-between">
                     <div>
                       <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center mb-4 text-teal-700">
                         <item.icon className="w-6 h-6" />
@@ -716,24 +739,28 @@ function DubaiHealthcareSEO() {
             {healthcareServices.map((service, index) => (
               <motion.div
                 key={service.title}
-                className="bg-gray-50 rounded-2xl shadow-md p-6 sm:p-8 hover:shadow-xl transition-all cursor-pointer border border-gray-100 flex flex-col justify-between"
-                whileHover={{ scale: 1.02 }}
-                animate={{ scale: [1, 1.01, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: (index % 3) * 0.3 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+                viewport={{ once: true }}
               >
-                <div>
-                  <div className="flex justify-center mb-4">
-                    <div className="flex items-center justify-center w-14 h-14 rounded-full bg-teal-50 text-teal-700">
-                      <service.icon className="w-8 h-8" />
+                <Card3D intensity={28} className="h-full">
+                  <div className="bg-gray-50 rounded-2xl shadow-md p-6 sm:p-8 hover:shadow-2xl hover:-translate-y-4 transition-all duration-300 cursor-pointer border border-gray-100 flex flex-col justify-between h-full">
+                    <div>
+                      <div className="flex justify-center mb-4">
+                        <div className="flex items-center justify-center w-14 h-14 rounded-full bg-teal-50 text-teal-700">
+                          <service.icon className="w-8 h-8" />
+                        </div>
+                      </div>
+                      <h3 className="font-semibold text-gray-900 text-lg mb-2 text-center">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {service.description}
+                      </p>
                     </div>
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-lg mb-2 text-center">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-                </div>
+                </Card3D>
               </motion.div>
             ))}
           </div>
@@ -761,26 +788,20 @@ function DubaiHealthcareSEO() {
 
       {/* Section 7: Local SEO for Healthcare Businesses in Dubai (Full-Width bg-white with Local SEO Maps Image from Section 9) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={localMapsImgSrc}
-                onError={(e) => handleImgFallback(e, "clinic-local-seo-maps-dubai.webp")}
+                filename="clinic-local-seo-maps-dubai.webp"
                 alt="Local SEO strategy for healthcare clinics in Dubai"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-gray-50 border border-teal-100"
+                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 Local SEO for Healthcare Businesses in Dubai
@@ -795,26 +816,20 @@ function DubaiHealthcareSEO() {
 
       {/* Section 8: Healthcare Website Structure That Supports SEO (Full-Width bg-gray-50 with Website Architecture Image from Section 9) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={architectureImgSrc}
-                onError={(e) => handleImgFallback(e, "medical-website-seo-structure-dubai.webp")}
+                filename="medical-website-seo-structure-dubai.webp"
                 alt="Medical website SEO structure for a Dubai healthcare business"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                aspect="h-full min-h-[480px] lg:min-h-[580px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
 
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-4">
                 Healthcare Website Structure That Supports SEO
@@ -874,20 +889,19 @@ function DubaiHealthcareSEO() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {searchIntents.map((item) => (
-              <div
-                key={item.type}
-                className="bg-gray-50 rounded-2xl p-6 sm:p-7 shadow-md border border-gray-100 flex flex-col justify-between"
-              >
-                <div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3 border border-teal-200">
-                    {item.type}
-                  </span>
-                  <h3 className="text-base font-bold text-gray-900 mb-2">{item.query}</h3>
-                  <p className="text-gray-600 text-xs leading-relaxed">
-                    — {item.intent}
-                  </p>
+              <Card3D key={item.type} intensity={24} className="h-full">
+                <div className="bg-gray-50 rounded-2xl p-6 sm:p-7 shadow-md border border-gray-100 flex flex-col justify-between h-full hover:shadow-2xl hover:-translate-y-3 transition-all duration-300">
+                  <div>
+                    <span className="inline-block px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3 border border-teal-200">
+                      {item.type}
+                    </span>
+                    <h3 className="text-base font-bold text-gray-900 mb-2">{item.query}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed">
+                      — {item.intent}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Card3D>
             ))}
           </div>
 
@@ -920,7 +934,7 @@ function DubaiHealthcareSEO() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center p-3 rounded-2xl transition-all duration-300 hover:-translate-y-3 hover:shadow-xl hover:bg-white"
                 >
                   <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-4 border-teal-100 bg-white shadow-md mb-4">
                     <step.icon className="w-7 h-7 text-teal-700" />
@@ -939,8 +953,8 @@ function DubaiHealthcareSEO() {
 
       {/* Section 11: How Healthcare SEO Performance Is Measured (Full-Width bg-white with Reporting Image from Section 9) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <div className="flex-1 text-center md:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 How Healthcare SEO Performance Is Measured
@@ -954,23 +968,17 @@ function DubaiHealthcareSEO() {
             </p>
           </div>
 
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={reportingImgSrc}
-                onError={(e) => handleImgFallback(e, "healthcare-seo-reporting-dubai.webp")}
+                filename="healthcare-seo-reporting-dubai.webp"
                 alt="Healthcare SEO performance reporting for Dubai businesses"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1025,7 +1033,7 @@ function DubaiHealthcareSEO() {
             {commonMistakes.map((mistake) => (
               <div
                 key={mistake}
-                className="p-4 rounded-xl border border-red-100 bg-gray-50 shadow-sm flex items-center gap-3 text-gray-800 text-sm font-medium"
+                className="p-4 rounded-xl border border-red-100 bg-gray-50 shadow-sm flex items-center gap-3 text-gray-800 text-sm font-medium hover:shadow-lg hover:-translate-y-2 hover:border-red-200 transition-all duration-300"
               >
                 <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center shrink-0 text-red-600 font-bold text-xs">
                   ✕
@@ -1039,8 +1047,8 @@ function DubaiHealthcareSEO() {
 
       {/* Section 14: How Long Does Healthcare SEO Take? (Full-Width bg-gray-50 with Technical SEO Image from Section 9) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
-          <div className="flex-1 text-center md:text-left">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+          <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
                 How Long Does Healthcare SEO Take?
@@ -1057,23 +1065,17 @@ function DubaiHealthcareSEO() {
             </p>
           </div>
 
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Card3D className="w-full max-w-lg">
-              <img
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <Card3D className="w-full h-full flex flex-col justify-center">
+              <SEOImageSlot
                 src={technicalImgSrc}
-                onError={(e) => handleImgFallback(e, "healthcare-technical-seo-dubai.webp")}
+                filename="healthcare-technical-seo-dubai.webp"
                 alt="Technical SEO analysis for a healthcare website"
-                width="800"
-                height="600"
-                loading="lazy"
-                className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
+                className="h-full shadow-2xl"
               />
             </Card3D>
-          </motion.div>
+          </div>
         </div>
       </section>
 

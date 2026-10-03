@@ -35,44 +35,62 @@ import {
 
 // Image Plan paths for Dubai SEO Services (Section 8)
 const heroImgSrc = "/src/images/dubai-seo-services-diglip7.webp";
-const technicalAuditImgSrc = "/src/images/technical-seo-audit-dubai.webp";
 const localSeoImgSrc = "/src/images/local-seo-dubai-map.webp";
 const contentPlanningImgSrc = "/src/images/content-seo-planning-dubai.webp";
-const ecommerceSeoImgSrc = "/src/images/ecommerce-seo-dubai.webp";
-const aiSearchImgSrc = "/src/images/ai-search-seo-dubai.webp";
-const industriesImgSrc = "/src/images/dubai-businesses-industries-seo.webp";
 const ctaConsultationImgSrc = "/src/images/seo-consultation-dubai.webp";
 
-// Empty image slot: clean frame until image file is provided by the user
-const EmptyImageSlot = ({
+// Resilient Image Slot Component: Displays full image cleanly with edge-to-edge presentation
+const SEOImageSlot = ({
   src,
+  filename,
   alt,
   className = "",
-  aspect = "aspect-[4/3]",
+  aspect = "aspect-[16/10] w-full",
+  width = 800,
+  height = 600,
+  objectFit = "object-cover",
   priority = false,
 }) => {
-  const [hasError, setHasError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+
+  const handleError = () => {
+    if (currentSrc.includes("/src/images/")) {
+      setCurrentSrc(`/images/${filename || currentSrc.split("/").pop()}`);
+    } else {
+      setFailed(true);
+    }
+  };
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl bg-white/40 border-2 border-dashed border-gray-300 flex items-center justify-center ${aspect} ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-xl flex items-center justify-center ${aspect} ${className}`}
     >
-      {!hasError && (
+      {!failed ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
+          width={width}
+          height={height}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
           onLoad={() => setLoaded(true)}
-          onError={() => setHasError(true)}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          onError={handleError}
+          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         />
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-teal-50 to-white">
+          <Sparkles className="w-10 h-10 text-teal-600 mb-2 opacity-60" />
+          <p className="text-xs sm:text-sm font-semibold text-gray-700 max-w-xs">{alt}</p>
+        </div>
       )}
-      {(!loaded || hasError) && (
-        <div className="absolute inset-0 flex items-center justify-center p-4 text-center text-gray-300" />
+      {!loaded && !failed && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-50/50">
+          <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
+        </div>
       )}
     </div>
   );
@@ -91,9 +109,10 @@ const FloatingElement = ({ children, delay = 0 }) => (
   </motion.div>
 );
 
-const Card3D = ({ children, className = "" }) => {
+const Card3D = ({ children, className = "", intensity = 25 }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -101,13 +120,15 @@ const Card3D = ({ children, className = "" }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    setRotateX((y - centerY) / 14);
-    setRotateY((centerX - x) / 14);
+    // Tilts dynamically on hover when cursor approaches corners/edges
+    setRotateX(((y - centerY) / centerY) * -intensity);
+    setRotateY(((x - centerX) / centerX) * intensity);
   };
 
   const handleMouseLeave = () => {
     setRotateX(0);
     setRotateY(0);
+    setIsHovered(false);
   };
 
   return (
@@ -115,11 +136,16 @@ const Card3D = ({ children, className = "" }) => {
       className={`transform-gpu ${className}`}
       style={{
         transformStyle: "preserve-3d",
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+      }}
+      animate={{
+        rotateX,
+        rotateY,
+        scale: isHovered ? 1.02 : 1,
       }}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      transition={{ type: "spring", stiffness: 100, damping: 15 }}
+      transition={{ type: "spring", stiffness: 280, damping: 22 }}
     >
       {children}
     </motion.div>
@@ -623,15 +649,17 @@ function DubaiSEOServices() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              <EmptyImageSlot
+            <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+              <SEOImageSlot
                 src={heroImgSrc}
+                filename="dubai-seo-services-diglip7.webp"
                 alt="Dubai skyline with SEO analytics dashboard overlay"
-                aspect="aspect-[4/3]"
+                aspect="aspect-[16/10] w-full"
+                objectFit="object-cover"
                 priority={true}
-                className="rounded-3xl shadow-2xl"
+                className="shadow-2xl"
               />
-            </div>
+            </Card3D>
           </motion.div>
         </div>
 
@@ -683,25 +711,27 @@ function DubaiSEOServices() {
       </section>
 
       {/* Why SEO Matters for Dubai Businesses */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
             {/* Left Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex-1 w-full flex justify-center"
+              className="w-full lg:w-[40%] flex justify-center"
             >
-              <div className="w-full max-w-lg">
-                <EmptyImageSlot
+              <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+                <SEOImageSlot
                   src={localSeoImgSrc}
+                  filename="local-seo-dubai-map.webp"
                   alt="Local SEO map and search visibility concept for Dubai"
-                  aspect="aspect-[4/3]"
-                  className="rounded-2xl shadow-xl"
+                  aspect="aspect-[16/10] w-full"
+                  objectFit="object-cover"
+                  className="shadow-2xl"
                 />
-              </div>
+              </Card3D>
             </motion.div>
 
             {/* Right Content */}
@@ -710,27 +740,30 @@ function DubaiSEOServices() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex-1 w-full"
+              className="w-full lg:w-[60%]"
             >
               <FloatingElement>
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold leading-tight text-[#005d52] mb-5">
-                  Why SEO Matters |
-                  <span className="block text-[#b8864a] mt-1.5">
-                    For Dubai Businesses
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold leading-tight text-[#005d52] mb-5">
+                  Why SEO Matters{" "}
+                  <span className="text-[#b8864a] block sm:inline">
+                    | For Dubai Businesses
                   </span>
                 </h2>
               </FloatingElement>
 
-              <div className="space-y-4 text-gray-600 leading-relaxed text-sm sm:text-base lg:text-lg">
+              <div className="space-y-3.5 text-gray-600 leading-relaxed text-sm sm:text-base">
                 <p>
                   Dubai's digital marketplace is dense and highly competitive across almost every category, from professional services to retail to hospitality. Commercial search intent is high — people search expecting to find a business they can act on quickly, whether that means booking a service, visiting a store or requesting a quote. Local search and Google Maps visibility play an outsized role here: a large share of searches for services in Dubai are tied to location, and businesses that don't show up in local results lose that traffic to competitors who do.
                 </p>
                 <p>
                   This plays out differently across sectors. Service-based businesses rely heavily on local intent and “near me” style searches. E-commerce businesses need category and product pages that are technically sound and aligned with commercial intent. Hospitality and real estate both deal with high-volume, time-sensitive searches, while healthcare and professional services depend more on trust signals and accuracy than sheer search volume. B2B companies in Dubai often compete on narrower, more specific searches where content depth matters more than traffic size.
                 </p>
-                <p>
+                <div className="p-4 rounded-xl bg-teal-50/70 border border-teal-100 text-teal-900 text-sm leading-relaxed mt-2 shadow-sm">
+                  <strong className="text-[#005248] font-semibold block mb-1">
+                    Search Intent & Multilingual Audience:
+                  </strong>
                   Dubai's population also searches in more than one language and includes a large share of international residents and businesses, which shapes how content should be written and structured. Search behaviour typically combines a service, a location, an industry or a product with clear commercial intent — someone searching “villa cleaning service Dubai Marina” wants something different from someone searching “what does a cleaning service include.” Matching each landing page to the right intent, rather than sending every search to the same generic page, is one of the most consistent drivers of SEO performance we see in this market.
-                </p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -863,29 +896,31 @@ function DubaiSEOServices() {
       </section>
 
       {/* Local SEO for Dubai Businesses & Targeting Dubai's Local Search Demand */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 bg-white">
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
           {/* Left: Strategy Image Slot */}
           <motion.div
-            className="flex-1 w-full flex justify-center"
+            className="w-full lg:w-[40%] flex justify-center"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="w-full max-w-lg">
-              <EmptyImageSlot
+            <Card3D intensity={25} className="w-full max-w-lg lg:max-w-none">
+              <SEOImageSlot
                 src={contentPlanningImgSrc}
+                filename="content-seo-planning-dubai.webp"
                 alt="Content planning and keyword research workspace"
-                aspect="aspect-[4/3]"
-                className="rounded-2xl shadow-xl"
+                aspect="aspect-[16/10] w-full"
+                objectFit="object-cover"
+                className="shadow-2xl"
               />
-            </div>
+            </Card3D>
           </motion.div>
 
           {/* Right: Content */}
           <motion.div
-            className="flex-1 w-full space-y-6"
+            className="w-full lg:w-[60%] space-y-6"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -897,7 +932,7 @@ function DubaiSEOServices() {
               </h2>
             </FloatingElement>
 
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
               Local SEO helps a business become more discoverable when people search for relevant services in Dubai, particularly through Google Business Profile and Maps visibility. Our approach covers Google Business Profile optimisation, local landing pages, local keyword research, consistent business information, reviews, local content, internal linking and local structured data where appropriate. Local SEO should always reflect genuine business locations and service areas — we don't recommend or create listings for locations a business doesn't actually operate from or serve.
             </p>
 
@@ -1039,14 +1074,18 @@ function DubaiSEOServices() {
               </p>
             </div>
 
-            {/* Reporting Image Slot with Increased Height */}
+            {/* Reporting Image Slot with Card3D and Edge-to-Edge */}
             <div className="pt-2 w-full">
-              <EmptyImageSlot
-                src={ctaConsultationImgSrc}
-                alt="SEO consultation meeting with Dubai business context"
-                aspect="aspect-[16/10] sm:aspect-[4/3]"
-                className="rounded-2xl shadow-lg w-full min-h-[260px] sm:min-h-[320px]"
-              />
+              <Card3D intensity={25} className="w-full">
+                <SEOImageSlot
+                  src={ctaConsultationImgSrc}
+                  filename="seo-consultation-dubai.webp"
+                  alt="SEO consultation meeting with Dubai business context"
+                  aspect="aspect-[16/10] sm:aspect-[4/3] w-full"
+                  objectFit="object-cover"
+                  className="rounded-2xl shadow-lg"
+                />
+              </Card3D>
             </div>
           </motion.div>
         </div>

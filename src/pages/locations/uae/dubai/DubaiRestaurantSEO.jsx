@@ -42,14 +42,45 @@ const menuImgSrc = "/src/images/restaurant-menu-seo-dubai.jpg";
 const branchImgSrc = "/src/images/restaurant-branch-seo-dubai.jpg";
 const reportingImgSrc = "/src/images/restaurant-seo-reporting-dubai.jpg";
 
-// Automatic fallback
-const handleImgFallback = (e, fallback) => {
-  if (e.currentTarget.src !== fallback) {
-    e.currentTarget.src = fallback;
-  }
+// Simple Image Slot with clean placeholder and responsive vertical expansion
+const SEOImageSlot = ({
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  aspect = "aspect-[4/3]",
+  className = "",
+  priority = false,
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50/40 via-white to-gray-50 border border-teal-100/80 shadow-md flex items-center justify-center ${aspect} ${className}`}
+    >
+      {!hasError ? (
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          onError={() => setHasError(true)}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <div className="p-8 text-center text-sm font-medium text-teal-900/60 select-none flex flex-col items-center justify-center gap-3 w-full h-full bg-gradient-to-b from-white/90 to-teal-50/50">
+          <div className="w-12 h-12 rounded-full bg-teal-100/70 text-teal-700 flex items-center justify-center shadow-xs">
+            <UtensilsCrossed className="w-6 h-6" />
+          </div>
+          <span className="max-w-xs leading-relaxed">{alt}</span>
+        </div>
+      )}
+    </div>
+  );
 };
 
-// 3D Interactive Tilt Card Component
+// 3D Interactive Card Component (matches DubaiEcommerceSEO)
 const Card3D = ({ children, className = "" }) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -62,6 +93,7 @@ const Card3D = ({ children, className = "" }) => {
     const centerY = rect.height / 2;
     const rotateXValue = (y - centerY) / 14;
     const rotateYValue = (centerX - x) / 14;
+
     setRotateX(rotateXValue);
     setRotateY(rotateYValue);
   };
@@ -73,33 +105,30 @@ const Card3D = ({ children, className = "" }) => {
 
   return (
     <motion.div
-      className={`relative transform-gpu transition-all duration-200 ease-out ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      animate={{
-        rotateX,
-        rotateY,
-      }}
+      className={`transform-gpu ${className}`}
       style={{
         transformStyle: "preserve-3d",
+        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
       }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      transition={{ type: "spring", stiffness: 100, damping: 15 }}
     >
       {children}
     </motion.div>
   );
 };
 
-// Floating Animation Helper
-const FloatingElement = ({ children, delay = 0, duration = 6, yOffset = 10 }) => (
+// Floating Animation Helper (matches DubaiEcommerceSEO)
+const FloatingElement = ({ children, delay = 0 }) => (
   <motion.div
     animate={{
-      y: [-yOffset / 2, yOffset / 2, -yOffset / 2],
+      y: [0, -10, 0],
     }}
     transition={{
-      duration,
+      duration: 3,
       repeat: Infinity,
-      ease: "easeInOut",
-      delay,
+      delay: delay,
     }}
   >
     {children}
@@ -160,6 +189,7 @@ const services = [
     icon: Search,
     title: "Restaurant Keyword Research",
     image: keywordImgSrc,
+    filename: "restaurant-keyword-research-dubai.jpg",
     imageAlt: "Restaurant keyword research strategy for Dubai search queries",
     description:
       "Restaurant Keyword Research Dubai accounts for cuisine terms, community names, meal-related searches, dish-specific queries, and intent signals like reservation, takeaway or delivery. It also means mapping keywords to the right page and checking for cannibalization between similar pages. Keyword selection has to reflect what the restaurant actually offers. If a cuisine or service isn't part of the business, we don't build pages chasing that search — it misleads both users and search engines.",
@@ -174,6 +204,7 @@ const services = [
     icon: MapPin,
     title: "Local SEO for Restaurants in Dubai",
     image: localImgSrc,
+    filename: "restaurant-local-seo-dubai.jpg",
     imageAlt: "Local SEO strategy for a Dubai restaurant Google Business Profile",
     description:
       "Local SEO for Restaurants Dubai centres on the Google Business Profile — accurate name, address, phone, hours, website and menu URL, the right categories, relevant attributes, and real photos — plus local landing pages and NAP consistency across directories. Google Business Profile information should represent the real business. We don't recommend fake reviews or inaccurate hours or categories to game visibility — beyond breaking Google's guidelines, it tends to backfire with real customers.",
@@ -194,6 +225,7 @@ const services = [
     icon: FileText,
     title: "Restaurant Menu SEO",
     image: menuImgSrc,
+    filename: "restaurant-menu-seo-dubai.jpg",
     imageAlt: "Restaurant menu SEO optimization for a Dubai restaurant website",
     description:
       "Menu information should be genuinely accessible — real HTML content, not locked exclusively in a PDF, an image, or a third-party delivery platform. PDF-only and image-only menus are common and make it hard for search engines, and some users, to understand what's on offer. Good menu SEO means clear categories, accurate names and descriptions, dietary information where available, appropriate pricing, and a mobile-friendly layout. We wouldn't promise any individual dish page will rank for its own search term — the aim is a menu that's genuinely usable and crawlable.",
@@ -202,6 +234,7 @@ const services = [
     icon: Layers,
     title: "Restaurant Location & Branch SEO",
     image: branchImgSrc,
+    filename: "restaurant-branch-seo-dubai.jpg",
     imageAlt: "SEO architecture for multiple restaurant locations in Dubai",
     description:
       "Each branch needs its own page with real, distinct value — accurate address, hours, directions, and ideally branch-specific photos rather than a copy-pasted template. Thin, near-identical location pages create duplicate content issues rather than strengthening visibility, so fewer, better pages beat dozens of shallow ones.",
@@ -555,8 +588,8 @@ function DubaiRestaurantSEO() {
       </div>
 
       {/* Hero Section */}
-      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[80vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
-        {/* Animated Floating Blur Orbs */}
+      <div className="pt-6 sm:pt-8 pb-16 lg:pb-20 bg-gradient-to-r from-purple-100 via-pink-100 to-white min-h-[85vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 xl:px-12 relative overflow-hidden">
+        {/* Animated Floating Objects */}
         <motion.div
           className="absolute top-10 left-10 w-16 h-16 bg-white/30 rounded-full blur-xl pointer-events-none"
           animate={{ y: [0, 20, 0] }}
@@ -571,53 +604,44 @@ function DubaiRestaurantSEO() {
         <div className="flex flex-col lg:flex-row items-center w-full max-w-7xl mx-auto gap-8 lg:gap-12 relative z-10">
           {/* Left Text */}
           <div className="w-full lg:w-[58%] text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-gray-900">Restaurant SEO Dubai </span>
-              <br className="hidden sm:block" />
+              <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 for Restaurants, Cafés & Food Businesses
               </span>
             </h1>
 
-            {/* Direct Answer (50-80 words per AEO spec) */}
-            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-              <strong>Direct Answer:</strong> Restaurant SEO Dubai is the practice of improving how restaurants, cafés, cloud kitchens and food businesses appear in Google Search and Google Maps within the Dubai market. It covers keyword research, website optimisation, menu content, local SEO and Google Business Profile management, aimed at helping the right diners find accurate restaurant information — not at guaranteeing any specific ranking or booking outcome.
+            {/* Direct Answer */}
+            <p className="text-gray-700 text-sm sm:text-base lg:text-lg mt-5 mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <span className="font-semibold text-blue-700">Restaurant SEO Dubai</span> is the practice of improving how restaurants, cafés, cloud kitchens and food businesses appear in Google Search and Google Maps within the Dubai market. It covers keyword research, website optimisation, menu content, local SEO and Google Business Profile management, aimed at helping the right diners find accurate restaurant information — not at guaranteeing any specific ranking or booking outcome.
             </p>
 
             {/* Hero CTAs */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="group px-5 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+                  className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Request a Restaurant SEO Consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
               <Link to="/contact" className="inline-block">
                 <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-teal-800 border-2 border-teal-700 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-teal-500/20 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
+                  className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-teal-700 border-2 border-teal-700 text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Discuss Your Website
                 </motion.button>
               </Link>
-              <Link to="/contact" className="inline-block">
-                <motion.button
-                  className="px-5 sm:px-7 py-3 sm:py-3.5 bg-teal-50 text-teal-900 border border-teal-300 text-sm sm:text-base font-semibold rounded-full hover:bg-teal-100 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Request an SEO Audit
-                </motion.button>
-              </Link>
             </div>
           </div>
 
-          {/* Right Section - Hero Image (Image 1 of 7) */}
+          {/* Right Section - 3D Hero Image */}
           <motion.div
             className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, y: 30 }}
@@ -625,20 +649,15 @@ function DubaiRestaurantSEO() {
             transition={{ duration: 0.8 }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <img
-                  src={heroImgSrc}
-                  onError={(e) => handleImgFallback(e, "/images/restaurant-seo-dubai.jpg")}
-                  alt="Restaurant SEO services for restaurants in Dubai"
-                  width="1200"
-                  height="630"
-                  loading="eager"
-                  className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-white border border-purple-100"
-                />
-              </motion.div>
+              <SEOImageSlot
+                src={heroImgSrc}
+                alt="Restaurant SEO services for restaurants in Dubai"
+                width={1200}
+                height={630}
+                priority={true}
+                aspect="aspect-auto h-[480px] lg:h-[580px]"
+                className="shadow-2xl"
+              />
             </Card3D>
           </motion.div>
         </div>
@@ -813,19 +832,17 @@ function DubaiRestaurantSEO() {
             {businessTypes.map((biz) => {
               const Icon = biz.icon;
               return (
-                <motion.div
-                  key={biz.title}
-                  className="p-6 rounded-2xl bg-white border border-gray-100 hover:border-teal-300 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
-                  whileHover={{ y: -4 }}
-                >
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold">
-                      <Icon className="w-6 h-6" />
+                <Card3D key={biz.title} intensity={32} className="h-full">
+                  <div className="p-6 rounded-2xl bg-white border border-gray-100 hover:border-teal-300 hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div className="space-y-4">
+                      <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900">{biz.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{biz.description}</p>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900">{biz.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{biz.description}</p>
                   </div>
-                </motion.div>
+                </Card3D>
               );
             })}
           </div>
@@ -850,36 +867,32 @@ function DubaiRestaurantSEO() {
             {services.map((srv) => {
               const Icon = srv.icon;
               return (
-                <motion.div
-                  key={srv.title}
-                  className="p-6 sm:p-8 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-                  whileHover={{ y: -3 }}
-                >
-                  <div className="space-y-4">
-                    {/* Visual Illustration for the 4 Dedicated Service Graphics */}
-                    {srv.image && (
-                      <div className="overflow-hidden rounded-xl border border-teal-100 shadow-sm bg-white">
-                        <img
+                <Card3D key={srv.title} intensity={28} className="h-full">
+                  <div className="p-6 sm:p-8 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-teal-400 hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-300 flex flex-col justify-between h-full">
+                    <div className="space-y-4">
+                      {/* Visual Illustration for the 4 Dedicated Service Graphics */}
+                      {srv.image && (
+                        <SEOImageSlot
                           src={srv.image}
-                          onError={(e) => handleImgFallback(e, srv.image.replace("/src", ""))}
+                          filename={srv.filename}
                           alt={srv.imageAlt}
-                          width="800"
-                          height="450"
-                          loading="lazy"
-                          className="w-full h-48 sm:h-56 object-cover transform hover:scale-105 transition-transform duration-500"
+                          width={800}
+                          height={450}
+                          aspect="aspect-[16/9]"
+                          className="shadow-md"
                         />
-                      </div>
-                    )}
+                      )}
 
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5" />
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-teal-100 text-teal-800 flex items-center justify-center shrink-0">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900">{srv.title}</h3>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-900">{srv.title}</h3>
+                      <p className="text-sm text-gray-700 leading-relaxed pt-1">{srv.description}</p>
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed pt-1">{srv.description}</p>
                   </div>
-                </motion.div>
+                </Card3D>
               );
             })}
           </div>
@@ -913,14 +926,14 @@ function DubaiRestaurantSEO() {
               {/* Image 3 of 7: Structure Graphic */}
               <div className="pt-2">
                 <Card3D className="w-full">
-                  <img
+                  <SEOImageSlot
                     src={structureImgSrc}
-                    onError={(e) => handleImgFallback(e, "/images/restaurant-website-seo-dubai.jpg")}
+                    filename="restaurant-website-seo-dubai.jpg"
                     alt="SEO structure for a Dubai restaurant website"
-                    width="800"
-                    height="450"
-                    loading="lazy"
-                    className="rounded-2xl shadow-md w-full object-cover bg-white border border-teal-100"
+                    width={800}
+                    height={450}
+                    aspect="aspect-[16/9]"
+                    className="shadow-2xl"
                   />
                 </Card3D>
               </div>
@@ -978,30 +991,28 @@ function DubaiRestaurantSEO() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {searchIntents.map((item) => (
-              <motion.div
-                key={item.intent}
-                className="p-6 rounded-2xl bg-gray-50 border border-gray-200/90 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-                whileHover={{ y: -3 }}
-              >
-                <div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100 px-2.5 py-1 rounded-full">
-                      {item.intent}
-                    </span>
-                  </h3>
-                  <ul className="mt-4 space-y-2">
-                    {item.queries.map((q, qIdx) => (
-                      <li key={qIdx} className="flex items-center gap-2 text-sm text-gray-800 font-semibold">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        "{q}"
-                      </li>
-                    ))}
-                  </ul>
+              <Card3D key={item.intent} intensity={24} className="h-full">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200/90 hover:border-teal-400 hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100 px-2.5 py-1 rounded-full">
+                        {item.intent}
+                      </span>
+                    </h3>
+                    <ul className="mt-4 space-y-2">
+                      {item.queries.map((q, qIdx) => (
+                        <li key={qIdx} className="flex items-center gap-2 text-sm text-gray-800 font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          "{q}"
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-200 italic">
+                    {item.note}
+                  </p>
                 </div>
-                <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-200 italic">
-                  {item.note}
-                </p>
-              </motion.div>
+              </Card3D>
             ))}
           </div>
         </div>
@@ -1042,19 +1053,17 @@ function DubaiRestaurantSEO() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {processSteps.map((step) => (
-              <motion.div
-                key={step.step}
-                className="p-6 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-                whileHover={{ y: -4 }}
-              >
-                <div className="space-y-3">
-                  <span className="text-3xl font-extrabold text-teal-300">
-                    {step.step}
-                  </span>
-                  <h3 className="text-base font-bold text-gray-900">{step.title}</h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{step.description}</p>
+              <Card3D key={step.step} intensity={24} className="h-full">
+                <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200/80 hover:border-teal-400 hover:shadow-2xl transform hover:-translate-y-4 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div className="space-y-3">
+                    <span className="text-3xl font-extrabold text-teal-300">
+                      {step.step}
+                    </span>
+                    <h3 className="text-base font-bold text-gray-900">{step.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{step.description}</p>
+                  </div>
                 </div>
-              </motion.div>
+              </Card3D>
             ))}
           </div>
         </div>
@@ -1074,18 +1083,18 @@ function DubaiRestaurantSEO() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
             {/* Reporting Dashboard Image (Image 7 of 7) */}
-            <div className="lg:col-span-5">
-              <Card3D className="w-full">
-                <img
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <Card3D className="w-full h-full flex flex-col justify-center">
+                <SEOImageSlot
                   src={reportingImgSrc}
-                  onError={(e) => handleImgFallback(e, "/images/restaurant-seo-reporting-dubai.jpg")}
+                  filename="restaurant-seo-reporting-dubai.jpg"
                   alt="Restaurant SEO performance reporting dashboard"
-                  width="800"
-                  height="600"
-                  loading="lazy"
-                  className="rounded-2xl shadow-xl w-full object-cover bg-white border border-teal-100"
+                  width={800}
+                  height={600}
+                  aspect="h-full min-h-[400px] lg:min-h-[500px] w-full"
+                  className="h-full shadow-2xl"
                 />
               </Card3D>
             </div>
@@ -1195,13 +1204,15 @@ function DubaiRestaurantSEO() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {mistakes.map((mistake, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="p-4 rounded-xl bg-white border border-gray-200 hover:border-red-200 hover:bg-red-50/20 transition-all flex items-start gap-3"
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                className="p-4 rounded-xl bg-white border border-gray-200 hover:border-red-300 hover:shadow-lg transition-all flex items-start gap-3 cursor-pointer"
               >
                 <div className="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0" />
                 <p className="text-xs sm:text-sm text-gray-800 font-medium leading-relaxed">{mistake}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

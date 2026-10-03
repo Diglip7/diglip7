@@ -59,6 +59,7 @@ import DubaiEcommerceSEO from "./pages/locations/uae/dubai/DubaiEcommerceSEO";
 import DubaiHealthcareSEO from "./pages/locations/uae/dubai/DubaiHealthcareSEO";
 import DubaiRealEstateSEO from "./pages/locations/uae/dubai/DubaiRealEstateSEO";
 import DubaiRestaurantSEO from "./pages/locations/uae/dubai/DubaiRestaurantSEO";
+import DubaiHotelSEO from "./pages/locations/uae/dubai/DubaiHotelSEO";
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
@@ -169,6 +170,7 @@ function App() {
           <Route path="/uae/dubai/healthcare-seo" element={<DubaiHealthcareSEO />} />
           <Route path="/uae/dubai/real-estate-seo" element={<DubaiRealEstateSEO />} />
           <Route path="/uae/dubai/restaurant-seo" element={<DubaiRestaurantSEO />} />
+          <Route path="/uae/dubai/hotel-seo" element={<DubaiHotelSEO />} />
 
           <Route path="/india" element={<Navigate to="/india/seo-services" replace />} />
           <Route path="/india/seo-services" element={<IndiaSEOServices />} />
