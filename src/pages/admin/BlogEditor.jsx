@@ -249,7 +249,7 @@ export default function BlogEditor() {
   // Helper: Compress large base64 image strings (>50KB) via HTML5 Canvas
   const compressBase64 = (base64Str, maxWidth = 1200, quality = 0.8) => {
     return new Promise((resolve) => {
-      if (!base64Str || !base64Str.startsWith("data:image/") || base64Str.length < 50000) {
+      if (!base64Str || typeof base64Str !== "string" || !base64Str.startsWith("data:image/") || base64Str.length < 50000) {
         return resolve(base64Str);
       }
       const img = new Image();
@@ -296,7 +296,7 @@ export default function BlogEditor() {
       const src = img.getAttribute("src") || "";
       if (src.startsWith("data:image/") && src.length > 50000) {
         try {
-          const compressed = await compressBase64(src, 1200, 0.8);
+          const compressed = await compressBase64(src, 1200, 0.75);
           img.setAttribute("src", compressed);
         } catch (e) {
           console.warn("Image compression warning:", e);
@@ -459,7 +459,7 @@ export default function BlogEditor() {
     setVideoFileName("");
   };
 
-  // Handle Cover Image File Upload (Base64)
+  // Handle Cover Image File Upload (Base64 + Auto Compression)
   const handleFileUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -469,15 +469,22 @@ export default function BlogEditor() {
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      showToast("Image size must be under 5MB", "warning");
+    if (file.size > 10 * 1024 * 1024) {
+      showToast("Image size must be under 10MB", "warning");
       return;
     }
 
     const reader = new FileReader();
-    reader.onload = (event) => {
-      setCoverImage(event.target?.result || "");
-      showToast("Cover image uploaded successfully!", "success");
+    reader.onload = async (event) => {
+      const rawBase64 = event.target?.result || "";
+      try {
+        const optimized = await compressBase64(rawBase64, 1400, 0.75);
+        setCoverImage(optimized);
+        showToast("Cover image uploaded & optimized successfully!", "success");
+      } catch {
+        setCoverImage(rawBase64);
+        showToast("Cover image uploaded successfully!", "success");
+      }
     };
     reader.readAsDataURL(file);
   };
@@ -504,13 +511,18 @@ export default function BlogEditor() {
     setIsLoading(true);
     try {
       const optimizedHtml = await prepareOptimizedContent(content || "");
+      let rawCover = coverImage || extractedCoverImage || "";
+      if (rawCover && rawCover.startsWith("data:image/")) {
+        rawCover = await compressBase64(rawCover, 1400, 0.75);
+      }
+
       const payload = {
         title: title || "Untitled Draft",
         slug: effectiveSlug || generateSlug(title || "untitled-draft"),
         content: optimizedHtml,
         category: category || "Digital Marketing",
         author: author || "DigLip7 Editorial Team",
-        coverImage: coverImage || extractedCoverImage || "",
+        coverImage: rawCover,
       };
 
       if (selectedDraft) {
@@ -540,13 +552,18 @@ export default function BlogEditor() {
     setIsLoading(true);
     try {
       const optimizedHtml = await prepareOptimizedContent(content);
+      let rawCover = coverImage || extractedCoverImage || "";
+      if (rawCover && rawCover.startsWith("data:image/")) {
+        rawCover = await compressBase64(rawCover, 1400, 0.75);
+      }
+
       const payload = {
         title: title.trim(),
         slug: effectiveSlug || generateSlug(title.trim()),
         content: optimizedHtml,
         category: category || "Digital Marketing",
         author: author || "DigLip7 Editorial Team",
-        coverImage: coverImage || extractedCoverImage || "",
+        coverImage: rawCover,
       };
 
       if (selectedPublished) {
