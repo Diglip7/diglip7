@@ -946,7 +946,7 @@ function DubaiRestaurantSEO() {
                   <span className="text-emerald-400">clean parent-child structure</span>
                 </div>
                 <pre className="leading-relaxed">
-{`Restaurant Website
+                  {`Restaurant Website
 ├── About
 ├── Menu
 │   ├── Breakfast

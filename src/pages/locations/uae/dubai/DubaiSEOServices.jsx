@@ -77,9 +77,8 @@ const SEOImageSlot = ({
           fetchPriority={priority ? "high" : "auto"}
           onLoad={() => setLoaded(true)}
           onError={handleError}
-          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"
+            }`}
         />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-teal-50 to-white">

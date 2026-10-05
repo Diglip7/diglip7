@@ -69,9 +69,8 @@ const SEOImageSlot = ({
           loading="lazy"
           onLoad={() => setLoaded(true)}
           onError={handleError}
-          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`w-full h-full ${objectFit} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"
+            }`}
         />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-teal-50 to-white">
@@ -963,11 +962,10 @@ function SeoServicesUAE() {
               {emirates.map((city) => (
                 <span
                   key={city}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
-                    city === "Dubai"
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${city === "Dubai"
                       ? "bg-[#005248] text-white shadow-md"
                       : "bg-gray-100 text-gray-700 border border-gray-200"
-                  }`}
+                    }`}
                 >
                   {city}
                 </span>
