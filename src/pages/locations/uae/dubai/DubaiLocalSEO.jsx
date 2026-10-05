@@ -39,18 +39,18 @@ import {
 } from "lucide-react";
 
 // Exact image paths matching Section 9 recommendations
-const heroImgSrc = "/src/images/local-seo-dubai-strategy.webp";
-const gbpImgSrc = "/src/images/google-business-profile-optimization-dubai.webp";
-const mapsImgSrc = "/src/images/google-maps-seo-dubai.webp";
-const keywordImgSrc = "/src/images/local-keyword-research-dubai.webp";
-const auditImgSrc = "/src/images/local-seo-audit-dubai.webp";
-const citationImgSrc = "/src/images/local-citation-building-dubai.webp";
-const reportingImgSrc = "/src/images/local-seo-reporting-dubai.webp";
+const heroImgSrc = "/images/local-seo-dubai-strategy.webp";
+const gbpImgSrc = "/images/google-business-profile-optimization-dubai.webp";
+const mapsImgSrc = "/images/google-maps-seo-dubai.webp";
+const keywordImgSrc = "/images/local-keyword-research-dubai.webp";
+const auditImgSrc = "/images/local-seo-audit-dubai.webp";
+const citationImgSrc = "/images/local-citation-building-dubai.webp";
+const reportingImgSrc = "/images/local-seo-reporting-dubai.webp";
 
-// Automatic path fallback between /src/images/ and /images/ so that whenever
+// Automatic path fallback between /images/ and /images/ so that whenever
 // the user drops the file in either src/images or public/images, it displays instantly
 const handleImgFallback = (e, filename) => {
-  if (e.currentTarget.src.includes("/src/images/")) {
+  if (e.currentTarget.src.includes("/images/")) {
     e.currentTarget.src = `/images/${filename}`;
   }
 };

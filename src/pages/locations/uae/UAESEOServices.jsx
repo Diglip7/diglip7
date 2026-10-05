@@ -27,11 +27,11 @@ import {
 } from "lucide-react";
 
 // Image Plan paths (5 targeted webp slots for future upload)
-const heroImgSrc = "/src/images/seo-services-uae-diglip7.webp";
-const techSeoImgSrc = "/src/images/technical-seo-services-uae.webp";
-const localSeoImgSrc = "/src/images/local-seo-services-uae.webp";
-const strategyImgSrc = "/src/images/seo-strategy-uae.webp";
-const reportingImgSrc = "/src/images/seo-reporting-uae.webp";
+const heroImgSrc = "/images/seo-services-uae-diglip7.webp";
+const techSeoImgSrc = "/images/technical-seo-services-uae.webp";
+const localSeoImgSrc = "/images/local-seo-services-uae.webp";
+const strategyImgSrc = "/images/seo-strategy-uae.webp";
+const reportingImgSrc = "/images/seo-reporting-uae.webp";
 
 // Resilient Image Slot Component: Displays full image cleanly with edge-to-edge presentation
 const SEOImageSlot = ({
@@ -49,7 +49,7 @@ const SEOImageSlot = ({
   const [loaded, setLoaded] = useState(false);
 
   const handleError = () => {
-    if (currentSrc.includes("/src/images/")) {
+    if (currentSrc.includes("/images/")) {
       setCurrentSrc(`/images/${filename || currentSrc.split("/").pop()}`);
     } else {
       setFailed(true);

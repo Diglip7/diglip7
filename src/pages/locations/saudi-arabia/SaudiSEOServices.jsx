@@ -29,13 +29,13 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 // Image Paths with reliable fallbacks
-const heroImgSrc = "/src/images/seo-service-saudi-arabia.webp";
-const intentImgSrc = "/src/images/seo-search-intent-saudi-arabia.webp";
-const auditImgSrc = "/src/images/technical-seo-saudi-arabia.webp";
-const localMapsImgSrc = "/src/images/local-seo-saudi-arabia.webp";
-const bilingualImgSrc = "/src/images/arabic-english-seo-saudi-arabia.webp";
-const ecommerceImgSrc = "/src/images/ecommerce-seo-saudi-arabia.webp";
-const reportingImgSrc = "/src/images/seo-reporting-saudi-arabia.webp";
+const heroImgSrc = "/images/seo-service-saudi-arabia.webp";
+const intentImgSrc = "/images/seo-search-intent-saudi-arabia.webp";
+const auditImgSrc = "/images/technical-seo-saudi-arabia.webp";
+const localMapsImgSrc = "/images/local-seo-saudi-arabia.webp";
+const bilingualImgSrc = "/images/arabic-english-seo-saudi-arabia.webp";
+const ecommerceImgSrc = "/images/ecommerce-seo-saudi-arabia.webp";
+const reportingImgSrc = "/images/seo-reporting-saudi-arabia.webp";
 
 // 3D Interactive Card Component
 const Card3D = ({ children, className = "" }) => {
@@ -109,7 +109,7 @@ const SEOImageSlot = ({
   const Icon = fallbackIcon;
 
   const handleError = () => {
-    if (filename && imgSrc.includes("/src/images/")) {
+    if (filename && imgSrc.includes("/images/")) {
       setImgSrc(`/images/${filename}`);
     } else if (filename && !imgSrc.includes("ngrok-free.dev")) {
       setImgSrc(`https://lunar-crawlers-blaspheme.ngrok-free.dev/images/${filename}`);

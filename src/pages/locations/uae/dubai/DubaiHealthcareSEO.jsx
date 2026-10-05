@@ -27,13 +27,13 @@ import {
 } from "lucide-react";
 
 // Image Paths (Strictly from Section 9: Image Recommendations + ALT Text)
-const heroImgSrc = "/src/images/healthcare-seo-dubai-overview.webp";
-const keywordImgSrc = "/src/images/healthcare-seo-keyword-research-dubai.webp";
-const contentImgSrc = "/src/images/healthcare-content-optimization-dubai.webp";
-const localMapsImgSrc = "/src/images/clinic-local-seo-maps-dubai.webp";
-const architectureImgSrc = "/src/images/medical-website-seo-structure-dubai.webp";
-const reportingImgSrc = "/src/images/healthcare-seo-reporting-dubai.webp";
-const technicalImgSrc = "/src/images/healthcare-technical-seo-dubai.webp";
+const heroImgSrc = "/images/healthcare-seo-dubai-overview.webp";
+const keywordImgSrc = "/images/healthcare-seo-keyword-research-dubai.webp";
+const contentImgSrc = "/images/healthcare-content-optimization-dubai.webp";
+const localMapsImgSrc = "/images/clinic-local-seo-maps-dubai.webp";
+const architectureImgSrc = "/images/medical-website-seo-structure-dubai.webp";
+const reportingImgSrc = "/images/healthcare-seo-reporting-dubai.webp";
+const technicalImgSrc = "/images/healthcare-technical-seo-dubai.webp";
 
 // Simple Image Slot with clean placeholder and responsive vertical expansion
 const SEOImageSlot = ({
@@ -60,7 +60,7 @@ const SEOImageSlot = ({
           height={height}
           loading={priority ? "eager" : "lazy"}
           onError={(e) => {
-            if (filename && e.currentTarget.src.includes("/src/images/")) {
+            if (filename && e.currentTarget.src.includes("/images/")) {
               e.currentTarget.src = `/images/${filename}`;
             } else {
               setHasError(true);

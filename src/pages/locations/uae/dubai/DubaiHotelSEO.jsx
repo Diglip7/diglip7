@@ -36,13 +36,13 @@ import {
 } from "lucide-react";
 
 // Image Paths (Strictly from Image Plan)
-const heroImgSrc = "/src/images/hotel-seo-dubai-overview.jpg";
-const keywordImgSrc = "/src/images/hotel-keyword-research-dubai.jpg";
-const structureImgSrc = "/src/images/hotel-website-seo-structure.jpg";
-const localImgSrc = "/src/images/local-seo-hotel-dubai.jpg";
-const roomImgSrc = "/src/images/hotel-room-page-seo.jpg";
-const technicalImgSrc = "/src/images/technical-hotel-seo.jpg";
-const reportingImgSrc = "/src/images/hotel-seo-reporting-dashboard.jpg";
+const heroImgSrc = "/images/hotel-seo-dubai-overview.jpg";
+const keywordImgSrc = "/images/hotel-keyword-research-dubai.jpg";
+const structureImgSrc = "/images/hotel-website-seo-structure.jpg";
+const localImgSrc = "/images/local-seo-hotel-dubai.jpg";
+const roomImgSrc = "/images/hotel-room-page-seo.jpg";
+const technicalImgSrc = "/images/technical-hotel-seo.jpg";
+const reportingImgSrc = "/images/hotel-seo-reporting-dashboard.jpg";
 
 // Simple Image Slot with clean placeholder and responsive vertical expansion
 const SEOImageSlot = ({
