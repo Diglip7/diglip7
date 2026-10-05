@@ -183,13 +183,12 @@ export default function BlogList() {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`p-4 rounded-2xl shadow-2xl flex items-start justify-between gap-3 text-white text-xs sm:text-sm font-medium pointer-events-auto backdrop-blur-md transition-all duration-300 animate-in slide-in-from-top-2 ${
-              toast.type === "success"
+            className={`p-4 rounded-2xl shadow-2xl flex items-start justify-between gap-3 text-white text-xs sm:text-sm font-medium pointer-events-auto backdrop-blur-md transition-all duration-300 animate-in slide-in-from-top-2 ${toast.type === "success"
                 ? "bg-slate-900/95 border border-teal-500/50 shadow-teal-900/20"
                 : toast.type === "error"
-                ? "bg-slate-900/95 border border-rose-500/50 shadow-rose-900/20"
-                : "bg-slate-900/95 border border-amber-500/50 shadow-amber-900/20"
-            }`}
+                  ? "bg-slate-900/95 border border-rose-500/50 shadow-rose-900/20"
+                  : "bg-slate-900/95 border border-amber-500/50 shadow-amber-900/20"
+              }`}
           >
             <div className="flex items-start gap-2.5">
               {toast.type === "success" ? (
@@ -317,11 +316,10 @@ export default function BlogList() {
           <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 rounded-2xl border border-slate-200/80 w-fit">
             <button
               onClick={() => setActiveTab("published")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
-                activeTab === "published"
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${activeTab === "published"
                   ? "bg-white text-slate-900 shadow-xs ring-1 ring-slate-200/60 font-extrabold"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               <FileText className="w-4 h-4 text-teal-600" />
               <span>Published Articles</span>
@@ -332,11 +330,10 @@ export default function BlogList() {
 
             <button
               onClick={() => setActiveTab("drafts")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
-                activeTab === "drafts"
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${activeTab === "drafts"
                   ? "bg-white text-slate-900 shadow-xs ring-1 ring-slate-200/60 font-extrabold"
                   : "text-slate-600 hover:text-slate-900"
-              }`}
+                }`}
             >
               <FileEdit className="w-4 h-4 text-amber-500" />
               <span>Saved Drafts</span>
@@ -380,18 +377,16 @@ export default function BlogList() {
             <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 shrink-0">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-1.5 rounded-lg transition cursor-pointer ${
-                  viewMode === "grid" ? "bg-white text-teal-800 shadow-2xs" : "text-slate-400 hover:text-slate-700"
-                }`}
+                className={`p-1.5 rounded-lg transition cursor-pointer ${viewMode === "grid" ? "bg-white text-teal-800 shadow-2xs" : "text-slate-400 hover:text-slate-700"
+                  }`}
                 title="Grid View"
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-1.5 rounded-lg transition cursor-pointer ${
-                  viewMode === "list" ? "bg-white text-teal-800 shadow-2xs" : "text-slate-400 hover:text-slate-700"
-                }`}
+                className={`p-1.5 rounded-lg transition cursor-pointer ${viewMode === "list" ? "bg-white text-teal-800 shadow-2xs" : "text-slate-400 hover:text-slate-700"
+                  }`}
                 title="List View"
               >
                 <ListIcon className="w-4 h-4" />

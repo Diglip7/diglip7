@@ -246,7 +246,67 @@ export default function BlogEditor() {
     return content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 155);
   }, [content]);
 
-  // Underline hyperlinks in HTML content
+  // Helper: Compress large base64 image strings (>50KB) via HTML5 Canvas
+  const compressBase64 = (base64Str, maxWidth = 1200, quality = 0.8) => {
+    return new Promise((resolve) => {
+      if (!base64Str || !base64Str.startsWith("data:image/") || base64Str.length < 50000) {
+        return resolve(base64Str);
+      }
+      const img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        let compressed = canvas.toDataURL("image/webp", quality);
+        if (!compressed.startsWith("data:image/webp")) {
+          compressed = canvas.toDataURL("image/jpeg", quality);
+        }
+        resolve(compressed.length < base64Str.length ? compressed : base64Str);
+      };
+      img.onerror = () => resolve(base64Str);
+      img.src = base64Str;
+    });
+  };
+
+  // Underline hyperlinks and auto-compress any embedded images in HTML content
+  const prepareOptimizedContent = async (htmlContent) => {
+    if (typeof window === "undefined" || !htmlContent) return htmlContent || "";
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
+
+    const links = tempDiv.querySelectorAll("a");
+    links.forEach((link) => {
+      link.style.textDecoration = "underline";
+      link.style.textDecorationColor = "#0f766e";
+      link.style.textDecorationThickness = "2px";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+
+    const images = tempDiv.querySelectorAll("img");
+    for (const img of images) {
+      const src = img.getAttribute("src") || "";
+      if (src.startsWith("data:image/") && src.length > 50000) {
+        try {
+          const compressed = await compressBase64(src, 1200, 0.8);
+          img.setAttribute("src", compressed);
+        } catch (e) {
+          console.warn("Image compression warning:", e);
+        }
+      }
+    }
+
+    return tempDiv.innerHTML;
+  };
+
   const ensureLinksUnderlined = (htmlContent) => {
     if (typeof window === "undefined" || !htmlContent) return htmlContent || "";
     const tempDiv = document.createElement("div");
@@ -443,10 +503,11 @@ export default function BlogEditor() {
 
     setIsLoading(true);
     try {
+      const optimizedHtml = await prepareOptimizedContent(content || "");
       const payload = {
         title: title || "Untitled Draft",
         slug: effectiveSlug || generateSlug(title || "untitled-draft"),
-        content: ensureLinksUnderlined(content || ""),
+        content: optimizedHtml,
         category: category || "Digital Marketing",
         author: author || "DigLip7 Editorial Team",
         coverImage: coverImage || extractedCoverImage || "",
@@ -478,10 +539,11 @@ export default function BlogEditor() {
 
     setIsLoading(true);
     try {
+      const optimizedHtml = await prepareOptimizedContent(content);
       const payload = {
         title: title.trim(),
         slug: effectiveSlug || generateSlug(title.trim()),
-        content: ensureLinksUnderlined(content),
+        content: optimizedHtml,
         category: category || "Digital Marketing",
         author: author || "DigLip7 Editorial Team",
         coverImage: coverImage || extractedCoverImage || "",
@@ -583,13 +645,12 @@ export default function BlogEditor() {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`p-4 rounded-2xl shadow-2xl flex items-start justify-between gap-3 text-white text-xs sm:text-sm font-medium pointer-events-auto backdrop-blur-md transition-all duration-300 animate-in slide-in-from-top-2 ${
-              toast.type === "success"
-                ? "bg-slate-900/95 border border-teal-500/50 shadow-teal-900/20"
-                : toast.type === "error"
+            className={`p-4 rounded-2xl shadow-2xl flex items-start justify-between gap-3 text-white text-xs sm:text-sm font-medium pointer-events-auto backdrop-blur-md transition-all duration-300 animate-in slide-in-from-top-2 ${toast.type === "success"
+              ? "bg-slate-900/95 border border-teal-500/50 shadow-teal-900/20"
+              : toast.type === "error"
                 ? "bg-slate-900/95 border border-rose-500/50 shadow-rose-900/20"
                 : "bg-slate-900/95 border border-amber-500/50 shadow-amber-900/20"
-            }`}
+              }`}
           >
             <div className="flex items-start gap-2.5">
               {toast.type === "success" ? (
@@ -638,11 +699,10 @@ export default function BlogEditor() {
               <button
                 type="button"
                 onClick={() => setVideoModalTab("url")}
-                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
-                  videoModalTab === "url"
-                    ? "bg-white text-slate-900 shadow-2xs font-extrabold"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${videoModalTab === "url"
+                  ? "bg-white text-slate-900 shadow-2xs font-extrabold"
+                  : "text-slate-600 hover:text-slate-900"
+                  }`}
               >
                 <Globe className="w-3.5 h-3.5 text-teal-700" />
                 <span>Web URL (YouTube / Vimeo)</span>
@@ -651,11 +711,10 @@ export default function BlogEditor() {
               <button
                 type="button"
                 onClick={() => setVideoModalTab("upload")}
-                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${
-                  videoModalTab === "upload"
-                    ? "bg-white text-slate-900 shadow-2xs font-extrabold"
-                    : "text-slate-600 hover:text-slate-900"
-                }`}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer ${videoModalTab === "upload"
+                  ? "bg-white text-slate-900 shadow-2xs font-extrabold"
+                  : "text-slate-600 hover:text-slate-900"
+                  }`}
               >
                 <Upload className="w-3.5 h-3.5 text-teal-700" />
                 <span>Upload from Gallery / Device</span>
@@ -848,13 +907,12 @@ export default function BlogEditor() {
                 </label>
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${
-                      title.length === 0
-                        ? "text-slate-400 bg-slate-100"
-                        : title.length <= 70
+                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${title.length === 0
+                      ? "text-slate-400 bg-slate-100"
+                      : title.length <= 70
                         ? "text-teal-700 bg-teal-50 border border-teal-200"
                         : "text-amber-700 bg-amber-50 border border-amber-200"
-                    }`}
+                      }`}
                   >
                     {title.length} / 70 SEO title chars
                   </span>
@@ -927,20 +985,19 @@ export default function BlogEditor() {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <div
-                  className={`w-3 h-3 rounded-full ${
-                    selectedPublished
-                      ? "bg-emerald-500 animate-pulse"
-                      : selectedDraft
+                  className={`w-3 h-3 rounded-full ${selectedPublished
+                    ? "bg-emerald-500 animate-pulse"
+                    : selectedDraft
                       ? "bg-amber-500"
                       : "bg-teal-500"
-                  }`}
+                    }`}
                 />
                 <h3 className="font-extrabold text-slate-900 text-sm tracking-tight">
                   {selectedPublished
                     ? "Editing Live Post"
                     : selectedDraft
-                    ? "Editing Saved Draft"
-                    : "Drafting New Article"}
+                      ? "Editing Saved Draft"
+                      : "Drafting New Article"}
                 </h3>
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
@@ -964,8 +1021,8 @@ export default function BlogEditor() {
                   {isLoading
                     ? "Processing..."
                     : selectedPublished
-                    ? "Update Live Article"
-                    : "Publish Live to Website"}
+                      ? "Update Live Article"
+                      : "Publish Live to Website"}
                 </span>
               </button>
 
@@ -1042,18 +1099,16 @@ export default function BlogEditor() {
               <button
                 type="button"
                 onClick={() => setCoverImageTab("url")}
-                className={`flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition cursor-pointer ${
-                  coverImageTab === "url" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
-                }`}
+                className={`flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition cursor-pointer ${coverImageTab === "url" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
+                  }`}
               >
                 Image URL
               </button>
               <button
                 type="button"
                 onClick={() => setCoverImageTab("upload")}
-                className={`flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition cursor-pointer ${
-                  coverImageTab === "upload" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
-                }`}
+                className={`flex-1 py-1.5 text-center text-xs font-bold rounded-lg transition cursor-pointer ${coverImageTab === "upload" ? "bg-white text-slate-900 shadow-2xs" : "text-slate-500"
+                  }`}
               >
                 Upload File
               </button>
