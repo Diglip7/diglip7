@@ -34,10 +34,10 @@ import {
 } from "lucide-react";
 
 // Image Plan paths for Dubai SEO Services (Section 8)
-const heroImgSrc = "/src/images/dubai-seo-services-diglip7.webp";
-const localSeoImgSrc = "/src/images/local-seo-dubai-map.webp";
-const contentPlanningImgSrc = "/src/images/content-seo-planning-dubai.webp";
-const ctaConsultationImgSrc = "/src/images/seo-consultation-dubai.webp";
+const heroImgSrc = "/images/dubai-seo-services-diglip7.webp";
+const localSeoImgSrc = "/images/local-seo-dubai-map.webp";
+const contentPlanningImgSrc = "/images/content-seo-planning-dubai.webp";
+const ctaConsultationImgSrc = "/images/seo-consultation-dubai.webp";
 
 // Resilient Image Slot Component: Displays full image cleanly with edge-to-edge presentation
 const SEOImageSlot = ({
@@ -56,7 +56,7 @@ const SEOImageSlot = ({
   const [loaded, setLoaded] = useState(false);
 
   const handleError = () => {
-    if (currentSrc.includes("/src/images/")) {
+    if (currentSrc.includes("/images/")) {
       setCurrentSrc(`/images/${filename || currentSrc.split("/").pop()}`);
     } else {
       setFailed(true);

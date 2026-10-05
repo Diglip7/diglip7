@@ -30,13 +30,13 @@ import {
 } from "lucide-react";
 
 // 7 Required Images strictly matching Section 10 Image SEO specification
-const heroImgSrc = "/src/images/re-estate-seo-dubai-overview.jpg";
-const keywordImgSrc = "/src/images/property-keyword-research-dubai.jpg";
-const listingImgSrc = "/src/images/property-listing-seo-optimization.jpg";
-const localImgSrc = "/src/images/local-seo-real-estate-dubai.jpg";
-const structureImgSrc = "/src/images/real-estate-website-seo-structure.jpg";
-const portalImgSrc = "/src/images/property-portal-technical-seo.jpg";
-const reportingImgSrc = "/src/images/real-estate-seo-reporting-dashboard.jpg";
+const heroImgSrc = "/images/re-estate-seo-dubai-overview.jpg";
+const keywordImgSrc = "/images/property-keyword-research-dubai.jpg";
+const listingImgSrc = "/images/property-listing-seo-optimization.jpg";
+const localImgSrc = "/images/local-seo-real-estate-dubai.jpg";
+const structureImgSrc = "/images/real-estate-website-seo-structure.jpg";
+const portalImgSrc = "/images/property-portal-technical-seo.jpg";
+const reportingImgSrc = "/images/real-estate-seo-reporting-dashboard.jpg";
 
 // Simple Image Slot with clean placeholder and responsive vertical expansion
 const SEOImageSlot = ({

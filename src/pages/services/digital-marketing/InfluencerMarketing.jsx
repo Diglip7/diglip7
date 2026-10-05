@@ -682,7 +682,7 @@ function Influencer() {
         <div className="py-16 px-6 md:px-12 lg:px-20">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-20">
             <motion.img
-              src="/src/images/Influencer Marketing Service.jpg"
+              src="/images/Influencer Marketing Service.jpg"
               alt="Infiuencer Marketing Growth"
               className="rounded-2xl shadow-lg w-full md:w-1/2"
               animate={{ scale: [1, 1.05, 1] }}

@@ -33,12 +33,12 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 // Image Paths with reliable fallbacks
-const heroImgSrc = "/src/images/seo-services-uae-qatar.webp";
-const auditImgSrc = "/src/images/local-seo-qatar.webp";
-const contentImgSrc = "/src/images/content-seo-planning-qatar.webp";
-const localMapsImgSrc = "/src/images/google-maps-seo-qatar.webp";
-const workflowImgSrc = "/src/images/seo-qatar.webp";
-const reportingImgSrc = "/src/images/seo-reporting-qatar.webp";
+const heroImgSrc = "/images/seo-services-uae-qatar.webp";
+const auditImgSrc = "/images/local-seo-qatar.webp";
+const contentImgSrc = "/images/content-seo-planning-qatar.webp";
+const localMapsImgSrc = "/images/google-maps-seo-qatar.webp";
+const workflowImgSrc = "/images/seo-qatar.webp";
+const reportingImgSrc = "/images/seo-reporting-qatar.webp";
 
 // 3D Interactive Card Component (matches SocialMedia, DubaiEcommerceSEO)
 const Card3D = ({ children, className = "" }) => {
@@ -122,7 +122,7 @@ const SEOImageSlot = ({
           height={height}
           loading={priority ? "eager" : "lazy"}
           onError={(e) => {
-            if (filename && e.currentTarget.src.includes("/src/images/")) {
+            if (filename && e.currentTarget.src.includes("/images/")) {
               e.currentTarget.src = `/images/${filename}`;
             } else {
               setHasError(true);

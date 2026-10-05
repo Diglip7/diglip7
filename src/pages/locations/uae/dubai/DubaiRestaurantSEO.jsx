@@ -34,13 +34,13 @@ import {
 } from "lucide-react";
 
 // 7 Required Images strictly matching Section 8 Image SEO specification
-const heroImgSrc = "/src/images/restaurant-seo-dubai.jpg";
-const keywordImgSrc = "/src/images/restaurant-keyword-research-dubai.jpg";
-const structureImgSrc = "/src/images/restaurant-website-seo-dubai.jpg";
-const localImgSrc = "/src/images/restaurant-local-seo-dubai.jpg";
-const menuImgSrc = "/src/images/restaurant-menu-seo-dubai.jpg";
-const branchImgSrc = "/src/images/restaurant-branch-seo-dubai.jpg";
-const reportingImgSrc = "/src/images/restaurant-seo-reporting-dubai.jpg";
+const heroImgSrc = "/images/restaurant-seo-dubai.jpg";
+const keywordImgSrc = "/images/restaurant-keyword-research-dubai.jpg";
+const structureImgSrc = "/images/restaurant-website-seo-dubai.jpg";
+const localImgSrc = "/images/restaurant-local-seo-dubai.jpg";
+const menuImgSrc = "/images/restaurant-menu-seo-dubai.jpg";
+const branchImgSrc = "/images/restaurant-branch-seo-dubai.jpg";
+const reportingImgSrc = "/images/restaurant-seo-reporting-dubai.jpg";
 
 // Simple Image Slot with clean placeholder and responsive vertical expansion
 const SEOImageSlot = ({

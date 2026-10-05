@@ -47,19 +47,19 @@ import {
 } from "lucide-react";
 
 // Exact image paths matching Section 9 recommendations
-const heroImgSrc = "/src/images/ecommerce-seo-dubai-strategy.webp";
-const auditImgSrc = "/src/images/ecommerce-seo-audit-dubai.webp";
-const productPageImgSrc = "/src/images/product-page-seo-dubai.webp";
-const categoryPageImgSrc = "/src/images/category-page-seo-dubai.webp";
-const platformImgSrc = "/src/images/ecommerce-platform-seo-dubai.webp";
-const technicalImgSrc = "/src/images/technical-ecommerce-seo-dubai.webp";
-const keywordImgSrc = "/src/images/ecommerce-keyword-research-dubai.webp";
-const analyticsImgSrc = "/src/images/ecommerce-seo-analytics-dubai.webp";
+const heroImgSrc = "/images/ecommerce-seo-dubai-strategy.webp";
+const auditImgSrc = "/images/ecommerce-seo-audit-dubai.webp";
+const productPageImgSrc = "/images/product-page-seo-dubai.webp";
+const categoryPageImgSrc = "/images/category-page-seo-dubai.webp";
+const platformImgSrc = "/images/ecommerce-platform-seo-dubai.webp";
+const technicalImgSrc = "/images/technical-ecommerce-seo-dubai.webp";
+const keywordImgSrc = "/images/ecommerce-keyword-research-dubai.webp";
+const analyticsImgSrc = "/images/ecommerce-seo-analytics-dubai.webp";
 
-// Automatic path fallback between /src/images/ and /images/ so that whenever
+// Automatic path fallback between /images/ and /images/ so that whenever
 // the user drops the file in either src/images or public/images, it displays instantly
 const handleImgFallback = (e, filename) => {
-  if (e.currentTarget.src.includes("/src/images/")) {
+  if (e.currentTarget.src.includes("/images/")) {
     e.currentTarget.src = `/images/${filename}`;
   }
 };
