@@ -138,6 +138,14 @@ const Header = () => {
               href: "/uae/dubai/healthcare-seo",
             },
             {
+              name: "Dental SEO Dubai",
+              href: "/uae/dubai/dental-seo",
+            },
+            {
+              name: "Beauty Clinic SEO Dubai",
+              href: "/uae/dubai/beauty-clinic-seo",
+            },
+            {
               name: "Real Estate SEO Dubai",
               href: "/uae/dubai/real-estate-seo",
             },
@@ -148,6 +156,26 @@ const Header = () => {
             {
               name: "Hotel SEO Dubai",
               href: "/uae/dubai/hotel-seo",
+            },
+            {
+              name: "Law Firm SEO Dubai",
+              href: "/uae/law-firm-seo-dubai/",
+            },
+            {
+              name: "Automotive SEO Dubai",
+              href: "/uae/dubai/automotive-seo",
+            },
+            {
+              name: "Driving School SEO Dubai",
+              href: "/uae/dubai/driving-school-seo",
+            },
+            {
+              name: "Travel Agency SEO Dubai",
+              href: "/uae/dubai/travel-agency-seo",
+            },
+            {
+              name: "Interior Design SEO Dubai",
+              href: "/uae/dubai/interior-design-seo",
             },
           ],
         },
@@ -697,6 +725,9 @@ const Header = () => {
                       </Link>
                       <Link to="/uae/dubai/healthcare-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
                         • Healthcare SEO Dubai
+                      </Link>
+                      <Link to="/uae/dubai/dental-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
+                        • Dental SEO Dubai
                       </Link>
                       <Link to="/uae/dubai/real-estate-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
                         • Real Estate SEO Dubai

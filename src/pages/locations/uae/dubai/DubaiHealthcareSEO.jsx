@@ -401,6 +401,8 @@ const internalLinks = [
   { name: "SEO Services", url: "/digital-market/seoservices/" },
   { name: "Local SEO Dubai", url: "/uae/dubai/local-seo/" },
   { name: "E-commerce SEO Dubai", url: "/uae/dubai/ecommerce-seo/" },
+  { name: "Dental SEO Dubai", url: "/uae/dubai/dental-seo" },
+  { name: "Beauty Clinic SEO Dubai", url: "/uae/dubai/beauty-clinic-seo" },
   { name: "PPC Advertising", url: "/digital-market/PPC-Advertising" },
   { name: "content marketing", url: "/digital-market/content-marketing" },
   { name: "social media marketing", url: "/digital-market/social-media-marketing" },

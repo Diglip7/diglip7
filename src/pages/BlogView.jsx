@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import SEO from "../components/SEO";
+import lawFirmHeroImg from "../images/law-firm-seo-dubai.webp.webp";
 import {
   Calendar,
   Clock,
@@ -29,21 +30,42 @@ export default function BlogView() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  const staticLawArticle = useMemo(
+    () => ({
+      _id: "law-firm-seo-dubai",
+      slug: "law-firm-seo-dubai",
+      title: "Law Firm SEO Dubai: A Practical Guide to Online Visibility",
+      category: "SEO & Search Optimization",
+      author: "DigLip7 Editorial Team",
+      coverImage: lawFirmHeroImg || "/images/law-firm-seo-dubai.webp",
+      url: "/uae/law-firm-seo-dubai/",
+      content:
+        "Learn how law firm SEO Dubai strategies can improve search visibility, strengthen your website, and help potential clients discover your legal services online.",
+      createdAt: "2026-10-16T00:00:00.000Z",
+    }),
+    []
+  );
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/publishedblogs`);
         const fetched = Array.isArray(res.data) ? res.data : [];
-        setBlogs(fetched);
+        const merged = [...fetched];
+        if (!merged.some((b) => (b.slug || "").toLowerCase() === staticLawArticle.slug.toLowerCase())) {
+          merged.unshift(staticLawArticle);
+        }
+        setBlogs(merged);
       } catch (error) {
         console.error("Failed to fetch blogs:", error);
+        setBlogs([staticLawArticle]);
       } finally {
         setLoading(false);
       }
     };
     fetchBlogs();
-  }, []);
+  }, [staticLawArticle, staticAutomotiveArticle]);
 
   const categories = [
     "All",
@@ -155,11 +177,10 @@ export default function BlogView() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer ${
-                selectedCategory === cat
-                  ? "bg-teal-800 text-white shadow-xs"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer ${selectedCategory === cat
+                ? "bg-teal-800 text-white shadow-xs"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
             >
               {cat}
             </button>
@@ -203,7 +224,7 @@ export default function BlogView() {
               return (
                 <Link
                   key={blog._id}
-                  to={`/blog/${articleSlug}`}
+                  to={blog.url || (articleSlug === "law-firm-seo-dubai" ? "/uae/law-firm-seo-dubai/" : `/blog/${articleSlug}`)}
                   className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-xs hover:border-teal-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* Article Thumbnail */}

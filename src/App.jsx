@@ -57,9 +57,16 @@ import DubaiSEOServices from "./pages/locations/uae/dubai/DubaiSEOServices";
 import DubaiLocalSEO from "./pages/locations/uae/dubai/DubaiLocalSEO";
 import DubaiEcommerceSEO from "./pages/locations/uae/dubai/DubaiEcommerceSEO";
 import DubaiHealthcareSEO from "./pages/locations/uae/dubai/DubaiHealthcareSEO";
+import DubaiDentalSEO from "./pages/locations/uae/dubai/DubaiDentalSEO";
+import DubaiBeautyClinicSEO from "./pages/locations/uae/dubai/DubaiBeautyClinicSEO";
 import DubaiRealEstateSEO from "./pages/locations/uae/dubai/DubaiRealEstateSEO";
 import DubaiRestaurantSEO from "./pages/locations/uae/dubai/DubaiRestaurantSEO";
 import DubaiHotelSEO from "./pages/locations/uae/dubai/DubaiHotelSEO";
+import DubaiLawFirmSEO from "./pages/locations/uae/dubai/DubaiLawFirmSEO";
+import DubaiAutomotiveSEOService from "./pages/locations/uae/dubai/DubaiAutomotiveSEOService";
+import DubaiDrivingSchoolSEO from "./pages/locations/uae/dubai/DubaiDrivingSchoolSEO";
+import DubaiTravelAgencySEO from "./pages/locations/uae/dubai/DubaiTravelAgencySEO";
+import DubaiInteriorDesignSEO from "./pages/locations/uae/dubai/DubaiInteriorDesignSEO";
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
@@ -102,8 +109,17 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<BlogView />} />
+          <Route path="/blog/" element={<BlogView />} />
+          <Route path="/blog/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/blog/law-firm-seo-dubai/" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/blog/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
+          <Route path="/blog/automotive-seo-dubai/" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/blogview" element={<BlogView />} />
+          <Route path="/blogview/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/blogview/law-firm-seo-dubai/" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/blogview/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
+          <Route path="/blogview/automotive-seo-dubai/" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
           <Route path="/blogview/:slug" element={<BlogDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
@@ -162,15 +178,46 @@ function App() {
           />
           {/* Location SEO Main Pages & Sub-services */}
           <Route path="/uae" element={<Navigate to="/uae/seo-services" replace />} />
+          <Route path="/uae/" element={<Navigate to="/uae/seo-services" replace />} />
           <Route path="/uae/seo-services" element={<UAESEOServices />} />
+          <Route path="/uae/seo-services/" element={<UAESEOServices />} />
           <Route path="/uae/dubai" element={<Navigate to="/uae/dubai/seo-services" replace />} />
+          <Route path="/uae/dubai/" element={<Navigate to="/uae/dubai/seo-services" replace />} />
           <Route path="/uae/dubai/seo-services" element={<DubaiSEOServices />} />
+          <Route path="/uae/dubai/seo-services/" element={<DubaiSEOServices />} />
           <Route path="/uae/dubai/local-seo" element={<DubaiLocalSEO />} />
           <Route path="/uae/dubai/ecommerce-seo" element={<DubaiEcommerceSEO />} />
           <Route path="/uae/dubai/healthcare-seo" element={<DubaiHealthcareSEO />} />
+          <Route path="/uae/dubai/dental-seo" element={<DubaiDentalSEO />} />
+          <Route path="/uae/dubai/dental-seo-dubai" element={<Navigate to="/uae/dubai/dental-seo" replace />} />
+          <Route path="/dental-seo-dubai" element={<Navigate to="/uae/dubai/dental-seo" replace />} />
+          <Route path="/uae/dubai/beauty-clinic-seo" element={<DubaiBeautyClinicSEO />} />
+          <Route path="/uae/dubai/beauty-clinic-seo/" element={<DubaiBeautyClinicSEO />} />
           <Route path="/uae/dubai/real-estate-seo" element={<DubaiRealEstateSEO />} />
           <Route path="/uae/dubai/restaurant-seo" element={<DubaiRestaurantSEO />} />
           <Route path="/uae/dubai/hotel-seo" element={<DubaiHotelSEO />} />
+          <Route path="/uae/law-firm-seo-dubai" element={<DubaiLawFirmSEO />} />
+          <Route path="/uae/law-firm-seo-dubai/" element={<DubaiLawFirmSEO />} />
+          <Route path="/uae/dubai/law-firm-seo" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/uae/dubai/law-firm-seo/" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/uae/dubai/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
+          <Route path="/uae/dubai/automotive-seo" element={<DubaiAutomotiveSEOService />} />
+          <Route path="/uae/dubai/automotive-seo/" element={<DubaiAutomotiveSEOService />} />
+          <Route path="/uae/dubai/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
+          <Route path="/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
+          <Route path="/uae/dubai/driving-school-seo" element={<DubaiDrivingSchoolSEO />} />
+          <Route path="/uae/dubai/driving-school-seo/" element={<DubaiDrivingSchoolSEO />} />
+          <Route path="/uae/dubai/driving-school-seo-dubai" element={<Navigate to="/uae/dubai/driving-school-seo/" replace />} />
+          <Route path="/driving-school-seo-dubai" element={<Navigate to="/uae/dubai/driving-school-seo/" replace />} />
+          <Route path="/uae/dubai/travel-agency-seo" element={<DubaiTravelAgencySEO />} />
+          <Route path="/uae/dubai/travel-agency-seo/" element={<DubaiTravelAgencySEO />} />
+          <Route path="/uae/dubai/travel-agency-seo-dubai" element={<Navigate to="/uae/dubai/travel-agency-seo/" replace />} />
+          <Route path="/travel-agency-seo-dubai" element={<Navigate to="/uae/dubai/travel-agency-seo/" replace />} />
+          <Route path="/uae/dubai/interior-design-seo" element={<DubaiInteriorDesignSEO />} />
+          <Route path="/uae/dubai/interior-design-seo/" element={<DubaiInteriorDesignSEO />} />
+          <Route path="/uae/dubai/interior-design-seo-dubai" element={<Navigate to="/uae/dubai/interior-design-seo/" replace />} />
+          <Route path="/interior-design-seo-dubai" element={<Navigate to="/uae/dubai/interior-design-seo/" replace />} />
 
           <Route path="/india" element={<Navigate to="/india/seo-services" replace />} />
           <Route path="/india/seo-services" element={<IndiaSEOServices />} />
