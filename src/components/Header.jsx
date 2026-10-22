@@ -197,6 +197,36 @@ const Header = () => {
         href: "/saudi-arabia/seo-services",
         badge: "Country Main Page",
       },
+      subServices: [
+        {
+          name: "PPC Services Saudi Arabia",
+          href: "/saudi-arabia/ppc-services/",
+        },
+        {
+          name: "Web Design Saudi Arabia",
+          href: "/saudi-arabia/web-design/",
+        },
+        {
+          name: "Social Media Marketing Saudi Arabia",
+          href: "/saudi-arabia/social-media-marketing/",
+        },
+        {
+          name: "Content Marketing Saudi Arabia",
+          href: "/saudi-arabia/content-marketing-services/",
+        },
+        {
+          name: "Online Reputation Management",
+          href: "/saudi-arabia/online-reputation-management/",
+        },
+        {
+          name: "E-commerce SEO Saudi Arabia",
+          href: "/saudi-arabia/ecommerce-seo-services/",
+        },
+        {
+          name: "Local SEO Saudi Arabia",
+          href: "/saudi-arabia/local-seo-services/",
+        },
+      ],
       cities: [],
     },
     {
@@ -219,8 +249,8 @@ const Header = () => {
   }) => (
     <div
       className={`absolute left-0 mt-2 ${widthClass} max-w-[calc(100vw-2rem)] bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-2 border border-teal-700/60 transition-all duration-200 ease-out z-50 ${isVisible
-          ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
-          : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
+        ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
+        : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
         }`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -389,18 +419,16 @@ const Header = () => {
             <div className="flex items-center text-teal-800 hover:text-black transition-colors duration-200 cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">
               <span>Locations</span>
               <ChevronDown
-                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${
-                  activeDropdown === "locations" ? "rotate-180 text-teal-600" : ""
-                }`}
+                className={`w-4 h-4 ml-1 transition-transform duration-200 shrink-0 ${activeDropdown === "locations" ? "rotate-180 text-teal-600" : ""
+                  }`}
               />
             </div>
 
             <div
-              className={`absolute right-0 mt-2 w-[420px] max-w-[calc(100vw-2rem)] bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-3 border border-teal-700/60 transition-all duration-200 ease-out z-50 origin-top-right ${
-                activeDropdown === "locations"
+              className={`absolute right-0 mt-2 w-[420px] max-w-[calc(100vw-2rem)] bg-teal-900/95 backdrop-blur-xl shadow-xl rounded-xl p-3 border border-teal-700/60 transition-all duration-200 ease-out z-50 origin-top-right ${activeDropdown === "locations"
                   ? "opacity-100 visible translate-y-0 scale-100 pointer-events-auto"
                   : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
-              }`}
+                }`}
               onMouseEnter={() => handleDropdownEnter("locations")}
               onMouseLeave={handleDropdownLeave}
             >
@@ -414,11 +442,10 @@ const Header = () => {
                     <div
                       key={loc.name}
                       onMouseEnter={() => setSelectedLocation(loc.name)}
-                      className={`flex items-center justify-between px-2.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition cursor-pointer ${
-                        selectedLocation === loc.name
+                      className={`flex items-center justify-between px-2.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition cursor-pointer ${selectedLocation === loc.name
                           ? "bg-white/20 text-white font-semibold"
                           : "text-white/80 hover:text-white hover:bg-white/10"
-                      }`}
+                        }`}
                     >
                       <Link
                         to={loc.mainPage.href}
@@ -458,6 +485,28 @@ const Header = () => {
                             </span>
                           </Link>
                         </div>
+
+                        {/* Country Level Sub-services (e.g. PPC Services Saudi Arabia) */}
+                        {currentLoc.subServices && currentLoc.subServices.length > 0 && (
+                          <div className="space-y-1.5 mb-2.5">
+                            <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1">
+                              {currentLoc.name} Services
+                            </div>
+                            <div className="space-y-1">
+                              {currentLoc.subServices.map((sub) => (
+                                <Link
+                                  key={sub.name}
+                                  to={sub.href}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white/95 hover:text-white hover:bg-white/15 transition group bg-white/5"
+                                >
+                                  <Search className="w-3.5 h-3.5 text-teal-300 shrink-0 group-hover:scale-110 transition-transform" />
+                                  <span>{sub.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
 
                         {/* Cities & Sub-services (e.g. Dubai) */}
                         {currentLoc.cities && currentLoc.cities.length > 0 && (
@@ -537,9 +586,8 @@ const Header = () => {
 
       {/* Mobile & Tablet Menu Drawer */}
       <div
-        className={`xl:hidden bg-white shadow-lg border-t border-teal-100 transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[calc(100vh-75px)] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className={`xl:hidden bg-white shadow-lg border-t border-teal-100 transition-all duration-300 ease-in-out ${isOpen ? "max-h-[calc(100vh-75px)] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
       >
         <ul className="flex flex-col space-y-1 p-4 font-medium">
           <li>
@@ -691,17 +739,15 @@ const Header = () => {
                 className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
               >
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    mobileDropdown === "locations" ? "rotate-180 text-teal-600" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "locations" ? "rotate-180 text-teal-600" : ""
+                    }`}
                 />
               </button>
             </div>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                mobileDropdown === "locations" ? "max-h-[600px] opacity-100 mt-1" : "max-h-0 opacity-0"
-              }`}
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileDropdown === "locations" ? "max-h-[600px] opacity-100 mt-1" : "max-h-0 opacity-0"
+                }`}
             >
               <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-2 py-1 text-sm">
                 {/* UAE */}
@@ -753,6 +799,21 @@ const Header = () => {
                 <div className="space-y-1">
                   <Link to="/saudi-arabia/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
                     SEO Services Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/ppc-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    PPC Services Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/web-design/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Web Design Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/social-media-marketing/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Social Media Marketing Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/content-marketing-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Content Marketing Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/online-reputation-management/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Online Reputation Management
                   </Link>
                 </div>
 

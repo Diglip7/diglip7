@@ -77,6 +77,13 @@ const fallbackRoutes = [
   "/uae/law-firm-seo-dubai",
   "/india/seo-services",
   "/saudi-arabia/seo-services",
+  "/saudi-arabia/ppc-services",
+  "/saudi-arabia/web-design",
+  "/saudi-arabia/social-media-marketing",
+  "/saudi-arabia/content-marketing-services",
+  "/saudi-arabia/online-reputation-management",
+  "/saudi-arabia/ecommerce-seo-services",
+  "/saudi-arabia/local-seo-services",
   "/qatar/seo-services",
 ];
 
@@ -94,6 +101,7 @@ const getRouteMetadata = (url) => {
  * AUTOMATIC ROUTE DISCOVERY:
  * Scans src/App.jsx in real-time to find every public <Route path="..." /> definition.
  * Any new page or route added to the React project is discovered automatically!
+ * Deduplicates trailing slashes and ignores <Navigate /> redirect routes.
  */
 const getAutoDiscoveredRoutes = () => {
   try {
@@ -107,22 +115,33 @@ const getAutoDiscoveredRoutes = () => {
     );
     const targetSection = publicSectionMatch ? publicSectionMatch[1] : content;
 
-    const routeRegex = /<Route\s+path=["']([^"']+)["']/g;
+    const routeTagRegex = /<Route\s+[^>]*?path=["']([^"']+)["'][^>]*?>/g;
     const routes = new Set();
     let match;
 
-    while ((match = routeRegex.exec(targetSection)) !== null) {
-      const routePath = match[1];
+    while ((match = routeTagRegex.exec(targetSection)) !== null) {
+      const fullTag = match[0];
+      const rawPath = match[1];
+
+      // Skip Navigate redirects to prevent alias duplication
+      if (fullTag.includes("<Navigate") || fullTag.includes("Navigate to=")) {
+        continue;
+      }
+
+      // Normalize path (ensure leading slash, strip trailing slash to eliminate duplicates)
+      let formatted = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
+      if (formatted.length > 1 && formatted.endsWith("/")) {
+        formatted = formatted.slice(0, -1);
+      }
 
       // Exclude admin routes, wildcards (*), dynamic parameterized routes (/:slug), and duplicate aliases
       const ignoredAliases = new Set(["/privacy", "/terms", "/terms-conditions", "/blog"]);
       if (
-        !routePath.includes("*") &&
-        !routePath.startsWith("/admin") &&
-        !routePath.includes("/:") &&
-        !ignoredAliases.has(routePath.startsWith("/") ? routePath : `/${routePath}`)
+        !formatted.includes("*") &&
+        !formatted.startsWith("/admin") &&
+        !formatted.includes("/:") &&
+        !ignoredAliases.has(formatted)
       ) {
-        const formatted = routePath.startsWith("/") ? routePath : `/${routePath}`;
         routes.add(formatted);
       }
     }

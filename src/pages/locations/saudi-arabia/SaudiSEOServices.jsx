@@ -1019,11 +1019,11 @@ function SaudiSEOServices() {
                   Online stores create problems that service sites never meet. E-commerce SEO covers category architecture, product pages and descriptions, structured data, product images, internal linking, filters and faceted navigation, duplicate URLs, pagination, inventory changes, product variants, indexation and search-friendly categories.
                 </p>
                 <p>
-                  The key word is scalable. A national retailer can't optimise twenty thousand products one by one. It needs templates and rules that produce good titles, clean URLs, sensible canonical tags and controlled indexation, so an out-of-stock item or a colour filter doesn't spawn hundreds of weak pages. See{" "}
-                  <Link to="/uae/dubai/ecommerce-seo" className="font-semibold text-teal-700 underline hover:text-teal-900">
-                    e-commerce SEO in Dubai
+                  The key word is scalable. A national retailer can't optimise twenty thousand products one by one. It needs templates and rules that produce good titles, clean URLs, sensible canonical tags and controlled indexation, so an out-of-stock item or a colour filter doesn't spawn hundreds of weak pages. See our dedicated{" "}
+                  <Link to="/saudi-arabia/ecommerce-seo-services/" className="font-semibold text-teal-700 underline hover:text-teal-900">
+                    E-commerce SEO Services in Saudi Arabia
                   </Link>{" "}
-                  for related thinking.
+                  for complete platform and catalogue guidance.
                 </p>
               </div>
             </motion.div>
@@ -1543,6 +1543,59 @@ function SaudiSEOServices() {
                 Request an SEO Audit
               </motion.button>
             </a>
+          </div>
+
+          {/* Related Cross-link */}
+          <div className="mt-10 pt-6 border-t border-teal-600/40 flex flex-wrap justify-center items-center gap-4 text-xs sm:text-sm text-teal-100">
+            <span className="font-medium text-teal-200">Looking for Paid Advertising?</span>
+            <Link
+              to="/saudi-arabia/ppc-services/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Explore PPC Services Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/web-design/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Web Design Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/social-media-marketing/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Social Media Marketing Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/content-marketing-services/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Content Marketing Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/online-reputation-management/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Reputation Management Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/ecommerce-seo-services/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              E-commerce SEO Saudi Arabia →
+            </Link>
+            <span className="text-teal-300">&bull;</span>
+            <Link
+              to="/saudi-arabia/local-seo-services/"
+              className="inline-flex items-center gap-1.5 font-semibold text-white hover:text-teal-200 underline decoration-teal-300 transition-colors"
+            >
+              Local SEO Saudi Arabia →
+            </Link>
           </div>
         </div>
       </section>

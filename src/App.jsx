@@ -69,6 +69,13 @@ import DubaiTravelAgencySEO from "./pages/locations/uae/dubai/DubaiTravelAgencyS
 import DubaiInteriorDesignSEO from "./pages/locations/uae/dubai/DubaiInteriorDesignSEO";
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
+import SaudiPPCServices from "./pages/locations/saudi-arabia/SaudiPPCServices";
+import SaudiWebDesign from "./pages/locations/saudi-arabia/SaudiWebDesign";
+import SaudiSocialMediaMarketing from "./pages/locations/saudi-arabia/SaudiSocialMediaMarketing";
+import SaudiContentMarketing from "./pages/locations/saudi-arabia/SaudiContentMarketing";
+import SaudiOnlineReputationManagement from "./pages/locations/saudi-arabia/SaudiOnlineReputationManagement";
+import SaudiEcommerceSEO from "./pages/locations/saudi-arabia/SaudiEcommerceSEO";
+import SaudiLocalSEO from "./pages/locations/saudi-arabia/SaudiLocalSEO";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
 
 // Admin Pages
@@ -223,7 +230,44 @@ function App() {
           <Route path="/india/seo-services" element={<IndiaSEOServices />} />
 
           <Route path="/saudi-arabia" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
+          <Route path="/saudi-arabia/" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
           <Route path="/saudi-arabia/seo-services" element={<SaudiSEOServices />} />
+          <Route path="/saudi-arabia/ppc-services" element={<SaudiPPCServices />} />
+          <Route path="/saudi-arabia/ppc-services/" element={<SaudiPPCServices />} />
+          <Route path="/saudi-arabia/web-design" element={<SaudiWebDesign />} />
+          <Route path="/saudi-arabia/web-design/" element={<SaudiWebDesign />} />
+          <Route path="/saudi-arabia/web-design-services" element={<Navigate to="/saudi-arabia/web-design/" replace />} />
+          <Route path="/saudi-arabia/web-design-services/" element={<Navigate to="/saudi-arabia/web-design/" replace />} />
+          <Route path="/saudi-arabia/social-media-marketing" element={<SaudiSocialMediaMarketing />} />
+          <Route path="/saudi-arabia/social-media-marketing/" element={<SaudiSocialMediaMarketing />} />
+          <Route path="/saudi-arabia/smm-services" element={<Navigate to="/saudi-arabia/social-media-marketing/" replace />} />
+          <Route path="/saudi-arabia/smm-services/" element={<Navigate to="/saudi-arabia/social-media-marketing/" replace />} />
+          <Route path="/saudi-arabia/social-media" element={<Navigate to="/saudi-arabia/social-media-marketing/" replace />} />
+          <Route path="/saudi-arabia/social-media/" element={<Navigate to="/saudi-arabia/social-media-marketing/" replace />} />
+          <Route path="/saudi-arabia/content-marketing-services" element={<SaudiContentMarketing />} />
+          <Route path="/saudi-arabia/content-marketing-services/" element={<SaudiContentMarketing />} />
+          <Route path="/saudi-arabia/content-marketing" element={<Navigate to="/saudi-arabia/content-marketing-services/" replace />} />
+          <Route path="/saudi-arabia/content-marketing/" element={<Navigate to="/saudi-arabia/content-marketing-services/" replace />} />
+          <Route path="/saudi-arabia/online-reputation-management" element={<SaudiOnlineReputationManagement />} />
+          <Route path="/saudi-arabia/online-reputation-management/" element={<SaudiOnlineReputationManagement />} />
+          <Route path="/saudi-arabia/orm" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/orm/" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/orm-services" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/orm-services/" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/reputation-management" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/reputation-management/" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          <Route path="/saudi-arabia/ecommerce-seo-services" element={<SaudiEcommerceSEO />} />
+          <Route path="/saudi-arabia/ecommerce-seo-services/" element={<SaudiEcommerceSEO />} />
+          <Route path="/saudi-arabia/ecommerce-seo" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
+          <Route path="/saudi-arabia/ecommerce-seo/" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
+          <Route path="/saudi-arabia/ecommerce-seo-service" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
+          <Route path="/saudi-arabia/ecommerce-seo-service/" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
+          <Route path="/saudi-arabia/local-seo-services" element={<SaudiLocalSEO />} />
+          <Route path="/saudi-arabia/local-seo-services/" element={<SaudiLocalSEO />} />
+          <Route path="/saudi-arabia/local-seo" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
+          <Route path="/saudi-arabia/local-seo/" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
+          <Route path="/saudi-arabia/local-seo-service" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
+          <Route path="/saudi-arabia/local-seo-service/" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
 
           <Route path="/qatar" element={<Navigate to="/qatar/seo-services" replace />} />
           <Route path="/qatar/seo-services" element={<QatarSEOServices />} />
