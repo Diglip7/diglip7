@@ -226,6 +226,14 @@ const Header = () => {
           name: "Local SEO Saudi Arabia",
           href: "/saudi-arabia/local-seo-services/",
         },
+        {
+          name: "Email Marketing Saudi Arabia",
+          href: "/saudi-arabia/email-marketing-services/",
+        },
+        {
+          name: "Mobile App Development Saudi Arabia",
+          href: "/saudi-arabia/mobile-app-development/",
+        },
       ],
       cities: [],
     },
@@ -814,6 +822,12 @@ const Header = () => {
                   </Link>
                   <Link to="/saudi-arabia/online-reputation-management/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
                     Online Reputation Management
+                  </Link>
+                  <Link to="/saudi-arabia/email-marketing-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Email Marketing Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/mobile-app-development/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Mobile App Development Saudi Arabia
                   </Link>
                 </div>
 

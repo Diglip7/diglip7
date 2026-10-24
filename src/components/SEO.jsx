@@ -51,7 +51,7 @@ const SEO = ({
       ? keywords
       : defaultKeywords;
   const imageAltText = ogImageAlt || (exactTitle ? title : `${fullTitle} - DigLip7`);
-  const twImage = twitterImage || ogImage;
+  const twImage = twitterImage !== undefined ? twitterImage : ogImage;
   const twImageAlt = twitterImageAlt || imageAltText;
 
   // Dynamically compute exact current page URL for canonical & social tags
@@ -141,17 +141,27 @@ const SEO = ({
     setMetaTag("property", "og:type", ogType);
     setMetaTag("property", "og:site_name", "DigLip7");
     setMetaTag("property", "og:locale", ogLocale);
-    setMetaTag("property", "og:image", ogImage);
-    setMetaTag("property", "og:image:secure_url", ogImage);
-    const imageMimeType = ogImage?.endsWith(".webp")
-      ? "image/webp"
-      : ogImage?.endsWith(".png")
-      ? "image/png"
-      : "image/jpeg";
-    setMetaTag("property", "og:image:type", imageMimeType);
-    setMetaTag("property", "og:image:width", "1200");
-    setMetaTag("property", "og:image:height", "630");
-    setMetaTag("property", "og:image:alt", imageAltText);
+
+    if (ogImage) {
+      setMetaTag("property", "og:image", ogImage);
+      setMetaTag("property", "og:image:secure_url", ogImage);
+      const imageMimeType = ogImage?.endsWith(".webp")
+        ? "image/webp"
+        : ogImage?.endsWith(".png")
+        ? "image/png"
+        : "image/jpeg";
+      setMetaTag("property", "og:image:type", imageMimeType);
+      setMetaTag("property", "og:image:width", "1200");
+      setMetaTag("property", "og:image:height", "630");
+      setMetaTag("property", "og:image:alt", imageAltText);
+    } else {
+      removeMetaTag("property", "og:image");
+      removeMetaTag("property", "og:image:secure_url");
+      removeMetaTag("property", "og:image:type");
+      removeMetaTag("property", "og:image:width");
+      removeMetaTag("property", "og:image:height");
+      removeMetaTag("property", "og:image:alt");
+    }
 
     // 5. Twitter Card Meta Tags
     setMetaTag("name", "twitter:card", twitterCard);
@@ -167,8 +177,13 @@ const SEO = ({
     }
     setMetaTag("name", "twitter:title", twTitle);
     setMetaTag("name", "twitter:description", twDesc);
-    setMetaTag("name", "twitter:image", twImage);
-    setMetaTag("name", "twitter:image:alt", twImageAlt);
+    if (twImage) {
+      setMetaTag("name", "twitter:image", twImage);
+      setMetaTag("name", "twitter:image:alt", twImageAlt);
+    } else {
+      removeMetaTag("name", "twitter:image");
+      removeMetaTag("name", "twitter:image:alt");
+    }
 
     // 6. Structured Data (JSON-LD Schema)
     // Clean up any previously injected dynamic schema scripts

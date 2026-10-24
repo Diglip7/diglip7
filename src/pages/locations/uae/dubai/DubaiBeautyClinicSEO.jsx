@@ -144,8 +144,8 @@ const beautyImages = {
     height: 630,
   },
   supporting1: {
-    src: beautyTreatmentPageImg || "/images/beauty-treatment-page-structure.webp",
-    filename: "beauty-treatment-page-structure.webp",
+    src: beautyTreatmentPageImg || "/images/beauty-treatment-page-seo.webp",
+    filename: "beauty-treatment-page-seo.webp",
     alt: "Diagram of treatment and location page structure for a beauty clinic website",
     width: 1200,
     height: 630,
@@ -772,8 +772,7 @@ function DubaiBeautyClinicSEO() {
                         alt={beautyImages.supporting1.alt}
                         width={beautyImages.supporting1.width}
                         height={beautyImages.supporting1.height}
-                        aspect="aspect-auto"
-                        imgClassName="w-full h-auto block rounded-2xl"
+                        aspect="aspect-[16/9]"
                       />
                     </div>
                   </Card3D>
@@ -871,8 +870,7 @@ function DubaiBeautyClinicSEO() {
                     alt={beautyImages.supporting2.alt}
                     width={beautyImages.supporting2.width}
                     height={beautyImages.supporting2.height}
-                    aspect="aspect-auto"
-                    imgClassName="w-full h-auto block rounded-2xl"
+                    aspect="aspect-[16/9]"
                   />
                 </div>
               </Card3D>

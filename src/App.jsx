@@ -76,6 +76,8 @@ import SaudiContentMarketing from "./pages/locations/saudi-arabia/SaudiContentMa
 import SaudiOnlineReputationManagement from "./pages/locations/saudi-arabia/SaudiOnlineReputationManagement";
 import SaudiEcommerceSEO from "./pages/locations/saudi-arabia/SaudiEcommerceSEO";
 import SaudiLocalSEO from "./pages/locations/saudi-arabia/SaudiLocalSEO";
+import SaudiEmailMarketing from "./pages/locations/saudi-arabia/SaudiEmailMarketing";
+import SaudiMobileAppDevelopment from "./pages/locations/saudi-arabia/SaudiMobileAppDevelopment";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
 
 // Admin Pages
@@ -268,6 +270,16 @@ function App() {
           <Route path="/saudi-arabia/local-seo/" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
           <Route path="/saudi-arabia/local-seo-service" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
           <Route path="/saudi-arabia/local-seo-service/" element={<Navigate to="/saudi-arabia/local-seo-services/" replace />} />
+          <Route path="/saudi-arabia/email-marketing-services" element={<SaudiEmailMarketing />} />
+          <Route path="/saudi-arabia/email-marketing-services/" element={<SaudiEmailMarketing />} />
+          <Route path="/saudi-arabia/email-marketing" element={<Navigate to="/saudi-arabia/email-marketing-services/" replace />} />
+          <Route path="/saudi-arabia/email-marketing/" element={<Navigate to="/saudi-arabia/email-marketing-services/" replace />} />
+          <Route path="/saudi-arabia/mobile-app-development" element={<SaudiMobileAppDevelopment />} />
+          <Route path="/saudi-arabia/mobile-app-development/" element={<SaudiMobileAppDevelopment />} />
+          <Route path="/saudi-arabia/app-development" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
+          <Route path="/saudi-arabia/app-development/" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
+          <Route path="/saudi-arabia/mobile-app-development-services" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
+          <Route path="/saudi-arabia/mobile-app-development-services/" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
 
           <Route path="/qatar" element={<Navigate to="/qatar/seo-services" replace />} />
           <Route path="/qatar/seo-services" element={<QatarSEOServices />} />
