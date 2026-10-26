@@ -83,10 +83,12 @@ const fallbackRoutes = [
   "/saudi-arabia/content-marketing-services",
   "/saudi-arabia/online-reputation-management",
   "/saudi-arabia/ecommerce-seo-services",
+  "/saudi-arabia/ecommerce-seo",
   "/saudi-arabia/local-seo-services",
+  "/saudi-arabia/video-marketing-agency",
+  "/saudi-arabia/ai-marketing-automation",
   "/qatar/seo-services",
 ];
-
 /**
  * Priority and changefreq rules based on URL depth and type
  */

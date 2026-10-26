@@ -43,11 +43,11 @@ import {
 import { FaWhatsapp, FaShopify, FaWordpress } from "react-icons/fa";
 
 // Image Paths - Image files removed per requirement; image section containers preserved
-const heroImgSrc = "";
-const keywordResearchImgSrc = "";
-const productWorkflowImgSrc = "";
-const technicalAuditImgSrc = "";
-const bilingualContentImgSrc = "";
+const heroImgSrc = " ecommerce-seo-services-saudi-arabia.webp";
+const keywordResearchImgSrc = "ecommerce-keyword-research-analysis.webp";
+const productWorkflowImgSrc = "product-page-optimization-workflow.webp";
+const technicalAuditImgSrc = "ecommerce-technical-seo-audit.webp";
+const bilingualContentImgSrc = "arabic-english-ecommerce-content-planning.webp";
 const auditImgSrc = "";
 const productImgSrc = "";
 

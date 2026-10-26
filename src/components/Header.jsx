@@ -219,7 +219,7 @@ const Header = () => {
           href: "/saudi-arabia/online-reputation-management/",
         },
         {
-          name: "E-commerce SEO Saudi Arabia",
+          name: "E-commerce SEO Services (Agency)",
           href: "/saudi-arabia/ecommerce-seo-services/",
         },
         {
@@ -233,6 +233,18 @@ const Header = () => {
         {
           name: "Mobile App Development Saudi Arabia",
           href: "/saudi-arabia/mobile-app-development/",
+        },
+        {
+          name: "Video Marketing Agency Saudi Arabia",
+          href: "/saudi-arabia/video-marketing-agency/",
+        },
+        {
+          name: "AI Marketing Automation Saudi Arabia",
+          href: "/saudi-arabia/ai-marketing-automation/",
+        },
+         {
+          name: "E-commerce SEO Saudi Arabia",
+          href: "/saudi-arabia/ecommerce-seo/",
         },
       ],
       cities: [],
@@ -828,6 +840,12 @@ const Header = () => {
                   </Link>
                   <Link to="/saudi-arabia/mobile-app-development/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
                     Mobile App Development Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/video-marketing-agency/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    Video Marketing Agency Saudi Arabia
+                  </Link>
+                  <Link to="/saudi-arabia/ai-marketing-automation/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
+                    AI Marketing Automation Saudi Arabia
                   </Link>
                 </div>
 

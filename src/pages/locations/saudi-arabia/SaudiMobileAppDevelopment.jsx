@@ -47,12 +47,12 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaApple, FaAndroid } from "react-icons/fa";
 
-// Image Paths - Set to empty string so Image Section containers are shown without displaying actual image files
-const heroImgSrc = "";
-const devProcessImgSrc = "";
-const securityQualityImgSrc = "";
+// Image Paths - Defined according to each section with .webp extension
+const heroImgSrc = "/images/mobile-app-development-saudi-arabia.webp";
+const devProcessImgSrc = "/images/mobile-app-architecture-development-saudi-arabia.webp";
+const securityQualityImgSrc = "/images/mobile-app-security-privacy-testing-saudi-arabia.webp";
 
-// Image Section Container Component (Preserves layout, dimensions & styling without loading external images)
+// Image Section Container Component (Renders the image when present; falls back cleanly to the styled container if missing)
 const AppImageSlot = ({
   src = "",
   alt = "",
@@ -60,29 +60,42 @@ const AppImageSlot = ({
   className = "",
   fallbackIcon: FallbackIcon = Smartphone,
   badgeText = "",
+  priority = false,
 }) => {
+  const [hasError, setHasError] = useState(false);
+
   return (
     <div
       className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-50/70 via-white to-sky-50/60 border border-indigo-200/90 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3 w-full h-full bg-gradient-to-b from-white/95 via-indigo-50/40 to-sky-50/50 border-2 border-dashed border-indigo-300/80 rounded-2xl relative overflow-hidden">
-        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-sky-600 text-white flex items-center justify-center shadow-md shadow-indigo-600/20 relative z-10">
-          <FallbackIcon className="w-7 h-7 sm:w-8 sm:h-8" />
-        </div>
-        <div className="space-y-1.5 max-w-sm relative z-10">
-          <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
-            {alt}
-          </span>
-          {badgeText && (
-            <span className="inline-block px-3 py-1 rounded-full bg-indigo-100/90 text-indigo-800 text-xs font-semibold border border-indigo-200">
-              {badgeText}
+      {src && !hasError ? (
+        <img
+          src={src}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          onError={() => setHasError(true)}
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        />
+      ) : (
+        <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3 w-full h-full bg-gradient-to-b from-white/95 via-indigo-50/40 to-sky-50/50 border-2 border-dashed border-indigo-300/80 rounded-2xl relative overflow-hidden">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-sky-600 text-white flex items-center justify-center shadow-md shadow-indigo-600/20 relative z-10">
+            <FallbackIcon className="w-7 h-7 sm:w-8 sm:h-8" />
+          </div>
+          <div className="space-y-1.5 max-w-sm relative z-10">
+            <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
+              {alt}
             </span>
-          )}
-          <span className="text-[11px] text-slate-500 block pt-0.5 font-medium">
-            Image Section &bull; Ready for Media
-          </span>
+            {badgeText && (
+              <span className="inline-block px-3 py-1 rounded-full bg-indigo-100/90 text-indigo-800 text-xs font-semibold border border-indigo-200">
+                {badgeText}
+              </span>
+            )}
+            <span className="text-[11px] text-slate-500 block pt-0.5 font-medium">
+              Image Section &bull; Ready for Media
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

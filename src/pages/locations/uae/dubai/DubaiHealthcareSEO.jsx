@@ -119,6 +119,7 @@ const Card3D = ({ children, className = "" }) => {
   );
 };
 
+
 // Floating Animation Component (matches DubaiEcommerceSEO)
 const FloatingElement = ({ children, delay = 0 }) => (
   <motion.div

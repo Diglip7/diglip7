@@ -78,7 +78,11 @@ import SaudiEcommerceSEO from "./pages/locations/saudi-arabia/SaudiEcommerceSEO"
 import SaudiLocalSEO from "./pages/locations/saudi-arabia/SaudiLocalSEO";
 import SaudiEmailMarketing from "./pages/locations/saudi-arabia/SaudiEmailMarketing";
 import SaudiMobileAppDevelopment from "./pages/locations/saudi-arabia/SaudiMobileAppDevelopment";
+import SaudiVideoMarketingAgency from "./pages/locations/saudi-arabia/SaudiVideoMarketingAgency";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
+import AIMarketingAutomationSaudiArabia from "./pages/locations/saudi-arabia/AIMarketingAutomationSaudiArabia";
+import EcommerceSEOSaudiArabia from "./pages/locations/saudi-arabia/EcommerceSEOSaudiArabia";
+
 
 // Admin Pages
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -258,10 +262,9 @@ function App() {
           <Route path="/saudi-arabia/orm-services/" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
           <Route path="/saudi-arabia/reputation-management" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
           <Route path="/saudi-arabia/reputation-management/" element={<Navigate to="/saudi-arabia/online-reputation-management/" replace />} />
+          {/* Page 1: E-commerce SEO Services */}
           <Route path="/saudi-arabia/ecommerce-seo-services" element={<SaudiEcommerceSEO />} />
           <Route path="/saudi-arabia/ecommerce-seo-services/" element={<SaudiEcommerceSEO />} />
-          <Route path="/saudi-arabia/ecommerce-seo" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
-          <Route path="/saudi-arabia/ecommerce-seo/" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
           <Route path="/saudi-arabia/ecommerce-seo-service" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
           <Route path="/saudi-arabia/ecommerce-seo-service/" element={<Navigate to="/saudi-arabia/ecommerce-seo-services/" replace />} />
           <Route path="/saudi-arabia/local-seo-services" element={<SaudiLocalSEO />} />
@@ -280,7 +283,14 @@ function App() {
           <Route path="/saudi-arabia/app-development/" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
           <Route path="/saudi-arabia/mobile-app-development-services" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
           <Route path="/saudi-arabia/mobile-app-development-services/" element={<Navigate to="/saudi-arabia/mobile-app-development/" replace />} />
-
+          <Route path="/saudi-arabia/video-marketing-agency" element={<SaudiVideoMarketingAgency />} />
+          <Route path="/saudi-arabia/video-marketing-agency/" element={<SaudiVideoMarketingAgency />} />
+          <Route path="/saudi-arabia/video-marketing" element={<Navigate to="/saudi-arabia/video-marketing-agency/" replace />} />
+          <Route path="/saudi-arabia/video-marketing/" element={<Navigate to="/saudi-arabia/video-marketing-agency/" replace />} />
+          <Route path="/saudi-arabia/ai-marketing-automation" element={<AIMarketingAutomationSaudiArabia />} />
+          <Route path="/saudi-arabia/ai-marketing-automation/" element={<AIMarketingAutomationSaudiArabia />} />
+          <Route path="/saudi-arabia/ecommerce-seo" element={<EcommerceSEOSaudiArabia />} />
+          <Route path="/saudi-arabia/ecommerce-seo/" element={<EcommerceSEOSaudiArabia />} />
           <Route path="/qatar" element={<Navigate to="/qatar/seo-services" replace />} />
           <Route path="/qatar/seo-services" element={<QatarSEOServices />} />
 
