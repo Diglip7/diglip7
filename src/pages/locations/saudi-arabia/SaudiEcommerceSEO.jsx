@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
+import keywordResearchImg from "../../../images/e-commerce keyword research.webp";
+import productWorkflowImg from "../../../images/product-page-seo.webp";
+import technicalAuditImg from "../../../images/arabic-seo-services.webp";
+import bilingualContentImg from "../../../images/technical-seo-page.webp";
+import auditImg from "../../../images/transparent-seo.webp";
+import productImg from "../../../images/e-commerce-fashion.webp";
 import {
   ShoppingBag,
   ShoppingCart,
@@ -42,18 +48,35 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaShopify, FaWordpress } from "react-icons/fa";
 
-// Image Paths - Image files removed per requirement; image section containers preserved
-const heroImgSrc = " ecommerce-seo-services-saudi-arabia.webp";
-const keywordResearchImgSrc = "ecommerce-keyword-research-analysis.webp";
-const productWorkflowImgSrc = "product-page-optimization-workflow.webp";
-const technicalAuditImgSrc = "ecommerce-technical-seo-audit.webp";
-const bilingualContentImgSrc = "arabic-english-ecommerce-content-planning.webp";
-const auditImgSrc = "";
-const productImgSrc = "";
+// Image Paths - Set image paths here (e.g. imported asset URLs or "/images/your-image.webp")
+const heroImgSrc = "/images/e-commerce-seo-dubai.webp";
+const heroImgFallback = "/images/e-commerce-seo-dubai.webp";
 
-// Image Section Container Component (Preserves layout, dimensions & styling without loading external images)
+const keywordResearchImgSrc = keywordResearchImg;
+const keywordResearchImgFallback = "/images/e-commerce keyword research.webp";
+
+const productWorkflowImgSrc = productWorkflowImg;
+const productWorkflowImgFallback = "/images/product-page-seo.webp";
+
+
+const bilingualContentImgSrc = bilingualContentImg;
+const bilingualContentImgFallback = "/images/technical-seo-page.webp";
+
+const technicalAuditImgSrc = technicalAuditImg;
+const technicalAuditImgFallback = "/images/arabic-seo-services.webp";
+
+
+
+const auditImgSrc = auditImg;
+const auditImgFallback = "/images/transparent-seo.webp";
+
+const productImgSrc = productImg;
+const productImgFallback = "/images/e-commerce-seo-dubai.webp";
+
+// Image Section Component: Renders real <img> when src is present, with fallback placeholder
 const EcommerceImageSlot = ({
   src = "",
+  fallbackSrc = "",
   alt = "",
   width = 1200,
   height = 675,
@@ -62,32 +85,76 @@ const EcommerceImageSlot = ({
   priority = false,
   fallbackIcon = ShoppingBag,
   badgeText = "",
+  objectFit = "object-cover",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const Icon = fallbackIcon;
+
+  // React to prop changes (e.g. hot reload or dynamic updates)
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setFailed(false);
+    setLoaded(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setFailed(true);
+    }
+  };
+
+  const hasImage = Boolean(currentSrc) && !failed;
 
   return (
     <div
       className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/60 border border-emerald-200/90 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-emerald-50/40 to-teal-50/50 border-2 border-dashed border-emerald-300/80 rounded-2xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial from-emerald-100/30 to-transparent pointer-events-none" />
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
-          <Icon className="w-8 h-8" />
-        </div>
-        <div className="space-y-1.5 max-w-sm relative z-10">
-          <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
-            {alt}
-          </span>
-          {badgeText && (
-            <span className="inline-block px-3 py-1 rounded-full bg-emerald-100/90 text-emerald-800 text-xs font-semibold border border-emerald-200">
-              {badgeText}
-            </span>
+      {hasImage ? (
+        <>
+          <img
+            src={currentSrc}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={handleError}
+            className={`w-full h-full ${objectFit} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"
+              }`}
+          />
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-slate-100/60 backdrop-blur-xs">
+              <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+            </div>
           )}
-          <span className="text-[11px] text-slate-500 block pt-1 font-medium">
-            Image Section &bull; Ready for Media
-          </span>
+        </>
+      ) : (
+        <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-emerald-50/40 to-teal-50/50 border-2 border-dashed border-emerald-300/80 rounded-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial from-emerald-100/30 to-transparent pointer-events-none" />
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
+            <Icon className="w-8 h-8" />
+          </div>
+          <div className="space-y-1.5 max-w-sm relative z-10">
+            <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
+              {alt}
+            </span>
+            {badgeText && (
+              <span className="inline-block px-3 py-1 rounded-full bg-emerald-100/90 text-emerald-800 text-xs font-semibold border border-emerald-200">
+                {badgeText}
+              </span>
+            )}
+            <span className="text-[11px] text-slate-500 block pt-1 font-medium">
+              Image Section &bull; Ready for Media
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -484,7 +551,7 @@ const SaudiEcommerceSEO = () => {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: "https://diglip7.com/images/ecommerce-seo-services-saudi-arabia.webp",
+          url: "https://diglip7.com/images/e-commerce-seo-dubai.webp",
           caption:
             "E-commerce SEO strategy and product page optimization for online stores in Saudi Arabia",
         },
@@ -576,12 +643,12 @@ const SaudiEcommerceSEO = () => {
         ogTitle="E-commerce SEO Services in Saudi Arabia | DigLip7"
         ogDescription="Product page, category page, and technical SEO for online stores, from DigLip7."
         ogUrl={pageUrl}
-        ogImage="https://diglip7.com/images/ecommerce-seo-services-saudi-arabia.webp"
+        ogImage="https://diglip7.com/images/e-commerce-seo-dubai.webp"
         ogImageAlt="E-commerce SEO strategy and product page optimization for online stores in Saudi Arabia"
         twitterCard="summary_large_image"
         twitterTitle="E-commerce SEO Services in Saudi Arabia | DigLip7"
         twitterDescription="Product page, category page, and technical SEO for online stores, from DigLip7."
-        twitterImage="https://diglip7.com/images/ecommerce-seo-services-saudi-arabia.webp"
+        twitterImage="https://diglip7.com/images/e-commerce-seo-dubai.webp"
         twitterImageAlt="E-commerce SEO strategy and product page optimization for online stores in Saudi Arabia"
         schema={structuredData}
       />
@@ -695,6 +762,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <EcommerceImageSlot
                     src={heroImgSrc}
+                    fallbackSrc={heroImgFallback}
                     alt="E-commerce SEO strategy and product page optimization for online stores in Saudi Arabia"
                     width={1200}
                     height={675}
@@ -953,6 +1021,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="lg:col-span-5">
                   <EcommerceImageSlot
                     src={keywordResearchImgSrc}
+                    fallbackSrc={keywordResearchImgFallback}
                     alt="E-commerce keyword research and organic search performance analysis"
                     aspect="aspect-[16/10]"
                     fallbackIcon={Search}
@@ -968,6 +1037,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="lg:col-span-5 order-2 lg:order-1">
                   <EcommerceImageSlot
                     src={productWorkflowImgSrc}
+                    fallbackSrc={productWorkflowImgFallback}
                     alt="Product page optimization workflow for an online store"
                     aspect="aspect-[16/10]"
                     fallbackIcon={Tag}
@@ -1027,6 +1097,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="lg:col-span-5">
                   <EcommerceImageSlot
                     src={technicalAuditImgSrc}
+                    fallbackSrc={technicalAuditImgFallback}
                     alt="Technical SEO audit for a large e-commerce website"
                     aspect="aspect-[16/10]"
                     fallbackIcon={Code2}
@@ -1042,6 +1113,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="lg:col-span-5 order-2 lg:order-1">
                   <EcommerceImageSlot
                     src={bilingualContentImgSrc}
+                    fallbackSrc={bilingualContentImgFallback}
                     alt="Bilingual e-commerce content planning for a Saudi Arabian audience"
                     aspect="aspect-[16/10]"
                     fallbackIcon={Languages}
@@ -1184,8 +1256,9 @@ const SaudiEcommerceSEO = () => {
               <div className="lg:col-span-6">
                 <EcommerceImageSlot
                   src={auditImgSrc}
+                  fallbackSrc={auditImgFallback}
                   alt="Technical SEO audit and crawl diagnostic report for e-commerce website"
-                  aspect="aspect-[16/10]"
+                  aspect="aspect-[16/9]"
                   fallbackIcon={Code2}
                   badgeText="Audit & Diagnostics"
                 />
@@ -1220,11 +1293,10 @@ const SaudiEcommerceSEO = () => {
                 <button
                   key={sector.id}
                   onClick={() => setSelectedSector(sector.id)}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                    isSelected
-                      ? "bg-emerald-700 text-white shadow-sm"
-                      : "bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer ${isSelected
+                    ? "bg-emerald-700 text-white shadow-sm"
+                    : "bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100"
+                    }`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{sector.name}</span>
@@ -1279,6 +1351,7 @@ const SaudiEcommerceSEO = () => {
                 <div className="lg:col-span-5">
                   <EcommerceImageSlot
                     src={productImgSrc}
+                    fallbackSrc={productImgFallback}
                     alt={`E-commerce product optimization approach for ${currentSector.name} in Saudi Arabia`}
                     aspect="aspect-[4/3]"
                     fallbackIcon={currentSector.icon}
@@ -1638,9 +1711,8 @@ const SaudiEcommerceSEO = () => {
                         {index + 1}. {faq.q}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
-                          isOpen ? "rotate-180 text-emerald-600" : ""
-                        }`}
+                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-emerald-600" : ""
+                          }`}
                       />
                     </button>
                     <AnimatePresence>

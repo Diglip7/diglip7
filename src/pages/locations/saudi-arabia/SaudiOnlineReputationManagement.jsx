@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
+import transparentSeoImg from "../../../images/transparent-seo.webp";
+import transparentWorkflowImg from "../../../images/transparent-workflow.webp";
+import clinicsMedicalImg from "../../../images/clinics-medical.webp";
 import {
   ShieldCheck,
   ShieldAlert,
@@ -43,15 +46,22 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaGoogle } from "react-icons/fa";
 
-// Image Paths - Image files removed per requirement; image section containers preserved
-const heroImgSrc = "";
-const auditImgSrc = "";
-const responseImgSrc = "";
+// Image Paths - Connected for sequence view
+const heroImgSrc = transparentSeoImg;
+const heroImgFallback = "/images/transparent-seo.webp";
+
+const auditImgSrc = transparentWorkflowImg;
+const auditImgFallback = "/images/transparent-workflow.webp";
+
+const responseImgSrc = clinicsMedicalImg;
+const responseImgFallback = "/images/clinics-medical.webp";
+
 const reportingImgSrc = "";
 
-// Clean Image Section Container Component (Preserves layout, dimensions & styling without loading external images)
+// Image Section Component: Renders real <img> when src is present, with fallback placeholder
 const ORMImageSlot = ({
   src = "",
+  fallbackSrc = "",
   alt = "",
   width = 1200,
   height = 675,
@@ -60,32 +70,77 @@ const ORMImageSlot = ({
   priority = false,
   fallbackIcon = ShieldCheck,
   badgeText = "",
+  objectFit = "object-cover",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const Icon = fallbackIcon;
+
+  // React to prop changes (e.g. dynamic sector switching or hot reload)
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setFailed(false);
+    setLoaded(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setFailed(true);
+    }
+  };
+
+  const hasImage = Boolean(currentSrc) && !failed;
 
   return (
     <div
       className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50/70 via-white to-indigo-50/60 border border-teal-200/90 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-teal-50/40 to-indigo-50/40 border-2 border-dashed border-teal-300/80 rounded-2xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial from-teal-100/30 to-transparent pointer-events-none" />
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 text-white flex items-center justify-center shadow-lg relative z-10">
-          <Icon className="w-8 h-8" />
-        </div>
-        <div className="space-y-1.5 max-w-sm relative z-10">
-          <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
-            {alt}
-          </span>
-          {badgeText && (
-            <span className="inline-block px-3 py-1 rounded-full bg-teal-100/90 text-teal-800 text-xs font-semibold border border-teal-200">
-              {badgeText}
-            </span>
+      {hasImage ? (
+        <>
+          <img
+            src={currentSrc}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={handleError}
+            className={`w-full h-full ${objectFit} transition-opacity duration-300 ${
+              loaded ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-slate-100/60 backdrop-blur-xs">
+              <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
+            </div>
           )}
-          <span className="text-[11px] text-slate-500 block pt-1 font-medium">
-            Image Section &bull; Ready for Media
-          </span>
+        </>
+      ) : (
+        <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-teal-50/40 to-indigo-50/40 border-2 border-dashed border-teal-300/80 rounded-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial from-teal-100/30 to-transparent pointer-events-none" />
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 text-white flex items-center justify-center shadow-lg relative z-10">
+            <Icon className="w-8 h-8" />
+          </div>
+          <div className="space-y-1.5 max-w-sm relative z-10">
+            <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
+              {alt}
+            </span>
+            {badgeText && (
+              <span className="inline-block px-3 py-1 rounded-full bg-teal-100/90 text-teal-800 text-xs font-semibold border border-teal-200">
+                {badgeText}
+              </span>
+            )}
+            <span className="text-[11px] text-slate-500 block pt-1 font-medium">
+              Image Section &bull; Ready for Media
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -507,7 +562,7 @@ const SaudiOnlineReputationManagement = () => {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: "https://diglip7.com/images/orm.png",
+          url: "https://diglip7.com/images/transparent-workflow.webp",
           caption:
             "Online reputation management and customer review monitoring for businesses in Saudi Arabia",
         },
@@ -599,12 +654,12 @@ const SaudiOnlineReputationManagement = () => {
         ogTitle="Online Reputation Management Saudi Arabia | DigLip7"
         ogDescription="Monitor reviews, manage feedback, and strengthen customer trust with DigLip7."
         ogUrl={pageUrl}
-        ogImage="https://diglip7.com/images/orm.png"
+        ogImage="https://diglip7.com/images/transparent-workflow.webp"
         ogImageAlt="Online reputation management and customer review monitoring for businesses in Saudi Arabia"
         twitterCard="summary_large_image"
         twitterTitle="Online Reputation Management Saudi Arabia | DigLip7"
         twitterDescription="Monitor reviews, manage feedback, and strengthen customer trust with DigLip7."
-        twitterImage="https://diglip7.com/images/orm.png"
+        twitterImage="https://diglip7.com/images/transparent-workflow.webp"
         twitterImageAlt="Online reputation management and customer review monitoring for businesses in Saudi Arabia"
         schema={structuredData}
       />
@@ -722,6 +777,7 @@ const SaudiOnlineReputationManagement = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <ORMImageSlot
                     src={heroImgSrc}
+                    fallbackSrc={heroImgFallback}
                     alt="Online reputation management and customer review monitoring for businesses in Saudi Arabia"
                     width={1200}
                     height={675}
@@ -1068,10 +1124,11 @@ const SaudiOnlineReputationManagement = () => {
               <div className="lg:col-span-6">
                 <ORMImageSlot
                   src={auditImgSrc}
+                  fallbackSrc={auditImgFallback}
                   alt="Six-step online reputation management audit and workflow process in Saudi Arabia"
-                  aspect="aspect-[16/10]"
+                  aspect="aspect-[16/9]"
                   fallbackIcon={RefreshCw}
-                  badgeText="Process & Audit Phase"
+                  badgeText="Workflow & Process"
                 />
               </div>
             </div>
@@ -1261,8 +1318,9 @@ const SaudiOnlineReputationManagement = () => {
                 <div className="lg:col-span-5">
                   <ORMImageSlot
                     src={responseImgSrc}
+                    fallbackSrc={responseImgFallback}
                     alt={`Reputation management strategy for ${currentIndustry.name} in Saudi Arabia`}
-                    aspect="aspect-[4/3]"
+                    aspect="aspect-[16/10] lg:aspect-[16/9]"
                     fallbackIcon={currentIndustry.icon}
                     badgeText={currentIndustry.name}
                   />

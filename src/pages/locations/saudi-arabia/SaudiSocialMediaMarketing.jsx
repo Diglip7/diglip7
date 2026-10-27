@@ -50,45 +50,62 @@ import {
   FaFacebookF,
 } from "react-icons/fa";
 
-// Image Paths - Set to empty string so Image Section containers are shown cleanly without displaying actual image files
-const heroImgSrc = "";
+// Imported Media Assets
+import heroImgSrc from "../../../images/social-media-marketing.webp";
+import platformImg from "../../../images/right-social-media.webp";
+import processImg from "../../../images/six-scoial-media.webp";
+import bilingualImg from "../../../images/planning-saudi.webp";
+
+// Core service placeholders (or ready for future service-specific visuals)
 const strategyImg = "";
 const managementImg = "";
 const contentCreationImg = "";
 const adsCampaignsImg = "";
 const communityImg = "";
 const analyticsImg = "";
-const platformImg = "";
-const processImg = "";
-const bilingualImg = "";
 
-// Clean Fallback Image Container Component (Displays styled placeholder with icon, badge & alt text)
+// Clean Fallback Image Container Component (Displays image with graceful fallback handling)
 const SocialImageSlot = ({
   src = "",
+  fallbackSrc = "",
   alt = "",
-  width = 800,
-  height = 600,
-  aspect = "aspect-[4/3]",
+  width = 1200,
+  height = 675,
+  aspect = "aspect-[16/9]",
   className = "",
   priority = false,
   fallbackIcon = Share2,
   badgeText = "",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const Icon = fallbackIcon;
+
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setHasError(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setHasError(true);
+    }
+  };
 
   return (
     <div
       className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-pink-50/50 via-white to-purple-50/40 border border-purple-200/80 shadow-xs flex items-center justify-center ${aspect} ${className}`}
     >
-      {src && !hasError ? (
+      {currentSrc && !hasError ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
-          onError={() => setHasError(true)}
+          onError={handleError}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       ) : (
@@ -800,12 +817,12 @@ const SaudiSocialMediaMarketing = () => {
         ogTitle="Social Media Marketing Saudi Arabia | DigLip7"
         ogDescription="Content planning, account management, advertising, and reporting for businesses in Saudi Arabia."
         ogUrl={pageUrl}
-        ogImage="https://diglip7.com/images/smm-saudi.jpg"
+        ogImage="https://diglip7.com/images/social-media-marketing.webp"
         ogImageAlt="Social media marketing strategy planning for businesses in Saudi Arabia"
         twitterCard="summary_large_image"
         twitterTitle="Social Media Marketing Saudi Arabia | DigLip7"
         twitterDescription="Content planning, account management, advertising, and reporting for businesses in Saudi Arabia."
-        twitterImage="https://diglip7.com/images/smm-saudi.jpg"
+        twitterImage="https://diglip7.com/images/social-media-marketing.webp"
         twitterImageAlt="Social media marketing strategy planning for businesses in Saudi Arabia"
         schema={structuredData}
       />
@@ -927,14 +944,15 @@ const SaudiSocialMediaMarketing = () => {
               </div>
             </div>
 
-            {/* Right Column: Clean Simple Image Section Div (No extra mockup clutter!) */}
+            {/* Right Column: Hero Visual Container */}
             <div className="lg:col-span-5 flex justify-center items-center">
               <div className="w-full max-w-lg">
-                <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
                   <SocialImageSlot
                     src={heroImgSrc}
+                    fallbackSrc="/images/social-media-marketing.webp"
                     alt="Social media marketing strategy planning for businesses in Saudi Arabia"
-                    aspect="aspect-[4/3]"
+                    aspect="aspect-[16/10]"
                     priority={true}
                     fallbackIcon={Share2}
                     badgeText="Social Media Strategy Hub"
@@ -1062,17 +1080,6 @@ const SaudiSocialMediaMarketing = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
-
-                  {/* Clean Image Section Container (without actual raw image file) */}
-                  <div className="mt-6 pt-4 border-t border-gray-100">
-                    <SocialImageSlot
-                      src={service.imgSrc}
-                      alt={service.imgAlt}
-                      aspect="aspect-[16/9]"
-                      fallbackIcon={Icon}
-                      badgeText={service.badge}
-                    />
                   </div>
                 </div>
               );
@@ -1252,7 +1259,7 @@ const SaudiSocialMediaMarketing = () => {
           </div>
 
           {/* Platform Strategy Image Container */}
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-5xl mx-auto space-y-6">
             <div className="p-6 rounded-2xl bg-white border border-purple-200 text-center space-y-3 shadow-xs">
               <span className="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">
                 Bilingual Content Relevance
@@ -1262,13 +1269,16 @@ const SaudiSocialMediaMarketing = () => {
               </p>
             </div>
 
-            <SocialImageSlot
-              src={platformImg}
-              alt="Social media platform selection matrix for Saudi Arabia covering Instagram, LinkedIn, TikTok and YouTube"
-              aspect="aspect-[21/9]"
-              fallbackIcon={Layers}
-              badgeText="Platform Strategy Framework"
-            />
+            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+              <SocialImageSlot
+                src={platformImg}
+                fallbackSrc="/images/right-social-media.webp"
+                alt="Social media platform selection matrix for Saudi Arabia covering Instagram, LinkedIn, TikTok and YouTube"
+                aspect="aspect-[16/9]"
+                fallbackIcon={Layers}
+                badgeText="Platform Strategy Framework"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -1322,14 +1332,17 @@ const SaudiSocialMediaMarketing = () => {
           </div>
 
           {/* Process Workflow Image Container */}
-          <div className="max-w-4xl mx-auto">
-            <SocialImageSlot
-              src={processImg}
-              alt="Six-step social media marketing workflow from audit and research to publishing and reporting"
-              aspect="aspect-[21/9]"
-              fallbackIcon={Repeat}
-              badgeText="Process Workflow Container"
-            />
+          <div className="max-w-5xl mx-auto">
+            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+              <SocialImageSlot
+                src={processImg}
+                fallbackSrc="/images/six-scoial-media.webp"
+                alt="Six-step social media marketing workflow from audit and research to publishing and reporting"
+                aspect="aspect-[16/9]"
+                fallbackIcon={Repeat}
+                badgeText="Process Workflow Container"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -1388,14 +1401,15 @@ const SaudiSocialMediaMarketing = () => {
               </div>
             </div>
 
-            {/* Right Column: Clean Simple Image Section Div (No extra mockups or toggle buttons!) */}
+            {/* Right Column: Bilingual Visual Container */}
             <div className="lg:col-span-5 flex justify-center items-center">
               <div className="w-full max-w-lg">
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <SocialImageSlot
                     src={bilingualImg}
+                    fallbackSrc="/images/planning-saudi.webp"
                     alt="Arabic and English social media creative planning for a Saudi business"
-                    aspect="aspect-[4/3]"
+                    aspect="aspect-[16/10] sm:aspect-[16/9]"
                     fallbackIcon={Languages}
                     badgeText="Arabic & English Consistency"
                   />

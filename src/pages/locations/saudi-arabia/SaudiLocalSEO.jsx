@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
+import localSeoSaudiServicesImg from "../../../images/local-seo-saudi-services.webp";
+import gbpImg from "../../../images/google-bussiness-profile.webp";
+import citationImg from "../../../images/citation-management.webp";
+import reviewImg from "../../../images/review-management.webp";
+import multiLocationImg from "../../../images/local-seo-reporting-dubai copy.webp";
 import {
   MapPin,
   Search,
@@ -41,23 +46,23 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaGoogle } from "react-icons/fa";
 
-// Image Paths - Image files removed per requirement; image section containers preserved
-const heroImgSrc = "";
-const heroImgFallback = "";
+// Image Paths - Set image paths here (e.g. "/images/your-image.webp" or imported asset URLs)
+const heroImgSrc = localSeoSaudiServicesImg;
+const heroImgFallback = "/images/local-seo-saudi-services.webp";
 
-const gbpImgSrc = "";
-const gbpImgFallback = "";
+const gbpImgSrc = gbpImg;
+const gbpImgFallback = "/images/google-bussiness-profile.webp";
 
-const citationImgSrc = "";
-const citationImgFallback = "";
+const citationImgSrc = citationImg;
+const citationImgFallback = "/images/citation-management.webp";
 
-const multiLocationImgSrc = "";
-const multiLocationImgFallback = "";
+const multiLocationImgSrc = multiLocationImg;
+const multiLocationImgFallback = "/images/local-seo-reporting-dubai copy.webp";
 
-const reviewImgSrc = "";
-const reviewImgFallback = "";
+const reviewImgSrc = reviewImg;
+const reviewImgFallback = "/images/review-management.webp";
 
-// Image Section Container Component (Preserves layout, dimensions & styling without loading external images)
+// Image Section Component: Renders real <img> when src is present, with fallback placeholder
 const LocalSEOImageSlot = ({
   src = "",
   fallbackSrc = "",
@@ -69,32 +74,76 @@ const LocalSEOImageSlot = ({
   priority = false,
   fallbackIcon = MapPin,
   badgeText = "",
+  objectFit = "object-cover",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const Icon = fallbackIcon;
+
+  // React to prop changes (e.g. hot reload or dynamic updates)
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setFailed(false);
+    setLoaded(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setFailed(true);
+    }
+  };
+
+  const hasImage = Boolean(currentSrc) && !failed;
 
   return (
     <div
       className={`relative w-full rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-50/70 via-slate-50 to-teal-50/60 border border-emerald-200/90 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-emerald-50/40 to-teal-50/50 border-2 border-dashed border-emerald-300/80 rounded-3xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-radial from-emerald-100/30 to-transparent pointer-events-none" />
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
-          <Icon className="w-8 h-8" />
-        </div>
-        <div className="space-y-1.5 max-w-sm relative z-10">
-          <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
-            {alt}
-          </span>
-          {badgeText && (
-            <span className="inline-block px-3 py-1 rounded-full bg-emerald-100/90 text-emerald-800 text-xs font-semibold border border-emerald-200">
-              {badgeText}
-            </span>
+      {hasImage ? (
+        <>
+          <img
+            src={currentSrc}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={handleError}
+            className={`w-full h-full ${objectFit} transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"
+              }`}
+          />
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-slate-100/60 backdrop-blur-xs">
+              <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+            </div>
           )}
-          <span className="text-[11px] text-slate-500 block pt-1 font-medium">
-            Image Section &bull; Ready for Media
-          </span>
+        </>
+      ) : (
+        <div className="p-6 sm:p-8 text-center text-sm font-medium text-slate-800 select-none flex flex-col items-center justify-center gap-3.5 w-full h-full bg-gradient-to-b from-white/95 via-emerald-50/40 to-teal-50/50 border-2 border-dashed border-emerald-300/80 rounded-3xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-radial from-emerald-100/30 to-transparent pointer-events-none" />
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
+            <Icon className="w-8 h-8" />
+          </div>
+          <div className="space-y-1.5 max-w-sm relative z-10">
+            <span className="block leading-snug text-xs sm:text-sm font-bold text-slate-900">
+              {alt}
+            </span>
+            {badgeText && (
+              <span className="inline-block px-3 py-1 rounded-full bg-emerald-100/90 text-emerald-800 text-xs font-semibold border border-emerald-200">
+                {badgeText}
+              </span>
+            )}
+            <span className="text-[11px] text-slate-500 block pt-1 font-medium">
+              Image Section &bull; Ready for Media
+            </span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -1171,11 +1220,10 @@ const SaudiLocalSEO = () => {
                 <button
                   key={sector.id}
                   onClick={() => setSelectedSector(sector.id)}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer ${
-                    isSelected
-                      ? "bg-emerald-700 text-white shadow-sm"
-                      : "bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer ${isSelected
+                    ? "bg-emerald-700 text-white shadow-sm"
+                    : "bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100"
+                    }`}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{sector.name}</span>
@@ -1624,9 +1672,8 @@ const SaudiLocalSEO = () => {
                         {index + 1}. {faq.q}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
-                          isOpen ? "rotate-180 text-emerald-600" : ""
-                        }`}
+                        className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-emerald-600" : ""
+                          }`}
                       />
                     </button>
                     <AnimatePresence>

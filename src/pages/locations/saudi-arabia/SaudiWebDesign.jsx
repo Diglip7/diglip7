@@ -907,7 +907,7 @@ const SaudiWebDesign = () => {
               return (
                 <div
                   key={service.id}
-                  className="rounded-3xl bg-white border border-gray-200 p-6 sm:p-7 flex flex-col justify-between hover:border-purple-300 transition-all hover:shadow-lg group"
+                  className="rounded-3xl bg-white border border-gray-200 p-6 sm:p-7 hover:border-purple-300 transition-all hover:shadow-lg group"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -926,18 +926,6 @@ const SaudiWebDesign = () => {
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {service.desc}
                     </p>
-                  </div>
-
-                  {/* Clean Visual Preview Slot (Ready for Image Container) */}
-                  <div className="mt-6 pt-4 border-t border-gray-100">
-                    <WebImageSlot
-                      src=""
-                      alt={service.title}
-                      aspect="aspect-[16/9]"
-                      fallbackIcon={Icon}
-                      badgeText={service.title}
-                      className="rounded-xl"
-                    />
                   </div>
                 </div>
               );

@@ -24,6 +24,18 @@ try {
     }
 
     const filesToSync = [
+      'e-commerce keyword research.webp',
+      'product-page-seo.webp',
+      'technical-seo-page.webp',
+      'arabic-seo-services.webp',
+      'transparent-seo.webp',
+      'e-commerce-fashion.webp',
+      'local-seo-saudi-services.webp',
+      'google-bussiness-profile.webp',
+      'citation-management.webp',
+      'review-management.webp',
+      'local-seo-reporting-dubai copy.webp',
+      'ai-marketing-analytics-dashboard.webp',
       'travel-agency-seo-dubai-diglip7.webp',
       'travel-agency-seo-dubai-diglip7 copy.webp',
       'travel-website-search-visibility-dubai.webp',
@@ -42,6 +54,17 @@ try {
         fs.copyFileSync(s, d)
       }
     }
+
+    try {
+      const allSrcFiles = fs.readdirSync(srcImagesDir)
+      for (const file of allSrcFiles) {
+        const s = path.join(srcImagesDir, file)
+        const d = path.join(pubImagesDir, file)
+        if (fs.statSync(s).isFile() && !fs.existsSync(d)) {
+          fs.copyFileSync(s, d)
+        }
+      }
+    } catch { }
   }
 } catch (e) {
   console.warn('Sync images error:', e)

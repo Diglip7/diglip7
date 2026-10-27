@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
+import aiMarketingAnalyticsDashboardImg from "../../../images/ai-marketing-analytics-dashboard.webp";
 import {
   ArrowRight,
   ChevronRight,
@@ -311,7 +312,7 @@ export default function AIMarketingAutomationSaudiArabia() {
       linkText: "paid advertising campaigns",
       linkTo: "/saudi-arabia/ppc-services/",
       image: {
-        src: "/images/ai-marketing-analytics-dashboard.webp",
+        src: aiMarketingAnalyticsDashboardImg || "/images/ai-marketing-analytics-dashboard.webp",
         alt: "Marketing team reviewing campaign performance and lead engagement data",
       },
     },

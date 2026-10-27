@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
+import heroImgSrc from "../../../images/content-marketing-seo.webp";
+import processImg from "../../../images/marketing-process.webp";
+import bilingualImg from "../../../images/localized-content-marketing.webp";
+import performanceImg from "../../../images/marketing-performance.webp";
 import {
   FileText,
   PenTool,
@@ -42,48 +46,59 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-// Image Paths - Set to empty string so Image Section containers are shown cleanly without displaying raw files
-const heroImgSrc = "";
+// Optional secondary image placeholders
 const strategyImg = "";
 const seoWritingImg = "";
 const blogArticleImg = "";
 const webCopyImg = "";
-const bilingualImg = "";
 const b2bContentImg = "";
 const ecommerceContentImg = "";
 const socialPlanningImg = "";
 const caseStudyImg = "";
 const refreshImg = "";
-const processImg = "";
-const performanceImg = "";
 
-// Clean Fallback Image Container Component (Displays styled placeholder with icon, badge & alt text)
+// Clean Fallback & Image Container Component
 const ContentImageSlot = ({
   src = "",
+  fallbackSrc = "",
   alt = "",
-  width = 800,
-  height = 600,
-  aspect = "aspect-[4/3]",
+  width = 1200,
+  height = 675,
+  aspect = "aspect-[16/9]",
   className = "",
   priority = false,
   fallbackIcon = FileText,
   badgeText = "",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const Icon = fallbackIcon;
 
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setHasError(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setHasError(true);
+    }
+  };
+
   return (
     <div
-      className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-50/50 via-white to-pink-50/40 border border-purple-200/80 shadow-xs flex items-center justify-center ${aspect} ${className}`}
+      className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-50/50 via-white to-pink-50/40 border border-purple-200/80 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      {src && !hasError ? (
+      {currentSrc && !hasError ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
-          onError={() => setHasError(true)}
+          onError={handleError}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       ) : (
@@ -887,8 +902,9 @@ const SaudiContentMarketing = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <ContentImageSlot
                     src={heroImgSrc}
+                    fallbackSrc="/images/content-marketing-seo.webp"
                     alt="Content marketing strategy and SEO content planning for businesses in Saudi Arabia"
-                    aspect="aspect-[4/3]"
+                    aspect="aspect-[16/10]"
                     priority={true}
                     fallbackIcon={FileText}
                     badgeText="Content Strategy & Planning"
@@ -1009,17 +1025,6 @@ const SaudiContentMarketing = () => {
                       ))}
                     </div>
                   </div>
-
-                  {/* Clean Image Section Container (without raw file, as required) */}
-                  <div className="mt-6 pt-4 border-t border-gray-100">
-                    <ContentImageSlot
-                      src={service.imgSrc}
-                      alt={service.imgAlt}
-                      aspect="aspect-[16/9]"
-                      fallbackIcon={Icon}
-                      badgeText={service.badge}
-                    />
-                  </div>
                 </div>
               );
             })}
@@ -1076,14 +1081,17 @@ const SaudiContentMarketing = () => {
           </div>
 
           {/* Process Workflow Image Container */}
-          <div className="max-w-4xl mx-auto">
-            <ContentImageSlot
-              src={processImg}
-              alt="Content workflow from research and drafting to review, publishing, and optimization"
-              aspect="aspect-[21/9]"
-              fallbackIcon={Repeat}
-              badgeText="Process Workflow Container"
-            />
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+              <ContentImageSlot
+                src={processImg}
+                fallbackSrc="/images/marketing-process.webp"
+                alt="Content workflow from research and drafting to review, publishing, and optimization"
+                aspect="aspect-[16/9]"
+                fallbackIcon={Repeat}
+                badgeText="Process Workflow Container"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -1113,17 +1121,15 @@ const SaudiContentMarketing = () => {
                   <button
                     key={idx}
                     onClick={() => setSelectedIndustry(idx)}
-                    className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
-                      isSelected
-                        ? "bg-purple-600 text-white border-purple-600 shadow-md translate-x-1"
-                        : "bg-white border-gray-200 text-slate-700 hover:bg-purple-50/50 hover:border-purple-200"
-                    }`}
+                    className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${isSelected
+                      ? "bg-purple-600 text-white border-purple-600 shadow-md translate-x-1"
+                      : "bg-white border-gray-200 text-slate-700 hover:bg-purple-50/50 hover:border-purple-200"
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                          isSelected ? "bg-white/20 text-white" : "bg-purple-100 text-purple-700"
-                        }`}
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${isSelected ? "bg-white/20 text-white" : "bg-purple-100 text-purple-700"
+                          }`}
                       >
                         <Icon className="w-4 h-4" />
                       </div>
@@ -1132,18 +1138,16 @@ const SaudiContentMarketing = () => {
                           {ind.title}
                         </span>
                         <span
-                          className={`text-[11px] block ${
-                            isSelected ? "text-purple-100" : "text-slate-500"
-                          }`}
+                          className={`text-[11px] block ${isSelected ? "text-purple-100" : "text-slate-500"
+                            }`}
                         >
                           {ind.tagline}
                         </span>
                       </div>
                     </div>
                     <ChevronRight
-                      className={`w-4 h-4 shrink-0 transition-transform ${
-                        isSelected ? "text-white translate-x-1" : "text-gray-400"
-                      }`}
+                      className={`w-4 h-4 shrink-0 transition-transform ${isSelected ? "text-white translate-x-1" : "text-gray-400"
+                        }`}
                     />
                   </button>
                 );
@@ -1268,10 +1272,11 @@ const SaudiContentMarketing = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <ContentImageSlot
                     src={bilingualImg}
-                    alt="Arabic and English content planning workflow on a shared document"
-                    aspect="aspect-[4/3]"
+                    fallbackSrc="/images/localized-content-marketing.webp"
+                    alt="Localized content marketing architecture covering Riyadh, Jeddah, Dammam, and bilingual Arabic and English strategy"
+                    aspect="aspect-[16/10]"
                     fallbackIcon={Languages}
-                    badgeText="Arabic & English Workflow"
+                    badgeText="Saudi Localization Strategy"
                   />
                 </div>
               </div>
@@ -1361,14 +1366,17 @@ const SaudiContentMarketing = () => {
           </div>
 
           {/* Measurement Image Container & Analytical Honesty Note */}
-          <div className="max-w-4xl mx-auto space-y-6">
-            <ContentImageSlot
-              src={performanceImg}
-              alt="Marketer reviewing a content performance report on a laptop"
-              aspect="aspect-[21/9]"
-              fallbackIcon={BarChart3}
-              badgeText="Performance & Analytics Reporting"
-            />
+          <div className="max-w-5xl mx-auto space-y-6">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+              <ContentImageSlot
+                src={performanceImg}
+                fallbackSrc="/images/marketing-performance.webp"
+                alt="DigLip7 content marketing performance dashboard showing organic impressions, visibility, conversions, and updates"
+                aspect="aspect-[16/9]"
+                fallbackIcon={BarChart3}
+                badgeText="Performance & Analytics Reporting"
+              />
+            </div>
 
             <div className="p-6 rounded-2xl bg-white border border-purple-200 text-center space-y-2 shadow-xs">
               <h4 className="font-bold text-purple-950 text-base">
@@ -1511,9 +1519,8 @@ const SaudiContentMarketing = () => {
                         {faq.q}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-purple-600 shrink-0 transition-transform duration-200 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
+                        className={`w-5 h-5 text-purple-600 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                     {isOpen && (
