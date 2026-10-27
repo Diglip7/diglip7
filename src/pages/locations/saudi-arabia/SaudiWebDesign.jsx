@@ -43,15 +43,18 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-// Image Paths - Set to empty string so Image Section containers are shown without displaying actual image files
-const heroImgSrc = "";
+// Imported Images
+import heroImgSrc from "../../../images/webdesign-social.webp";
+import processWorkflowImg from "../../../images/website-design-seo.webp";
+import bilingualImg from "../../../images/arbia-website.webp";
+
+// Image Paths
 const customDesignImg = "";
 const responsiveImg = "";
 const corporateImg = "";
 const ecommerceImg = "";
 const uiuxImg = "";
 const redesignImg = "";
-const bilingualImg = "";
 const performanceImg = "";
 
 // 3D Interactive Card Component
@@ -113,6 +116,7 @@ const FloatingElement = ({ children, delay = 0, duration = 3 }) => (
 // Fallback image container with multi-source fallback
 const WebImageSlot = ({
   src = "",
+  fallbackSrc = "",
   alt = "",
   width = 800,
   height = 600,
@@ -122,21 +126,35 @@ const WebImageSlot = ({
   fallbackIcon = Monitor,
   badgeText = "",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const Icon = fallbackIcon;
+
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setHasError(false);
+  }, [src]);
+
+  const handleError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setHasError(true);
+    }
+  };
 
   return (
     <div
       className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-purple-50/50 via-white to-pink-50/30 border border-purple-200/80 shadow-xs flex items-center justify-center ${aspect} ${className}`}
     >
-      {src && !hasError ? (
+      {currentSrc && !hasError ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
-          onError={() => setHasError(true)}
+          onError={handleError}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       ) : (
@@ -631,13 +649,13 @@ const SaudiWebDesign = () => {
         ogTitle="Web Design Saudi Arabia | Website Design & Development — DigLip7"
         ogDescription="Plan responsive, user-friendly, SEO-friendly websites for businesses in Saudi Arabia with DigLip7."
         ogLocale="en_SA"
-        ogImage="https://diglip7.com/images/webdevelopment-banner.jpeg"
-        ogImageAlt="Designer reviewing a responsive website layout on laptop and mobile screens"
+        ogImage="https://diglip7.com/images/webdesign-social.webp"
+        ogImageAlt="Web design and digital solutions for companies in Saudi Arabia"
         twitterCard="summary_large_image"
         twitterTitle="Web Design Saudi Arabia | Website Design & Development — DigLip7"
         twitterDescription="Plan responsive, user-friendly, SEO-friendly websites for businesses in Saudi Arabia with DigLip7."
-        twitterImage="https://diglip7.com/images/webdevelopment-banner.jpeg"
-        twitterImageAlt="Designer reviewing a responsive website layout on laptop and mobile screens"
+        twitterImage="https://diglip7.com/images/webdesign-social.webp"
+        twitterImageAlt="Web design and digital solutions for companies in Saudi Arabia"
         robots="index, follow, max-image-preview:large"
         hreflangs={[
           { hreflang: "en-sa", href: pageUrl },
@@ -794,11 +812,12 @@ const SaudiWebDesign = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <WebImageSlot
                     src={heroImgSrc}
-                    alt="Designer reviewing a responsive website layout on laptop and mobile screens"
-                    aspect="aspect-[4/3]"
+                    fallbackSrc="/images/webdesign-social.webp"
+                    alt="Web Design Services for companies in Saudi Arabia"
+                    aspect="aspect-[16/10]"
                     priority={true}
                     fallbackIcon={Monitor}
-                    badgeText="Hero Image Section"
+                    badgeText="Web Design Services Hub"
                   />
                 </div>
               </div>
@@ -1107,16 +1126,19 @@ const SaudiWebDesign = () => {
             })}
           </div>
 
-          {/* Process Workflow Image Container (without actual image file, as requested!) */}
+          {/* Process Workflow Image Container */}
           <div className="mt-12 max-w-4xl mx-auto">
-            <WebImageSlot
-              src=""
-              alt="Six-step website design and development process from discovery to launch"
-              aspect="aspect-[21/9]"
-              className="rounded-2xl shadow-sm border border-gray-200"
-              badgeText="Process Workflow Container"
-              fallbackIcon={Code2}
-            />
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+              <WebImageSlot
+                src={processWorkflowImg}
+                fallbackSrc="/images/website-design-seo.webp"
+                alt="Website design and SEO architecture for businesses in Saudi Arabia"
+                aspect="aspect-[16/9]"
+                className="rounded-2xl shadow-sm border border-gray-200"
+                badgeText="Website Design & SEO Architecture"
+                fallbackIcon={Code2}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -1170,10 +1192,11 @@ const SaudiWebDesign = () => {
                 <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
                   <WebImageSlot
                     src={bilingualImg}
-                    alt="Arabic and English versions of a website homepage shown side by side"
-                    aspect="aspect-[4/3]"
-
+                    fallbackSrc="/images/arbia-website.webp"
+                    alt="Arabic and English bilingual website architecture for Saudi Arabia"
+                    aspect="aspect-[18/10]"
                     badgeText="Arabic & English Consistency"
+                    fallbackIcon={Languages}
                   />
                 </div>
               </div>

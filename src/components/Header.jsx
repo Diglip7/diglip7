@@ -268,7 +268,15 @@ const Header = () => {
         {
           name: "Dental SEO Service",
           href: "/qatar/dental-seo-services/"
-        }
+        },
+        {
+         name: "E-commerce SEO Services",
+          href: "/qatar/ecommerce-seo-services/",
+        },
+        {
+          name: "Real Estate SEO Services",
+          href: "/qatar/real-estate-seo-services/",
+        },
       ],
       cities: [],
     },
@@ -881,6 +889,13 @@ const Header = () => {
                     <Link to="/qatar/dental-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
                       ↳ Dental SEO Service
                     </Link>
+                    <Link to="/qatar/ecommerce-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ E-commerce SEO Services
+                    </Link>
+                    <Link to="/qatar/real-estate-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ Real Estate SEO Services
+                    </Link>
+
                   </div>
                 </div>
               </div>

@@ -85,6 +85,8 @@ import QatarLocalSEOServices from "./pages/locations/qatar/Qatarlocalseoservices
 import AIMarketingAutomationSaudiArabia from "./pages/locations/saudi-arabia/AIMarketingAutomationSaudiArabia";
 import EcommerceSEOSaudiArabia from "./pages/locations/saudi-arabia/EcommerceSEOSaudiArabia";
 import Qatardentalseoservices from "./pages/locations/qatar/Qatardentalseoservices";
+import QatarEcommerceSEO from "./pages/locations/qatar/QatarEcommerceSEO";
+import QatarRealEstateSEO from "./pages/locations/qatar/QatarRealEstateSEO";
 
 
 
@@ -305,6 +307,12 @@ function App() {
           <Route path="/qatar/local-seo-services/" element={<QatarLocalSEOServices />} />
           <Route path="/qatar/dental-seo-services" element={<Qatardentalseoservices />} />
           <Route path="/qatar/dental-seo-services/" element={<Qatardentalseoservices />} />
+          <Route path="/qatar/ecommerce-seo-services" element={<QatarEcommerceSEO />} />
+          <Route path="/qatar/ecommerce-seo-services/" element={<QatarEcommerceSEO />} />
+          <Route path="/qatar/real-estate-seo-services" element={<QatarRealEstateSEO />} />
+          <Route path="/qatar/real-estate-seo-services/" element={<QatarRealEstateSEO />} />
+          <Route path="/qatar/real-estate-seo" element={<Navigate to="/qatar/real-estate-seo-services/" replace />} />
+          <Route path="/qatar/real-estate-seo/" element={<Navigate to="/qatar/real-estate-seo-services/" replace />} />
 
           {/* Fallback route */}
           <Route path="*" element={<Navigate to="/" replace />} />
