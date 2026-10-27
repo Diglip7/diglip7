@@ -80,8 +80,12 @@ import SaudiEmailMarketing from "./pages/locations/saudi-arabia/SaudiEmailMarket
 import SaudiMobileAppDevelopment from "./pages/locations/saudi-arabia/SaudiMobileAppDevelopment";
 import SaudiVideoMarketingAgency from "./pages/locations/saudi-arabia/SaudiVideoMarketingAgency";
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
+import HotelSEOServicesQatar from "./pages/locations/qatar/Hotelseoservicesqatar";
+import QatarLocalSEOServices from "./pages/locations/qatar/Qatarlocalseoservices";
 import AIMarketingAutomationSaudiArabia from "./pages/locations/saudi-arabia/AIMarketingAutomationSaudiArabia";
 import EcommerceSEOSaudiArabia from "./pages/locations/saudi-arabia/EcommerceSEOSaudiArabia";
+import Qatardentalseoservices from "./pages/locations/qatar/Qatardentalseoservices";
+
 
 
 // Admin Pages
@@ -292,7 +296,15 @@ function App() {
           <Route path="/saudi-arabia/ecommerce-seo" element={<EcommerceSEOSaudiArabia />} />
           <Route path="/saudi-arabia/ecommerce-seo/" element={<EcommerceSEOSaudiArabia />} />
           <Route path="/qatar" element={<Navigate to="/qatar/seo-services" replace />} />
+          <Route path="/qatar/" element={<Navigate to="/qatar/seo-services" replace />} />
           <Route path="/qatar/seo-services" element={<QatarSEOServices />} />
+          <Route path="/qatar/seo-services/" element={<QatarSEOServices />} />
+          <Route path="/qatar/hotel-seo-services" element={<HotelSEOServicesQatar />} />
+          <Route path="/qatar/hotel-seo-services/" element={<HotelSEOServicesQatar />} />
+          <Route path="/qatar/local-seo-services" element={<QatarLocalSEOServices />} />
+          <Route path="/qatar/local-seo-services/" element={<QatarLocalSEOServices />} />
+          <Route path="/qatar/dental-seo-services" element={<Qatardentalseoservices />} />
+          <Route path="/qatar/dental-seo-services/" element={<Qatardentalseoservices />} />
 
           {/* Fallback route */}
           <Route path="*" element={<Navigate to="/" replace />} />

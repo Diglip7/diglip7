@@ -256,6 +256,20 @@ const Header = () => {
         href: "/qatar/seo-services",
         badge: "Country Main Page",
       },
+      subServices: [
+        {
+          name: "Hotel SEO Services Qatar",
+          href: "/qatar/hotel-seo-services",
+        },
+        {
+          name: "Local SEO Qatar",
+          href: "/qatar/local-seo-services",
+        },
+        {
+          name: "Dental SEO Service",
+          href: "/qatar/dental-seo-services/"
+        }
+      ],
       cities: [],
     },
   ];
@@ -851,9 +865,23 @@ const Header = () => {
 
                 {/* Qatar */}
                 <div className="space-y-1">
-                  <Link to="/qatar/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
-                    SEO Services Qatar
-                  </Link>
+                  <div className="font-semibold text-teal-900 flex items-center justify-between pr-2">
+                    <Link to="/qatar/seo-services" onClick={() => setIsOpen(false)} className="hover:text-teal-700">
+                      SEO Services Qatar
+                    </Link>
+                    <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-medium">Qatar Main</span>
+                  </div>
+                  <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                    <Link to="/qatar/hotel-seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ Hotel SEO Services Qatar
+                    </Link>
+                    <Link to="/qatar/local-seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ Local SEO Qatar
+                    </Link>
+                    <Link to="/qatar/dental-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
+                      ↳ Dental SEO Service
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
