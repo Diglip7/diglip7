@@ -297,7 +297,7 @@ const Header = () => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="no-scrollbar max-h-72 overflow-y-auto flex flex-col space-y-0.5">
+      <div className="no-scrollbar max-h-[75vh] overflow-y-auto flex flex-col space-y-0.5">
         {services.map((service, index) => {
           const IconComponent = service.icon;
           return (
@@ -322,10 +322,10 @@ const Header = () => {
 
   const MobileServiceDropdown = ({ services, isVisible, onItemClick }) => (
     <div
-      className={`overflow-hidden transition-all duration-300 ease-in-out ${isVisible ? "max-h-[500px] opacity-100 mt-2" : "max-h-0 opacity-0"
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${isVisible ? "max-h-[1500px] opacity-100 mt-2" : "max-h-0 opacity-0"
         }`}
     >
-      <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-1 py-1 max-h-[360px] overflow-y-auto no-scrollbar">
+      <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-1 py-1">
         {services.map((service, index) => {
           const IconComponent = service.icon;
           return (
@@ -502,7 +502,7 @@ const Header = () => {
                 </div>
 
                 {/* Right column: Country Main Page + Cities & Sub-services */}
-                <div className="col-span-3 pl-1 space-y-2.5">
+                <div className="col-span-3 pl-1 space-y-2.5 max-h-[75vh] overflow-y-auto pr-1 no-scrollbar">
                   {(() => {
                     const currentLoc =
                       locationData.find((l) => l.name === selectedLocation) || locationData[0];
@@ -788,116 +788,73 @@ const Header = () => {
             </div>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileDropdown === "locations" ? "max-h-[600px] opacity-100 mt-1" : "max-h-0 opacity-0"
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileDropdown === "locations" ? "max-h-[3000px] opacity-100 mt-1" : "max-h-0 opacity-0"
                 }`}
             >
-              <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-2 py-1 text-sm">
-                {/* UAE */}
-                <div className="space-y-1">
-                  <div className="font-semibold text-teal-900 flex items-center justify-between pr-2">
-                    <Link to="/uae/seo-services" onClick={() => setIsOpen(false)} className="hover:text-teal-700">
-                      SEO Services UAE
-                    </Link>
-                    <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-medium">UAE Main</span>
-                  </div>
-                  <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
-                    <Link to="/uae/dubai/seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ Dubai SEO Services (Main)
-                    </Link>
-                    <div className="pl-3 border-l border-teal-200/60 space-y-1">
-                      <Link to="/uae/dubai/local-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Local SEO Dubai
+              <div className="ml-3 pl-3 border-l-2 border-teal-200 space-y-3 py-1 text-sm">
+                {locationData.map((loc) => (
+                  <div key={loc.name} className="space-y-1">
+                    <div className="font-semibold text-teal-900 flex items-center justify-between pr-2">
+                      <Link
+                        to={loc.mainPage.href}
+                        onClick={() => setIsOpen(false)}
+                        className="hover:text-teal-700"
+                      >
+                        {loc.mainPage.name}
                       </Link>
-                      <Link to="/uae/dubai/ecommerce-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • E-commerce SEO Dubai
-                      </Link>
-                      <Link to="/uae/dubai/healthcare-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Healthcare SEO Dubai
-                      </Link>
-                      <Link to="/uae/dubai/dental-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Dental SEO Dubai
-                      </Link>
-                      <Link to="/uae/dubai/real-estate-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Real Estate SEO Dubai
-                      </Link>
-                      <Link to="/uae/dubai/restaurant-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Restaurant SEO Dubai
-                      </Link>
-                      <Link to="/uae/dubai/hotel-seo" onClick={() => setIsOpen(false)} className="block py-0.5 text-gray-600 hover:text-teal-700">
-                        • Hotel SEO Dubai
-                      </Link>
+                      <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-medium">
+                        {loc.name} Main
+                      </span>
                     </div>
+
+                    {/* Sub-services under country */}
+                    {loc.subServices && loc.subServices.length > 0 && (
+                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                        {loc.subServices.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.href}
+                            onClick={() => setIsOpen(false)}
+                            className="block py-1 text-teal-800 hover:text-teal-900 font-semibold"
+                          >
+                            ↳ {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Cities & Sub-services under country (e.g. Dubai) */}
+                    {loc.cities && loc.cities.length > 0 && (
+                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                        {loc.cities.map((city) => (
+                          <div key={city.name} className="space-y-1">
+                            <Link
+                              to={city.mainPage.href}
+                              onClick={() => setIsOpen(false)}
+                              className="block py-1 text-teal-800 hover:text-teal-900 font-semibold"
+                            >
+                              ↳ {city.mainPage.name} (Main)
+                            </Link>
+                            {city.subServices && city.subServices.length > 0 && (
+                              <div className="pl-3 border-l border-teal-200/60 space-y-1">
+                                {city.subServices.map((sub) => (
+                                  <Link
+                                    key={sub.name}
+                                    to={sub.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block py-0.5 text-gray-600 hover:text-teal-700"
+                                  >
+                                    • {sub.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
-
-                {/* India */}
-                <div className="space-y-1">
-                  <Link to="/india/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
-                    SEO Services India
-                  </Link>
-                </div>
-
-                {/* Saudi Arabia */}
-                <div className="space-y-1">
-                  <Link to="/saudi-arabia/seo-services" onClick={() => setIsOpen(false)} className="font-semibold text-teal-900 block hover:text-teal-700">
-                    SEO Services Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/ppc-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    PPC Services Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/web-design/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Web Design Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/social-media-marketing/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Social Media Marketing Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/content-marketing-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Content Marketing Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/online-reputation-management/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Online Reputation Management
-                  </Link>
-                  <Link to="/saudi-arabia/email-marketing-services/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Email Marketing Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/mobile-app-development/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Mobile App Development Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/video-marketing-agency/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    Video Marketing Agency Saudi Arabia
-                  </Link>
-                  <Link to="/saudi-arabia/ai-marketing-automation/" onClick={() => setIsOpen(false)} className="text-xs text-teal-800 block pl-3 hover:text-teal-600">
-                    AI Marketing Automation Saudi Arabia
-                  </Link>
-                </div>
-
-                {/* Qatar */}
-                <div className="space-y-1">
-                  <div className="font-semibold text-teal-900 flex items-center justify-between pr-2">
-                    <Link to="/qatar/seo-services" onClick={() => setIsOpen(false)} className="hover:text-teal-700">
-                      SEO Services Qatar
-                    </Link>
-                    <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-medium">Qatar Main</span>
-                  </div>
-                  <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
-                    <Link to="/qatar/hotel-seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ Hotel SEO Services Qatar
-                    </Link>
-                    <Link to="/qatar/local-seo-services" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ Local SEO Qatar
-                    </Link>
-                    <Link to="/qatar/dental-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ Dental SEO Service
-                    </Link>
-                    <Link to="/qatar/ecommerce-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ E-commerce SEO Services
-                    </Link>
-                    <Link to="/qatar/real-estate-seo-services/" onClick={() => setIsOpen(false)} className="block py-1 text-teal-800 hover:text-teal-900 font-semibold">
-                      ↳ Real Estate SEO Services
-                    </Link>
-
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </li>
