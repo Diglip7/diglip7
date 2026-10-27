@@ -319,7 +319,7 @@ const businessTypeStrategies = [
     type: "E-commerce stores",
     desc: "need solid category, product and internal-linking architecture.",
     icon: ShoppingBag,
-    link: "/uae/dubai/ecommerce-seo",
+    link: "/qatar/ecommerce-seo-services/",
   },
   {
     type: "Healthcare businesses",
@@ -329,9 +329,9 @@ const businessTypeStrategies = [
   },
   {
     type: "Real estate companies",
-    desc: "need property, location and informational content; see real estate SEO.",
+    desc: "need property, location and informational content; see real estate SEO in Qatar.",
     icon: Building2,
-    link: "/uae/dubai/real-estate-seo",
+    link: "/qatar/real-estate-seo-services/",
   },
   {
     type: "SaaS companies",

@@ -38,10 +38,15 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-// Image Paths - Set your images here or leave empty for dedicated placeholder divs
-const heroImgSrc = ""; // <-- HERO IMAGE (Alt: "Marketing team reviewing a Google Ads campaign dashboard")
-const processImgSrc = ""; // <-- PROCESS IMAGE (Alt: "Six-step PPC campaign management process from audit to reporting")
-const industryImgSrc = ""; // <-- INDUSTRY IMAGE (Alt: "Business owner reviewing online advertising performance on a laptop")
+// Imported PPC WebP Images
+import ppcHeroImg from "../../../images/ppc-service-seo.webp";
+import ppcProcessImg from "../../../images/ppc-campaign-management.webp";
+import ppcIndustryImg from "../../../images/ppc-business-owner.webp";
+
+// Image Paths - Connected to WebP assets in src/images and public/images
+const heroImgSrc = ppcHeroImg || "/images/ppc-service-seo.webp";
+const processImgSrc = ppcProcessImg || "/images/ppc-campaign-management.webp";
+const industryImgSrc = ppcIndustryImg || "/images/ppc-business-owner.webp";
 const keywordImgSrc = "/images/ppc1.png";
 const displayImgSrc = "/images/ppc2 (2).png";
 const trackingImgSrc = "/images/ppc001.png";
@@ -117,21 +122,41 @@ const SEOImageSlot = ({
   fallbackIcon = MousePointerClick,
   badgeText = "",
 }) => {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const Icon = fallbackIcon;
+
+  React.useEffect(() => {
+    setCurrentSrc(src);
+    setHasError(false);
+  }, [src]);
+
+  const handleError = () => {
+    const fallbackMap = {
+      [ppcHeroImg]: "/images/ppc-service-seo.webp",
+      [ppcProcessImg]: "/images/ppc-campaign-management.webp",
+      [ppcIndustryImg]: "/images/ppc-business-owner.webp",
+    };
+    const fallbackPath = fallbackMap[src];
+    if (fallbackPath && currentSrc !== fallbackPath) {
+      setCurrentSrc(fallbackPath);
+    } else {
+      setHasError(true);
+    }
+  };
 
   return (
     <div
       className={`relative w-full rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50/50 via-white to-gray-50 border border-teal-200/80 shadow-md flex items-center justify-center ${aspect} ${className}`}
     >
-      {src && !hasError ? (
+      {currentSrc && !hasError ? (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
-          onError={() => setHasError(true)}
+          onError={handleError}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       ) : (
@@ -710,12 +735,12 @@ const SaudiPPCServices = () => {
         ogLocale="en_SA"
         ogTitle="PPC Services Saudi Arabia | PPC Management — DigLip7"
         ogDescription="Plan, manage, and measure paid advertising campaigns in Saudi Arabia with DigLip7."
-        ogImage="https://diglip7.com/images/ppc00.jpeg"
+        ogImage="https://diglip7.com/images/ppc-service-seo.webp"
         ogImageAlt="Marketing team reviewing a Google Ads campaign dashboard"
         twitterCard="summary_large_image"
         twitterTitle="PPC Services Saudi Arabia | PPC Management — DigLip7"
         twitterDescription="Plan, manage, and measure paid advertising campaigns in Saudi Arabia with DigLip7."
-        twitterImage="https://diglip7.com/images/ppc00.jpeg"
+        twitterImage="https://diglip7.com/images/ppc-service-seo.webp"
         twitterImageAlt="Marketing team reviewing a Google Ads campaign dashboard"
         schema={structuredData}
       />

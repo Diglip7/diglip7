@@ -256,6 +256,16 @@ const Header = () => {
         href: "/qatar/seo-services",
         badge: "Country Main Page",
       },
+      subServices: [
+        {
+          name: "E-commerce SEO Services",
+          href: "/qatar/ecommerce-seo-services/",
+        },
+        {
+          name: "Real Estate SEO Services",
+          href: "/qatar/real-estate-seo-services/",
+        },
+      ],
       cities: [],
     },
   ];
