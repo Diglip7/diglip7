@@ -68,6 +68,8 @@ import DubaiDrivingSchoolSEO from "./pages/locations/uae/dubai/DubaiDrivingSchoo
 import DubaiTravelAgencySEO from "./pages/locations/uae/dubai/DubaiTravelAgencySEO";
 import DubaiInteriorDesignSEO from "./pages/locations/uae/dubai/DubaiInteriorDesignSEO";
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
+import IndiaSaaSSEO from "./pages/locations/india/IndiaSaaSSEO";
+import IndiaClinicSEO from "./pages/locations/india/IndiaClinicSEO";
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
 import SaudiPPCServices from "./pages/locations/saudi-arabia/SaudiPPCServices";
 import SaudiWebDesign from "./pages/locations/saudi-arabia/SaudiWebDesign";
@@ -149,7 +151,11 @@ function App() {
           {/* Digital Marketing Services */}
           <Route path="/digital-market" element={<DigitalMarketing />} />
           <Route path="/digital-market/seoservices" element={<SEO />} />
+          <Route path="/digital-market/seoservices/" element={<SEO />} />
           <Route path="/digital-market/PPC-Advertising" element={<PPC />} />
+          <Route path="/digital-market/PPC-Advertising/" element={<PPC />} />
+          <Route path="/PPC-Advertising" element={<Navigate to="/digital-market/PPC-Advertising" replace />} />
+          <Route path="/PPC-Advertising/" element={<Navigate to="/digital-market/PPC-Advertising" replace />} />
           <Route path="/digital-market/social-media-marketing" element={<SocialMedia />} />
           <Route path="/digital-market/content-marketing" element={<ContentMarketing />} />
           <Route path="/digital-market/email-marketing" element={<EmailMarketing />} />
@@ -161,6 +167,18 @@ function App() {
           <Route
             path="/digital-market/Ai-powered-Digital-Marketing"
             element={<AIPoweredMarketing />}
+          />
+          <Route
+            path="/digital-market/Ai-powered-Digital-Marketing/"
+            element={<AIPoweredMarketing />}
+          />
+          <Route
+            path="/Ai-powered-Digital-Marketing"
+            element={<Navigate to="/digital-market/Ai-powered-Digital-Marketing" replace />}
+          />
+          <Route
+            path="/Ai-powered-Digital-Marketing/"
+            element={<Navigate to="/digital-market/Ai-powered-Digital-Marketing" replace />}
           />
           <Route path="/digital-market/voice-search-optimization" element={<VoiceSearch />} />
           <Route
@@ -239,7 +257,21 @@ function App() {
           <Route path="/interior-design-seo-dubai" element={<Navigate to="/uae/dubai/interior-design-seo/" replace />} />
 
           <Route path="/india" element={<Navigate to="/india/seo-services" replace />} />
+          <Route path="/india/" element={<Navigate to="/india/seo-services" replace />} />
           <Route path="/india/seo-services" element={<IndiaSEOServices />} />
+          <Route path="/india/seo-services/" element={<IndiaSEOServices />} />
+          <Route path="/india/saas-seo-services" element={<IndiaSaaSSEO />} />
+          <Route path="/india/saas-seo-services/" element={<IndiaSaaSSEO />} />
+          <Route path="/india/saas-seo" element={<Navigate to="/india/saas-seo-services" replace />} />
+          <Route path="/india/saas-seo/" element={<Navigate to="/india/saas-seo-services" replace />} />
+          <Route path="/saas-seo-services-india" element={<Navigate to="/india/saas-seo-services" replace />} />
+          <Route path="/saas-seo-services-india/" element={<Navigate to="/india/saas-seo-services" replace />} />
+          <Route path="/india/clinic-seo-services" element={<IndiaClinicSEO />} />
+          <Route path="/india/clinic-seo-services/" element={<IndiaClinicSEO />} />
+          <Route path="/india/clinic-seo" element={<Navigate to="/india/clinic-seo-services" replace />} />
+          <Route path="/india/clinic-seo/" element={<Navigate to="/india/clinic-seo-services" replace />} />
+          <Route path="/clinic-seo-services-india" element={<Navigate to="/india/clinic-seo-services" replace />} />
+          <Route path="/clinic-seo-services-india/" element={<Navigate to="/india/clinic-seo-services" replace />} />
 
           <Route path="/saudi-arabia" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
           <Route path="/saudi-arabia/" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
