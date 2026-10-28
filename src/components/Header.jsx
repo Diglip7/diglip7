@@ -188,6 +188,28 @@ const Header = () => {
         href: "/india/seo-services",
         badge: "Country Main Page",
       },
+      subServices: [
+        {
+          name: "Real Estate SEO Services",
+          href: "/india/real-estate-seo-services/",
+        },
+        {
+          name: "Ecommerce SEO Services",
+          href: "/india/ecommerce-seo-services/",
+        },
+        {
+          name: "Manufacturing SEO Services",
+          href: "/india/manufacturing-seo-services/",
+        },
+        {
+          name: "Hotel SEO Services",
+          href: "/india/hotel-seo-services/",
+        },
+        {
+          name: "Restaurant SEO Services Delhi",
+          href: "/india/restaurant-seo-services-delhi/",
+        },
+      ],
       cities: [],
     },
     {

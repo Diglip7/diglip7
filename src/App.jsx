@@ -68,6 +68,11 @@ import DubaiDrivingSchoolSEO from "./pages/locations/uae/dubai/DubaiDrivingSchoo
 import DubaiTravelAgencySEO from "./pages/locations/uae/dubai/DubaiTravelAgencySEO";
 import DubaiInteriorDesignSEO from "./pages/locations/uae/dubai/DubaiInteriorDesignSEO";
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
+import IndiaRealEstateSEO from "./pages/locations/india/IndiaRealEstateSEO";
+import IndiaEcommerceSEOServices from "./pages/locations/india/Indiaecommerceseoservices";
+import IndiaManufacturingSEOServices from "./pages/locations/india/Indiamanufacturingseoservices";
+import IndiaHotelSEOServices from "./pages/locations/india/IndiaHotelSEOServices";
+import DelhiRestaurantSEOServices from "./pages/locations/india/Delhirestaurantseoservices";
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
 import SaudiPPCServices from "./pages/locations/saudi-arabia/SaudiPPCServices";
 import SaudiWebDesign from "./pages/locations/saudi-arabia/SaudiWebDesign";
@@ -240,6 +245,17 @@ function App() {
 
           <Route path="/india" element={<Navigate to="/india/seo-services" replace />} />
           <Route path="/india/seo-services" element={<IndiaSEOServices />} />
+          <Route path="/india/seo-services/" element={<IndiaSEOServices />} />
+          <Route path="/india/real-estate-seo-services" element={<IndiaRealEstateSEO />} />
+          <Route path="/india/real-estate-seo-services/" element={<IndiaRealEstateSEO />} />
+          <Route path="/india/ecommerce-seo-services" element={<IndiaEcommerceSEOServices />} />
+          <Route path="/india/ecommerce-seo-services/" element={<IndiaEcommerceSEOServices />} />
+          <Route path="/india/manufacturing-seo-services" element={<IndiaManufacturingSEOServices />} />
+          <Route path="/india/manufacturing-seo-services/" element={<IndiaManufacturingSEOServices />} />
+          <Route path="/india/hotel-seo-services" element={<IndiaHotelSEOServices />} />
+          <Route path="/india/hotel-seo-services/" element={<IndiaHotelSEOServices />} />
+          <Route path="/india/restaurant-seo-services-delhi" element={<DelhiRestaurantSEOServices />} />
+          <Route path="/india/restaurant-seo-services-delhi/" element={<DelhiRestaurantSEOServices />} />
 
           <Route path="/saudi-arabia" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
           <Route path="/saudi-arabia/" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
