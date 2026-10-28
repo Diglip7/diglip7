@@ -81,6 +81,8 @@ const fallbackRoutes = [
   "/india/manufacturing-seo-services",
   "/india/hotel-seo-services",
   "/india/restaurant-seo-services-delhi",
+   "/india/saas-seo-services",
+  "/india/clinic-seo-services",
   "/saudi-arabia/seo-services",
   "/saudi-arabia/ppc-services",
   "/saudi-arabia/web-design",

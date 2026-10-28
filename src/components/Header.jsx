@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+﻿import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -209,6 +209,14 @@ const Header = () => {
           name: "Restaurant SEO Services Delhi",
           href: "/india/restaurant-seo-services-delhi/",
         },
+        {
+         name: "SaaS SEO Services India",
+          href: "/india/saas-seo-services",
+        },
+        {
+          name: "Clinic SEO Services India",
+          href: "/india/clinic-seo-services",
+        }
       ],
       cities: [],
     },

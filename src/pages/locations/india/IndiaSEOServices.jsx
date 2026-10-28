@@ -259,9 +259,9 @@ const businessTypeStrategies = [
   },
   {
     type: "Healthcare businesses",
-    desc: "need careful, accurate content and visible trust signals. Our healthcare SEO approach shows how we handle that.",
+    desc: "need careful, accurate content and visible trust signals; explore our dedicated clinic SEO services in India.",
     icon: Stethoscope,
-    link: "/uae/dubai/healthcare-seo",
+    link: "/india/clinic-seo-services",
   },
   {
     type: "Real estate companies",
@@ -271,8 +271,9 @@ const businessTypeStrategies = [
   },
   {
     type: "SaaS companies",
-    desc: "do well with problem-led content, use-case pages and comparison pages.",
+    desc: "do well with problem-led content, use-case pages and comparison pages; explore our dedicated SaaS SEO strategy.",
     icon: Cpu,
+    link: "/india/saas-seo-services",
   },
   {
     type: "B2B companies",
