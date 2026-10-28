@@ -640,7 +640,7 @@ const Header = () => {
       <div
         className={`xl:hidden bg-white shadow-lg border-t border-teal-100 transition-all duration-300 ease-in-out ${isOpen ? "max-h-[calc(100vh-75px)] opacity-100 overflow-y-auto" : "max-h-0 opacity-0 overflow-hidden"
           }`}
-      >
+          >
         <ul className="flex flex-col space-y-1 p-4 font-medium">
           <li>
             <Link
@@ -755,7 +755,7 @@ const Header = () => {
                 aria-label="Toggle Development sub-menu"
                 className="p-3 text-gray-500 hover:text-teal-600 focus:outline-none"
               >
-                <svg
+              <svg
                   className={`w-4 h-4 transition-transform duration-200 ${mobileDropdown === "development" ? "rotate-180 text-teal-600" : ""
                     }`}
                   fill="none"
