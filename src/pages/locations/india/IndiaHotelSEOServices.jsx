@@ -339,7 +339,7 @@ const FinalCtaSection = ({ title, desc, linkText, href = "/contact" }) => {
 
 export default function IndiaHotelSEOServices() {
   const canonicalUrl = "https://diglip7.com/india/hotel-seo-services/";
-  const heroImageSrc = "/images/hotel-seo-services-india-hero.webp";
+  const heroImageSrc = "/images/india/hotel-seo/hotel-seo-services-india-hero.webp";
   const heroImageAlt =
     "Contemporary Indian hotel with a digital marketing specialist reviewing website performance";
 

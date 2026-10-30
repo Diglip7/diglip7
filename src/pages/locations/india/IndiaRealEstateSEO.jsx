@@ -1355,7 +1355,6 @@ export default function IndiaRealEstateSEO() {
                 Request an SEO Audit
               </button>
             </Link>
-
             <a
               href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20talk%20to%20a%20Real%20Estate%20SEO%20Specialist%20regarding%20my%20property%20website%20in%20India."
               target="_blank"

@@ -390,7 +390,6 @@ const CtaSection = ({ headingLead, headingAccent, text, buttons }) => {
               </span>
             </h2>
           </FloatingElement>
-
           <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
             {text}
           </p>
