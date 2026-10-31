@@ -166,7 +166,7 @@ const ClinicSEOImage = ({
 // When you import your images above, simply set src: yourImportedImage
 const clinicImages = {
   hero: {
-    src: "", // Put imported hero image here e.g. clinicHeroImg || ""
+    src: "/images/clinic_hero_seo.webp", // Put imported hero image here e.g. clinicHeroImg || ""
     filename: "clinic-seo-services-india.webp",
     alt: "Clinic SEO strategy for local search visibility in India",
     caption: "Clinic SEO strategy for local search visibility & patient discovery in India",
@@ -174,7 +174,7 @@ const clinicImages = {
     height: 900,
   },
   localSeo: {
-    src: "", // Put imported image here e.g. localSeoImg || ""
+    src: "/images/local_seo.webp", // Put imported image here e.g. localSeoImg || ""
     filename: "local-seo-for-clinics-india.webp",
     alt: "Local SEO and neighbourhood discovery for clinics",
     caption: "Local SEO and neighbourhood discovery for clinics",
@@ -182,7 +182,7 @@ const clinicImages = {
     height: 900,
   },
   websiteOptimization: {
-    src: "", // Put imported image here e.g. websiteOptimizationImg || ""
+    src: "/images/clinic_website.webp", // Put imported image here e.g. websiteOptimizationImg || ""
     filename: "clinic-website-optimization-india.webp",
     alt: "Clinic website optimization with responsive pages and clear navigation",
     caption: "Clinic website optimization with responsive pages and clear navigation",
@@ -190,7 +190,7 @@ const clinicImages = {
     height: 900,
   },
   contentStrategy: {
-    src: "", // Put imported image here e.g. contentStrategyImg || ""
+    src: "/images/doctor_seo.webp", // Put imported image here e.g. contentStrategyImg || ""
     filename: "healthcare-content-strategy-india.webp",
     alt: "Healthcare content planning for clinic service pages and patient education",
     caption: "Healthcare content planning for clinic service pages and patient education",
@@ -198,7 +198,7 @@ const clinicImages = {
     height: 900,
   },
   doctorProfile: {
-    src: "", // Put imported image here e.g. doctorProfileImg || ""
+    src: "/images/healthcare_content.webp", // Put imported image here e.g. doctorProfileImg || ""
     filename: "doctor-profile-seo-india.webp",
     alt: "Doctor and practitioner profile optimization for clinics",
     caption: "Doctor and practitioner profile optimization for clinics",
@@ -206,7 +206,7 @@ const clinicImages = {
     height: 900,
   },
   analytics: {
-    src: "", // Put imported image here e.g. analyticsImg || ""
+    src: "/images/healthcare_content.webp", // Put imported image here e.g. analyticsImg || ""
     filename: "clinic-seo-analytics-india.webp",
     alt: "Clinic SEO performance and appointment inquiry measurement",
     caption: "Clinic SEO performance and appointment inquiry measurement",
@@ -214,7 +214,7 @@ const clinicImages = {
     height: 900,
   },
   patientJourney: {
-    src: "", // Put imported image here e.g. patientJourneyImg || ""
+    src: "/images/patient-journey.webp", // Put imported image here e.g. patientJourneyImg || ""
     filename: "patient-appointment-journey-seo.webp",
     alt: "Patient journey from local search to appointment contact",
     caption: "Patient journey from local search to appointment contact",
@@ -1888,9 +1888,8 @@ const IndiaClinicSEO = () => {
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-cyan-800 shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-cyan-900" : ""
-                      }`}
+                      className={`w-5 h-5 text-cyan-800 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 text-cyan-900" : ""
+                        }`}
                     />
                   </button>
 

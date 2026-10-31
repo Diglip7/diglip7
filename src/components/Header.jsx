@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -249,7 +249,7 @@ const Header = () => {
           href: "/saudi-arabia/online-reputation-management/",
         },
         {
-          name: "E-commerce SEO Services (Agency)",
+          name: "E-commerce SEO Saudi Arabia",
           href: "/saudi-arabia/ecommerce-seo-services/",
         },
         {
@@ -271,10 +271,6 @@ const Header = () => {
         {
           name: "AI Marketing Automation Saudi Arabia",
           href: "/saudi-arabia/ai-marketing-automation/",
-        },
-         {
-          name: "E-commerce SEO Saudi Arabia",
-          href: "/saudi-arabia/ecommerce-seo/",
         },
       ],
       cities: [],
