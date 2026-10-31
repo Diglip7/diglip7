@@ -199,10 +199,6 @@ const Header = () => {
             badge: "City Main Page",
           },
           subServices: [
-            {
-              name: "Restaurant SEO Services Delhi",
-              href: "/india/restaurant-seo-services-delhi/",
-            },
           ],
         },
         {
