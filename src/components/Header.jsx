@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -211,14 +211,32 @@ const Header = () => {
         },
         {
          name: "SaaS SEO Services India",
-          href: "/india/saas-seo-services",
+          href: "/india/saas-seo-services/",
         },
         {
           name: "Clinic SEO Services India",
-          href: "/india/clinic-seo-services",
+          href: "/india/clinic-seo-services/",
         }
       ],
-      cities: [],
+      cities: [
+        {
+          name: "Delhi",
+          mainPage: {
+            name: "Delhi Digital Marketing Services",
+            href: "/india/delhi/digital-marketing-services/",
+            badge: "City Main Page",
+          },
+        },
+        {
+          name: "Mumbai",
+          mainPage: {
+            name: "Mumbai SEO Services",
+            href: "/india/mumbai/seo-services/",
+            badge: "City Main Page",
+          },
+          subServices: [],
+        },
+      ],
     },
     {
       name: "Saudi Arabia",
@@ -277,7 +295,31 @@ const Header = () => {
           href: "/saudi-arabia/ecommerce-seo/",
         },
       ],
-      cities: [],
+      cities: [
+        {
+          name: "Delhi",
+          mainPage: {
+            name: "Delhi Digital Marketing Services",
+            href: "/india/delhi/digital-marketing-services/",
+            badge: "City Main Page",
+          },
+          subServices: [
+            {
+              name: "Restaurant SEO Services Delhi",
+              href: "/india/restaurant-seo-services-delhi/",
+            },
+          ],
+        },
+        {
+          name: "Mumbai",
+          mainPage: {
+            name: "Mumbai SEO Services",
+            href: "/india/mumbai/seo-services/",
+            badge: "City Main Page",
+          },
+          subServices: [],
+        },
+      ],
     },
     {
       name: "Qatar",
@@ -308,7 +350,31 @@ const Header = () => {
           href: "/qatar/real-estate-seo-services/",
         },
       ],
-      cities: [],
+      cities: [
+        {
+          name: "Delhi",
+          mainPage: {
+            name: "Delhi Digital Marketing Services",
+            href: "/india/delhi/digital-marketing-services/",
+            badge: "City Main Page",
+          },
+          subServices: [
+            {
+              name: "Restaurant SEO Services Delhi",
+              href: "/india/restaurant-seo-services-delhi/",
+            },
+          ],
+        },
+        {
+          name: "Mumbai",
+          mainPage: {
+            name: "Mumbai SEO Services",
+            href: "/india/mumbai/seo-services/",
+            badge: "City Main Page",
+          },
+          subServices: [],
+        },
+      ],
     },
   ];
 
@@ -558,31 +624,9 @@ const Header = () => {
                           </Link>
                         </div>
 
-                        {/* Country Level Sub-services (e.g. PPC Services Saudi Arabia) */}
-                        {currentLoc.subServices && currentLoc.subServices.length > 0 && (
-                          <div className="space-y-1.5 mb-2.5">
-                            <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1">
-                              {currentLoc.name} Services
-                            </div>
-                            <div className="space-y-1">
-                              {currentLoc.subServices.map((sub) => (
-                                <Link
-                                  key={sub.name}
-                                  to={sub.href}
-                                  onClick={() => setActiveDropdown(null)}
-                                  className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white/95 hover:text-white hover:bg-white/15 transition group bg-white/5"
-                                >
-                                  <Search className="w-3.5 h-3.5 text-teal-300 shrink-0 group-hover:scale-110 transition-transform" />
-                                  <span>{sub.name}</span>
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Cities & Sub-services (e.g. Dubai) */}
+                        {/* Cities & Sub-services (e.g. Dubai, Delhi, Mumbai) */}
                         {currentLoc.cities && currentLoc.cities.length > 0 && (
-                          <div className="space-y-1.5">
+                          <div className="space-y-1.5 mb-2.5">
                             <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1">
                               Cities / Emirates
                             </div>
@@ -624,6 +668,28 @@ const Header = () => {
                                 )}
                               </div>
                             ))}
+                          </div>
+                        )}
+
+                        {/* Country Level Sub-services (e.g. PPC Services Saudi Arabia) */}
+                        {currentLoc.subServices && currentLoc.subServices.length > 0 && (
+                          <div className="space-y-1.5 mb-2.5">
+                            <div className="text-[10px] uppercase font-bold tracking-wider text-teal-300 px-1">
+                              {currentLoc.name} Services
+                            </div>
+                            <div className="space-y-1">
+                              {currentLoc.subServices.map((sub) => (
+                                <Link
+                                  key={sub.name}
+                                  to={sub.href}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white/95 hover:text-white hover:bg-white/15 transition group bg-white/5"
+                                >
+                                  <Search className="w-3.5 h-3.5 text-teal-300 shrink-0 group-hover:scale-110 transition-transform" />
+                                  <span>{sub.name}</span>
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -837,25 +903,9 @@ const Header = () => {
                       </span>
                     </div>
 
-                    {/* Sub-services under country */}
-                    {loc.subServices && loc.subServices.length > 0 && (
-                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
-                        {loc.subServices.map((sub) => (
-                          <Link
-                            key={sub.name}
-                            to={sub.href}
-                            onClick={() => setIsOpen(false)}
-                            className="block py-1 text-teal-800 hover:text-teal-900 font-semibold"
-                          >
-                            ↳ {sub.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Cities & Sub-services under country (e.g. Dubai) */}
+                    {/* Cities & Sub-services under country (e.g. Dubai, Delhi, Mumbai) */}
                     {loc.cities && loc.cities.length > 0 && (
-                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs mb-2">
                         {loc.cities.map((city) => (
                           <div key={city.name} className="space-y-1">
                             <Link
@@ -880,6 +930,22 @@ const Header = () => {
                               </div>
                             )}
                           </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Sub-services under country */}
+                    {loc.subServices && loc.subServices.length > 0 && (
+                      <div className="pl-3 border-l border-teal-100 space-y-1 text-xs">
+                        {loc.subServices.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.href}
+                            onClick={() => setIsOpen(false)}
+                            className="block py-1 text-teal-800 hover:text-teal-900 font-semibold"
+                          >
+                            ↳ {sub.name}
+                          </Link>
                         ))}
                       </div>
                     )}
