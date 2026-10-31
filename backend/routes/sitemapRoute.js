@@ -86,6 +86,8 @@ const fallbackRoutes = [
   "/india/delhi/digital-marketing-services",
   "/india/mumbai/seo-services",
   "/india/mumbai/digital-marketing-services",
+  "/india/pune/digital-marketing-services",
+  "/media-buying-agency-india",
   "/saudi-arabia/seo-services",
   "/saudi-arabia/ppc-services",
   "/saudi-arabia/web-design",
@@ -93,14 +95,17 @@ const fallbackRoutes = [
   "/saudi-arabia/content-marketing-services",
   "/saudi-arabia/online-reputation-management",
   "/saudi-arabia/ecommerce-seo-services",
-  "/saudi-arabia/ecommerce-seo",
   "/saudi-arabia/local-seo-services",
   "/saudi-arabia/video-marketing-agency",
   "/saudi-arabia/ai-marketing-automation",
+  "/saudi-arabia/email-marketing-services",
+  "/saudi-arabia/mobile-app-development",
   "/qatar/seo-services",
   "/qatar/ecommerce-seo-services",
   "/qatar/hotel-seo-services",
   "/qatar/local-seo-services",
+  "/qatar/dental-seo-services",
+  "/qatar/real-estate-seo-services",
 ];
 /**
  * Priority and changefreq rules based on URL depth and type

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+﻿import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -26,7 +26,8 @@ import {
   X,
   Users,
   TrendingUp,
-  BarChart3
+  BarChart3,
+  Megaphone
 } from "lucide-react";
 import logo from "../images/logo1.jpeg";
 
@@ -91,6 +92,7 @@ const Header = () => {
     { name: "Programmatic Advertising", href: "/digital-market/programmatic-advertising", icon: TrendingUp },
     { name: "Mobile Marketing", href: "/digital-market/Mobile-marketing", icon: Smartphone },
     { name: "Performance Marketing", href: "/digital-market/performance-marketing", icon: BarChart3 },
+    { name: "Media Buying Agency", href: "/media-buying-agency-india/", icon: Megaphone },
   ];
 
   const designServices = [
@@ -217,6 +219,15 @@ const Header = () => {
             },
           ],
         },
+         {
+          name: "Pune",
+          mainPage: {
+            name: "Pune Digital Marketing Services",
+            href: "/india/pune/digital-marketing-services/",
+            badge: "City Main Page",
+          },
+          subServices: [],
+        },
       ],
       subServices: [
         {
@@ -246,6 +257,10 @@ const Header = () => {
         {
           name: "Clinic SEO Services India",
           href: "/india/clinic-seo-services/",
+        },
+        {
+          name: "Media Buying Agency India",
+          href: "/media-buying-agency-india/",
         }
       ],
     },
@@ -278,7 +293,7 @@ const Header = () => {
           href: "/saudi-arabia/online-reputation-management/",
         },
         {
-          name: "E-commerce SEO Services (Agency)",
+          name: "E-commerce SEO Saudi Arabia",
           href: "/saudi-arabia/ecommerce-seo-services/",
         },
         {
@@ -300,10 +315,6 @@ const Header = () => {
         {
           name: "AI Marketing Automation Saudi Arabia",
           href: "/saudi-arabia/ai-marketing-automation/",
-        },
-         {
-          name: "E-commerce SEO Saudi Arabia",
-          href: "/saudi-arabia/ecommerce-seo/",
         },
       ],
       cities: [],

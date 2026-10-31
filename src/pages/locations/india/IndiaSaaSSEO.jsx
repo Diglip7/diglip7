@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useMemo, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../../../components/SEO";
 import {
   CheckCircle,
   ArrowRight,
+  ArrowUp,
   ChevronRight,
   ChevronDown,
   Home,
@@ -35,6 +36,62 @@ import {
   Rocket,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+
+// ===========================================================================
+// Shared Interactive & Motion Building Blocks (Reference: /india/restaurant-seo-services-delhi/)
+// ===========================================================================
+
+// Scroll progress bar (top of page)
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 origin-left bg-gradient-to-r from-teal-600 via-teal-700 to-emerald-600 z-[60] pointer-events-none"
+      style={{ scaleX }}
+    />
+  );
+};
+
+// Back-to-top button
+const BackToTop = () => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 700);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          type="button"
+          aria-label="Back to top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-gradient-to-r from-teal-700 to-teal-900 text-white shadow-2xl hover:shadow-teal-500/50 flex items-center justify-center cursor-pointer"
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.6 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <ArrowUp className="w-5 h-5" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
+
+// Floating Animation
+const FloatingElement = ({ children, delay = 0 }) => (
+  <motion.div
+    animate={{ y: [0, -10, 0] }}
+    transition={{ duration: 3, repeat: Infinity, delay }}
+  >
+    {children}
+  </motion.div>
+);
 
 // 3D Tilt Card Component for interactive depth
 const Card3D = ({ children, className = "" }) => {
@@ -72,6 +129,88 @@ const Card3D = ({ children, className = "" }) => {
     >
       {children}
     </motion.div>
+  );
+};
+
+// Image configuration matching the 5 uploaded high-fidelity WebP visual assets
+const saasImgBase = "/images/india/saas-seo/";
+const saasImages = {
+  hero: {
+    src: `${saasImgBase}saas-seo-services-india.webp`,
+    alt: "SaaS organic growth strategy for software companies in India",
+    width: 1200,
+    height: 675,
+    eager: true,
+  },
+  buyerJourney: {
+    src: `${saasImgBase}saas-buyer-journey-seo.webp`,
+    alt: "SaaS SEO Across the Buyer Journey - Awareness, Consideration, Decision",
+    width: 1200,
+    height: 675,
+    eager: false,
+  },
+  technical: {
+    src: `${saasImgBase}saas-technical-seo-india.webp`,
+    alt: "The Search Engine Behind a SaaS Website - Discoverability, Crawlability, Indexing",
+    width: 1200,
+    height: 675,
+    eager: false,
+  },
+  international: {
+    src: `${saasImgBase}saas-international-seo-india.webp`,
+    alt: "International and multilingual SaaS SEO for global software markets",
+    width: 1200,
+    height: 675,
+    eager: false,
+  },
+  performance: {
+    src: `${saasImgBase}saas-seo-performance-analytics.webp`,
+    alt: "Three Doors to Software Discovery - SaaS SEO performance and conversion measurement",
+    width: 1200,
+    height: 675,
+    eager: false,
+  },
+};
+
+// Reusable Image component with lazy-loading, decoding async, and graceful fallback
+const Img = ({
+  image,
+  className = "w-full h-full object-cover",
+  aspect = "aspect-video",
+  fallbackIcon: FallbackIcon = Sparkles,
+}) => {
+  const [hasError, setHasError] = useState(false);
+  const fileName = image?.src ? image.src.split("/").pop() : "";
+
+  if (hasError || !image?.src) {
+    return (
+      <div className={`p-6 text-center text-sm font-medium text-slate-300 select-none flex flex-col items-center justify-center gap-3 w-full bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900 border border-teal-500/30 ${aspect}`}>
+        <div className="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center">
+          <FallbackIcon className="w-6 h-6" />
+        </div>
+        <div className="space-y-1 max-w-sm">
+          <span className="block leading-snug text-xs sm:text-sm font-bold text-teal-200">
+            {image?.alt}
+          </span>
+          <span className="inline-block font-mono text-[11px] text-teal-300 bg-teal-950/80 px-2.5 py-0.5 rounded-full border border-teal-500/40 font-semibold">
+            {fileName}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={image.src}
+      alt={image.alt}
+      width={image.width || 1200}
+      height={image.height || 675}
+      loading={image.eager ? "eager" : "lazy"}
+      decoding="async"
+      onError={() => setHasError(true)}
+      className={className}
+    />
   );
 };
 
@@ -485,6 +624,30 @@ const IndiaSaaSSEO = () => {
 
   const canonicalUrl = "https://diglip7.com/india/saas-seo-services/";
 
+  // Particles for Hero background animation (memoized)
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 20 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: 3.5 + Math.random() * 2.5,
+        delay: Math.random() * 2,
+      })),
+    []
+  );
+
+  // Background animated circles for CTA section
+  const ctaCircles = useMemo(
+    () =>
+      Array.from({ length: 14 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: 4 + Math.random() * 2.5,
+        delay: Math.random() * 2,
+      })),
+    []
+  );
+
   // Block 2: Page-level structured data (WebPage, BreadcrumbList, Service, FAQPage)
   const pageJsonLd = {
     "@context": "https://schema.org",
@@ -566,7 +729,13 @@ const IndiaSaaSSEO = () => {
   };
 
   return (
-    <div className="w-full bg-white font-sans text-gray-800 antialiased selection:bg-teal-700 selection:text-white">
+    <div className="w-full bg-white font-sans text-gray-800 antialiased selection:bg-teal-700 selection:text-white relative">
+      {/* Top Scroll Reading Progress Indicator */}
+      <ScrollProgress />
+
+      {/* Floating Back To Top Button */}
+      <BackToTop />
+
       <SEO
         title="SaaS SEO Services in India | DigLip7"
         exactTitle={true}
@@ -626,14 +795,34 @@ const IndiaSaaSSEO = () => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
 
+        {/* Floating Particles in Hero */}
+        <div className="absolute inset-0 pointer-events-none">
+          {particles.map((p, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-teal-600/15 rounded-full"
+              style={{ left: `${p.left}%`, top: `${p.top}%` }}
+              animate={{ y: [0, -100, 0], opacity: [0, 1, 0] }}
+              transition={{ duration: p.duration, repeat: Infinity, delay: p.delay }}
+            />
+          ))}
+        </div>
+
         <div className="flex flex-col lg:flex-row items-center w-full max-w-7xl mx-auto gap-10 lg:gap-14 relative z-10">
           {/* Left Column: Heading, Direct Intro, CTAs */}
-          <div className="w-full lg:w-[58%] text-center lg:text-left">
+          <motion.div
+            className="w-full lg:w-[58%] text-center lg:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-teal-300/80 rounded-full text-teal-950 font-bold text-xs uppercase tracking-wider mb-5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-teal-700" />
-              <span>SaaS SEO Agency in India • Organic Growth &amp; Acquisition</span>
-            </div>
+            <FloatingElement delay={0.2}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-teal-300/80 rounded-full text-teal-950 font-bold text-xs uppercase tracking-wider mb-5 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-teal-700" />
+                <span>SaaS SEO Agency in India • Organic Growth &amp; Acquisition</span>
+              </div>
+            </FloatingElement>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] text-slate-900 tracking-tight mb-6">
               SaaS SEO Services in India for{" "}
@@ -647,71 +836,81 @@ const IndiaSaaSSEO = () => {
             </p>
 
             {/* Direct Honest Disclaimer Callout */}
-            <div className="p-4 sm:p-4.5 rounded-xl bg-teal-900/5 border border-teal-200/80 mb-7 text-left text-sm text-slate-800 flex items-start gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="p-4 sm:p-4.5 rounded-xl bg-teal-900/5 border border-teal-200/80 mb-7 text-left text-sm text-slate-800 flex items-start gap-3 shadow-xs"
+            >
               <ShieldCheck className="w-5 h-5 text-teal-700 shrink-0 mt-0.5" />
               <p className="leading-relaxed">
                 <strong className="text-teal-950 font-semibold">Honest Performance Principle:</strong> It can help you earn qualified organic traffic, clearer product visibility and measurable acquisition. It cannot guarantee rankings or revenue, and we do not promise them.
               </p>
-            </div>
+            </motion.div>
 
             {/* CTAs */}
             <div className="flex flex-wrap justify-center lg:justify-start items-center gap-3.5 sm:gap-4">
               <Link to="/contact">
-                <button
+                <motion.button
                   type="button"
-                  className="px-7 sm:px-8 py-3.5 sm:py-4 bg-teal-900 hover:bg-teal-950 text-white text-sm sm:text-base font-bold rounded-full shadow-lg shadow-teal-950/20 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-7 sm:px-8 py-3.5 sm:py-4 bg-teal-900 hover:bg-teal-950 text-white text-sm sm:text-base font-bold rounded-full shadow-lg shadow-teal-950/20 hover:shadow-xl transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 >
                   <span>Discuss Your SaaS SEO Strategy</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </motion.button>
               </Link>
               <Link to="/contact">
-                <button
+                <motion.button
                   type="button"
-                  className="px-6 sm:px-7 py-3.5 sm:py-4 bg-white hover:bg-teal-50 text-teal-950 text-sm sm:text-base font-bold rounded-full border border-teal-300/80 shadow-xs hover:shadow-md transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 sm:px-7 py-3.5 sm:py-4 bg-white hover:bg-teal-50 text-teal-950 text-sm sm:text-base font-bold rounded-full border border-teal-300/80 shadow-xs hover:shadow-md transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 >
                   <span>Request an SEO Consultation</span>
-                </button>
+                </motion.button>
               </Link>
-              <a
-                href="https://wa.me/919650608788"
+              <motion.a
+                href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20SaaS%20SEO%20Services%20in%20India."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm font-semibold transition-transform duration-200 hover:scale-105 shadow-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-sm font-semibold transition-transform duration-200 shadow-sm"
               >
                 <FaWhatsapp className="w-4 h-4" />
                 <span>WhatsApp</span>
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Hero Visual & Interactive 3D Feature Card */}
-          <div className="w-full lg:w-[42%] flex flex-col items-center gap-6">
-            <div className="w-full rounded-2xl overflow-hidden border border-teal-200/90 shadow-2xl bg-slate-900 group relative aspect-video flex flex-col justify-end">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900">
-                <div className="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center mb-3">
-                  <Sparkles className="w-6 h-6" />
+          <motion.div
+            className="w-full lg:w-[42%] flex flex-col items-center gap-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Card3D className="w-full">
+              <div className="w-full rounded-2xl overflow-hidden border border-teal-200/90 shadow-2xl bg-slate-900 group relative aspect-video flex flex-col justify-end">
+                <Img
+                  image={saasImages.hero}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fallbackIcon={Sparkles}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-1 text-white text-xs px-3.5 py-2.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/10 z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold flex items-center gap-1.5 text-teal-300">
+                      <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+                      SaaS Organic Growth Architecture
+                    </span>
+                    <span className="text-[11px] text-teal-200/90 font-mono">India &amp; Global Markets</span>
+                  </div>
                 </div>
-                <span className="text-xs font-mono font-semibold text-teal-300 mb-1">
-                  SaaS Organic Growth Architecture
-                </span>
-                <span className="text-[11px] text-gray-400 font-mono max-w-sm">
-                  Alt: &quot;SaaS organic growth strategy for software companies in India&quot;
-                </span>
               </div>
-              <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-1.5 text-white text-xs px-3.5 py-2.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/10">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold flex items-center gap-1.5 text-teal-300">
-                    <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-                    SaaS Organic Growth Architecture
-                  </span>
-                  <span className="text-[11px] text-teal-200/90 font-mono">India &amp; Global Markets</span>
-                </div>
-                <div className="text-[11px] text-gray-300 font-mono truncate border-t border-white/10 pt-1">
-                  Alt: &quot;SaaS organic growth strategy for software companies in India&quot;
-                </div>
-              </div>
-            </div>
+            </Card3D>
 
             <Card3D className="w-full max-w-md">
               <div className="bg-white/95 backdrop-blur-xl border border-teal-200/90 rounded-2xl p-6 sm:p-7 shadow-xl shadow-teal-950/10 space-y-5">
@@ -776,32 +975,45 @@ const IndiaSaaSSEO = () => {
                 </div>
               </div>
             </Card3D>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Section: Why SaaS Businesses Need a Specialized SEO Strategy */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
-              The Software Landscape
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              Why SaaS Businesses Need a Specialized SEO Strategy
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
+                The Software Landscape
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                Why SaaS Businesses Need a Specialized SEO Strategy
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               SaaS SEO differs from conventional website SEO in several ways:
             </p>
-          </div>
+          </motion.div>
 
           {/* 5 Distinct Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {specializedReasons.map((item, idx) => {
               const IconComp = item.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                   className="bg-white p-6 sm:p-7 rounded-2xl border border-gray-200/90 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
                 >
                   <div>
@@ -820,12 +1032,19 @@ const IndiaSaaSSEO = () => {
                       {item.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
 
             {/* Sixth Contextual Callout Card */}
-            <div className="bg-gradient-to-br from-teal-900 to-slate-900 p-6 sm:p-7 rounded-2xl border border-teal-800 text-white flex flex-col justify-between md:col-span-2 lg:col-span-1 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="bg-gradient-to-br from-teal-900 to-slate-900 p-6 sm:p-7 rounded-2xl border border-teal-800 text-white flex flex-col justify-between md:col-span-2 lg:col-span-1 shadow-sm"
+            >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-white/10 text-teal-300 flex items-center justify-center mb-4">
                   <TrendingUp className="w-5 h-5" />
@@ -841,7 +1060,7 @@ const IndiaSaaSSEO = () => {
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Balanced domestic &amp; global targeting</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -849,69 +1068,96 @@ const IndiaSaaSSEO = () => {
       {/* Section: What Are SaaS SEO Services? */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              Definition &amp; Core Model
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              What Are SaaS SEO Services?
-            </h2>
-          </div>
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Definition &amp; Core Model
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                What Are SaaS SEO Services?
+              </h2>
+            </FloatingElement>
+          </motion.div>
 
-          <div className="bg-gradient-to-br from-teal-900 via-teal-950 to-slate-900 text-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-br from-teal-900 via-teal-950 to-slate-900 text-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden"
+          >
             <div className="relative z-10">
               <p className="text-base sm:text-lg md:text-xl text-teal-100/90 leading-relaxed font-normal">
                 SaaS SEO services are a coordinated approach to helping software companies attract qualified organic traffic. They combine keyword research, technical optimization, product and solution pages, content development, internal linking, authority building and conversion measurement, so that search visibility connects to demo requests, trials and pipeline rather than traffic alone.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 pt-8 border-t border-teal-800/80">
-                <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
+                <motion.div whileHover={{ y: -4 }} className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 transition-transform duration-200">
                   <Target className="w-5 h-5 text-teal-300 mb-2" />
                   <h4 className="text-sm font-bold text-white">Intent Mapping</h4>
                   <p className="text-xs text-teal-200/80 mt-1">Connecting buyer pain points to dedicated solution URLs.</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
+                </motion.div>
+                <motion.div whileHover={{ y: -4 }} className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 transition-transform duration-200">
                   <Code2 className="w-5 h-5 text-teal-300 mb-2" />
                   <h4 className="text-sm font-bold text-white">Technical Hygiene</h4>
                   <p className="text-xs text-teal-200/80 mt-1">Rendering, canonical tags, speed, and crawl budget control.</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
+                </motion.div>
+                <motion.div whileHover={{ y: -4 }} className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 transition-transform duration-200">
                   <Layers className="w-5 h-5 text-teal-300 mb-2" />
                   <h4 className="text-sm font-bold text-white">Topic Clusters</h4>
                   <p className="text-xs text-teal-200/80 mt-1">Building topical authority tied back to product landing pages.</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15">
+                </motion.div>
+                <motion.div whileHover={{ y: -4 }} className="p-3.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 transition-transform duration-200">
                   <BarChart3 className="w-5 h-5 text-teal-300 mb-2" />
                   <h4 className="text-sm font-bold text-white">Pipeline Measurement</h4>
                   <p className="text-xs text-teal-200/80 mt-1">Tracking qualified demo inquiries and verified trial signups.</p>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section: SaaS SEO Services Offered by DigLip7 (11 Offerings) */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              End-to-End Capabilities
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              SaaS SEO Services Offered by DigLip7
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                End-to-End Capabilities
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                SaaS SEO Services Offered by DigLip7
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               Every phase of our service is tailored specifically to software product discovery, engineering realities, and B2B pipeline conversion.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {saasServices.map((service) => {
+            {saasServices.map((service, idx) => {
               const IconComp = service.icon;
               return (
-                <div
+                <motion.div
                   key={service.number}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: (idx % 3) * 0.1 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
                   className="bg-white rounded-2xl p-6 sm:p-7 border border-gray-200/90 hover:border-teal-400 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-teal-50/50 rounded-bl-full pointer-events-none group-hover:bg-teal-100/50 transition-colors" />
@@ -945,7 +1191,7 @@ const IndiaSaaSSEO = () => {
                       <strong>Focus:</strong> {service.focus}
                     </span>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -955,44 +1201,63 @@ const IndiaSaaSSEO = () => {
       {/* Section: SaaS SEO Across the Buyer Journey (Interactive Table) */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
-              Buyer Journey Alignment
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              SaaS SEO Across the Buyer Journey
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
+                Buyer Journey Alignment
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                SaaS SEO Across the Buyer Journey
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               SEO can serve every stage of software evaluation. Someone early in the journey may only be describing a pain point, while someone later is comparing named vendors. A single page rarely serves both, so each stage needs its own asset and its own measure of success. The queries below are illustrative, not verified high-volume keywords.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Section 16:9 Visual Blueprint Slot (Section D Image 5) */}
-          <div className="max-w-4xl mx-auto mb-10 rounded-2xl overflow-hidden border border-gray-200/90 shadow-md bg-slate-900 group aspect-video relative flex flex-col justify-end">
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900">
-              <div className="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center mb-3">
-                <Target className="w-6 h-6" />
+          {/* Section 16:9 Visual Blueprint Slot */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl mx-auto mb-10"
+          >
+            <Card3D>
+              <div className="rounded-2xl overflow-hidden border border-gray-200/90 shadow-xl bg-slate-900 group aspect-video relative flex flex-col justify-end">
+                <Img
+                  image={saasImages.buyerJourney}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fallbackIcon={Target}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                <div className="p-3.5 bg-slate-900/90 backdrop-blur-md text-xs text-teal-200/90 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 relative z-10">
+                  <span className="font-semibold text-white flex items-center gap-1.5">
+                    <Target className="w-4 h-4 text-teal-400" />
+                    Staged Evaluation: Problem Discovery to Bottom-of-Funnel Conversion
+                  </span>
+                  <span className="text-teal-300 text-[11px] font-mono">
+                    Awareness &bull; Consideration &bull; Decision
+                  </span>
+                </div>
               </div>
-              <span className="text-xs font-mono font-semibold text-teal-300 mb-1">
-                Staged Evaluation: Problem Discovery to Bottom-of-Funnel Conversion Slot
-              </span>
-              <span className="text-[11px] text-gray-400 font-mono max-w-sm">
-                Alt: &quot;SaaS buyer journey from problem discovery to signup&quot;
-              </span>
-            </div>
-            <div className="p-3.5 bg-slate-900/95 backdrop-blur-md text-xs text-teal-200/90 flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 relative z-10">
-              <span className="font-semibold text-white flex items-center gap-1.5">
-                <Target className="w-4 h-4 text-teal-400" />
-                Staged Evaluation: Problem Discovery to Bottom-of-Funnel Conversion
-              </span>
-              <span className="text-gray-400 text-[11px] font-mono">
-                Alt: &quot;SaaS buyer journey from problem discovery to signup&quot;
-              </span>
-            </div>
-          </div>
+            </Card3D>
+          </motion.div>
 
           {/* Interactive Matrix Table */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+          >
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[700px]">
                 <thead>
@@ -1038,7 +1303,7 @@ const IndiaSaaSSEO = () => {
                 Plan Your Funnel Strategy &rarr;
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1046,13 +1311,21 @@ const IndiaSaaSSEO = () => {
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-                Engineering &amp; Architecture
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Technical SEO for Modern SaaS Websites
-              </h2>
+            <motion.div
+              className="lg:col-span-7 space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <FloatingElement>
+                <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                  Engineering &amp; Architecture
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mt-2">
+                  Technical SEO for Modern SaaS Websites
+                </h2>
+              </FloatingElement>
               <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 Search engines must be able to reach meaningful content on your public pages. That means checking JavaScript rendering, and using server-rendered content where appropriate. It also means crawlable navigation, descriptive URLs, indexable product and feature pages, sensible canonicalization, an accurate XML sitemap, mobile usability and performance, and eligible structured data. Crawl errors and indexation should be monitored in Google Search Console. Where Google's documentation applies, such as for structured data, we follow it, and we never assume markup will produce a rich result. For software organizations seeking holistic consulting beyond product-led silos, see our{" "}
                 <Link to="/digital-market/seoservices" className="text-teal-800 font-bold hover:underline">
@@ -1096,32 +1369,35 @@ const IndiaSaaSSEO = () => {
                   <span>Google Search Console indexing and coverage monitoring</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right Side Visual Component & Architecture Diagram (Section D Image 3) */}
-            <div className="lg:col-span-5 space-y-5">
-              <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950 group aspect-video relative flex flex-col justify-end">
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900">
-                  <div className="w-12 h-12 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center mb-3">
-                    <Server className="w-6 h-6" />
+            {/* Right Side Visual Component & Architecture Diagram */}
+            <motion.div
+              className="lg:col-span-5 space-y-5"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <Card3D>
+                <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950 group aspect-video relative flex flex-col justify-end">
+                  <Img
+                    image={saasImages.technical}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fallbackIcon={Server}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                  <div className="p-3 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 flex items-center justify-between text-xs relative z-10">
+                    <span className="text-teal-400 font-mono font-medium flex items-center gap-1.5">
+                      <Server className="w-3.5 h-3.5" />
+                      Technical Architecture Blueprint
+                    </span>
+                    <span className="text-[11px] text-teal-200/90 font-mono truncate max-w-[240px]">
+                      Discoverability, Crawlability, Indexing
+                    </span>
                   </div>
-                  <span className="text-xs font-mono font-semibold text-teal-300 mb-1">
-                    Technical Architecture Blueprint Slot
-                  </span>
-                  <span className="text-[11px] text-gray-400 font-mono max-w-sm">
-                    Alt: &quot;Technical SEO architecture for a SaaS website&quot;
-                  </span>
                 </div>
-                <div className="p-3 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between text-xs relative z-10">
-                  <span className="text-teal-400 font-mono font-medium flex items-center gap-1.5">
-                    <Server className="w-3.5 h-3.5" />
-                    Technical Architecture
-                  </span>
-                  <span className="text-[11px] text-gray-400 font-mono truncate max-w-[240px]">
-                    Alt: &quot;Technical SEO architecture for a SaaS website&quot;
-                  </span>
-                </div>
-              </div>
+              </Card3D>
 
               <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 border border-slate-800 shadow-xl space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -1135,35 +1411,35 @@ const IndiaSaaSSEO = () => {
                 </div>
 
                 <div className="space-y-3 font-mono text-xs">
-                  <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60">
+                  <motion.div whileHover={{ x: 4 }} className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 transition-transform">
                     <span className="text-gray-400 block text-[11px] mb-1">01. Rendering Pipeline</span>
                     <p className="text-teal-200">Server-Side Rendered (SSR) HTML verification for bots</p>
-                  </div>
-                  <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60">
+                  </motion.div>
+                  <motion.div whileHover={{ x: 4 }} className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 transition-transform">
                     <span className="text-gray-400 block text-[11px] mb-1">02. App Shell Boundaries</span>
                     <p className="text-emerald-200">Authenticated app routes explicitly disallow crawlers</p>
-                  </div>
-                  <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60">
+                  </motion.div>
+                  <motion.div whileHover={{ x: 4 }} className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 transition-transform">
                     <span className="text-gray-400 block text-[11px] mb-1">03. Documentation Linking</span>
                     <p className="text-cyan-200">Public API docs crawlable with reciprocal product links</p>
-                  </div>
-                  <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60">
+                  </motion.div>
+                  <motion.div whileHover={{ x: 4 }} className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 transition-transform">
                     <span className="text-gray-400 block text-[11px] mb-1">04. Structured Data</span>
                     <p className="text-purple-200">WebPage, Service, FAQ, and Breadcrumb Schema</p>
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div className="pt-2">
                   <Link
                     to="/contact"
-                    className="w-full py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                   >
                     <span>Request Technical Crawl Audit</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1171,75 +1447,122 @@ const IndiaSaaSSEO = () => {
       {/* Section: SEO for SaaS Startups and Growing Software Companies in India */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
-              Company Archetypes
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              SEO for SaaS Startups &amp; Growing Software Companies in India
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
+                Company Archetypes
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                SEO for SaaS Startups &amp; Growing Software Companies in India
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               Needs differ. Early-stage startups, B2B software companies, enterprise providers, product-led businesses, vertical SaaS companies and Indian SaaS businesses targeting overseas customers each face different constraints. Priorities depend on product maturity, market positioning, resources, existing authority and competition.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              whileHover={{ y: -5 }}
+              className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-200"
+            >
+              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3 shadow-xs">
                 <Rocket className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-2">Early-Stage SaaS Startups</h3>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 A startup may focus on a small set of high-intent, bottom-of-funnel comparison and solution pages first, capturing early evaluators before investing in broad informational content volume.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-200"
+            >
+              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3 shadow-xs">
                 <Building2 className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-2">B2B Enterprise Providers</h3>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 A larger enterprise company may need broader website architecture work, security-focused landing pages, compliance messaging, and topic clusters supporting complex sales cycles.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-200"
+            >
+              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3 shadow-xs">
                 <Zap className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-2">Product-Led Growth (PLG)</h3>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 Prioritizes self-serve trial entry points, free utility calculators, template hubs, and workflow guides designed to drive direct product signup without sales touchpoints.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-shadow">
-              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-200"
+            >
+              <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3 shadow-xs">
                 <Boxes className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-2">Vertical SaaS</h3>
               <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 Focuses deeply on niche industry workflows (e.g., healthcare clinic software, legal CRM) where domain terminology and hyper-specific compliance queries reign supreme.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-shadow md:col-span-2 flex flex-col md:flex-row gap-6 items-center">
-              <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-teal-100 shadow-sm bg-slate-900 group shrink-0 aspect-video relative flex flex-col justify-end">
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900">
-                  <div className="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center mb-2">
-                    <Globe className="w-5 h-5" />
-                  </div>
-                  <span className="text-xs font-mono font-semibold text-teal-300 mb-1">
-                    Cross-Border Expansion Blueprint Slot
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="bg-white p-6 sm:p-7 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all duration-200 md:col-span-2 flex flex-col md:flex-row gap-6 items-center"
+            >
+              <div className="w-full md:w-1/2 rounded-xl overflow-hidden border border-teal-100 shadow-md bg-slate-950 group shrink-0 aspect-video relative flex flex-col justify-end">
+                <Img
+                  image={saasImages.international}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fallbackIcon={Globe}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                <div className="p-3 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 flex items-center justify-between text-xs relative z-10">
+                  <span className="text-teal-300 font-mono font-medium flex items-center gap-1.5">
+                    <Globe className="w-3.5 h-3.5 text-teal-400" />
+                    Cross-Border Global SEO
                   </span>
-                  <span className="text-[10px] text-gray-400 font-mono truncate max-w-[220px]">
-                    Alt: &quot;International and multilingual SaaS SEO for global software markets&quot;
+                  <span className="text-[11px] text-teal-200/90 font-mono truncate">
+                    Global Software Markets
                   </span>
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3">
+                <div className="w-9 h-9 rounded-lg bg-teal-50 text-teal-800 flex items-center justify-center font-bold mb-3 shadow-xs">
                   <Globe className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">Indian SaaS Selling to Overseas Customers</h3>
@@ -1247,7 +1570,7 @@ const IndiaSaaSSEO = () => {
                   Indian SaaS companies selling overseas should research each target market's search behaviour instead of assuming it matches the domestic market. Search vocabulary, competitive alternatives, and commercial decision habits in North America, the UK, or the UAE differ significantly from Indian domestic inquiries. We configure localized intent clusters, regional landing pages, and international hreflang architectures to capture overseas software buyers.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1255,27 +1578,40 @@ const IndiaSaaSSEO = () => {
       {/* Section: Our SaaS SEO Process (10 Phases) */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              Execution Roadmap
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              Our SaaS SEO Process
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Execution Roadmap
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                Our SaaS SEO Process
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               Timelines vary with scope and complexity, and no issue can be promised to be resolved in a set number of days. Here is our 10-phase structured methodology:
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {processSteps.map((p) => (
-              <div
+            {processSteps.map((p, idx) => (
+              <motion.div
                 key={p.step}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (idx % 2) * 0.1 }}
+                whileHover={{ y: -4, borderColor: "rgb(20 184 166)" }}
                 className="bg-slate-50/70 p-6 sm:p-7 rounded-2xl border border-gray-200/80 hover:bg-white hover:border-teal-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="w-8 h-8 rounded-lg bg-teal-900 text-white font-mono font-bold text-xs flex items-center justify-center">
+                    <span className="w-8 h-8 rounded-lg bg-teal-900 text-white font-mono font-bold text-xs flex items-center justify-center shadow-xs">
                       {p.step}
                     </span>
                     <h3 className="text-base sm:text-lg font-bold text-slate-900">
@@ -1289,7 +1625,7 @@ const IndiaSaaSSEO = () => {
                 <div className="pt-3 border-t border-gray-200/60 text-xs text-teal-950 font-medium">
                   <strong>Deliverable:</strong> {p.deliverable}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -1300,27 +1636,42 @@ const IndiaSaaSSEO = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Box: Measurement */}
-            <div className="bg-white p-7 sm:p-9 rounded-3xl border border-gray-200/80 shadow-xs flex flex-col justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -4 }}
+              className="bg-white p-7 sm:p-9 rounded-3xl border border-gray-200/80 shadow-xs flex flex-col justify-between transition-all"
+            >
               <div>
-                <div className="w-full rounded-2xl overflow-hidden mb-5 border border-teal-100/90 shadow-sm bg-slate-900 group aspect-video relative flex flex-col justify-end">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-slate-900 via-teal-950/60 to-slate-900">
-                    <div className="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center mb-2">
-                      <BarChart3 className="w-5 h-5" />
+                <Card3D className="mb-5">
+                  <div className="w-full rounded-2xl overflow-hidden border border-teal-100/90 shadow-md bg-slate-900 group aspect-video relative flex flex-col justify-end">
+                    <Img
+                      image={saasImages.performance}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      fallbackIcon={BarChart3}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                    <div className="p-3 bg-slate-900/90 backdrop-blur-md border-t border-slate-800 flex items-center justify-between text-xs relative z-10">
+                      <span className="text-teal-300 font-mono font-medium flex items-center gap-1.5">
+                        <BarChart3 className="w-3.5 h-3.5 text-teal-400" />
+                        Software Discovery Funnel
+                      </span>
+                      <span className="text-[11px] text-teal-200/90 font-mono truncate">
+                        Discover &bull; Evaluate &bull; Choose
+                      </span>
                     </div>
-                    <span className="text-xs font-mono font-semibold text-teal-300 mb-1">
-                      Attribution &amp; Performance Matrix Slot
-                    </span>
-                    <span className="text-[10px] text-gray-400 font-mono truncate max-w-[220px]">
-                      Alt: &quot;SaaS SEO performance and conversion measurement&quot;
-                    </span>
                   </div>
-                </div>
-                <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-                  Analytics &amp; Attribution
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-3 mb-4">
-                  How SaaS SEO Performance Is Measured
-                </h3>
+                </Card3D>
+                <FloatingElement>
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                    Analytics &amp; Attribution
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-3 mb-4">
+                    How SaaS SEO Performance Is Measured
+                  </h3>
+                </FloatingElement>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
                   Useful measures include non-branded organic clicks and impressions, rankings for strategically selected query groups, organic visits to product and solution pages, qualified demo requests, trial and signup registrations, organic conversion rate, sales-qualified leads where tracking exists, and influenced pipeline or acquisition metrics where attribution is reliable. Indexation, crawlability and technical health matter too.
                 </p>
@@ -1347,17 +1698,26 @@ const IndiaSaaSSEO = () => {
                   <span>Influenced pipeline metrics</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Box: Timelines */}
-            <div className="bg-white p-7 sm:p-9 rounded-3xl border border-gray-200/80 shadow-xs flex flex-col justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              whileHover={{ y: -4 }}
+              className="bg-white p-7 sm:p-9 rounded-3xl border border-gray-200/80 shadow-xs flex flex-col justify-between transition-all"
+            >
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-                  Realistic Expectations
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-3 mb-4">
-                  How Long Does SaaS SEO Take?
-                </h3>
+                <FloatingElement>
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                    Realistic Expectations
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-3 mb-4">
+                    How Long Does SaaS SEO Take?
+                  </h3>
+                </FloatingElement>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">
                   SEO is ongoing, and timelines depend on competition, domain history, technical condition, content quality, authority, publishing capacity and your sales cycle.
                 </p>
@@ -1375,7 +1735,7 @@ const IndiaSaaSSEO = () => {
                   Discuss Strategy Timelines &rarr;
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1383,13 +1743,21 @@ const IndiaSaaSSEO = () => {
       {/* Section: SaaS SEO vs Paid Advertising */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              Channel Strategy
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              SaaS SEO vs Paid Advertising
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Channel Strategy
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                SaaS SEO vs Paid Advertising
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               The channels complement each other. SEO is not free, and paid advertising is not always inefficient. Many software companies use paid campaigns for launches and testing while SEO builds lasting discoverability. See our{" "}
               <Link to="/digital-market/PPC-Advertising" className="text-teal-800 font-bold hover:underline">
@@ -1397,9 +1765,15 @@ const IndiaSaaSSEO = () => {
               </Link>{" "}
               for the paid side.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+          >
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[700px]">
                 <thead>
@@ -1426,32 +1800,45 @@ const IndiaSaaSSEO = () => {
                 </tbody>
               </table>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section: Common SaaS SEO Mistakes */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-gray-200/70">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-3 py-1 rounded-full border border-amber-200">
-              Pitfalls to Avoid
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              Common SaaS SEO Mistakes
-            </h2>
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-3 py-1 rounded-full border border-amber-200">
+                Pitfalls to Avoid
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                Common SaaS SEO Mistakes
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               Software companies frequently waste resources on misguided tactics. Here are the common errors we help you steer clear of:
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {commonMistakes.map((m, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="p-5 rounded-2xl bg-white border border-gray-200/90 shadow-xs flex items-start gap-3.5"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: (idx % 2) * 0.08 }}
+                whileHover={{ y: -3 }}
+                className="p-5 rounded-2xl bg-white border border-gray-200/90 shadow-xs flex items-start gap-3.5 hover:shadow-md transition-all duration-200"
               >
-                <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs shadow-xs">
                   <AlertTriangle className="w-4 h-4" />
                 </div>
                 <div>
@@ -1462,7 +1849,7 @@ const IndiaSaaSSEO = () => {
                     {m.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -1471,13 +1858,29 @@ const IndiaSaaSSEO = () => {
       {/* Section: Why Consider DigLip7 for SaaS SEO? */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-            Agency Philosophy
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 mb-6 tracking-tight">
-            Why Consider DigLip7 for SaaS SEO?
-          </h2>
-          <div className="bg-gradient-to-r from-teal-50 via-slate-50 to-emerald-50/50 p-6 sm:p-10 rounded-3xl border border-teal-200 text-left space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
+                Agency Philosophy
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 mb-6 tracking-tight">
+                Why Consider DigLip7 for SaaS SEO?
+              </h2>
+            </FloatingElement>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-r from-teal-50 via-slate-50 to-emerald-50/50 p-6 sm:p-10 rounded-3xl border border-teal-200 text-left space-y-4 shadow-sm"
+          >
             <p className="text-sm sm:text-base text-gray-800 leading-relaxed">
               DigLip7 approaches SaaS SEO through strategy, technical SEO, content planning, search-intent mapping and transparent measurement. The work is scoped around your software product, target customers, website architecture and commercial objectives, as part of our wider{" "}
               <Link to="/india/seo-services" className="text-teal-800 font-bold hover:underline">
@@ -1492,31 +1895,43 @@ const IndiaSaaSSEO = () => {
             <p className="text-sm sm:text-base text-gray-800 leading-relaxed font-semibold text-teal-950">
               We do not claim guaranteed rankings or unverifiable results. You should always know what is changing, why, and how it is measured.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Section: Frequently Asked Questions (12 FAQs Accordion) */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-gray-200/70">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
-              Common Questions
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-              Frequently Asked Questions About SaaS SEO Services in India
-            </h2>
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <FloatingElement>
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-1 rounded-full border border-teal-200">
+                Common Questions
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
+                Frequently Asked Questions About SaaS SEO Services in India
+              </h2>
+            </FloatingElement>
             <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">
               Clear, practical answers about how search engine optimization drives organic software growth.
             </p>
-          </div>
+          </motion.div>
 
           <div className="space-y-3.5">
             {faqs.map((faq, index) => {
               const isOpen = openFaqIndex === index;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index % 4) * 0.05, duration: 0.4 }}
                   className="bg-white rounded-2xl border border-gray-200/90 shadow-xs overflow-hidden transition-all duration-200"
                 >
                   <button
@@ -1528,10 +1943,13 @@ const IndiaSaaSSEO = () => {
                     <span className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
                       {faq.q}
                     </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-teal-700 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
-                        }`}
-                    />
+                    <motion.div
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="shrink-0"
+                    >
+                      <ChevronDown className="w-5 h-5 text-teal-700" />
+                    </motion.div>
                   </button>
                   <AnimatePresence>
                     {isOpen && (
@@ -1547,7 +1965,7 @@ const IndiaSaaSSEO = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -1555,16 +1973,37 @@ const IndiaSaaSSEO = () => {
       </section>
 
       {/* Section: Closing CTA Banner */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-900 via-teal-950 to-slate-950 text-white">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-teal-400/30 rounded-full text-teal-200 font-bold text-xs uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-teal-300" />
-            <span>Start With Honest Priorities</span>
-          </span>
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-900 via-teal-950 to-slate-950 text-white relative overflow-hidden">
+        {/* Pulsing Decorative Ambient Rings */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          {ctaCircles.map((c, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-32 h-32 border border-white/20 rounded-full"
+              style={{ left: `${c.left}%`, top: `${c.top}%` }}
+              animate={{ scale: [1, 1.25, 1], opacity: [0.1, 0.3, 0.1] }}
+              transition={{ duration: c.duration, repeat: Infinity, delay: c.delay }}
+            />
+          ))}
+        </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
-            Talk to DigLip7 About Your SaaS SEO Strategy
-          </h2>
+        <motion.div
+          className="max-w-4xl mx-auto text-center space-y-6 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <FloatingElement>
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-teal-400/30 rounded-full text-teal-200 font-bold text-xs uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-teal-300" />
+              <span>Start With Honest Priorities</span>
+            </span>
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight mt-3">
+              Talk to DigLip7 About Your SaaS SEO Strategy
+            </h2>
+          </FloatingElement>
 
           <p className="text-teal-100/90 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
             If you would like a strategy tailored to your product, audience and growth objectives, DigLip7 can start with a review of your website, search visibility and goals. There are no guaranteed rankings, demos or returns, only a clear and realistic plan that you can review and challenge.
@@ -1572,31 +2011,37 @@ const IndiaSaaSSEO = () => {
 
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <Link to="/contact">
-              <button
+              <motion.button
                 type="button"
-                className="px-8 py-4 bg-white hover:bg-teal-50 text-teal-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center gap-2 text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white hover:bg-teal-50 text-teal-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-2 text-sm sm:text-base"
               >
                 <span>Discuss Your SaaS SEO Strategy</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </motion.button>
             </Link>
             <Link to="/contact">
-              <button
+              <motion.button
                 type="button"
-                className="px-8 py-4 bg-teal-800/80 hover:bg-teal-800 text-white font-bold rounded-full border border-teal-600/60 transition-all duration-300 transform hover:scale-105 cursor-pointer text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-teal-800/80 hover:bg-teal-800 text-white font-bold rounded-full border border-teal-600/60 transition-all duration-300 cursor-pointer text-sm sm:text-base"
               >
                 <span>Contact DigLip7</span>
-              </button>
+              </motion.button>
             </Link>
-            <a
-              href="https://wa.me/919650608788"
+            <motion.a
+              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20SaaS%20SEO%20Services%20in%20India."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full transition-transform duration-200 hover:scale-105 flex items-center gap-2 text-sm sm:text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full transition-transform duration-200 flex items-center gap-2 text-sm sm:text-base"
             >
               <FaWhatsapp className="w-4 h-4" />
               <span>WhatsApp Us</span>
-            </a>
+            </motion.a>
           </div>
 
           <div className="pt-6 text-xs text-teal-300/80 flex flex-wrap justify-center gap-4 sm:gap-6 font-medium">
@@ -1614,7 +2059,7 @@ const IndiaSaaSSEO = () => {
               .
             </span>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
