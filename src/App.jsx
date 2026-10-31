@@ -67,6 +67,8 @@ import DubaiAutomotiveSEOService from "./pages/locations/uae/dubai/DubaiAutomoti
 import DubaiDrivingSchoolSEO from "./pages/locations/uae/dubai/DubaiDrivingSchoolSEO";
 import DubaiTravelAgencySEO from "./pages/locations/uae/dubai/DubaiTravelAgencySEO";
 import DubaiInteriorDesignSEO from "./pages/locations/uae/dubai/DubaiInteriorDesignSEO";
+
+
 import IndiaSEOServices from "./pages/locations/india/IndiaSEOServices";
 import IndiaRealEstateSEO from "./pages/locations/india/IndiaRealEstateSEO";
 import IndiaEcommerceSEOServices from "./pages/locations/india/Indiaecommerceseoservices";
@@ -75,7 +77,12 @@ import IndiaHotelSEOServices from "./pages/locations/india/IndiaHotelSEOServices
 import DelhiRestaurantSEOServices from "./pages/locations/india/Delhirestaurantseoservices";
 import IndiaSaaSSEO from "./pages/locations/india/IndiaSaaSSEO";
 import IndiaClinicSEO from "./pages/locations/india/IndiaClinicSEO";
-// import PuneDigitalMarketing from "./pages/locations/india/PuneDigitalMarketing";
+import DelhiDigitalMarketingServices from "./pages/locations/india/Delhidigitalmarketingservices";
+import MumbaiSEOServices from "./pages/locations/india/Mumbaiseoservices";
+import PuneDigitalMarketingServices from "./pages/locations/india/Punedigitalmarketingservices";
+import MediaBuyingAgencyIndia from "./pages/locations/india/MediaBuyingAgencyIndia";
+
+
 import SaudiSEOServices from "./pages/locations/saudi-arabia/SaudiSEOServices";
 import SaudiPPCServices from "./pages/locations/saudi-arabia/SaudiPPCServices";
 import SaudiWebDesign from "./pages/locations/saudi-arabia/SaudiWebDesign";
@@ -87,6 +94,7 @@ import SaudiLocalSEO from "./pages/locations/saudi-arabia/SaudiLocalSEO";
 import SaudiEmailMarketing from "./pages/locations/saudi-arabia/SaudiEmailMarketing";
 import SaudiMobileAppDevelopment from "./pages/locations/saudi-arabia/SaudiMobileAppDevelopment";
 import SaudiVideoMarketingAgency from "./pages/locations/saudi-arabia/SaudiVideoMarketingAgency";
+
 import QatarSEOServices from "./pages/locations/qatar/QatarSEOServices";
 import HotelSEOServicesQatar from "./pages/locations/qatar/Hotelseoservicesqatar";
 import QatarLocalSEOServices from "./pages/locations/qatar/Qatarlocalseoservices";
@@ -166,6 +174,10 @@ function App() {
           <Route path="/digital-market/content-marketing" element={<ContentMarketing />} />
           <Route path="/digital-market/email-marketing" element={<EmailMarketing />} />
           <Route path="/digital-market/online-repulation-management(ORM)" element={<ORM />} />
+          <Route path="/online-repulation-management" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
+          <Route path="/online-repulation-management/" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
+          <Route path="/digital-market/online-repulation-management" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
+          <Route path="/digital-market/online-repulation-management/" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
           <Route path="/digital-market/local-SEO-services" element={<LocalSEO />} />
           <Route path="/digital-market/e-commerce-marketing" element={<EcommerceMarketing />} />
           <Route path="/digital-market/video-marketing" element={<VideoMarketing />} />
@@ -280,8 +292,32 @@ function App() {
           <Route path="/india/saas-seo-services/" element={<IndiaSaaSSEO />} />
           <Route path="/india/clinic-seo-services" element={<IndiaClinicSEO />} />
           <Route path="/india/clinic-seo-services/" element={<IndiaClinicSEO />} />
-          <Route path="/india/pune/digital-marketing-services" element={<PuneDigitalMarketing />} />
-          <Route path="/india/pune/digital-marketing-services/" element={<PuneDigitalMarketing />} />
+          {/* Delhi */}
+          <Route path="/india/delhi" element={<Navigate to="/india/delhi/digital-marketing-services/" replace />} />
+          <Route path="/india/delhi/" element={<Navigate to="/india/delhi/digital-marketing-services/" replace />} />
+          <Route path="/india/delhi/digital-marketing-services" element={<DelhiDigitalMarketingServices />} />
+          <Route path="/india/delhi/digital-marketing-services/" element={<DelhiDigitalMarketingServices />} />
+          <Route path="/delhi/digital-marketing-services" element={<Navigate to="/india/delhi/digital-marketing-services/" replace />} />
+          <Route path="/delhi/digital-marketing-services/" element={<Navigate to="/india/delhi/digital-marketing-services/" replace />} />
+          {/* Mumbai */}
+          <Route path="/india/mumbai" element={<Navigate to="/india/mumbai/seo-services/" replace />} />
+          <Route path="/india/mumbai/" element={<Navigate to="/india/mumbai/seo-services/" replace />} />
+          <Route path="/india/mumbai/seo-services" element={<MumbaiSEOServices />} />
+          <Route path="/india/mumbai/seo-services/" element={<MumbaiSEOServices />} />
+          <Route path="/mumbai/seo-services" element={<Navigate to="/india/mumbai/seo-services/" replace />} />
+          <Route path="/mumbai/seo-services/" element={<Navigate to="/india/mumbai/seo-services/" replace />} />
+          {/* Pune */}
+          <Route path="/india/pune" element={<Navigate to="/india/pune/digital-marketing-services/" replace />} />
+          <Route path="/india/pune/" element={<Navigate to="/india/pune/digital-marketing-services/" replace />} />
+          <Route path="/india/pune/digital-marketing-services" element={<PuneDigitalMarketingServices />} />
+          <Route path="/india/pune/digital-marketing-services/" element={<PuneDigitalMarketingServices />} />
+          <Route path="/pune/digital-marketing-services" element={<Navigate to="/india/pune/digital-marketing-services/" replace />} />
+          <Route path="/pune/digital-marketing-services/" element={<Navigate to="/india/pune/digital-marketing-services/" replace />} />
+          {/* Media Buying Agency India */}
+          <Route path="/media-buying-agency-india" element={<MediaBuyingAgencyIndia />} />
+          <Route path="/media-buying-agency-india/" element={<MediaBuyingAgencyIndia />} />
+          <Route path="/india/media-buying-agency-india" element={<Navigate to="/media-buying-agency-india/" replace />} />
+          <Route path="/india/media-buying-agency-india/" element={<Navigate to="/media-buying-agency-india/" replace />} />
 
           <Route path="/saudi-arabia" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
           <Route path="/saudi-arabia/" element={<Navigate to="/saudi-arabia/seo-services" replace />} />
