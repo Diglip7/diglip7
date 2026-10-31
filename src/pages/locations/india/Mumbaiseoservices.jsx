@@ -7,6 +7,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 import SEO from "../../../components/SEO";
 import {
   ArrowRight,
@@ -140,7 +141,7 @@ const BackToTop = () => {
 };
 
 // Hero (same structure as existing pages, with visible breadcrumb)
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image }) => {
+const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl }) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -374,7 +375,7 @@ const FaqSection = ({ title, faqs }) => {
 };
 
 // CTA banner
-const CtaSection = ({ headingLead, headingAccent, text, ctaLabel }) => {
+const CtaSection = ({ headingLead, headingAccent, text, ctaLabel, whatsappUrl }) => {
   const circles = useMemo(
     () =>
       Array.from({ length: 15 }, () => ({
@@ -435,6 +436,41 @@ const CtaSection = ({ headingLead, headingAccent, text, ctaLabel }) => {
         </motion.div>
       </div>
     </section>
+  );
+};
+
+// Inline mid-page CTA button
+const MidCta = ({ label, className = "", href, to = "/contact" }) => {
+  if (href) {
+    return (
+      <div className={`my-8 flex justify-center ${className}`}>
+        <motion.a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group px-7 sm:px-9 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {label}
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </motion.a>
+      </div>
+    );
+  }
+  return (
+    <div className={`my-8 flex justify-center ${className}`}>
+      <Link to={to} className="inline-block">
+        <motion.button
+          className="group px-7 sm:px-9 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {label}
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </motion.button>
+      </Link>
+    </div>
   );
 };
 
@@ -948,6 +984,7 @@ function MumbaiSEOServices() {
           titleGradient="to Improve Your Business Search Visibility"
           ctaLabel="Discuss Your SEO Requirements"
           image={images.hero}
+          whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20SEO%20Services%20for%20my%20business%20in%20Mumbai."
         />
 
         <div className="bg-white">
@@ -1336,6 +1373,12 @@ function MumbaiSEOServices() {
               </div>
             </div>
 
+            {/* Mid-page CTA 1 */}
+            <MidCta
+              label="Explore the Right SEO Strategy"
+              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20am%20interested%20in%20exploring%20an%20SEO%20strategy%20for%20my%20business%20in%20Mumbai."
+            />
+
             {/* Mobile SEO and Website User Experience (parallax) */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
               <ParallaxImage image={images.mobile} />
@@ -1382,6 +1425,12 @@ function MumbaiSEOServices() {
               intro="Our workflow is transparent:"
               steps={processSteps}
               closing="Priorities depend on website condition, development resources, competition and project scope. We do not guarantee a specific ranking or results within a fixed number of days."
+            />
+
+            {/* Mid-page CTA 2 */}
+            <MidCta
+              label="Talk to Our SEO Team"
+              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20talk%20to%20your%20team%20regarding%20SEO%20services%20in%20Mumbai."
             />
 
             {/* SEO Performance Tracking and Reporting (sparkline) */}
@@ -1459,6 +1508,7 @@ function MumbaiSEOServices() {
             headingAccent="DigLip7"
             text="If you want SEO support for a business targeting Mumbai, a conversation is a sensible first step. We can talk through website challenges, keyword opportunities, technical priorities, local search requirements and your business objectives."
             ctaLabel="Discuss Your SEO Requirements"
+            whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20SEO%20Services%20for%20my%20business%20in%20Mumbai."
           />
         </div>
       </main>

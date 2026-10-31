@@ -188,6 +188,36 @@ const Header = () => {
         href: "/india/seo-services",
         badge: "Country Main Page",
       },
+      cities: [
+        {
+          name: "Delhi",
+          mainPage: {
+            name: "Delhi Digital Marketing Services",
+            href: "/india/delhi/digital-marketing-services/",
+            badge: "City Main Page",
+          },
+          subServices: [
+            {
+              name: "Restaurant SEO Services Delhi",
+              href: "/india/restaurant-seo-services-delhi/",
+            },
+          ],
+        },
+        {
+          name: "Mumbai",
+          mainPage: {
+            name: "Mumbai SEO Services",
+            href: "/india/mumbai/seo-services/",
+            badge: "City Main Page",
+          },
+          subServices: [
+            {
+              name: "Digital Marketing Services Mumbai",
+              href: "/india/mumbai/digital-marketing-services/",
+            },
+          ],
+        },
+      ],
       subServices: [
         {
           name: "Real Estate SEO Services",
@@ -217,25 +247,6 @@ const Header = () => {
           name: "Clinic SEO Services India",
           href: "/india/clinic-seo-services/",
         }
-      ],
-      cities: [
-        {
-          name: "Delhi",
-          mainPage: {
-            name: "Delhi Digital Marketing Services",
-            href: "/india/delhi/digital-marketing-services/",
-            badge: "City Main Page",
-          },
-        },
-        {
-          name: "Mumbai",
-          mainPage: {
-            name: "Mumbai SEO Services",
-            href: "/india/mumbai/seo-services/",
-            badge: "City Main Page",
-          },
-          subServices: [],
-        },
       ],
     },
     {
@@ -295,31 +306,7 @@ const Header = () => {
           href: "/saudi-arabia/ecommerce-seo/",
         },
       ],
-      cities: [
-        {
-          name: "Delhi",
-          mainPage: {
-            name: "Delhi Digital Marketing Services",
-            href: "/india/delhi/digital-marketing-services/",
-            badge: "City Main Page",
-          },
-          subServices: [
-            {
-              name: "Restaurant SEO Services Delhi",
-              href: "/india/restaurant-seo-services-delhi/",
-            },
-          ],
-        },
-        {
-          name: "Mumbai",
-          mainPage: {
-            name: "Mumbai SEO Services",
-            href: "/india/mumbai/seo-services/",
-            badge: "City Main Page",
-          },
-          subServices: [],
-        },
-      ],
+      cities: [],
     },
     {
       name: "Qatar",
@@ -350,31 +337,7 @@ const Header = () => {
           href: "/qatar/real-estate-seo-services/",
         },
       ],
-      cities: [
-        {
-          name: "Delhi",
-          mainPage: {
-            name: "Delhi Digital Marketing Services",
-            href: "/india/delhi/digital-marketing-services/",
-            badge: "City Main Page",
-          },
-          subServices: [
-            {
-              name: "Restaurant SEO Services Delhi",
-              href: "/india/restaurant-seo-services-delhi/",
-            },
-          ],
-        },
-        {
-          name: "Mumbai",
-          mainPage: {
-            name: "Mumbai SEO Services",
-            href: "/india/mumbai/seo-services/",
-            badge: "City Main Page",
-          },
-          subServices: [],
-        },
-      ],
+      cities: [],
     },
   ];
 

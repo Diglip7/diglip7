@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 import SEO from "../../../components/SEO";
 import {
   ArrowRight,
@@ -134,7 +135,7 @@ const BackToTop = () => {
 };
 
 // Hero (same structure as existing pages, with visible breadcrumb)
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image }) => {
+const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl }) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -368,7 +369,7 @@ const FaqSection = ({ title, faqs }) => {
 };
 
 // CTA banner
-const CtaSection = ({ headingLead, headingAccent, text, ctaLabel }) => {
+const CtaSection = ({ headingLead, headingAccent, text, ctaLabel, whatsappUrl }) => {
   const circles = useMemo(
     () =>
       Array.from({ length: 15 }, () => ({
@@ -432,6 +433,41 @@ const CtaSection = ({ headingLead, headingAccent, text, ctaLabel }) => {
   );
 };
 
+// Inline mid-page CTA button
+const MidCta = ({ label, className = "", href, to = "/contact" }) => {
+  if (href) {
+    return (
+      <div className={`my-8 flex justify-center ${className}`}>
+        <motion.a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group px-7 sm:px-9 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {label}
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </motion.a>
+      </div>
+    );
+  }
+  return (
+    <div className={`my-8 flex justify-center ${className}`}>
+      <Link to={to} className="inline-block">
+        <motion.button
+          className="group px-7 sm:px-9 py-3 sm:py-3.5 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-sm sm:text-base font-semibold rounded-full shadow-xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {label}
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </motion.button>
+      </Link>
+    </div>
+  );
+};
+
 // Image helper (lazy by default)
 const Img = ({ image, className = "rounded-2xl shadow-xl w-full object-cover bg-gray-50" }) => (
   <img
@@ -488,16 +524,18 @@ const OrbitArt = () => {
   );
 };
 
-// Interactive service tabs (all panels stay in the DOM; only the active one is shown)
+// Interactive service tabs (2-column balanced selector + full-height active card to eliminate dead space)
 const ServiceTabs = ({ items }) => {
   const [active, setActive] = useState(0);
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 lg:gap-10 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+      {/* Left tabs selector: 12 services presented in 2 compact columns on desktop */}
       <div
         role="tablist"
         aria-orientation="vertical"
         aria-label="Digital marketing services"
-        className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0"
+        className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5 content-start"
       >
         {items.map((it, i) => (
           <button
@@ -508,25 +546,26 @@ const ServiceTabs = ({ items }) => {
             aria-selected={active === i}
             aria-controls={`dm-panel-${i}`}
             onClick={() => setActive(i)}
-            className={`shrink-0 flex items-center gap-3 text-left px-4 py-3 rounded-2xl text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer ${
+            className={`flex items-center gap-2.5 text-left px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
               active === i
-                ? "bg-gradient-to-r from-teal-700 to-teal-900 text-white shadow-lg lg:translate-x-2"
-                : "bg-white text-gray-700 border border-teal-100 hover:bg-teal-50"
+                ? "bg-gradient-to-r from-teal-700 to-teal-900 text-white shadow-lg scale-[1.02]"
+                : "bg-white text-gray-700 border border-teal-100 hover:bg-teal-50 hover:border-teal-200"
             }`}
           >
             <span
-              className={`w-7 h-7 shrink-0 rounded-full text-xs font-bold flex items-center justify-center ${
+              className={`w-6 h-6 shrink-0 rounded-full text-xs font-bold flex items-center justify-center ${
                 active === i ? "bg-white/20 text-white" : "bg-teal-50 text-teal-800"
               }`}
             >
               {i + 1}
             </span>
-            <span className="whitespace-nowrap lg:whitespace-normal">{it.label}</span>
+            <span className="leading-snug">{it.label}</span>
           </button>
         ))}
       </div>
 
-      <div>
+      {/* Right details card: dynamically fills the height, eliminating empty space */}
+      <div className="lg:col-span-6">
         {items.map((it, i) => (
           <motion.div
             key={it.label}
@@ -534,26 +573,71 @@ const ServiceTabs = ({ items }) => {
             id={`dm-panel-${i}`}
             aria-labelledby={`dm-tab-${i}`}
             hidden={active !== i}
-            animate={{ opacity: active === i ? 1 : 0, x: active === i ? 0 : 30 }}
-            transition={{ duration: 0.4 }}
+            animate={{ opacity: active === i ? 1 : 0, scale: active === i ? 1 : 0.98 }}
+            transition={{ duration: 0.3 }}
+            className="h-full"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-teal-50/40 p-8 sm:p-10 shadow-xl border border-teal-100 border-l-4 border-l-[#c89d5a]">
+            <div className="relative h-full flex flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-white via-teal-50/20 to-teal-50/40 p-6 sm:p-8 shadow-xl border border-teal-100 border-l-4 border-l-[#c89d5a]">
               <span
                 aria-hidden="true"
-                className="absolute -top-6 right-4 text-9xl font-extrabold text-teal-700/10 select-none"
+                className="absolute -top-6 right-4 text-9xl font-extrabold text-teal-700/10 select-none pointer-events-none"
               >
-                {i + 1}
+                {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="relative text-2xl font-bold text-teal-800 mb-4">
+
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-teal-100 text-teal-800">
+                    <Sparkles className="w-3.5 h-3.5 text-[#c89d5a]" />
+                    Service Area {i + 1} of {items.length}
+                  </span>
+                </div>
+
+                <h3 className="relative text-2xl sm:text-3xl font-bold text-teal-900 mb-4 leading-tight">
+                  {it.href ? (
+                    <Link to={it.href} className={inlineLink}>
+                      {it.label}
+                    </Link>
+                  ) : (
+                    it.label
+                  )}
+                </h3>
+
+                <p className="relative text-gray-700 leading-relaxed text-base sm:text-lg mb-6">
+                  {it.text}
+                </p>
+              </div>
+
+              {/* Bottom action bar inside card */}
+              <div className="relative pt-6 border-t border-teal-100/80 flex flex-wrap items-center justify-between gap-3">
+                <a
+                  href={`https://wa.me/919650608788?text=${encodeURIComponent(
+                    `Hello DigLip7 Team, I am interested in ${it.label.replace(/\.$/, "")} for my business in Delhi.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-700 to-teal-900 text-white text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <FaWhatsapp className="w-4 h-4 text-green-300" />
+                  Inquire on WhatsApp
+                </a>
+
                 {it.href ? (
-                  <Link to={it.href} className={inlineLink}>
-                    {it.label}
+                  <Link
+                    to={it.href}
+                    className="text-xs sm:text-sm font-semibold text-teal-700 hover:text-[#c89d5a] flex items-center gap-1 transition-colors"
+                  >
+                    Dedicated Service Page <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 ) : (
-                  it.label
+                  <Link
+                    to="/contact"
+                    className="text-xs sm:text-sm font-semibold text-gray-500 hover:text-teal-700 flex items-center gap-1 transition-colors"
+                  >
+                    Custom Delhi Strategy <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 )}
-              </h3>
-              <p className="relative text-gray-700 leading-relaxed text-base sm:text-lg">{it.text}</p>
+              </div>
             </div>
           </motion.div>
         ))}
@@ -562,25 +646,36 @@ const ServiceTabs = ({ items }) => {
   );
 };
 
-// Expanding cards (hover / focus / tap to expand)
+// Expanding cards (hover / focus / tap to expand on desktop; responsive full-height cards on mobile)
 const ExpandingCards = ({ items }) => {
   const [active, setActive] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="flex flex-col lg:flex-row gap-4">
       {items.map((it, i) => (
         <motion.div
           key={it.label}
           tabIndex={0}
-          onMouseEnter={() => setActive(i)}
+          onMouseEnter={() => isDesktop && setActive(i)}
           onFocus={() => setActive(i)}
           onClick={() => setActive(i)}
-          animate={{ flexGrow: active === i ? 2.4 : 1 }}
-          style={{ flexBasis: 0 }}
-          transition={{ duration: 0.5 }}
-          className={`relative min-w-0 overflow-hidden rounded-3xl p-6 shadow-lg cursor-pointer border ${
+          animate={isDesktop ? { flexGrow: active === i ? 2.4 : 1 } : { flexGrow: 1 }}
+          style={isDesktop ? { flexBasis: 0 } : { flexBasis: "auto" }}
+          transition={{ duration: 0.4 }}
+          className={`relative min-w-0 rounded-3xl p-6 shadow-lg cursor-pointer border transition-all duration-300 ${
             active === i
-              ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent"
-              : "bg-white text-gray-700 border-gray-100"
+              ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent shadow-xl"
+              : "bg-white text-gray-700 border-gray-100 hover:border-teal-200"
           }`}
         >
           <span
@@ -844,6 +939,7 @@ function DelhiDigitalMarketingServices() {
           titleGradient="to Help Businesses Grow Online"
           ctaLabel="Discuss Your Digital Marketing Requirements"
           image={images.hero}
+          whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20digital%20marketing%20services%20in%20Delhi."
         />
 
         <div className="bg-white">
@@ -948,6 +1044,12 @@ function DelhiDigitalMarketingServices() {
                 The distinction between channels matters. Organic marketing earns visibility gradually, paid advertising buys attention for as long as the budget runs, and social media engagement builds familiarity through conversation. They support one another, but they are not interchangeable.
               </p>
             </div>
+
+            {/* Mid-page CTA 1 */}
+            <MidCta
+              label="Explore the Right Marketing Channels"
+              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20am%20interested%20in%20exploring%20digital%20marketing%20channels%20for%20my%20business%20in%20Delhi."
+            />
 
             {/* Search Engine Optimization for Delhi Businesses */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
@@ -1321,6 +1423,12 @@ function DelhiDigitalMarketingServices() {
               closing="The process depends on project scope, available resources, website condition and campaign requirements. We do not promise a specific ranking or results within a fixed number of days."
             />
 
+            {/* Mid-page CTA 2 */}
+            <MidCta
+              label="Talk to Our Team"
+              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20talk%20to%20your%20team%20regarding%20digital%20marketing%20services%20in%20Delhi."
+            />
+
             {/* Performance Tracking and Reporting */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-24">
               <div>
@@ -1408,6 +1516,7 @@ function DelhiDigitalMarketingServices() {
             headingAccent="DigLip7"
             text="If you are looking for digital marketing support targeting Delhi, a conversation is a practical place to start. We can discuss your website's visibility, marketing objectives, relevant channels, search opportunities, advertising requirements, campaign performance and target audiences."
             ctaLabel="Discuss Your Digital Marketing Requirements"
+            whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20digital%20marketing%20services%20in%20Delhi."
           />
         </div>
       </main>
