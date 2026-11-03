@@ -64,13 +64,13 @@ const Footer = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <Link to="/contact">
+            <Link to="/contact/">
               <button className="px-8 py-3.5 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white text-sm sm:text-base font-bold rounded-full shadow-lg shadow-orange-500/25 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-pointer">
                 <span>Request a Free SEO Audit</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact/">
               <button className="px-8 py-3.5 bg-teal-900 hover:bg-teal-950 text-white text-sm sm:text-base font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer">
                 Schedule a Call
               </button>
@@ -122,32 +122,28 @@ const Footer = () => {
               <h3 className="text-sm font-bold text-teal-200 uppercase tracking-wider mb-3">Company</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link
-                    to="/about"
+                  <Link to="/about/"
                     className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1"
                   >
                     <span>About Us</span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/contact"
+                  <Link to="/contact/"
                     className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1"
                   >
                     <span>Contact Us</span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/privacy-policy"
+                  <Link to="/privacy-policy/"
                     className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1"
                   >
                     <span>Privacy Policy</span>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/terms-and-conditions"
+                  <Link to="/terms-and-conditions/"
                     className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1"
                   >
                     <span>Terms &amp; Conditions</span>
@@ -242,62 +238,62 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/digital-market/seoservices" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/seoservices/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>SEO Services</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/PPC-Advertising" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/PPC-Advertising/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>PPC Advertising</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/social-media-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/social-media-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Social Media Marketing (SMM)</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/content-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/content-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Content Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/email-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/email-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Email Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/online-repulation-management(ORM)" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/online-repulation-management(ORM)/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>ORM Services</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/local-SEO-services" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/local-SEO-services/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Local SEO Services</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/e-commerce-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/e-commerce-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>E-Commerce Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/video-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/video-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Video Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/influencer-marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/influencer-marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Influencer Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/Ai-powered-Digital-Marketing" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/Ai-powered-Digital-Marketing/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>AI-Powered Digital Marketing</span>
                 </Link>
               </li>
               <li>
-                <Link to="/digital-market/voice-search-optimization" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/digital-market/voice-search-optimization/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Voice Search Optimization</span>
                 </Link>
               </li>
@@ -311,27 +307,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/development/web-development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/web-development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Web Development</span>
                 </Link>
               </li>
               <li>
-                <Link to="/development/mobile-app-development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/mobile-app-development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Mobile App Development</span>
                 </Link>
               </li>
               <li>
-                <Link to="/development/e-commerce-development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/e-commerce-development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>E-Commerce Development</span>
                 </Link>
               </li>
               <li>
-                <Link to="/development/custom-software_development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/custom-software_development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Custom Software Development</span>
                 </Link>
               </li>
               <li>
-                <Link to="/development/cms-development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/cms-development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>CMS Development</span>
                 </Link>
               </li>
@@ -341,7 +337,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/development/cloud-application-development" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/cloud-application-development/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Cloud Application Development</span>
                 </Link>
               </li>
@@ -355,22 +351,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5 text-sm mb-6">
               <li>
-                <Link to="/design/UI-UX" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/design/UI-UX/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>UI/UX Design</span>
                 </Link>
               </li>
               <li>
-                <Link to="/design/graphic-design" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/design/graphic-design/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Graphic Design</span>
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/about/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>About Our Agency</span>
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/contact/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Contact Support</span>
                 </Link>
               </li>
@@ -387,8 +383,8 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-teal-800/80 flex flex-col sm:flex-row justify-between items-center text-xs text-teal-200 gap-4">
           <p className="font-medium text-white">&copy; {new Date().getFullYear()} DigLip7 Tech. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy-policy" className="text-teal-200 hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="text-teal-200 hover:text-white transition-colors">Terms &amp; Conditions</Link>
+            <Link to="/privacy-policy/" className="text-teal-200 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions/" className="text-teal-200 hover:text-white transition-colors">Terms &amp; Conditions</Link>
           </div>
         </div>
       </footer>

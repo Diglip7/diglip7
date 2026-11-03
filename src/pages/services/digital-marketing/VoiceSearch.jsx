@@ -642,7 +642,7 @@ function Voice() {
                   whileTap={{ scale: 0.95 }}
                 >
                   Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
                 </motion.button>
               </Link>
             </div>
@@ -685,9 +685,6 @@ function Voice() {
           ))}
         </div>
       </div>
-
-
-
 
       {/* addedd */}
 
@@ -777,7 +774,6 @@ function Voice() {
               </h2>
               <p className="text-gray-600 mt-3">
                 Discover how DigLip 7’s voice search optimization strategies have helped businesses achieve higher local visibility and increased traffic.<span className="font-semibold text-teal-600">DigLip7</span> By optimizing for conversational queries and smart devices, our data-driven approach delivers measurable results, better engagement, and long-term digital growth.
-
               </p>
 
               {/* Tabs */}
@@ -789,8 +785,7 @@ function Voice() {
                     className={`group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 ${active === key
                       ? "bg-teal-600 text-white shadow-md"
                       : "bg-white text-gray-700 hover:bg-teal-50"
-                      }`}
-                  >
+                      }`}>
                     {key}
                   </button>
                 ))}

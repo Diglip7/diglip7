@@ -1,0 +1,40 @@
+﻿<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2. Return HTTP 410 (Gone) for legacy WordPress query parameter spam (?p=XXXX)
+  RewriteCond %{QUERY_STRING} ^p=[0-9]+$ [NC]
+  RewriteRule ^$ - [G,L]
+
+  # 3. Return HTTP 410 (Gone) for legacy casino/gambling spam queries or slugs
+  RewriteCond %{QUERY_STRING} (casino|spielautomaten|roulette|poker|slots|gambling) [NC,OR]
+  RewriteCond %{REQUEST_URI} (casino|spielautomaten|roulette|poker|slots|gambling) [NC]
+  RewriteRule .* - [G,L]
+
+  # 4. Canonical 301 Redirects for Legacy / Duplicate Service URLs
+  RewriteRule ^seo-services-2/?$ /digital-market/seoservices/ [R=301,L]
+  RewriteRule ^content-marketing-2/?$ /digital-market/content-marketing/ [R=301,L]
+  RewriteRule ^e-commerce-marketing/?$ /digital-market/e-commerce-marketing/ [R=301,L]
+  RewriteRule ^ui-ux-design/?$ /design/UI-UX/ [R=301,L]
+  RewriteRule ^cloud-application-development/?$ /development/cloud-application-development/ [R=301,L]
+  RewriteRule ^ai-chatbots-automation/?$ /digital-market/Ai-powered-Digital-Marketing/ [R=301,L]
+  RewriteRule ^api-development-integration/?$ /development/api-development-integration/ [R=301,L]
+  RewriteRule ^development/api-development&Integration/?$ /development/api-development-integration/ [R=301,L,NE]
+  RewriteRule ^blogview/?$ /blog/ [R=301,L]
+  RewriteRule ^blogview/(.*)$ /blog/$1/ [R=301,L]
+
+  # 5. Enforce Trailing Slash (exclude existing files and folders)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !index\.html
+  RewriteCond %{REQUEST_URI} !(/|\.[a-zA-Z0-9]{1,5})$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
+
+  # 6. React Router SPA Rewrite Fallback
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

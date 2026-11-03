@@ -77,37 +77,37 @@ const Header = () => {
   }, []);
 
   const digitalMarketingServices = [
-    { name: "SEO Services", href: "/digital-market/seoservices", icon: Search },
-    { name: "PPC Services", href: "/digital-market/PPC-Advertising", icon: Zap },
-    { name: "Social Media Marketing (SMM)", href: "/digital-market/social-media-marketing", icon: Share2 },
-    { name: "Content Marketing", href: "/digital-market/content-marketing", icon: FileText },
-    { name: "Email Marketing", href: "/digital-market/email-marketing", icon: Mail },
-    { name: "Online Reputation Management (ORM)", href: "/digital-market/online-repulation-management(ORM)", icon: Shield },
-    { name: "Local SEO", href: "/digital-market/local-SEO-services", icon: MapPin },
-    { name: "E-Commerce Marketing", href: "/digital-market/e-commerce-marketing", icon: ShoppingCart },
-    { name: "Video Marketing", href: "/digital-market/video-marketing", icon: Video },
-    { name: "AI-powered Digital Marketing", href: "/digital-market/Ai-powered-Digital-Marketing", icon: Brain },
-    { name: "Voice Search Optimization", href: "/digital-market/voice-search-optimization", icon: Mic },
-    { name: "Influencer Marketing", href: "/digital-market/influencer-marketing", icon: Users },
-    { name: "Programmatic Advertising", href: "/digital-market/programmatic-advertising", icon: TrendingUp },
-    { name: "Mobile Marketing", href: "/digital-market/Mobile-marketing", icon: Smartphone },
-    { name: "Performance Marketing", href: "/digital-market/performance-marketing", icon: BarChart3 },
+    { name: "SEO Services", href: "/digital-market/seoservices/", icon: Search },
+    { name: "PPC Services", href: "/digital-market/PPC-Advertising/", icon: Zap },
+    { name: "Social Media Marketing (SMM)", href: "/digital-market/social-media-marketing/", icon: Share2 },
+    { name: "Content Marketing", href: "/digital-market/content-marketing/", icon: FileText },
+    { name: "Email Marketing", href: "/digital-market/email-marketing/", icon: Mail },
+    { name: "Online Reputation Management (ORM)", href: "/digital-market/online-repulation-management(ORM)/", icon: Shield },
+    { name: "Local SEO", href: "/digital-market/local-SEO-services/", icon: MapPin },
+    { name: "E-Commerce Marketing", href: "/digital-market/e-commerce-marketing/", icon: ShoppingCart },
+    { name: "Video Marketing", href: "/digital-market/video-marketing/", icon: Video },
+    { name: "AI-powered Digital Marketing", href: "/digital-market/Ai-powered-Digital-Marketing/", icon: Brain },
+    { name: "Voice Search Optimization", href: "/digital-market/voice-search-optimization/", icon: Mic },
+    { name: "Influencer Marketing", href: "/digital-market/influencer-marketing/", icon: Users },
+    { name: "Programmatic Advertising", href: "/digital-market/programmatic-advertising/", icon: TrendingUp },
+    { name: "Mobile Marketing", href: "/digital-market/Mobile-marketing/", icon: Smartphone },
+    { name: "Performance Marketing", href: "/digital-market/performance-marketing/", icon: BarChart3 },
     { name: "Media Buying Agency", href: "/media-buying-agency-india/", icon: Megaphone },
   ];
 
   const designServices = [
-    { name: "UI/UX Design", href: "/design/UI-UX", icon: Palette },
-    { name: "Graphic Design", href: "/design/graphic-design", icon: Layers },
+    { name: "UI/UX Design", href: "/design/UI-UX/", icon: Palette },
+    { name: "Graphic Design", href: "/design/graphic-design/", icon: Layers },
   ];
 
   const developmentServices = [
-    { name: "Web Development", href: "/development/web-development", icon: Code },
-    { name: "Mobile App Development", href: "/development/mobile-app-development", icon: Smartphone },
-    { name: "E-commerce Development", href: "/development/e-commerce-development", icon: Globe },
-    { name: "Custom Software", href: "/development/custom-software_development", icon: Cpu },
+    { name: "Web Development", href: "/development/web-development/", icon: Code },
+    { name: "Mobile App Development", href: "/development/mobile-app-development/", icon: Smartphone },
+    { name: "E-commerce Development", href: "/development/e-commerce-development/", icon: Globe },
+    { name: "Custom Software", href: "/development/custom-software_development/", icon: Cpu },
     { name: "API Development", href: "/development/api-development-integration/", icon: Settings },
-    { name: "CMS Development", href: "/development/cms-development", icon: Wrench },
-    { name: "Cloud Application Development", href: "/development/cloud-application-development", icon: Globe },
+    { name: "CMS Development", href: "/development/cms-development/", icon: Wrench },
+    { name: "Cloud Application Development", href: "/development/cloud-application-development/", icon: Globe },
   ];
 
   const locationData = [
@@ -115,7 +115,7 @@ const Header = () => {
       name: "UAE",
       mainPage: {
         name: "SEO Services UAE",
-        href: "/uae/seo-services",
+        href: "/uae/seo-services/",
         badge: "Country Main Page",
       },
       cities: [
@@ -123,41 +123,41 @@ const Header = () => {
           name: "Dubai",
           mainPage: {
             name: "Dubai SEO Services",
-            href: "/uae/dubai/seo-services",
+            href: "/uae/dubai/seo-services/",
             badge: "City Main Page",
           },
           subServices: [
             {
               name: "Local SEO Dubai",
-              href: "/uae/dubai/local-seo",
+              href: "/uae/dubai/local-seo/",
             },
             {
               name: "E-commerce SEO Dubai",
-              href: "/uae/dubai/ecommerce-seo",
+              href: "/uae/dubai/ecommerce-seo/",
             },
             {
               name: "Healthcare SEO Dubai",
-              href: "/uae/dubai/healthcare-seo",
+              href: "/uae/dubai/healthcare-seo/",
             },
             {
               name: "Dental SEO Dubai",
-              href: "/uae/dubai/dental-seo",
+              href: "/uae/dubai/dental-seo/",
             },
             {
               name: "Beauty Clinic SEO Dubai",
-              href: "/uae/dubai/beauty-clinic-seo",
+              href: "/uae/dubai/beauty-clinic-seo/",
             },
             {
               name: "Real Estate SEO Dubai",
-              href: "/uae/dubai/real-estate-seo",
+              href: "/uae/dubai/real-estate-seo/",
             },
             {
               name: "Restaurant SEO Dubai",
-              href: "/uae/dubai/restaurant-seo",
+              href: "/uae/dubai/restaurant-seo/",
             },
             {
               name: "Hotel SEO Dubai",
-              href: "/uae/dubai/hotel-seo",
+              href: "/uae/dubai/hotel-seo/",
             },
             {
               name: "Law Firm SEO Dubai",
@@ -165,19 +165,19 @@ const Header = () => {
             },
             {
               name: "Automotive SEO Dubai",
-              href: "/uae/dubai/automotive-seo",
+              href: "/uae/dubai/automotive-seo/",
             },
             {
               name: "Driving School SEO Dubai",
-              href: "/uae/dubai/driving-school-seo",
+              href: "/uae/dubai/driving-school-seo/",
             },
             {
               name: "Travel Agency SEO Dubai",
-              href: "/uae/dubai/travel-agency-seo",
+              href: "/uae/dubai/travel-agency-seo/",
             },
             {
               name: "Interior Design SEO Dubai",
-              href: "/uae/dubai/interior-design-seo",
+              href: "/uae/dubai/interior-design-seo/",
             },
           ],
         },
@@ -187,7 +187,7 @@ const Header = () => {
       name: "India",
       mainPage: {
         name: "SEO Services India",
-        href: "/india/seo-services",
+        href: "/india/seo-services/",
         badge: "Country Main Page",
       },
       cities: [
@@ -264,7 +264,7 @@ const Header = () => {
       name: "Saudi Arabia",
       mainPage: {
         name: "SEO Services Saudi Arabia",
-        href: "/saudi-arabia/seo-services",
+        href: "/saudi-arabia/seo-services/",
         badge: "Country Main Page",
       },
       subServices: [
@@ -319,17 +319,17 @@ const Header = () => {
       name: "Qatar",
       mainPage: {
         name: "SEO Services Qatar",
-        href: "/qatar/seo-services",
+        href: "/qatar/seo-services/",
         badge: "Country Main Page",
       },
       subServices: [
         {
           name: "Hotel SEO Services Qatar",
-          href: "/qatar/hotel-seo-services",
+          href: "/qatar/hotel-seo-services/",
         },
         {
           name: "Local SEO Qatar",
-          href: "/qatar/local-seo-services",
+          href: "/qatar/local-seo-services/",
         },
         {
           name: "Dental SEO Service",
@@ -435,7 +435,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about">
+            <Link to="/about/">
               <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">About</span>
             </Link>
           </li>
@@ -446,8 +446,7 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("digital")}
             onMouseLeave={handleDropdownLeave}
           >
-            <Link
-              to="/digital-market"
+            <Link to="/digital-market/"
               className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Digital Marketing
@@ -472,8 +471,7 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("design")}
             onMouseLeave={handleDropdownLeave}
           >
-            <Link
-              to="/design"
+            <Link to="/design/"
               className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Design
@@ -498,8 +496,7 @@ const Header = () => {
             onMouseEnter={() => handleDropdownEnter("development")}
             onMouseLeave={handleDropdownLeave}
           >
-            <Link
-              to="/development"
+            <Link to="/development/"
               className="text-teal-800 hover:text-black transition-colors duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap"
             >
               Development
@@ -671,7 +668,7 @@ const Header = () => {
           </li>
 
           <li>
-            <Link to="/contact">
+            <Link to="/contact/">
               <span className="text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">Contact</span>
             </Link>
           </li>
@@ -708,8 +705,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/about"
+            <Link to="/about/"
               className="block py-3 px-2 text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               onClick={() => setIsOpen(false)}
             >
@@ -720,8 +716,7 @@ const Header = () => {
           {/* Mobile Digital Marketing Dropdown */}
           <li className="border-b border-gray-100 pb-2">
             <div className="flex items-center justify-between">
-              <Link
-                to="/digital-market"
+              <Link to="/digital-market/"
                 onClick={() => setIsOpen(false)}
                 className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
@@ -759,8 +754,7 @@ const Header = () => {
           {/* Mobile Design Dropdown */}
           <li className="border-b border-gray-100 pb-2">
             <div className="flex items-center justify-between">
-              <Link
-                to="/design"
+              <Link to="/design/"
                 onClick={() => setIsOpen(false)}
                 className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
@@ -798,8 +792,7 @@ const Header = () => {
           {/* Mobile Development Dropdown */}
           <li className="border-b border-gray-100 pb-2">
             <div className="flex items-center justify-between">
-              <Link
-                to="/development"
+              <Link to="/development/"
                 onClick={() => setIsOpen(false)}
                 className="flex-1 py-3 px-2 text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               >
@@ -926,8 +919,7 @@ const Header = () => {
           </li>
 
           <li>
-            <Link
-              to="/contact"
+            <Link to="/contact/"
               className="block py-3 px-2 text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               onClick={() => setIsOpen(false)}
             >
