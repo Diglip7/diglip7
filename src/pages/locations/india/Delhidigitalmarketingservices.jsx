@@ -135,7 +135,15 @@ const BackToTop = () => {
 };
 
 // Hero (same structure as existing pages, with visible breadcrumb)
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl }) => {
+const LandingHero = ({
+  breadcrumb,
+  titleDark,
+  titleGradient,
+  ctaLabel,
+  image,
+  whatsappUrl,
+  description,
+}) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -196,6 +204,21 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, wh
                 {titleGradient}
               </span>
             </h1>
+
+            {/* Direct Answer / Subtitle Paragraphs */}
+            {description && (
+              <div className="mt-5 space-y-3.5 text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {Array.isArray(description) ? (
+                  description.map((para, idx) => (
+                    <p key={idx} className={idx === 0 ? "text-gray-800" : "text-gray-600"}>
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p>{description}</p>
+                )}
+              </div>
+            )}
 
             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
               <Link to="/contact" className="inline-block">
@@ -776,18 +799,58 @@ const delhiProblems = [
 ];
 
 const services = [
-  { label: "Search Engine Optimization (SEO).", text: "Improves organic visibility through keyword research, content and technical fixes. It suits businesses that rely on people searching for their services and works best as a long-term investment." },
-  { label: "Local SEO.", text: "Helps businesses with real premises or defined service areas appear in map and neighbourhood searches, which matters for clinics, schools, salons and service providers." },
-  { label: "Google Ads management.", text: "Search campaigns that place your business in front of people actively looking for a service, useful when you need visibility sooner than organic search can provide." },
-  { label: "Pay-per-click (PPC) advertising.", text: "Broader paid work, including remarketing where appropriate, to re-engage visitors who did not enquire the first time." },
-  { label: "Social media marketing.", text: "Planning, content and community management on the platforms your audience actually uses, building recognition between purchases." },
-  { label: "Social media advertising.", text: "Paid campaigns on Instagram, Facebook and LinkedIn aimed at defined audiences, helpful for promotions, events and lead generation." },
-  { label: "Content marketing.", text: "Service pages, articles and guides that answer real customer questions and support the buying decision." },
-  { label: "Website optimization.", text: "Improves speed, structure, mobile usability and navigation so visitors can find what they need." },
-  { label: "Landing page optimization.", text: "Focused pages for specific campaigns, so the message after the click matches the advertisement or search." },
-  { label: "Online reputation management.", href: "/online-repulation-management", text: "Monitoring and responding to public reviews and brand mentions, valuable where trust drives enquiries." },
-  { label: "E-commerce marketing.", text: "Product page SEO, shopping campaign planning and feed optimization for online stores." },
-  { label: "Marketing analytics and reporting.", text: "Conversion tracking and reports that show which activity leads to calls, forms and purchases." },
+  {
+    label: "Search Engine Optimization (SEO).",
+    href: "/digital-market/seoservices/",
+    text: "Improves organic visibility through keyword research, content and technical fixes. It suits businesses that rely on people searching for their services and works best as a long-term investment.",
+  },
+  {
+    label: "Local SEO.",
+    text: "Helps businesses with real premises or defined service areas appear in map and neighbourhood searches, which matters for clinics, schools, salons and service providers.",
+  },
+  {
+    label: "Google Ads management.",
+    href: "/PPC-Advertising",
+    text: "Search campaigns that place your business in front of people actively looking for a service, useful when you need visibility sooner than organic search can provide.",
+  },
+  {
+    label: "Pay-per-click (PPC) advertising.",
+    href: "/PPC-Advertising",
+    text: "Broader paid work, including remarketing where appropriate, to re-engage visitors who did not enquire the first time.",
+  },
+  {
+    label: "Social media marketing.",
+    text: "Planning, content and community management on the platforms your audience actually uses, building recognition between purchases.",
+  },
+  {
+    label: "Social media advertising.",
+    text: "Paid campaigns on Instagram, Facebook and LinkedIn aimed at defined audiences, helpful for promotions, events and lead generation.",
+  },
+  {
+    label: "Content marketing.",
+    text: "Service pages, articles and guides that answer real customer questions and support the buying decision.",
+  },
+  {
+    label: "Website optimization.",
+    text: "Improves speed, structure, mobile usability and navigation so visitors can find what they need.",
+  },
+  {
+    label: "Landing page optimization.",
+    text: "Focused pages for specific campaigns, so the message after the click matches the advertisement or search.",
+  },
+  {
+    label: "Online reputation management.",
+    href: "/online-repulation-management",
+    text: "Monitoring and responding to public reviews and brand mentions, valuable where trust drives enquiries.",
+  },
+  {
+    label: "E-commerce marketing.",
+    text: "Product page SEO, shopping campaign planning and feed optimization for online stores.",
+  },
+  {
+    label: "Marketing analytics and reporting.",
+    text: "Conversion tracking and reports that show which activity leads to calls, forms and purchases.",
+  },
 ];
 
 const industries = [
@@ -925,7 +988,18 @@ function DelhiDigitalMarketingServices() {
         title={metaTitle}
         description={metaDescription}
         canonical={pageUrl}
+        keywords={false}
+        robots="index, follow"
         ogType="website"
+        ogTitle={metaTitle}
+        ogDescription={metaDescription}
+        ogImage="https://diglip7.com/images/digital-marketing-services-delhi.webp"
+        ogImageAlt="Digital marketing team reviewing SEO, paid advertising and online campaign performance"
+        twitterCard="summary_large_image"
+        twitterTitle={metaTitle}
+        twitterDescription={metaDescription}
+        twitterImage="https://diglip7.com/images/digital-marketing-services-delhi.webp"
+        twitterImageAlt="Digital marketing team reviewing SEO, paid advertising and online campaign performance"
         schema={jsonLd}
       />
       <ScrollProgress />
@@ -940,6 +1014,12 @@ function DelhiDigitalMarketingServices() {
           ctaLabel="Discuss Your Digital Marketing Requirements"
           image={images.hero}
           whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20digital%20marketing%20services%20in%20Delhi."
+          description={[
+            "DigLip7 Tech Pvt Ltd offers structured online marketing support that combines organic search, paid advertising, social media, content and website optimization. Each channel does a different job: SEO builds visibility over time, paid campaigns reach people searching right now, and content answers the questions buyers actually ask.",
+            <>
+              <span className="font-semibold text-blue-700">DigLip7</span> develops digital marketing strategies tailored to your business model, target audience and commercial goals—helping businesses across Delhi earn sustainable visibility and qualified enquiries.
+            </>,
+          ]}
         />
 
         <div className="bg-white">
@@ -952,7 +1032,7 @@ function DelhiDigitalMarketingServices() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <OrbitArt />
+                <OrbitArt/>
               </motion.div>
               <div>
                 <FloatingElement>
@@ -1070,22 +1150,40 @@ function DelhiDigitalMarketingServices() {
                   </h2>
                 </FloatingElement>
                 <div className="space-y-4 text-gray-700 leading-relaxed">
-                  {[
-                    "When someone in Connaught Place searches for a business service, or a patient in Dwarka looks for a healthcare provider, search engines try to show the most relevant and useful result. SEO helps your website earn that visibility honestly.",
-                    "The work begins with keyword research and search intent analysis, so pages match what people want: information, comparison or a provider ready to hire. On-page SEO covers titles, headings and service content. Technical SEO covers crawlability, mobile optimization, page speed and internal linking. Local SEO and Google Business Profile optimization support location-specific queries where a business is eligible, and organic performance is tracked through Search Console.",
-                    "The locations mentioned here are illustrations, not validated keyword opportunities. Real targets come from research. SEO is a long-term process, and rankings depend on competition, website quality and many other factors.",
-                  ].map((p, i) => (
-                    <motion.p
-                      key={i}
-                      className="pl-5 border-l-4 border-teal-600"
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
-                    >
-                      {p}
-                    </motion.p>
-                  ))}
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    When someone in Connaught Place searches for a business service, or a patient in Dwarka looks for a healthcare provider, search engines try to show the most relevant and useful result. SEO helps your website earn that visibility honestly.
+                  </motion.p>
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.12 }}
+                  >
+                    The work begins with keyword research and search intent analysis, so pages match what people want: information, comparison or a provider ready to hire. On-page SEO covers titles, headings and service content. For businesses requiring dedicated{" "}
+                    <Link to="/digital-market/seoservices/" className={inlineLink}>
+                      SEO services
+                    </Link>
+                    , technical SEO covers crawlability, mobile optimization, page speed and internal linking. Local SEO and Google Business Profile optimization support location-specific queries where a business is eligible, and organic performance is tracked through Search Console.
+                  </motion.p>
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.24 }}
+                  >
+                    The locations mentioned here are illustrations, not validated keyword opportunities. Real targets come from research. DigLip7 also provides{" "}
+                    <Link to="/india/seo-services" className={inlineLink}>
+                      SEO services across India
+                    </Link>{" "}
+                    for broader multi-city reach. SEO is a long-term process, and rankings depend on competition, website quality and many other factors.
+                  </motion.p>
                 </div>
               </div>
             </div>
@@ -1123,22 +1221,40 @@ function DelhiDigitalMarketingServices() {
                     </Card3D>
                   </motion.div>
                   <div className="space-y-4">
-                    {[
-                      "Paid search lets a business appear when people search for a relevant product or service. Good campaigns begin with a clear account structure, careful keyword selection and an understanding of search intent and match types. Negative keyword management keeps spend away from irrelevant searches, while ad copy, location targeting and audience targeting, where appropriate, shape who sees the advertisement.",
-                      "Landing page relevance matters as much as the ad. Conversion tracking should measure meaningful actions such as calls, enquiry submissions, purchases and qualified leads, not just clicks. Budgets are monitored and campaigns refined on an ongoing basis.",
-                      "PPC complements SEO rather than replacing it. Paid campaigns can deliver earlier visibility, while organic work builds a lasting foundation. We do not guarantee ad positions, a fixed cost per lead or advertising returns.",
-                    ].map((p, i) => (
-                      <motion.p
-                        key={i}
-                        className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20 text-white/95 leading-relaxed hover:bg-white/20 transition-colors"
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.15, duration: 0.6 }}
+                    <motion.p
+                      className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20 text-white/95 leading-relaxed hover:bg-white/20 transition-colors"
+                      initial={{ opacity: 0, x: 40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      Paid search lets a business appear when people search for a relevant product or service. Good campaigns begin with a clear account structure, careful keyword selection and an understanding of search intent and match types. Negative keyword management keeps spend away from irrelevant searches, while ad copy, location targeting and audience targeting, where appropriate, shape who sees the advertisement.
+                    </motion.p>
+                    <motion.p
+                      className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20 text-white/95 leading-relaxed hover:bg-white/20 transition-colors"
+                      initial={{ opacity: 0, x: 40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.15, duration: 0.6 }}
+                    >
+                      Landing page relevance matters as much as the ad. Conversion tracking should measure meaningful actions such as calls, enquiry submissions, purchases and qualified leads, not just clicks. Budgets are monitored and campaigns refined on an ongoing basis.
+                    </motion.p>
+                    <motion.p
+                      className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/20 text-white/95 leading-relaxed hover:bg-white/20 transition-colors"
+                      initial={{ opacity: 0, x: 40 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3, duration: 0.6 }}
+                    >
+                      PPC complements SEO rather than replacing it. Through focused{" "}
+                      <Link
+                        to="/PPC-Advertising"
+                        className="text-[#c89d5a] underline hover:text-white font-semibold transition-colors"
                       >
-                        {p}
-                      </motion.p>
-                    ))}
+                        PPC advertising management
+                      </Link>
+                      , paid campaigns can deliver earlier visibility, while organic work builds a lasting foundation. We do not guarantee ad positions, a fixed cost per lead or advertising returns.
+                    </motion.p>
                   </div>
                 </div>
               </div>
@@ -1387,7 +1503,11 @@ function DelhiDigitalMarketingServices() {
                 </FloatingElement>
                 <div className="space-y-4 text-gray-700 leading-relaxed text-base sm:text-lg">
                   <p className="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
-                    Channels work better when they are coordinated. SEO supports long-term organic visibility, PPC offers targeted paid search exposure, social media supports audience communication, content marketing educates customers and website optimization improves the experience. Analytics ties them together.
+                    Channels work better when they are coordinated. SEO supports long-term organic visibility, PPC offers targeted paid search exposure, social media supports audience communication, content marketing educates customers, and website optimization improves the experience, alongside modern{" "}
+                    <Link to="/Ai-powered-Digital-Marketing" className={inlineLink}>
+                      AI-powered digital marketing
+                    </Link>{" "}
+                    solutions. Analytics ties them together.
                   </p>
                   <p className="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm">
                     Insights travel between channels. Paid search data can reveal which queries lead to enquiries and inform organic keyword research, and a strong website page can serve organic, paid and social traffic at once. Channel selection should follow business priorities, resources and measurable objectives. Not every business needs every channel.
@@ -1425,8 +1545,8 @@ function DelhiDigitalMarketingServices() {
 
             {/* Mid-page CTA 2 */}
             <MidCta
-              label="Talk to Our Team"
-              href="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20talk%20to%20your%20team%20regarding%20digital%20marketing%20services%20in%20Delhi."
+              label="Discuss Your Digital Marketing Requirements"
+              to="/contact"
             />
 
             {/* Performance Tracking and Reporting */}
@@ -1499,7 +1619,10 @@ function DelhiDigitalMarketingServices() {
                       When evaluating any provider, look for clear marketing objectives, relevant service selection, genuine search and advertising knowledge, transparent communication, structured campaign planning, data-based optimization, appropriate reporting and ethical practices.
                     </p>
                     <p className="bg-gradient-to-br from-teal-50 to-white rounded-2xl p-5 border-l-4 border-teal-600">
-                      DigLip7 Tech Pvt Ltd is a digital marketing and technology service provider. We focus on business-relevant outcomes rather than vanity metrics, explain what we recommend and why, and avoid unsupported claims about rankings or results.
+                      <Link to="/" className={inlineLink}>
+                        DigLip7
+                      </Link>{" "}
+                      Tech Pvt Ltd is a digital marketing and technology service provider. We focus on business-relevant outcomes rather than vanity metrics, explain what we recommend and why, and avoid unsupported claims about rankings or results.
                     </p>
                   </div>
                 </div>

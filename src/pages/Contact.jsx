@@ -97,7 +97,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Contact",
-      "item": "https://diglip7.com/contact"
+      "item": "https://diglip7.com/contact/"
     }
   ]
 };
@@ -105,8 +105,8 @@ const breadcrumbSchema = {
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "@id": "https://diglip7.com/contact#webpage",
-  "url": "https://diglip7.com/contact",
+  "@id": "https://diglip7.com/contact/#webpage",
+  "url": "https://diglip7.com/contact/",
   "name": "Contact DigLip7 Tech",
   "description": "Get in touch with DigLip7 Tech's Noida team for a free growth consultation, project estimate, or SEO audit.",
   "isPartOf": {
@@ -227,7 +227,7 @@ function Contact() {
       <SEO
         title="Contact DigLip7 Tech"
         description="Get in touch with DigLip7 Tech's Noida team for a free growth consultation, project estimate, or SEO audit."
-        canonical="https://diglip7.com/contact"
+        canonical="https://diglip7.com/contact/"
         ogType="website"
         ogImage="https://diglip7.com/favicon-32x32.png"
         keywords="contact DigLip7, digital marketing consultation, hire SEO agency Noida, web development inquiry"

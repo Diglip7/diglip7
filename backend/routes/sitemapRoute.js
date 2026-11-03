@@ -22,7 +22,7 @@ const fallbackRoutes = [
   "/",
   "/about",
   "/contact",
-  "/blogview",
+  "/blog",
   "/privacy-policy",
   "/terms-and-conditions",
 
@@ -56,7 +56,7 @@ const fallbackRoutes = [
   "/development/e-commerce-development",
   "/development/custom-software_development",
   "/development/cms-development",
-  "/development/api-development&Integration",
+  "/development/api-development-integration",
   "/development/cloud-application-development",
 
   // Location SEO Main Pages & Sub-services
@@ -155,7 +155,7 @@ const getAutoDiscoveredRoutes = () => {
       }
 
       // Exclude admin routes, wildcards (*), dynamic parameterized routes (/:slug), and duplicate aliases
-      const ignoredAliases = new Set(["/privacy", "/terms", "/terms-conditions", "/blog"]);
+      const ignoredAliases = new Set(["/privacy", "/terms", "/terms-conditions", "/blogview"]);
       if (
         !formatted.includes("*") &&
         !formatted.startsWith("/admin") &&
@@ -202,7 +202,8 @@ const generateSitemap = async (req, res) => {
     const pagesXml = discoveredPages
       .map((urlPath) => {
         const meta = getRouteMetadata(urlPath);
-        return renderUrlNode(`${baseUrl}${urlPath}`, today, meta.changefreq, meta.priority);
+        const normalizedPath = urlPath === "/" ? "/" : (urlPath.endsWith("/") ? urlPath : `${urlPath}/`);
+        return renderUrlNode(`${baseUrl}${normalizedPath}`, today, meta.changefreq, meta.priority);
       })
       .join("\n");
 
@@ -221,7 +222,7 @@ const generateSitemap = async (req, res) => {
         const dateRaw = b.updatedAt || b.createdAt || new Date();
         const date = new Date(dateRaw).toISOString().split("T")[0];
         const slug = b.slug || b._id.toString();
-        return renderUrlNode(`${baseUrl}/blog/${slug}`, date, "daily", "0.7");
+        return renderUrlNode(`${baseUrl}/blog/${slug}/`, date, "daily", "0.7");
       })
       .join("\n");
 

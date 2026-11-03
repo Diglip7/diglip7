@@ -1828,7 +1828,7 @@ const SaudiLocalSEO = () => {
                 Dubai Local SEO
               </Link>
               <Link
-                to="/blogview"
+                to="/blog/"
                 className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-800 hover:text-emerald-700 hover:border-emerald-300 transition-colors shadow-2xs"
               >
                 SEO &amp; Growth Insights Blog

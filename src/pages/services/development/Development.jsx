@@ -190,7 +190,7 @@ const ourDevelopmentServices = [
       "Most businesses use several tools that should talk to each other. We connect your website or app with payment gateways, CRM platforms, accounting software, email tools, analytics, and shipping providers. Good integrations reduce manual entry, prevent errors, and give you a single view of your data.",
     ],
     linkText: "Learn about API integration",
-    linkUrl: "/development/api-development&Integration",
+    linkUrl: "/development/api-development-integration/",
     icon: Link2,
   },
   {
@@ -546,25 +546,25 @@ function Development() {
         },
         {
           "@type": "WebPage",
-          "@id": "https://diglip7.com/development#webpage",
-          "url": "https://diglip7.com/development",
+          "@id": "https://diglip7.com/development/#webpage",
+          "url": "https://diglip7.com/development/",
           "name": "Development Service | Web, App & Custom Software | DigLip7",
           "description":
             "Reliable development service from DigLip7: websites, web apps, mobile apps, e-commerce and custom software. Secure and SEO-ready. Free consultation.",
           "isPartOf": { "@id": "https://diglip7.com/#website" },
-          "about": { "@id": "https://diglip7.com/development#service" },
+          "about": { "@id": "https://diglip7.com/development/#service" },
           "primaryImageOfPage": {
             "@type": "ImageObject",
             "url": "https://diglip7.com/images/development-service-og.jpg",
           },
-          "breadcrumb": { "@id": "https://diglip7.com/development#breadcrumb" },
+          "breadcrumb": { "@id": "https://diglip7.com/development/#breadcrumb" },
           "inLanguage": "en",
           "datePublished": "2026-09-24",
           "dateModified": "2026-09-24",
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://diglip7.com/development#breadcrumb",
+          "@id": "https://diglip7.com/development/#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -576,20 +576,20 @@ function Development() {
               "@type": "ListItem",
               "position": 2,
               "name": "Development Service",
-              "item": "https://diglip7.com/development",
+              "item": "https://diglip7.com/development/",
             },
           ],
         },
         {
           "@type": "Service",
-          "@id": "https://diglip7.com/development#service",
+          "@id": "https://diglip7.com/development/#service",
           "name": "Development Service",
           "serviceType": "Web and Software Development",
           "description":
             "Professional development services including website development, web application development, mobile app development, e-commerce development, CMS development, custom software, API integration and maintenance.",
           "provider": { "@id": "https://diglip7.com/#organization" },
           "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
-          "url": "https://diglip7.com/development",
+          "url": "https://diglip7.com/development/",
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Development Services",
@@ -663,7 +663,7 @@ function Development() {
         },
         {
           "@type": "FAQPage",
-          "@id": "https://diglip7.com/development#faq",
+          "@id": "https://diglip7.com/development/#faq",
           "mainEntity": faqs.map((faq) => ({
             "@type": "Question",
             "name": faq.question,
@@ -683,7 +683,7 @@ function Development() {
         title="Development Service | Web, App & Custom Software | DigLip7"
         description="Reliable development service from DigLip7: websites, web apps, mobile apps, e-commerce and custom software. Secure and SEO-ready. Free consultation."
         keywords="Development service, web development service, website development, web application development, mobile app development, e-commerce development, custom software development, CMS development, API integration, website maintenance and support, DigLip7"
-        canonical="https://diglip7.com/development"
+        canonical="https://diglip7.com/development/"
         ogImage="https://diglip7.com/images/development-service-og.jpg"
         ogImageAlt="DigLip7 development service: web, mobile app and custom software development"
         ogType="website"

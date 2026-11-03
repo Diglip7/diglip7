@@ -32,17 +32,17 @@ const privacyPolicySchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Privacy Policy",
-  "url": "https://diglip7.com/privacy-policy",
+  "url": "https://diglip7.com/privacy-policy/",
   "description": "Learn how DigLip7 Tech collects, uses, and protects your personal data across our website and services, and what rights you have under the DPDP Act.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "DigLip7",
-    "url": "https://diglip7.com"
+    "url": "https://diglip7.com/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "DigLip7 Tech",
-    "url": "https://diglip7.com",
+    "url": "https://diglip7.com/",
     "logo": "https://diglip7.com/favicon-32x32.png"
   }
 };
@@ -176,7 +176,7 @@ const PrivacyPolicy = () => {
       <SEO
         title="Privacy Policy | DigLip7"
         description="Learn how DigLip7 Tech collects, uses, and protects your personal data across our website and services, and what rights you have under the DPDP Act."
-        canonical="https://diglip7.com/privacy-policy"
+        canonical="https://diglip7.com/privacy-policy/"
         ogType="website"
         ogImage="https://diglip7.com/favicon-32x32.png"
         keywords="Privacy Policy, DigLip7 privacy, data protection, DPDP Act 2023, GDPR compliance, cookie policy"

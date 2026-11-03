@@ -142,7 +142,7 @@ const BackToTop = () => {
 };
 
 // Landing Hero
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
+const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl, description }) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -204,9 +204,23 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
               </span>
             </h1>
 
-            <p className="mt-6 text-gray-700 text-base sm:text-lg leading-relaxed max-w-2xl">
-              Digital marketing services in Pune help businesses improve online visibility and connect with potential customers through SEO, Google Ads, social media marketing, content marketing, and website optimization.
-            </p>
+            {description ? (
+              <div className="mt-5 space-y-3.5 text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {Array.isArray(description) ? (
+                  description.map((para, idx) => (
+                    <p key={idx} className={idx === 0 ? "text-gray-800" : "text-gray-600"}>
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p>{description}</p>
+                )}
+              </div>
+            ) : (
+              <p className="mt-6 text-gray-700 text-base sm:text-lg leading-relaxed max-w-2xl">
+                Digital marketing services in Pune help businesses improve online visibility and connect with potential customers through SEO, Google Ads, social media marketing, content marketing, and website optimization.
+              </p>
+            )}
 
             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
               <Link to="/contact" className="inline-block">
@@ -230,25 +244,16 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
             transition={{ duration: 0.8 }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <div className="relative w-full aspect-[16/9] md:aspect-[4/3] rounded-2xl bg-gradient-to-br from-teal-900 via-teal-800 to-teal-950 p-8 shadow-2xl border border-teal-700/50 flex flex-col items-center justify-center text-center overflow-hidden select-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(200,157,90,0.2),transparent_70%)] pointer-events-none" />
-                <motion.div
-                  className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-5 text-[#c89d5a] shadow-lg"
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <TrendingUp className="w-10 h-10 text-yellow-300" />
-                </motion.div>
-                <span className="text-xs font-semibold tracking-wider uppercase text-yellow-300/90 bg-white/10 px-3.5 py-1 rounded-full mb-3 border border-white/15">
-                  DigLip7 Tech Pvt Ltd
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white max-w-xs leading-snug">
-                  Digital Marketing Services in Pune
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-teal-100/80 max-w-xs">
-                  SEO • Google Ads • Social Media • Content Strategy
-                </p>
-              </div>
+              <img
+                src={image?.src || "/images/digital-marketing-services-pune.webp"}
+                alt={image?.alt || "Digital marketing team planning online marketing strategies for business growth"}
+                width={image?.width || 1600}
+                height={image?.height || 900}
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-gray-50"
+              />
             </Card3D>
           </motion.div>
         </div>
@@ -476,37 +481,58 @@ const CtaSection = ({ headingLead, headingAccent, text, ctaLabel, listItems }) =
   );
 };
 
-// Image container (preserves layout, card elevation & styling with image removed)
+// Real image component with lazy loading, responsive styling and placeholder fallback
 const Img = ({
   image,
   icon: Icon = Sparkles,
   badge = "Pune Digital Marketing",
   className = "",
   aspect = "aspect-[16/9]",
-}) => (
-  <div
-    className={`relative w-full ${aspect} rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50/40 to-slate-100 border border-teal-100/90 shadow-xl flex flex-col items-center justify-center p-6 sm:p-8 text-center select-none ${className}`}
-  >
-    <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#0f766e_1px,transparent_1px)] [background-size:16px_16px]" />
-    <motion.div
-      className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 text-white flex items-center justify-center mb-3 shadow-lg shadow-teal-900/20"
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3, repeat: Infinity }}
-    >
-      {React.createElement(Icon, { className: "w-7 h-7 text-yellow-300" })}
-    </motion.div>
-    {badge && (
-      <span className="relative z-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-0.5 rounded-full border border-teal-200 mb-2">
-        {badge}
-      </span>
-    )}
-    {image?.alt && (
-      <p className="relative z-10 text-xs sm:text-sm font-semibold text-gray-800 max-w-sm leading-snug">
-        {image.alt}
-      </p>
-    )}
-  </div>
-);
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError || !image?.src) {
+    return (
+      <div
+        className={`relative w-full ${aspect} rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50/40 to-slate-100 border border-teal-100/90 shadow-xl flex flex-col items-center justify-center p-6 sm:p-8 text-center select-none ${className}`}
+      >
+        <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#0f766e_1px,transparent_1px)] [background-size:16px_16px]" />
+        {Icon && (
+          <motion.div
+            className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 text-white flex items-center justify-center mb-3 shadow-lg shadow-teal-900/20"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            {React.createElement(Icon, { className: "w-7 h-7 text-yellow-300" })}
+          </motion.div>
+        )}
+        {badge && (
+          <span className="relative z-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-0.5 rounded-full border border-teal-200 mb-2">
+            {badge}
+          </span>
+        )}
+        {image?.alt && (
+          <p className="relative z-10 text-xs sm:text-sm font-semibold text-gray-800 max-w-sm leading-snug">
+            {image.alt}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={image.src}
+      alt={image.alt || ""}
+      width={image.width || 1200}
+      height={image.height || 675}
+      loading="lazy"
+      decoding="async"
+      onError={() => setHasError(true)}
+      className={`w-full object-cover rounded-2xl shadow-xl bg-gray-50 ${aspect} ${className}`.trim()}
+    />
+  );
+};
 
 // Decorative rotating orbit of channel icons
 const OrbitArt = () => {
@@ -1058,6 +1084,13 @@ function PuneDigitalMarketingServices() {
           titleDark="Digital Marketing Services in Pune"
           titleGradient="to Strengthen Your Online Presence"
           ctaLabel="Discuss Your Requirements"
+          image={images.hero}
+          description={[
+            "Digital marketing services in Pune help businesses improve online visibility and connect with potential customers through SEO, Google Ads, social media marketing, content marketing, and website optimization.",
+            <>
+              At <span className="font-semibold text-blue-700">DigLip7</span>, we build structured, multi-channel marketing campaigns that match Pune's competitive market—combining search rankings, targeted paid ads, and brand-building content for long-term growth.
+            </>,
+          ]}
         />
 
         <div className="bg-white">

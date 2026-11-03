@@ -553,7 +553,7 @@ function Uiux() {
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers full-service UI/UX design including user research, wireframing and prototyping, visual design, interaction design, usability testing, and cross-device optimization for websites, mobile apps, and SaaS products.",
-      "url": "https://diglip7.com/design/UI-UX",
+      "url": "https://diglip7.com/design/UI-UX/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "UI/UX Design Packages",
@@ -601,7 +601,7 @@ function Uiux() {
       <SEO
         title="UI/UX Design Services That Convert | DigLip7"
         description="Elevate your website or app with DigLip7's UI/UX design services — user research, wireframing, prototyping & visual design built to boost engagement."
-        canonical="https://diglip7.com/design/UI-UX"
+        canonical="https://diglip7.com/design/UI-UX/"
         ogImage="https://diglip7.com/assets/uiux001-B-w4Kls5.png"
         ogType="website"
         keywords="UI UX design services, user interface design, user experience design, wireframing prototyping, website redesign, mobile app design, DigLip7"

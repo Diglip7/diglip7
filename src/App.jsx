@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 
 // Scroll restoration helper
@@ -17,6 +17,7 @@ import BlogView from "./pages/BlogView";
 import BlogDetail from "./pages/BlogDetail";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import NotFound from "./pages/NotFound";
 
 // Digital Marketing Services
 import DigitalMarketing from "./pages/services/digital-marketing/DigitalMarketing";
@@ -113,6 +114,18 @@ import AdminContacts from "./pages/admin/Contact";
 import BlogEditor from "./pages/admin/BlogEditor";
 import BlogList from "./pages/admin/BlogList";
 
+// Root Route Guard: Intercepts legacy WordPress ?p=XXXX queries and ?s= searches
+// to render NotFound (with noindex, nofollow, noarchive) rather than the homepage,
+// preventing Soft 404 and duplicate canonical penalties.
+function HomeRoute() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  if (searchParams.has("p") || searchParams.has("s")) {
+    return <NotFound />;
+  }
+  return <Home />;
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -140,9 +153,11 @@ function App() {
         {/* ================= PUBLIC ROUTES ================= */}
         <Route element={<PublicLayout />}>
           {/* Main Pages */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeRoute />} />
           <Route path="/about" element={<About />} />
+          <Route path="/about/" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/" element={<Contact />} />
           <Route path="/blog" element={<BlogView />} />
           <Route path="/blog/" element={<BlogView />} />
           <Route path="/blog/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
@@ -150,15 +165,18 @@ function App() {
           <Route path="/blog/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
           <Route path="/blog/automotive-seo-dubai/" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
-          <Route path="/blogview" element={<BlogView />} />
+          <Route path="/blogview" element={<Navigate to="/blog/" replace />} />
+          <Route path="/blogview/" element={<Navigate to="/blog/" replace />} />
           <Route path="/blogview/law-firm-seo-dubai" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
           <Route path="/blogview/law-firm-seo-dubai/" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
           <Route path="/blogview/automotive-seo-dubai" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
           <Route path="/blogview/automotive-seo-dubai/" element={<Navigate to="/uae/dubai/automotive-seo/" replace />} />
-          <Route path="/blogview/:slug" element={<BlogDetail />} />
+          <Route path="/blogview/:slug" element={<Navigate to="/blog/" replace />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsConditions />} />
+          <Route path="/terms-and-conditions/" element={<TermsConditions />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/terms" element={<TermsConditions />} />
 
@@ -166,13 +184,19 @@ function App() {
           <Route path="/digital-market" element={<DigitalMarketing />} />
           <Route path="/digital-market/seoservices" element={<SEO />} />
           <Route path="/digital-market/seoservices/" element={<SEO />} />
+          <Route path="/seo-services-2" element={<Navigate to="/digital-market/seoservices/" replace />} />
+          <Route path="/seo-services-2/" element={<Navigate to="/digital-market/seoservices/" replace />} />
           <Route path="/digital-market/PPC-Advertising" element={<PPC />} />
           <Route path="/digital-market/PPC-Advertising/" element={<PPC />} />
           <Route path="/PPC-Advertising" element={<Navigate to="/digital-market/PPC-Advertising" replace />} />
           <Route path="/PPC-Advertising/" element={<Navigate to="/digital-market/PPC-Advertising" replace />} />
           <Route path="/digital-market/social-media-marketing" element={<SocialMedia />} />
+          <Route path="/digital-market/social-media-marketing/" element={<SocialMedia />} />
           <Route path="/digital-market/content-marketing" element={<ContentMarketing />} />
+          <Route path="/content-marketing-2" element={<Navigate to="/digital-market/content-marketing/" replace />} />
+          <Route path="/content-marketing-2/" element={<Navigate to="/digital-market/content-marketing/" replace />} />
           <Route path="/digital-market/email-marketing" element={<EmailMarketing />} />
+          <Route path="/digital-market/email-marketing/" element={<EmailMarketing />} />
           <Route path="/digital-market/online-repulation-management(ORM)" element={<ORM />} />
           <Route path="/digital-market/online-repulation-management(ORM)/" element={<ORM />} />
           <Route path="/online-repulation-management" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
@@ -180,9 +204,14 @@ function App() {
           <Route path="/online-reputation-management" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
           <Route path="/online-reputation-management/" element={<Navigate to="/digital-market/online-repulation-management(ORM)" replace />} />
           <Route path="/digital-market/local-SEO-services" element={<LocalSEO />} />
+          <Route path="/digital-market/local-SEO-services/" element={<LocalSEO />} />
           <Route path="/digital-market/e-commerce-marketing" element={<EcommerceMarketing />} />
+          <Route path="/e-commerce-marketing" element={<Navigate to="/digital-market/e-commerce-marketing" replace />} />
+          <Route path="/e-commerce-marketing/" element={<Navigate to="/digital-market/e-commerce-marketing" replace />} />
           <Route path="/digital-market/video-marketing" element={<VideoMarketing />} />
+          <Route path="/digital-market/video-marketing/" element={<VideoMarketing />} />
           <Route path="/digital-market/influencer-marketing" element={<InfluencerMarketing />} />
+          <Route path="/digital-market/influencer-marketing/" element={<InfluencerMarketing />} />
           <Route
             path="/digital-market/Ai-powered-Digital-Marketing"
             element={<AIPoweredMarketing />}
@@ -199,35 +228,72 @@ function App() {
             path="/Ai-powered-Digital-Marketing/"
             element={<Navigate to="/digital-market/Ai-powered-Digital-Marketing" replace />}
           />
+          <Route path="/ai-chatbots-automation" element={<Navigate to="/digital-market/Ai-powered-Digital-Marketing" replace />} />
+          <Route path="/ai-chatbots-automation/" element={<Navigate to="/digital-market/Ai-powered-Digital-Marketing" replace />} />
           <Route path="/digital-market/voice-search-optimization" element={<VoiceSearch />} />
+          <Route path="/digital-market/voice-search-optimization/" element={<VoiceSearch />} />
           <Route
             path="/digital-market/programmatic-advertising"
             element={<ProgrammaticAdvertising />}
           />
+          <Route
+            path="/digital-market/programmatic-advertising/"
+            element={<ProgrammaticAdvertising />}
+          />
           <Route path="/digital-market/Mobile-marketing" element={<MobileMarketing />} />
+          <Route path="/digital-market/Mobile-marketing/" element={<MobileMarketing />} />
           <Route
             path="/digital-market/performance-marketing"
             element={<PerformanceMarketing />}
           />
+          <Route
+            path="/digital-market/performance-marketing/"
+            element={<PerformanceMarketing />}
+          />
           {/* Design Services */}
           <Route path="/design" element={<Design />} />
+          <Route path="/design/" element={<Design />} />
           <Route path="/design/UI-UX" element={<UIUX />} />
+          <Route path="/design/UI-UX/" element={<UIUX />} />
+          <Route path="/ui-ux-design" element={<Navigate to="/design/UI-UX" replace />} />
+          <Route path="/ui-ux-design/" element={<Navigate to="/design/UI-UX" replace />} />
           <Route path="/design/graphic-design" element={<GraphicDesign />} />
+          <Route path="/design/graphic-design/" element={<GraphicDesign />} />
 
           {/* Development Services */}
           <Route path="/development" element={<Development />} />
+          <Route path="/development/" element={<Development />} />
           <Route path="/development/web-development" element={<WebDevelopment />} />
+          <Route path="/development/web-development/" element={<WebDevelopment />} />
           <Route path="/development/mobile-app-development" element={<MobileAppDevelopment />} />
+          <Route path="/development/mobile-app-development/" element={<MobileAppDevelopment />} />
           <Route path="/development/e-commerce-development" element={<EcommerceDevelopment />} />
+          <Route path="/development/e-commerce-development/" element={<EcommerceDevelopment />} />
           <Route
             path="/development/custom-software_development"
             element={<CustomSoftwareDevelopment />}
           />
-          <Route path="/development/cms-development" element={<CMSDevelopment />} />
           <Route
-            path="/development/api-development&Integration"
+            path="/development/custom-software_development/"
+            element={<CustomSoftwareDevelopment />}
+          />
+          <Route path="/development/cms-development" element={<CMSDevelopment />} />
+          <Route path="/development/cms-development/" element={<CMSDevelopment />} />
+          <Route
+            path="/development/api-development-integration"
             element={<APIDevelopment />}
           />
+          <Route path="/development/api-development-integration/" element={<APIDevelopment />} />
+          <Route path="/development/api-development&Integration" element={<Navigate to="/development/api-development-integration/" replace />} />
+          <Route path="/development/api-development&Integration/" element={<Navigate to="/development/api-development-integration/" replace />} />
+          <Route path="/api-development-integration" element={<Navigate to="/development/api-development-integration/" replace />} />
+          <Route path="/api-development-integration/" element={<Navigate to="/development/api-development-integration/" replace />} />
+          <Route
+            path="/development/cloud-application-development/"
+            element={<CloudApplicationDevelopment />}
+          />
+          <Route path="/cloud-application-development" element={<Navigate to="/development/cloud-application-development/" replace />} />
+          <Route path="/cloud-application-development/" element={<Navigate to="/development/cloud-application-development/" replace />} />
           <Route
             path="/development/cloud-application-development"
             element={<CloudApplicationDevelopment />}
@@ -242,16 +308,23 @@ function App() {
           <Route path="/uae/dubai/seo-services" element={<DubaiSEOServices />} />
           <Route path="/uae/dubai/seo-services/" element={<DubaiSEOServices />} />
           <Route path="/uae/dubai/local-seo" element={<DubaiLocalSEO />} />
+          <Route path="/uae/dubai/local-seo/" element={<DubaiLocalSEO />} />
           <Route path="/uae/dubai/ecommerce-seo" element={<DubaiEcommerceSEO />} />
+          <Route path="/uae/dubai/ecommerce-seo/" element={<DubaiEcommerceSEO />} />
           <Route path="/uae/dubai/healthcare-seo" element={<DubaiHealthcareSEO />} />
+          <Route path="/uae/dubai/healthcare-seo/" element={<DubaiHealthcareSEO />} />
           <Route path="/uae/dubai/dental-seo" element={<DubaiDentalSEO />} />
+          <Route path="/uae/dubai/dental-seo/" element={<DubaiDentalSEO />} />
           <Route path="/uae/dubai/dental-seo-dubai" element={<Navigate to="/uae/dubai/dental-seo" replace />} />
           <Route path="/dental-seo-dubai" element={<Navigate to="/uae/dubai/dental-seo" replace />} />
           <Route path="/uae/dubai/beauty-clinic-seo" element={<DubaiBeautyClinicSEO />} />
           <Route path="/uae/dubai/beauty-clinic-seo/" element={<DubaiBeautyClinicSEO />} />
           <Route path="/uae/dubai/real-estate-seo" element={<DubaiRealEstateSEO />} />
+          <Route path="/uae/dubai/real-estate-seo/" element={<DubaiRealEstateSEO />} />
           <Route path="/uae/dubai/restaurant-seo" element={<DubaiRestaurantSEO />} />
+          <Route path="/uae/dubai/restaurant-seo/" element={<DubaiRestaurantSEO />} />
           <Route path="/uae/dubai/hotel-seo" element={<DubaiHotelSEO />} />
+          <Route path="/uae/dubai/hotel-seo/" element={<DubaiHotelSEO />} />
           <Route path="/uae/law-firm-seo-dubai" element={<DubaiLawFirmSEO />} />
           <Route path="/uae/law-firm-seo-dubai/" element={<DubaiLawFirmSEO />} />
           <Route path="/uae/dubai/law-firm-seo" element={<Navigate to="/uae/law-firm-seo-dubai/" replace />} />
@@ -400,7 +473,7 @@ function App() {
           <Route path="/qatar/real-estate-seo/" element={<Navigate to="/qatar/real-estate-seo-services/" replace />} />
 
           {/* Fallback route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

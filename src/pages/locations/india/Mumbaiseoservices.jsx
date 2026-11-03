@@ -48,6 +48,9 @@ import {
 // Shared building blocks (same patterns as the existing site pages)
 // ===========================================================================
 
+const inlineLink =
+  "text-teal-800 font-semibold underline hover:text-[#c89d5a] transition-colors";
+
 // 3D Interactive Card
 const Card3D = ({ children, className = "" }) => {
   const [rotateX, setRotateX] = useState(0);
@@ -141,7 +144,15 @@ const BackToTop = () => {
 };
 
 // Hero (same structure as existing pages, with visible breadcrumb)
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl }) => {
+const LandingHero = ({
+  breadcrumb,
+  titleDark,
+  titleGradient,
+  ctaLabel,
+  image,
+  whatsappUrl,
+  description,
+}) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -202,6 +213,21 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, wh
                 {titleGradient}
               </span>
             </h1>
+
+            {/* Direct Answer / Subtitle Paragraphs */}
+            {description && (
+              <div className="mt-5 space-y-3.5 text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {Array.isArray(description) ? (
+                  description.map((para, idx) => (
+                    <p key={idx} className={idx === 0 ? "text-gray-800" : "text-gray-600"}>
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p>{description}</p>
+                )}
+              </div>
+            )}
 
             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
               <Link to="/contact" className="inline-block">
@@ -597,15 +623,18 @@ const AnnotatedImage = ({ image }) => (
 const ParallaxImage = ({ image }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
   return (
-    <div ref={ref} className="relative overflow-hidden rounded-3xl shadow-2xl border-4 border-white">
-      <motion.div style={{ y, scale: 1.2 }}>
-        <Img image={image} className="w-full object-cover bg-gray-50" />
+    <div
+      ref={ref}
+      className="relative overflow-hidden rounded-3xl shadow-2xl border-4 border-white aspect-[16/9] bg-gray-100 flex items-center justify-center"
+    >
+      <motion.div style={{ y, scale: 1.15 }} className="w-full h-full">
+        <Img image={image} className="w-full h-full object-cover bg-gray-50" />
       </motion.div>
       <motion.span
         aria-hidden="true"
-        className="absolute bottom-4 right-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-600 to-teal-900 shadow-xl flex items-center justify-center"
+        className="absolute bottom-4 right-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-600 to-teal-900 shadow-xl flex items-center justify-center pointer-events-none z-10"
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 2.6, repeat: Infinity }}
       >
@@ -725,12 +754,10 @@ const pageUrl = "https://diglip7.com/india/mumbai/seo-services/";
 const metaTitle = "SEO Services in Mumbai | DigLip7";
 const metaDescription =
   "Improve your website's search visibility with SEO services in Mumbai from DigLip7. Explore technical SEO, local SEO, keyword research and content optimization.";
-
 const breadcrumbTrail = [
   { label: "Home", href: "/" },
   { label: "SEO Services in Mumbai", href: "/india/mumbai/seo-services/" },
 ];
-
 const images = {
   hero: {
     src: "/images/seo-services-mumbai.webp",
@@ -970,7 +997,18 @@ function MumbaiSEOServices() {
         title={metaTitle}
         description={metaDescription}
         canonical={pageUrl}
+        keywords={false}
+        robots="index, follow"
         ogType="website"
+        ogTitle={metaTitle}
+        ogDescription={metaDescription}
+        ogImage="https://diglip7.com/images/seo-services-mumbai.webp"
+        ogImageAlt="SEO specialists reviewing website search visibility and organic performance"
+        twitterCard="summary_large_image"
+        twitterTitle={metaTitle}
+        twitterDescription={metaDescription}
+        twitterImage="https://diglip7.com/images/seo-services-mumbai.webp"
+        twitterImageAlt="SEO specialists reviewing website search visibility and organic performance"
         schema={jsonLd}
       />
       <ScrollProgress />
@@ -985,6 +1023,12 @@ function MumbaiSEOServices() {
           ctaLabel="Discuss Your SEO Requirements"
           image={images.hero}
           whatsappUrl="https://wa.me/919650608788?text=Hello%20DigLip7%20Team%2C%20I%20would%20like%20to%20discuss%20SEO%20Services%20for%20my%20business%20in%20Mumbai."
+          description={[
+            "Mumbai's commercial environment is diverse, from small neighbourhood outlets to large service companies, and customers use search engines to find local businesses, professional services, products, healthcare providers and educational institutions. SEO brings together technical improvements, relevant content, keyword research, website optimization and local search strategy.",
+            <>
+              <span className="font-semibold text-blue-700">DigLip7 Tech Pvt Ltd</span> offers structured SEO support for businesses that want steady organic visibility rather than short-term tricks. The right plan depends on what you sell, who you serve and how your website currently performs.
+            </>,
+          ]}
         />
 
         <div className="bg-white">
@@ -1002,11 +1046,10 @@ function MumbaiSEOServices() {
                 {introParas.map((p, i) => (
                   <motion.div
                     key={i}
-                    className={`relative overflow-hidden rounded-3xl p-8 shadow-xl border ${
-                      i === 0
-                        ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent"
-                        : "bg-white text-gray-700 border-gray-100"
-                    }`}
+                    className={`relative overflow-hidden rounded-3xl p-8 shadow-xl border ${i === 0
+                      ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent"
+                      : "bg-white text-gray-700 border-gray-100"
+                      }`}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -1015,9 +1058,8 @@ function MumbaiSEOServices() {
                   >
                     <span
                       aria-hidden="true"
-                      className={`absolute -top-3 right-4 text-8xl font-extrabold select-none ${
-                        i === 0 ? "text-white/10" : "text-teal-700/10"
-                      }`}
+                      className={`absolute -top-3 right-4 text-8xl font-extrabold select-none ${i === 0 ? "text-white/10" : "text-teal-700/10"
+                        }`}
                     >
                       {i + 1}
                     </span>
@@ -1088,7 +1130,11 @@ function MumbaiSEOServices() {
               <div className="text-center max-w-4xl mx-auto mb-12">
                 <SectionHeading color="text-teal-700">SEO Services We Provide</SectionHeading>
                 <p className="text-gray-700 leading-relaxed">
-                  The services below are available depending on need. They are not all included in every engagement or package.
+                  The services below are available depending on need. Explore{" "}
+                  <Link to="/digital-market/seoservices/" className={inlineLink}>
+                    our main SEO services
+                  </Link>{" "}
+                  to see how they are applied. They are not all included in every engagement or package.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 [grid-auto-flow:dense]">
@@ -1097,11 +1143,10 @@ function MumbaiSEOServices() {
                   return (
                     <motion.div
                       key={s.label}
-                      className={`group relative overflow-hidden rounded-3xl p-6 shadow-lg border transition-shadow hover:shadow-2xl ${wide} ${
-                        wide
-                          ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent sm:col-span-2"
-                          : "bg-white text-gray-700 border-gray-100"
-                      }`}
+                      className={`group relative overflow-hidden rounded-3xl p-6 shadow-lg border transition-shadow hover:shadow-2xl ${wide} ${wide
+                        ? "bg-gradient-to-br from-teal-700 to-teal-900 text-white border-transparent sm:col-span-2"
+                        : "bg-white text-gray-700 border-gray-100"
+                        }`}
                       initial={{ opacity: 0, scale: 0.92 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -1110,14 +1155,12 @@ function MumbaiSEOServices() {
                     >
                       <s.icon
                         aria-hidden="true"
-                        className={`absolute -right-4 -bottom-4 w-24 h-24 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-6 ${
-                          wide ? "text-white/10" : "text-teal-50"
-                        }`}
+                        className={`absolute -right-4 -bottom-4 w-24 h-24 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-6 ${wide ? "text-white/10" : "text-teal-50"
+                          }`}
                       />
                       <span
-                        className={`relative w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${
-                          wide ? "bg-white/20 text-white" : "bg-teal-50 text-teal-700"
-                        }`}
+                        className={`relative w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${wide ? "bg-white/20 text-white" : "bg-teal-50 text-teal-700"
+                          }`}
                       >
                         <s.icon className="w-5 h-5" />
                       </span>
@@ -1153,22 +1196,40 @@ function MumbaiSEOServices() {
                   </h2>
                 </FloatingElement>
                 <div className="space-y-4 text-gray-700 leading-relaxed">
-                  {[
-                    "Local SEO helps eligible businesses appear for geographically relevant searches, such as a dentist in Andheri, a boutique in Bandra or a coaching class in Borivali. The foundation is accurate business information: name, address and phone number, relevant categories, clear service descriptions, correct hours and genuine photographs.",
-                    "Customer reviews and professional responses build trust, and local landing pages and local keyword research help when they provide genuinely useful information. Consistent details across relevant directories and regular measurement of local search performance complete the picture. Areas such as Powai, Dadar or Malad are illustrative examples. Thane or Navi Mumbai should be targeted only where the business genuinely serves them.",
-                    "Local SEO must reflect real locations and real service coverage. Google Business Profile eligibility depends on Google's guidelines and actual operations. We do not recommend fake locations, duplicate profiles, misleading addresses, virtual offices presented as staffed premises or fabricated reviews.",
-                  ].map((p, i) => (
-                    <motion.p
-                      key={i}
-                      className="pl-5 border-l-4 border-teal-600"
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
-                    >
-                      {p}
-                    </motion.p>
-                  ))}
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    Local SEO helps eligible businesses appear for geographically relevant searches, such as a dentist in Andheri, a boutique in Bandra or a coaching class in Borivali. The foundation is accurate business information: name, address and phone number, relevant categories, clear service descriptions, correct hours and genuine photographs.
+                  </motion.p>
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.12 }}
+                  >
+                    Customer reviews and professional responses build trust, supported by proactive{" "}
+                    <Link to="/online-repulation-management" className={inlineLink}>
+                      online reputation management
+                    </Link>
+                    , and local landing pages and local keyword research help when they provide genuinely useful information. Where immediate search visibility is required alongside organic development, businesses often combine search optimization with{" "}
+                    <Link to="/PPC-Advertising" className={inlineLink}>
+                      PPC advertising
+                    </Link>
+                    . Consistent details across relevant directories and regular measurement of local search performance complete the picture. Areas such as Powai, Dadar or Malad are illustrative examples. Thane or Navi Mumbai should be targeted only where the business genuinely serves them.
+                  </motion.p>
+                  <motion.p
+                    className="pl-5 border-l-4 border-teal-600"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.24 }}
+                  >
+                    Local SEO must reflect real locations and real service coverage. Google Business Profile eligibility depends on Google's guidelines and actual operations. We do not recommend fake locations, duplicate profiles, misleading addresses, virtual offices presented as staffed premises or fabricated reviews.
+                  </motion.p>
                 </div>
               </div>
             </div>
@@ -1330,7 +1391,11 @@ function MumbaiSEOServices() {
                     Useful content supports search visibility and helps customers at each stage of the buying journey. That can include service page content, industry-specific landing pages, educational articles, FAQs, product descriptions, content refreshes and internal links between related topics. Location-specific content is justified only where it adds real value.
                   </p>
                   <p>
-                    A content strategy should cover topics thoroughly, match search intent and be checked for accuracy before publication. We favour originality and first-hand knowledge where available, and avoid copied competitor content, thin pages, keyword stuffing and mass-produced location pages.
+                    A content strategy should cover topics thoroughly, match search intent and be checked for accuracy before publication. Incorporating{" "}
+                    <Link to="/Ai-powered-Digital-Marketing" className={inlineLink}>
+                      AI-powered digital marketing
+                    </Link>{" "}
+                    insights helps structure content effectively for both traditional search and AI answer engines. We favour originality and first-hand knowledge where available, and avoid copied competitor content, thin pages, keyword stuffing and mass-produced location pages.
                   </p>
                 </div>
               </div>
@@ -1410,7 +1475,11 @@ function MumbaiSEOServices() {
                 </FloatingElement>
                 <div className="space-y-4 text-gray-700 leading-relaxed text-base sm:text-lg">
                   <p>
-                    A logical structure helps search engines find relevant pages and helps visitors move through a site. Typical paths run from the homepage to primary service pages, from services to subservices, from categories to products and from blog articles to related services. Breadcrumbs, contextual links and descriptive anchor text reinforce these paths.
+                    A logical structure helps search engines find relevant pages and helps visitors move through a site. Typical paths run from the homepage to primary national hubs, including our{" "}
+                    <Link to="/india/seo-services" className={inlineLink}>
+                      SEO services across India
+                    </Link>
+                    , from services to subservices, from categories to products and from blog articles to related services. Breadcrumbs, contextual links and descriptive anchor text reinforce these paths.
                   </p>
                   <p className="bg-white rounded-2xl p-6 shadow-lg border border-teal-100">
                     A practical example: Homepage → SEO Services → Local SEO Services → Mumbai Business SEO Information. Architecture should reflect the website's actual services and navigation. We avoid orphaned pages and unnecessary duplicates, and we do not create hundreds of similar location pages just to target keywords.
@@ -1491,7 +1560,10 @@ function MumbaiSEOServices() {
                       When choosing an SEO provider, look for clear objectives, relevant keyword research, technical understanding, industry-aware content planning, local search knowledge, ethical practices, transparent communication, data-based decisions and reporting tied to business goals.
                     </p>
                     <p className="bg-gradient-to-br from-teal-50 to-white rounded-2xl p-5 border-l-4 border-teal-600">
-                      DigLip7 Tech Pvt Ltd is a digital marketing and technology service provider. We choose SEO activities based on what your website actually needs rather than applying one strategy to every business.
+                      <Link to="/" className={inlineLink}>
+                        DigLip7
+                      </Link>{" "}
+                      Tech Pvt Ltd is a digital marketing and technology service provider. We choose SEO activities based on what your website actually needs rather than applying one strategy to every business.
                     </p>
                   </div>
                 </div>

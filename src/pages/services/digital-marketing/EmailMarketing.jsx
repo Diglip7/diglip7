@@ -546,13 +546,13 @@ function Emailmarket() {
       provider: {
         "@type": "Organization",
         name: "DigLip7",
-        url: "https://diglip7.com",
+        url: "https://diglip7.com/",
         logo: "https://diglip7.com/favicon-32x32.png",
       },
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service email marketing including campaign management, list segmentation, automated workflows, custom template design, and performance analytics to drive engagement and conversions.",
-      url: "https://diglip7.com/digital-market/email-marketing",
+      url: "https://diglip7.com/digital-market/email-marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Email Marketing Packages",
@@ -600,7 +600,7 @@ function Emailmarket() {
       <SEO
         title="Email Marketing Services That Maximize ROI | DigLip7"
         description="Boost open rates, drive conversions, and grow customer loyalty with DigLip7's data-driven email marketing campaigns, automation, and segmentation."
-        canonical="https://diglip7.com/digital-market/email-marketing"
+        canonical="https://diglip7.com/digital-market/email-marketing/"
         ogImage="https://diglip7.com/assets/e-m00-D8vJe1ti.jpeg"
         ogType="website"
         keywords="email marketing services, email automation, list segmentation, newsletter campaigns, email marketing agency, DigLip7"

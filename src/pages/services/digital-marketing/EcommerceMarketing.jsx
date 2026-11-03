@@ -605,7 +605,7 @@ function E_commerce() {
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service e-commerce marketing including store optimization, product feed management, paid advertising (Google, Meta, TikTok), email and SMS automation, and conversion rate optimization for online stores.",
-      url: "https://diglip7.com/digital-market/e-commerce-marketing",
+      url: "https://diglip7.com/digital-market/e-commerce-marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "E-Commerce Marketing Packages",
@@ -653,7 +653,7 @@ function E_commerce() {
       <SEO
         title="E-Commerce Marketing Services That Drive Sales | DigLip7"
         description="Grow your online store with DigLip7's e-commerce marketing — SEO, paid ads, email/SMS automation & CRO built to increase traffic and conversions."
-        canonical="https://diglip7.com/digital-market/e-commerce-marketing"
+        canonical="https://diglip7.com/digital-market/e-commerce-marketing/"
         ogImage="https://diglip7.com/assets/e-com00-CDcSddQ2.jpeg"
         ogType="website"
         keywords="e-commerce marketing, ecommerce SEO, online store advertising, Shopify marketing, WooCommerce marketing, product feed management, DigLip7"

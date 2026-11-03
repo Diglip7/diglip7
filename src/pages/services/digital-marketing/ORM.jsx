@@ -548,7 +548,7 @@ function Online_rep_mana() {
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service online reputation management including brand monitoring, review management, crisis response, negative content suppression, and positive content creation to protect and strengthen brand image.",
-      url: "https://diglip7.com/digital-market/online-repulation-management(ORM)",
+      url: "https://diglip7.com/digital-market/online-repulation-management(ORM)/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "ORM Packages",
@@ -596,7 +596,7 @@ function Online_rep_mana() {
       <SEO
         title="Online Reputation Management (ORM) Services | DigLip7"
         description="Monitor, repair, and strengthen your brand's online image with DigLip7's ORM services — review management, crisis response & search result control."
-        canonical="https://diglip7.com/digital-market/online-repulation-management(ORM)"
+        canonical="https://diglip7.com/digital-market/online-repulation-management(ORM)/"
         ogImage="https://diglip7.com/assets/orm-CkBmvAX2.png"
         keywords="online reputation management, ORM services, brand reputation repair, review management, negative content suppression, DigLip7"
         schema={ormSchemas}

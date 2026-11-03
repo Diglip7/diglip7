@@ -538,13 +538,13 @@ function Mobile_marketing() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers mobile marketing services including SMS marketing, push notifications, in-app advertising, mobile app marketing (ASO), geofencing and location-based campaigns, mobile-friendly website optimization, and mobile social media campaigns.",
-      "url": "https://diglip7.com/digital-market/Mobile-marketing",
+      "url": "https://diglip7.com/digital-market/Mobile-marketing/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Mobile Marketing Packages",
@@ -592,7 +592,7 @@ function Mobile_marketing() {
       <SEO
         title="Mobile Marketing Services | DigLip7"
         description="Engage customers directly with DigLip7's mobile marketing — SMS, push notifications, in-app ads, and geofencing that drive real conversions. Start free."
-        canonical="https://diglip7.com/digital-market/Mobile-marketing"
+        canonical="https://diglip7.com/digital-market/Mobile-marketing/"
         ogImage="https://diglip7.com/assets/mm001-DR0yZfM3.png"
         ogType="website"
         keywords="mobile marketing services, SMS marketing, push notifications, in-app advertising, geofencing marketing, mobile website optimization, DigLip7"

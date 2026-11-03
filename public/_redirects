@@ -1,0 +1,24 @@
+# Canonical 301 Redirects for Legacy / Duplicate Service URLs
+/seo-services-2/  /digital-market/seoservices/  301
+/seo-services-2   /digital-market/seoservices/  301
+/content-marketing-2/  /digital-market/content-marketing/  301
+/content-marketing-2   /digital-market/content-marketing/  301
+/e-commerce-marketing/  /digital-market/e-commerce-marketing/  301
+/e-commerce-marketing   /digital-market/e-commerce-marketing/  301
+/ui-ux-design/  /design/UI-UX/  301
+/ui-ux-design   /design/UI-UX/  301
+/cloud-application-development/  /development/cloud-application-development/  301
+/cloud-application-development   /development/cloud-application-development/  301
+/ai-chatbots-automation/  /digital-market/Ai-powered-Digital-Marketing/  301
+/ai-chatbots-automation   /digital-market/Ai-powered-Digital-Marketing/  301
+/api-development-integration/  /development/api-development-integration/  301
+/api-development-integration   /development/api-development-integration/  301
+/development/api-development&Integration/  /development/api-development-integration/  301
+/development/api-development&Integration   /development/api-development-integration/  301
+/blogview/  /blog/  301
+/blogview   /blog/  301
+/blogview/*  /blog/:splat  301
+
+# SPA fallback
+/*  /index.html  200
+

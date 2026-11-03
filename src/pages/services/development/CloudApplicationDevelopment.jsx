@@ -373,7 +373,7 @@ const cloudDevSchemas = [
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers custom cloud development services including cloud-native application development, cloud migration, cloud architecture and design, multi-cloud and hybrid cloud solutions, cloud security, and DevOps automation across AWS, Azure, and Google Cloud.",
-    "url": "https://diglip7.com/development/cloud-application-development",
+    "url": "https://diglip7.com/development/cloud-application-development/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Cloud Development Packages",
@@ -611,7 +611,7 @@ function Cloud_applicat_dev() {
       <SEO
         title="Cloud Development Services | DigLip7"
         description="Migrate, build, and scale on AWS, Azure, or Google Cloud with DigLip7's custom cloud development — secure, automated, and built to grow. Get a free audit."
-        canonical="https://diglip7.com/development/cloud-application-development"
+        canonical="https://diglip7.com/development/cloud-application-development/"
         ogImage="https://diglip7.com/assets/cloud5-BV72pL_9.png"
         ogType="website"
         keywords="cloud development services, custom cloud applications, cloud migration, AWS Azure Google Cloud development, DevOps automation, cloud infrastructure, DigLip7"

@@ -537,13 +537,13 @@ function Programmatic_adv() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers programmatic advertising services including audience targeting, automated ad placement, real-time bidding, display and video/OTT/CTV campaigns, native and rich media ads, mobile and in-app advertising, cross-device retargeting, and geo-targeted campaigns.",
-      "url": "https://diglip7.com/digital-market/programmatic-advertising",
+      "url": "https://diglip7.com/digital-market/programmatic-advertising/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Programmatic Advertising Packages",
@@ -591,7 +591,7 @@ function Programmatic_adv() {
       <SEO
         title="Programmatic Advertising Services | DigLip7"
         description="Reach the right audience automatically with DigLip7's programmatic advertising — real-time bidding, AI targeting, and measurable ROI. Get started free."
-        canonical="https://diglip7.com/digital-market/programmatic-advertising"
+        canonical="https://diglip7.com/digital-market/programmatic-advertising/"
         ogImage="https://diglip7.com/assets/pa001-DGtE92z8.png"
         ogType="website"
         keywords="programmatic advertising services, real-time bidding, AI ad targeting, programmatic display ads, OTT CTV ads, automated media buying, DigLip7"

@@ -540,7 +540,7 @@ function ContentMarketing() {
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service content marketing including strategy development, blog and article writing, video content, eBooks and whitepapers, infographics, and email newsletters to build brand authority and drive organic growth.",
-      url: "https://diglip7.com/digital-market/content-marketing",
+      url: "https://diglip7.com/digital-market/content-marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Content Marketing Packages",
@@ -588,7 +588,7 @@ function ContentMarketing() {
       <SEO
         title="Content Marketing Services That Drive Real Growth | DigLip7"
         description="Build authority, attract organic traffic, and convert readers into customers with DigLip7's strategic content marketing — blogs, video, email & more."
-        canonical="https://diglip7.com/digital-market/content-marketing"
+        canonical="https://diglip7.com/digital-market/content-marketing/"
         ogImage="https://diglip7.com/assets/cm00-lx_0-qyJ.jpeg"
         ogType="website"
         keywords="content marketing services, content strategy, blog writing, video marketing, email newsletters, copy creation, DigLip7"

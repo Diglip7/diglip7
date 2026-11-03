@@ -342,12 +342,12 @@ const customSoftwareSchemas = [
     "provider": {
       "@type": "Organization",
       "name": "DigLip7",
-      "url": "https://diglip7.com",
+      "url": "https://diglip7.com/",
       "logo": "https://diglip7.com/assets/logo.png"
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers full-service custom software development including enterprise software, web and mobile applications, cloud-based solutions, SaaS platforms, workflow automation, and third-party system integration.",
-    "url": "https://diglip7.com/development/custom-software_development",
+    "url": "https://diglip7.com/development/custom-software_development/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Custom Software Development Packages",
@@ -585,7 +585,7 @@ function Custom_soft_dev() {
       <SEO
         title="Custom Software Development Services | DigLip7"
         description="Get scalable, secure custom software built around your workflow — DigLip7 delivers web, mobile, cloud, and enterprise software development."
-        canonical="https://diglip7.com/development/custom-software_development"
+        canonical="https://diglip7.com/development/custom-software_development/"
         ogImage="https://diglip7.com/assets/cs001-C03Vf_rG.png"
         ogType="website"
         keywords="custom software development services, enterprise software development, bespoke web applications, cloud software solutions, SaaS development, software integration, DigLip7"

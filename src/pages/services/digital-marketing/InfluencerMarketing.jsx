@@ -527,13 +527,13 @@ function Influencer() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers influencer marketing services including influencer discovery and vetting, campaign strategy and planning, influencer outreach and management, content creation and briefing, and performance analytics to help brands grow reach, credibility, and sales.",
-      "url": "https://diglip7.com/digital-market/influencer-marketing",
+      "url": "https://diglip7.com/digital-market/influencer-marketing/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Influencer Marketing Packages",
@@ -581,7 +581,7 @@ function Influencer() {
       <SEO
         title="Influencer Marketing Services | DigLip7"
         description="Grow your brand with DigLip7's influencer marketing — vetted creators, custom campaigns, and measurable ROI. Get a free strategy consultation today."
-        canonical="https://diglip7.com/digital-market/influencer-marketing"
+        canonical="https://diglip7.com/digital-market/influencer-marketing/"
         ogImage="https://diglip7.com/assets/im001-Bf0BH2cf.png"
         ogType="website"
         keywords="influencer marketing services, social media influencers, influencer campaigns, micro influencer marketing, brand creator partnerships, DigLip7"

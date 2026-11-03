@@ -50,7 +50,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Terms & Conditions",
-      "item": "https://diglip7.com/terms-and-conditions"
+      "item": "https://diglip7.com/terms-and-conditions/"
     }
   ]
 };
@@ -58,8 +58,8 @@ const breadcrumbSchema = {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://diglip7.com/terms-and-conditions#webpage",
-  "url": "https://diglip7.com/terms-and-conditions",
+  "@id": "https://diglip7.com/terms-and-conditions/#webpage",
+  "url": "https://diglip7.com/terms-and-conditions/",
   "name": "Terms & Conditions | DigLip7 Tech",
   "description": "Terms & Conditions governing use of the DigLip7 Tech website and its digital marketing, web development, and design services.",
   "isPartOf": {
@@ -233,7 +233,7 @@ const TermsConditions = () => {
       <SEO
         title="Terms & Conditions | DigLip7 Tech"
         description="Terms & Conditions governing use of the DigLip7 Tech website and its digital marketing, web development, and design services."
-        canonical="https://diglip7.com/terms-and-conditions"
+        canonical="https://diglip7.com/terms-and-conditions/"
         ogType="website"
         ogImage="https://diglip7.com/favicon-32x32.png"
         keywords="Terms & Conditions, DigLip7 terms, service agreement, commercial terms, digital marketing terms"

@@ -528,13 +528,13 @@ function Video_market() {
       provider: {
         "@type": "Organization",
         name: "DigLip7",
-        url: "https://diglip7.com",
+        url: "https://diglip7.com/",
         logo: "https://diglip7.com/favicon-32x32.png",
       },
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service video marketing including strategy development, scriptwriting, professional production, animation, and multi-platform distribution across YouTube, social media, and paid video ad campaigns.",
-      url: "https://diglip7.com/digital-market/video-marketing",
+      url: "https://diglip7.com/digital-market/video-marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Video Marketing Packages",
@@ -582,7 +582,7 @@ function Video_market() {
       <SEO
         title="Video Marketing Services That Drive Engagement | DigLip7"
         description="Grow your brand with DigLip7's video marketing — strategy, production, editing & distribution across YouTube, social, and ad platforms that convert."
-        canonical="https://diglip7.com/digital-market/video-marketing"
+        canonical="https://diglip7.com/digital-market/video-marketing/"
         ogImage="https://diglip7.com/assets/vm003-CGKwYU_Y.jpeg"
         ogType="website"
         keywords="video marketing services, video production, YouTube video SEO, social media video ads, explainer video production, DigLip7"

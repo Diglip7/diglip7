@@ -336,7 +336,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/development/api-development&Integration" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/development/api-development-integration/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>API Development &amp; Integration</span>
                 </Link>
               </li>
@@ -375,7 +375,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/blogview" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
+                <Link to="/blog/" className="text-white hover:text-teal-300 transition-all duration-200 flex items-center gap-1.5 hover:translate-x-1">
                   <span>Latest Marketing Blog</span>
                 </Link>
               </li>

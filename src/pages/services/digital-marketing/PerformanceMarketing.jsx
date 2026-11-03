@@ -553,13 +553,13 @@ function Performance_markiting() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers performance marketing services including pay-per-click advertising, affiliate marketing, influencer marketing, social media ads, and native advertising, with real-time tracking and attribution to maximize measurable ROI.",
-      "url": "https://diglip7.com/digital-market/performance-marketing",
+      "url": "https://diglip7.com/digital-market/performance-marketing/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Performance Marketing Packages",
@@ -607,7 +607,7 @@ function Performance_markiting() {
       <SEO
         title="Performance Marketing Services | DigLip7"
         description="Grow leads, conversions, and ROI with DigLip7's performance marketing — PPC, affiliate, influencer, and social ads that deliver. Get a free audit today."
-        canonical="https://diglip7.com/digital-market/performance-marketing"
+        canonical="https://diglip7.com/digital-market/performance-marketing/"
         ogImage="https://diglip7.com/assets/perm001-Dbay7HFr.png"
         ogType="website"
         keywords="performance marketing services, ROI-driven marketing, PPC advertising, affiliate marketing, paid social campaigns, growth marketing, DigLip7"

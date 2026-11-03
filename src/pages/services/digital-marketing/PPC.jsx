@@ -532,13 +532,13 @@ function PpcAdvertising() {
       provider: {
         "@type": "Organization",
         name: "DigLip7",
-        url: "https://diglip7.com",
+        url: "https://diglip7.com/",
         logo: "https://diglip7.com/favicon-32x32.png",
       },
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service PPC advertising management including Google Ads, Meta Ads, LinkedIn Ads, remarketing, landing page optimization, and conversion rate optimization to drive measurable ROI.",
-      url: "https://diglip7.com/digital-market/PPC-Advertising",
+      url: "https://diglip7.com/digital-market/PPC-Advertising/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "PPC Packages",
@@ -583,7 +583,7 @@ function PpcAdvertising() {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "DigLip7",
-      url: "https://diglip7.com",
+      url: "https://diglip7.com/",
       review: [
         {
           "@type": "Review",
@@ -615,7 +615,7 @@ function PpcAdvertising() {
       <SEO
         title="PPC Advertising Services That Maximize ROI | DigLip7"
         description="Get instant visibility and measurable ROI with DigLip7's expert PPC management. Targeted Google, Meta & LinkedIn ad campaigns built to convert."
-        canonical="https://diglip7.com/digital-market/PPC-Advertising"
+        canonical="https://diglip7.com/digital-market/PPC-Advertising/"
         ogImage="https://diglip7.com/assets/ppc004-XSn0aQXK.jpeg"
         ogType="website"
         keywords="PPC services, pay per click agency, Google Ads management, Meta Ads, LinkedIn Ads, remarketing, conversion rate optimization, DigLip7"

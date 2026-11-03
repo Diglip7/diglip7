@@ -548,13 +548,13 @@ function GraphicDesign() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers full-service graphic design including logo design, social media graphics, brochures and flyers, posters and banners, infographics, and website/app UI mockups for brands across industries.",
-      "url": "https://diglip7.com/design/graphic-design",
+      "url": "https://diglip7.com/design/graphic-design/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Graphic Design Packages",
@@ -602,7 +602,7 @@ function GraphicDesign() {
       <SEO
         title="Graphic Design Services That Elevate Your Brand | DigLip7"
         description="Stand out with DigLip7's graphic design services — logos, social media graphics, brochures & packaging designed to build recognition and drive growth."
-        canonical="https://diglip7.com/design/graphic-design"
+        canonical="https://diglip7.com/design/graphic-design/"
         ogImage="https://diglip7.com/assets/gd001-BBJ7nGae.png"
         ogType="website"
         keywords="graphic design services, logo design, brand identity design, social media graphics, brochure flyer design, packaging design, DigLip7"

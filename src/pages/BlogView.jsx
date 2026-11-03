@@ -65,7 +65,7 @@ export default function BlogView() {
       }
     };
     fetchBlogs();
-  }, [staticLawArticle, staticAutomotiveArticle]);
+  }, [staticLawArticle]);
 
   const categories = [
     "All",
@@ -132,7 +132,7 @@ export default function BlogView() {
       <SEO
         title="Insights, Guides & Digital Growth Articles | DigLip7"
         description="Explore the latest insights, strategies, and industry guides on SEO, PPC, web technologies, and digital marketing from DigLip7 experts."
-        canonical="https://diglip7.com/blog"
+        canonical="https://diglip7.com/blog/"
         keywords="digital marketing blog, SEO guides, PPC tips, web development tutorials, DigLip7 articles"
       />
 

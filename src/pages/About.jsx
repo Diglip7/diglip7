@@ -259,7 +259,7 @@ function About() {
       <SEO
         title="About DigLip7 | Digital Marketing Agency"
         description="Founded in 2016, DigLip7 has grown into a full-service digital marketing agency serving 250+ businesses worldwide. Meet our team and our story."
-        canonical="https://diglip7.com/about"
+        canonical="https://diglip7.com/about/"
         ogImage="https://diglip7.com/assets/about001-B_716R_d.jpeg"
         ogType="website"
         keywords="about DigLip7, digital marketing agency, digital marketing team, SEO agency story, Noida digital agency, Sarah Chen DigLip7"

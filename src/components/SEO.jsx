@@ -55,11 +55,15 @@ const SEO = ({
   const twImageAlt = twitterImageAlt || imageAltText;
 
   // Dynamically compute exact current page URL for canonical & social tags
-  const currentUrl =
+  const rawUrl =
     canonical ||
     (typeof window !== "undefined"
       ? `${window.location.origin}${location.pathname}`
       : `https://diglip7.com${location.pathname}`);
+  const currentUrl =
+    rawUrl && !rawUrl.endsWith("/") && !rawUrl.split("/").pop().includes(".")
+      ? `${rawUrl}/`
+      : rawUrl;
 
   useEffect(() => {
     // 1. Update Title

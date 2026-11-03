@@ -137,7 +137,15 @@ const BackToTop = () => {
 };
 
 // Hero (same structure as existing pages, with visible breadcrumb)
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl }) => {
+const LandingHero = ({
+  breadcrumb,
+  titleDark,
+  titleGradient,
+  ctaLabel,
+  image,
+  whatsappUrl,
+  description,
+}) => {
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -198,6 +206,21 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, wh
                 {titleGradient}
               </span>
             </h1>
+
+            {/* Direct Answer / Subtitle Paragraphs */}
+            {description && (
+              <div className="mt-5 space-y-3.5 text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {Array.isArray(description) ? (
+                  description.map((para, idx) => (
+                    <p key={idx} className={idx === 0 ? "text-gray-800" : "text-gray-600"}>
+                      {para}
+                    </p>
+                  ))
+                ) : (
+                  <p>{description}</p>
+                )}
+              </div>
+            )}
 
             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
               <Link to="/contact" className="inline-block">
@@ -703,7 +726,6 @@ const pageUrl = "https://diglip7.com/india/mumbai/digital-marketing-services/";
 const metaTitle = "Digital Marketing Services in Mumbai | DigLip7";
 const metaDescription =
   "Explore digital marketing services in Mumbai from DigLip7. Improve online visibility through SEO, PPC, social media, content marketing and website optimization.";
-
 const breadcrumbTrail = [
   { label: "Home", href: "/" },
   { label: "Digital Marketing Services in Mumbai", href: "/india/mumbai/digital-marketing-services/" },
@@ -936,6 +958,12 @@ function MumbaiDigitalMarketingServices() {
           titleGradient="to Help Businesses Grow Online"
           ctaLabel="Discuss Your Requirements"
           image={images.hero}
+          description={[
+            "Digital marketing services in Mumbai help businesses improve their online visibility, reach relevant audiences and generate enquiries through channels such as SEO, Google Ads, social media, content marketing and website optimization.",
+            <>
+              At <span className="font-semibold text-blue-700">DigLip7</span>, we connect business objectives with how customers actually search and compare, choosing channels that suit your specific goals rather than applying a generic template.
+            </>,
+          ]}
         />
 
         <div className="bg-white">

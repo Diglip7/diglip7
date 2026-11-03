@@ -351,7 +351,7 @@ const apiDevelopmentSchemas = [
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers API development and integration services including custom REST and GraphQL API development, third-party API integration (Stripe, PayPal, Salesforce, Google Maps), SOAP API services, and enterprise-grade security and scalability.",
-    "url": "https://diglip7.com/development/api-development-integration",
+    "url": "https://diglip7.com/development/api-development-integration/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "API Development Packages",
@@ -587,7 +587,7 @@ function Api_dev_integ() {
       <SEO
         title="API Development Services | DigLip7"
         description="Connect your systems with DigLip7's custom API development — REST, GraphQL, and third-party integrations built secure and scalable. Get a free consult."
-        canonical="https://diglip7.com/development/api-development-integration"
+        canonical="https://diglip7.com/development/api-development-integration/"
         ogImage="https://diglip7.com/assets/api001-C03Vf_rG.png"
         ogType="website"
         keywords="API development services, custom API integration, REST API development, GraphQL APIs, third-party API integration, SOAP API development, DigLip7"

@@ -426,24 +426,24 @@ const digitalMarketingSchemas = [
       },
       {
         "@type": "WebPage",
-        "@id": "https://diglip7.com/digital-market#webpage",
-        "url": "https://diglip7.com/digital-market",
+        "@id": "https://diglip7.com/digital-market/#webpage",
+        "url": "https://diglip7.com/digital-market/",
         "name": "Digital Marketing Services | SEO, PPC & Social | DigLip7",
         "description": "Grow with DigLip7's digital marketing services: SEO, PPC, social media, content and local SEO. Clear reports, no long contracts. Get a free audit.",
         "isPartOf": { "@id": "https://diglip7.com/#website" },
-        "about": { "@id": "https://diglip7.com/digital-market#service" },
+        "about": { "@id": "https://diglip7.com/digital-market/#service" },
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://diglip7.com/images/digital-marketing-services-og.jpg"
         },
-        "breadcrumb": { "@id": "https://diglip7.com/digital-market#breadcrumb" },
+        "breadcrumb": { "@id": "https://diglip7.com/digital-market/#breadcrumb" },
         "inLanguage": "en",
         "datePublished": "2026-09-24",
         "dateModified": "2026-09-24"
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://diglip7.com/digital-market#breadcrumb",
+        "@id": "https://diglip7.com/digital-market/#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -455,19 +455,19 @@ const digitalMarketingSchemas = [
             "@type": "ListItem",
             "position": 2,
             "name": "Digital Marketing Services",
-            "item": "https://diglip7.com/digital-market"
+            "item": "https://diglip7.com/digital-market/"
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": "https://diglip7.com/digital-market#service",
+        "@id": "https://diglip7.com/digital-market/#service",
         "name": "Digital Marketing Services",
         "serviceType": "Digital Marketing",
         "description": "End-to-end digital marketing services including SEO, PPC advertising, social media marketing, content marketing, local SEO, answer engine optimization, and e-commerce marketing.",
         "provider": { "@id": "https://diglip7.com/#organization" },
         "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
-        "url": "https://diglip7.com/digital-market",
+        "url": "https://diglip7.com/digital-market/",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Digital Marketing Services",
@@ -533,7 +533,7 @@ const digitalMarketingSchemas = [
       },
       {
         "@type": "FAQPage",
-        "@id": "https://diglip7.com/digital-market#faq",
+        "@id": "https://diglip7.com/digital-market/#faq",
         "mainEntity": faqs.map((faq) => ({
           "@type": "Question",
           "name": faq.question,
@@ -632,7 +632,7 @@ function DigitalMarkit() {
       <SEO
         title="Digital Marketing Services | SEO, PPC & Social | DigLip7"
         description="Grow with DigLip7's digital marketing services: SEO, PPC, social media, content and local SEO. Clear reports, no long contracts. Get a free audit."
-        canonical="https://diglip7.com/digital-market"
+        canonical="https://diglip7.com/digital-market/"
         ogImage="https://diglip7.com/images/digital-marketing-services-og.jpg"
         ogImageAlt="DigLip7 digital marketing services: SEO, PPC, social media and content"
         ogType="website"

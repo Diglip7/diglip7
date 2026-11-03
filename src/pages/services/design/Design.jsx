@@ -543,24 +543,24 @@ function Design() {
         },
         {
           "@type": "WebPage",
-          "@id": "https://diglip7.com/design#webpage",
-          "url": "https://diglip7.com/design",
+          "@id": "https://diglip7.com/design/#webpage",
+          "url": "https://diglip7.com/design/",
           "name": "Design Service | Web, Brand & UI/UX Design | DigLip7",
           "description": "Need a design service that drives results? DigLip7 offers web, UI/UX, branding and graphic design. Original work, clear process. Get a free consultation.",
           "isPartOf": { "@id": "https://diglip7.com/#website" },
-          "about": { "@id": "https://diglip7.com/design#service" },
+          "about": { "@id": "https://diglip7.com/design/#service" },
           "primaryImageOfPage": {
             "@type": "ImageObject",
             "url": "https://diglip7.com/images/design-service-og.jpg"
           },
-          "breadcrumb": { "@id": "https://diglip7.com/design#breadcrumb" },
+          "breadcrumb": { "@id": "https://diglip7.com/design/#breadcrumb" },
           "inLanguage": "en",
           "datePublished": "2026-09-24",
           "dateModified": "2026-09-24"
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://diglip7.com/design#breadcrumb",
+          "@id": "https://diglip7.com/design/#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -572,19 +572,19 @@ function Design() {
               "@type": "ListItem",
               "position": 2,
               "name": "Design Service",
-              "item": "https://diglip7.com/design"
+              "item": "https://diglip7.com/design/"
             }
           ]
         },
         {
           "@type": "Service",
-          "@id": "https://diglip7.com/design#service",
+          "@id": "https://diglip7.com/design/#service",
           "name": "Design Service",
           "serviceType": "Web and Graphic Design",
           "description": "Professional design services including web design, UI/UX design, landing page design, logo and brand identity design, graphic design, social media creative and e-commerce design.",
           "provider": { "@id": "https://diglip7.com/#organization" },
           "areaServed": ["Worldwide", "India", "United States", "United Kingdom", "Canada", "Australia"],
-          "url": "https://diglip7.com/design",
+          "url": "https://diglip7.com/design/",
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Design Services",
@@ -650,7 +650,7 @@ function Design() {
         },
         {
           "@type": "FAQPage",
-          "@id": "https://diglip7.com/design#faq",
+          "@id": "https://diglip7.com/design/#faq",
           "mainEntity": faqs.map((faq) => ({
             "@type": "Question",
             "name": faq.question,
@@ -670,7 +670,7 @@ function Design() {
         title="Design Service | Web, Brand & UI/UX Design | DigLip7"
         description="Need a design service that drives results? DigLip7 offers web, UI/UX, branding and graphic design. Original work, clear process. Get a free consultation."
         keywords="Design service, design services, web design service, UI/UX design, logo and brand identity design, graphic design, landing page design, e-commerce design, social media design, creative design agency, responsive web design, DigLip7"
-        canonical="https://diglip7.com/design"
+        canonical="https://diglip7.com/design/"
         ogImage="https://diglip7.com/images/design-service-og.jpg"
         ogImageAlt="DigLip7 design service: web design, branding, UI/UX and graphic design"
         ogType="website"

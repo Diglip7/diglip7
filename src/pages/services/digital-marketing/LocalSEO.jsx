@@ -524,13 +524,13 @@ function Local_seo_ser() {
       provider: {
         "@type": "Organization",
         name: "DigLip7",
-        url: "https://diglip7.com",
+        url: "https://diglip7.com/",
         logo: "https://diglip7.com/favicon-32x32.png",
       },
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service Local SEO including Google Business Profile optimization, local citation building, NAP consistency, local keyword targeting, review generation, and local backlink building.",
-      url: "https://diglip7.com/digital-market/local-SEO-services",
+      url: "https://diglip7.com/digital-market/local-SEO-services/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Local SEO Packages",
@@ -578,7 +578,7 @@ function Local_seo_ser() {
       <SEO
         title="Local SEO Services That Get You Found | DigLip7"
         description="Rank higher in Google Maps and local search with DigLip7's Local SEO services — Google Business Profile optimization, citations, and review management."
-        canonical="https://diglip7.com/digital-market/local-SEO-services"
+        canonical="https://diglip7.com/digital-market/local-SEO-services/"
         ogImage="https://diglip7.com/assets/lseo001-B5y1QA1T.png"
         ogType="website"
         keywords="local SEO services, Google Business Profile optimization, local map pack ranking, Google maps SEO, local citations, NAP consistency, DigLip7"

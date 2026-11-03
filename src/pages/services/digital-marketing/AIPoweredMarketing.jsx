@@ -546,7 +546,7 @@ function Ai_powered() {
       areaServed: "Worldwide",
       description:
         "DigLip7 offers AI-powered digital marketing services including intelligent automation, predictive analytics, AI-driven ad campaigns, chatbots and virtual assistants, and data-driven personalization to help businesses grow efficiently.",
-      url: "https://diglip7.com/digital-market/Ai-powered-Digital-Marketing",
+      url: "https://diglip7.com/digital-market/Ai-powered-Digital-Marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "AI-Powered Marketing Packages",
@@ -594,7 +594,7 @@ function Ai_powered() {
       <SEO
         title="AI-Powered Digital Marketing Services | DigLip7"
         description="Automate campaigns, predict trends, and personalize customer journeys with DigLip7's AI-powered marketing services. Get a free strategy session today."
-        canonical="https://diglip7.com/digital-market/Ai-powered-Digital-Marketing"
+        canonical="https://diglip7.com/digital-market/Ai-powered-Digital-Marketing/"
         ogImage="https://diglip7.com/assets/ai-BZoxhzrl.jpeg"
         ogType="website"
         keywords="AI digital marketing services, AI marketing automation, predictive marketing analytics, machine learning marketing, AI chatbots, DigLip7"

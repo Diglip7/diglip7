@@ -442,7 +442,7 @@ function Sco() {
       areaServed: "Worldwide",
       description:
         "DigLip7 offers comprehensive SEO services including keyword research, on-page and technical SEO, link building, local SEO, and content optimization to help businesses grow organic traffic and revenue.",
-      url: "https://diglip7.com/digital-market/seoservices",
+      url: "https://diglip7.com/digital-market/seoservices/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "SEO Packages",
@@ -490,7 +490,7 @@ function Sco() {
       <SEO
         title="SEO Services That Drive Traffic & Growth | DigLip7"
         description="Boost visibility, attract the right audience, and grow revenue with DigLip7's proven SEO strategies. Get a free consultation and see real results."
-        canonical="https://diglip7.com/digital-market/seoservices"
+        canonical="https://diglip7.com/digital-market/seoservices/"
         ogImage="https://diglip7.com/assets/seon3-CaKjyEB-.jpg"
         ogType="website"
         keywords="SEO services, search engine optimization agency, technical SEO audit, link building, local SEO, keyword research, DigLip7"

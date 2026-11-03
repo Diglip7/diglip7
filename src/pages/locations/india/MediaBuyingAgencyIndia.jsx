@@ -141,46 +141,73 @@ const BackToTop = () => {
   );
 };
 
-// Image container (preserves layout, elevation & styling without mismatched images)
+// Real image component with lazy loading, responsive styling and placeholder fallback
 const ImageContainer = ({
+  image,
   icon: Icon = Sparkles,
   badge = "Media Buying India",
   title = "",
   description = "",
   aspect = "aspect-[16/9]",
   className = "",
-}) => (
-  <div
-    className={`relative w-full ${aspect} rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50/40 to-slate-100 border border-teal-100/90 shadow-xl flex flex-col items-center justify-center p-6 sm:p-8 text-center select-none ${className}`}
-  >
-    <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#0f766e_1px,transparent_1px)] [background-size:16px_16px]" />
-    <motion.div
-      className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 text-white flex items-center justify-center mb-3 shadow-lg shadow-teal-900/20"
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3, repeat: Infinity }}
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (image?.src && !hasError) {
+    return (
+      <img
+        src={image.src}
+        alt={image.alt || ""}
+        width={image.width || 1200}
+        height={image.height || 675}
+        loading="lazy"
+        decoding="async"
+        onError={() => setHasError(true)}
+        className={`w-full object-cover rounded-2xl shadow-xl bg-gray-50 ${aspect} ${className}`.trim()}
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`relative w-full ${aspect} rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50/40 to-slate-100 border border-teal-100/90 shadow-xl flex flex-col items-center justify-center p-6 sm:p-8 text-center select-none ${className}`}
     >
-      {React.createElement(Icon, { className: "w-7 h-7 text-yellow-300" })}
-    </motion.div>
-    {badge && (
-      <span className="relative z-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-0.5 rounded-full border border-teal-200 mb-2">
-        {badge}
-      </span>
-    )}
-    {title && (
-      <h3 className="relative z-10 text-sm sm:text-base font-bold text-gray-900 max-w-sm leading-snug">
-        {title}
-      </h3>
-    )}
-    {description && (
-      <p className="relative z-10 text-xs sm:text-sm text-gray-600 mt-1 max-w-xs leading-relaxed">
-        {description}
-      </p>
-    )}
-  </div>
-);
+      <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#0f766e_1px,transparent_1px)] [background-size:16px_16px]" />
+      {Icon && (
+        <motion.div
+          className="relative z-10 w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-700 to-teal-900 text-white flex items-center justify-center mb-3 shadow-lg shadow-teal-900/20"
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          {React.createElement(Icon, { className: "w-7 h-7 text-yellow-300" })}
+        </motion.div>
+      )}
+      {badge && (
+        <span className="relative z-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-teal-800 bg-teal-100/70 px-3 py-0.5 rounded-full border border-teal-200 mb-2">
+          {badge}
+        </span>
+      )}
+      {title && (
+        <h3 className="relative z-10 text-sm sm:text-base font-bold text-gray-900 max-w-sm leading-snug mb-1">
+          {title}
+        </h3>
+      )}
+      {image?.alt ? (
+        <p className="relative z-10 text-xs sm:text-sm font-semibold text-teal-900 bg-teal-50/80 px-3 py-1 rounded-lg border border-teal-200/60 max-w-sm leading-snug mt-1">
+          {image.alt}
+        </p>
+      ) : description ? (
+        <p className="relative z-10 text-xs sm:text-sm text-gray-600 mt-1 max-w-xs leading-relaxed">
+          {description}
+        </p>
+      ) : null}
+    </div>
+  );
+};
 
 // Landing Hero
-const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
+const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel, image, whatsappUrl, description }) => {
+  const [heroImgError, setHeroImgError] = useState(false);
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, () => ({
@@ -251,8 +278,7 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
                 <motion.button
                   className="group px-7 sm:px-9 py-3.5 sm:py-4 bg-gradient-to-r from-teal-700 to-teal-900 text-white text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-teal-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                  whileTap={{ scale: 0.95 }}>
                   {ctaLabel}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
@@ -268,25 +294,41 @@ const LandingHero = ({ breadcrumb, titleDark, titleGradient, ctaLabel }) => {
             transition={{ duration: 0.8 }}
           >
             <Card3D className="w-full max-w-md lg:max-w-none">
-              <div className="relative w-full aspect-[16/9] md:aspect-[4/3] rounded-2xl bg-gradient-to-br from-teal-900 via-teal-800 to-teal-950 p-8 shadow-2xl border border-teal-700/50 flex flex-col items-center justify-center text-center overflow-hidden select-none">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(200,157,90,0.2),transparent_70%)] pointer-events-none" />
-                <motion.div
-                  className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-5 text-[#c89d5a] shadow-lg"
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <TrendingUp className="w-10 h-10 text-yellow-300" />
-                </motion.div>
-                <span className="text-xs font-semibold tracking-wider uppercase text-yellow-300/90 bg-white/10 px-3.5 py-1 rounded-full mb-3 border border-white/15">
-                  DigLip7 Tech Pvt Ltd
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white max-w-xs leading-snug">
-                  Media Buying Agency in India
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-teal-100/80 max-w-xs">
-                  Strategic Advertising • Media Planning • Multi-Channel ROI
-                </p>
-              </div>
+              {image?.src && !heroImgError ? (
+                <img
+                  src={image.src}
+                  alt={image.alt || ""}
+                  width={image.width || 1600}
+                  height={image.height || 900}
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  onError={() => setHeroImgError(true)}
+                  className="rounded-2xl shadow-xl w-full max-w-md lg:max-w-none h-auto object-cover bg-gray-50"
+                />
+              ) : (
+                <div className="relative w-full aspect-[16/9] md:aspect-[4/3] rounded-2xl bg-gradient-to-br from-teal-900 via-teal-800 to-teal-950 p-8 shadow-2xl border border-teal-700/50 flex flex-col items-center justify-center text-center overflow-hidden select-none">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(200,157,90,0.2),transparent_70%)] pointer-events-none" />
+                  <motion.div
+                    className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-5 text-[#c89d5a] shadow-lg"
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <TrendingUp className="w-10 h-10 text-yellow-300" />
+                  </motion.div>
+                  <span className="text-xs font-semibold tracking-wider uppercase text-yellow-300/90 bg-white/10 px-3.5 py-1 rounded-full mb-3 border border-white/15">
+                    DigLip7 Tech Pvt Ltd
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white max-w-xs leading-snug">
+                    Media Buying Agency in India
+                  </h3>
+                  {image?.alt && (
+                    <p className="mt-3 text-xs sm:text-sm font-semibold text-yellow-200/90 max-w-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+                      {image.alt}
+                    </p>
+                  )}
+                </div>
+              )}
             </Card3D>
           </motion.div>
         </div>
@@ -600,7 +642,7 @@ const ServiceTabs = ({ items }) => {
             transition={{ duration: 0.25 }}
             className={`shrink-0 transition-colors ${isOpen ? "text-teal-600" : "text-gray-400"}`}
           >
-            <ChevronDown className="w-5 h-5" />
+          <ChevronDown className="w-5 h-5"/>
           </motion.span>
         </button>
 
@@ -626,7 +668,7 @@ const ServiceTabs = ({ items }) => {
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-[#c89d5a] transition-colors"
                       >
                         {it.linkText}
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4"/>
                       </Link>
                     )}
                   </div>
@@ -655,7 +697,7 @@ const ServiceTabs = ({ items }) => {
   );
 };
 
-// Expanding industry cards
+// Expanding industry cards 
 const ExpandingCards = ({ items }) => {
   const [active, setActive] = useState(0);
   return (
@@ -705,6 +747,51 @@ const breadcrumbTrail = [
   { label: "Home", href: "/" },
   { label: "Media Buying Agency in India", href: "/media-buying-agency-india/" },
 ];
+
+const images = {
+  hero: {
+    src: "/images/media-buying-agency-india.webp",
+    alt: "Media planning team reviewing advertising channels and campaign budget allocation",
+    width: 1600,
+    height: 900,
+  },
+  planning: {
+    src: "/images/media-planning-strategy.webp",
+    alt: "Advertising strategy team planning audience targeting and media channel selection",
+    width: 1200,
+    height: 675,
+  },
+  digital: {
+    src: "/images/digital-media-buying-services.webp",
+    alt: "Digital advertising team managing paid media placements across online platforms",
+    width: 1200,
+    height: 675,
+  },
+  programmatic: {
+    src: "/images/programmatic-media-buying.webp",
+    alt: "Programmatic advertising campaign planning and automated media inventory analysis",
+    width: 1200,
+    height: 675,
+  },
+  traditional: {
+    src: "/images/traditional-media-buying-india.webp",
+    alt: "Advertising media planning across television, print, radio and outdoor channels",
+    width: 1200,
+    height: 675,
+  },
+  budget: {
+    src: "/images/media-budget-allocation.webp",
+    alt: "Media buying team reviewing advertising budget distribution across campaign channels",
+    width: 1200,
+    height: 675,
+  },
+  analytics: {
+    src: "/images/media-buying-performance-report.webp",
+    alt: "Advertising campaign performance reporting with reach, impressions and conversion metrics",
+    width: 1200,
+    height: 675,
+  },
+};
 
 const services = [
   {
@@ -998,6 +1085,13 @@ function MediaBuyingAgencyIndia() {
           titleDark="Media Buying Agency in India"
           titleGradient="for Strategic Advertising Campaigns"
           ctaLabel="Discuss Your Media Buying Requirements"
+          image={images.hero}
+          description={[
+            "A media buying agency in India helps businesses plan, select, purchase and manage advertising placements across suitable media channels.",
+            <>
+              At <span className="font-semibold text-blue-700">DigLip7</span>, we combine audience research, channel selection, budget allocation and performance evaluation to make advertising investments more structured, transparent and measurable.
+            </>,
+          ]}
         />
 
         <div className="bg-white">
@@ -1223,6 +1317,7 @@ function MediaBuyingAgencyIndia() {
               >
                 <Card3D>
                   <ImageContainer
+                    image={images.planning}
                     icon={Target}
                     badge="Media Strategy"
                     title="Media Planning & Strategy Development"
@@ -1253,9 +1348,20 @@ function MediaBuyingAgencyIndia() {
               <div className="relative">
                 <div className="text-center mb-10">
                   <SectionHeading color="text-white">Digital Media Buying Services</SectionHeading>
-                  <p className="text-teal-100 text-base sm:text-lg max-w-2xl mx-auto">
+                  <p className="text-teal-100 text-base sm:text-lg max-w-2xl mx-auto mb-8">
                     Digital media buying places your advertising on online platforms, with targeting and measurement built in.
                   </p>
+                  <div className="max-w-2xl mx-auto">
+                    <Card3D>
+                      <ImageContainer
+                        image={images.digital}
+                        icon={Layers}
+                        badge="Digital Media Buying"
+                        title="Paid Placements Across Online Platforms"
+                        description="Managing search, social, display and video placements across target audiences."
+                      />
+                    </Card3D>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1332,6 +1438,7 @@ function MediaBuyingAgencyIndia() {
               >
                 <Card3D>
                   <ImageContainer
+                    image={images.programmatic}
                     icon={Cpu}
                     badge="Automated Inventory"
                     title="Programmatic Advertising"
@@ -1345,9 +1452,20 @@ function MediaBuyingAgencyIndia() {
             <div className="max-w-7xl mx-auto mb-24">
               <div className="text-center max-w-4xl mx-auto mb-12">
                 <SectionHeading>Traditional Media Buying in India</SectionHeading>
-                <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+                <p className="text-gray-700 leading-relaxed text-base sm:text-lg mb-8">
                   Television, radio, print, outdoor and cinema can form part of an integrated plan.
                 </p>
+                <div className="max-w-2xl mx-auto">
+                  <Card3D>
+                    <ImageContainer
+                      image={images.traditional}
+                      icon={Globe}
+                      badge="Traditional Media"
+                      title="Offline Advertising Channels in India"
+                      description="Advertising media planning across television, print, radio, outdoor and cinema."
+                    />
+                  </Card3D>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
@@ -1453,6 +1571,7 @@ function MediaBuyingAgencyIndia() {
               >
                 <Card3D>
                   <ImageContainer
+                    image={images.budget}
                     icon={PieChart}
                     badge="Cost Control"
                     title="Media Budget Allocation"
@@ -1507,6 +1626,7 @@ function MediaBuyingAgencyIndia() {
               >
                 <Card3D>
                   <ImageContainer
+                    image={images.analytics}
                     icon={BarChart3}
                     badge="Measurement & ROI"
                     title="Campaign Performance Reporting"

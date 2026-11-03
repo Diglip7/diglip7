@@ -342,12 +342,12 @@ const ecommerceDevSchemas = [
     "provider": {
       "@type": "Organization",
       "name": "DigLip7",
-      "url": "https://diglip7.com",
+      "url": "https://diglip7.com/",
       "logo": "https://diglip7.com/assets/logo.png"
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers full-service e-commerce development including custom online store builds, payment gateway integration, product catalog and inventory management, responsive design, and post-launch maintenance and support.",
-    "url": "https://diglip7.com/development/e-commerce-development",
+    "url": "https://diglip7.com/development/e-commerce-development/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "E-Commerce Development Packages",
@@ -586,7 +586,7 @@ function E_commerce_dev() {
       <SEO
         title="E-Commerce Development Services | DigLip7"
         description="Launch a secure, scalable online store with DigLip7's e-commerce development — custom builds, payment integration, inventory & ongoing support."
-        canonical="https://diglip7.com/development/e-commerce-development"
+        canonical="https://diglip7.com/development/e-commerce-development/"
         ogImage="https://diglip7.com/assets/e-comd1-C_uEfg3C.jpeg"
         ogType="website"
         keywords="e-commerce development services, online store development, custom ecommerce website, WooCommerce Shopify Magento development, payment gateway integration, DigLip7"

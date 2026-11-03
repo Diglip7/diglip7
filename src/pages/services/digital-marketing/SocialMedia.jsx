@@ -534,13 +534,13 @@ function Socialmedia() {
       provider: {
         "@type": "Organization",
         name: "DigLip7",
-        url: "https://diglip7.com",
+        url: "https://diglip7.com/",
         logo: "https://diglip7.com/favicon-32x32.png",
       },
       areaServed: "Worldwide",
       description:
         "DigLip7 offers full-service social media marketing including strategy development, content creation, paid social advertising, community management, and analytics reporting across Facebook, Instagram, LinkedIn, and TikTok.",
-      url: "https://diglip7.com/digital-market/social-media-marketing",
+      url: "https://diglip7.com/digital-market/social-media-marketing/",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Social Media Marketing Packages",
@@ -588,7 +588,7 @@ function Socialmedia() {
       <SEO
         title="Social Media Marketing Services That Grow Your Brand | DigLip7"
         description="Engage your audience and drive measurable growth with DigLip7's data-driven social media marketing. Strategy, content, ads & community management that convert."
-        canonical="https://diglip7.com/digital-market/social-media-marketing"
+        canonical="https://diglip7.com/digital-market/social-media-marketing/"
         ogImage="https://diglip7.com/assets/smm00-Y_wVwoqh.jpeg"
         ogType="website"
         keywords="social media marketing services, SMM agency, Facebook ads, Instagram growth, LinkedIn marketing, TikTok advertising, DigLip7"

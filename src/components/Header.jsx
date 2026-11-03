@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -105,7 +105,7 @@ const Header = () => {
     { name: "Mobile App Development", href: "/development/mobile-app-development", icon: Smartphone },
     { name: "E-commerce Development", href: "/development/e-commerce-development", icon: Globe },
     { name: "Custom Software", href: "/development/custom-software_development", icon: Cpu },
-    { name: "API Development", href: "/development/api-development&Integration", icon: Settings },
+    { name: "API Development", href: "/development/api-development-integration/", icon: Settings },
     { name: "CMS Development", href: "/development/cms-development", icon: Wrench },
     { name: "Cloud Application Development", href: "/development/cloud-application-development", icon: Globe },
   ];
@@ -676,7 +676,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/blogview">
+            <Link to="/blog/">
               <span className="pr-6 text-teal-800 hover:text-black duration-200 flex items-center cursor-pointer text-sm 2xl:text-base font-medium whitespace-nowrap">Blog</span>
             </Link>
           </li>
@@ -936,7 +936,7 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to="/blogview"
+              to="/blog/"
               className="block py-3 px-2 text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors duration-200 text-base"
               onClick={() => setIsOpen(false)}
             >

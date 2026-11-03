@@ -342,12 +342,12 @@ const mobileAppSchemas = [
     "provider": {
       "@type": "Organization",
       "name": "DigLip7",
-      "url": "https://diglip7.com",
+      "url": "https://diglip7.com/",
       "logo": "https://diglip7.com/assets/logo.png"
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers end-to-end mobile app development including iOS, Android, cross-platform, and hybrid app development, UI/UX app design, app store optimization, and ongoing maintenance and support.",
-    "url": "https://diglip7.com/development/mobile-app-development",
+    "url": "https://diglip7.com/development/mobile-app-development/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Mobile App Development Packages",
@@ -586,7 +586,7 @@ function Mobile_app_dev() {
       <SEO
         title="Mobile App Development Services | DigLip7"
         description="Launch a high-performing iOS, Android, or cross-platform app with DigLip7's mobile app development services — design, build, launch, and support."
-        canonical="https://diglip7.com/development/mobile-app-development"
+        canonical="https://diglip7.com/development/mobile-app-development/"
         ogImage="https://diglip7.com/assets/mad005-BxXWGQTy.jpeg"
         ogType="website"
         keywords="mobile app development services, iOS app development, Android app development, cross-platform apps, Flutter React Native apps, mobile app design, DigLip7"

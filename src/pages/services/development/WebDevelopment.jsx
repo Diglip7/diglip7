@@ -523,13 +523,13 @@ function Web_dev() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers full-service web development including custom website development, e-commerce development, responsive design, CMS development, web application development, and ongoing maintenance and support.",
-      "url": "https://diglip7.com/development/web-development",
+      "url": "https://diglip7.com/development/web-development/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Web Development Packages",
@@ -577,7 +577,7 @@ function Web_dev() {
       <SEO
         title="Web Development Services That Drive Growth | DigLip7"
         description="Get a fast, secure, and conversion-focused website with DigLip7's web development services — custom builds, e-commerce, CMS & web app development."
-        canonical="https://diglip7.com/development/web-development"
+        canonical="https://diglip7.com/development/web-development/"
         ogImage="https://diglip7.com/assets/wd001-DvLvKI6R.png"
         ogType="website"
         keywords="web development services, custom website development, e-commerce development, CMS development, responsive web design, web application development, DigLip7"

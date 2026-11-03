@@ -538,13 +538,13 @@ function Voice() {
       "provider": {
         "@type": "Organization",
         "name": "DigLip7",
-        "url": "https://diglip7.com",
+        "url": "https://diglip7.com/",
         "logo": "https://diglip7.com/favicon-32x32.png",
       },
       "areaServed": "Worldwide",
       "description":
         "DigLip7 offers voice search optimization services including conversational keyword research, content optimization for voice queries, local SEO enhancement, structured data implementation, and smart device compatibility to help businesses rank in voice-first search results.",
-      "url": "https://diglip7.com/digital-market/voice-search-optimization",
+      "url": "https://diglip7.com/digital-market/voice-search-optimization/",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Voice Search Optimization Packages",
@@ -592,7 +592,7 @@ function Voice() {
       <SEO
         title="Voice Search Optimization Services | DigLip7"
         description="Rank in voice-first results with DigLip7's conversational SEO and local optimization strategies. Get a free voice search audit today."
-        canonical="https://diglip7.com/digital-market/voice-search-optimization"
+        canonical="https://diglip7.com/digital-market/voice-search-optimization/"
         ogImage="https://diglip7.com/assets/vim001-D1EJgK14.jpeg"
         ogType="website"
         keywords="voice search optimization services, conversational SEO, voice search ranking, voice SEO strategy, Alexa Google Siri optimization, DigLip7"

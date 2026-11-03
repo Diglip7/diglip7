@@ -327,12 +327,12 @@ const cmsDevSchemas = [
     "provider": {
       "@type": "Organization",
       "name": "DigLip7",
-      "url": "https://diglip7.com",
+      "url": "https://diglip7.com/",
       "logo": "https://diglip7.com/assets/logo.png"
     },
     "areaServed": "Worldwide",
     "description": "DigLip7 offers CMS development services including custom CMS builds, WordPress development, Drupal/Joomla/Shopify/Magento setups, CMS migration and upgrades, plugin and module development, and third-party CMS integrations.",
-    "url": "https://diglip7.com/development/cms-development",
+    "url": "https://diglip7.com/development/cms-development/",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "CMS Development Packages",
@@ -571,7 +571,7 @@ function Cms_dev() {
       <SEO
         title="CMS Development Services | DigLip7"
         description="Build a scalable, SEO-friendly website with DigLip7's CMS development — WordPress, Drupal, Shopify, and custom platforms. Get a free consultation today."
-        canonical="https://diglip7.com/development/cms-development"
+        canonical="https://diglip7.com/development/cms-development/"
         ogImage="https://diglip7.com/assets/cms005-B9L1y-iP.png"
         ogType="website"
         keywords="CMS development services, WordPress development, custom CMS, Drupal development, Shopify CMS, headless CMS, DigLip7"
