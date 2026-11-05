@@ -818,8 +818,6 @@ function Voice() {
 
                 </p>
                 <div className="grid grid-cols-2 gap-4 flex-1 w-full">
-
-
                   {study.stats.map((stat, idx) => (
                     <div
                       key={idx}
@@ -894,7 +892,7 @@ function Voice() {
                   <p className="text-gray-600 mb-6">{pkg.duration}</p>
                   <ul className="text-gray-700 text-sm space-y-2 mb-6 text-left">
                     {pkg.features.map((feat, i) => (
-                      <li key={i}>✅ {feat}</li>
+                      <li key={i}>✅{feat}</li>
                     ))}
                   </ul>
                   <Link to="/contact">
@@ -1147,6 +1145,7 @@ function Voice() {
                 </span>
               </h2>
             </FloatingElement>
+
             {/* Ready to Grow Your Business? */}
             <div className="space-y-4 sm:space-y-6">
               <motion.div

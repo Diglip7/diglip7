@@ -952,17 +952,17 @@ function IndiaSEOServices() {
           </motion.div>
 
           {/* Subsection: SEO Audit */}
-          <div className="flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <Card3D className="w-full h-full flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-14">
+            <div className="w-full md:w-[46%] lg:w-[42%] flex justify-center items-center">
+              <Card3D className="w-full max-w-md lg:max-w-lg">
                 <SEOImageSlot
                   src={auditImgSrc}
                   filename="local-seo-audit-india.webp"
                   alt="Audit dashboard showing crawl errors, indexing status and page speed findings"
                   width={800}
                   height={600}
-                  aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
-                  className="h-full shadow-2xl"
+                  aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[320px] sm:max-h-[350px] lg:max-h-[380px] w-full"
+                  className="shadow-xl"
                 />
               </Card3D>
             </div>
@@ -997,17 +997,17 @@ function IndiaSEOServices() {
           </div>
 
           {/* Subsection: Keyword Research and Search Intent */}
-          <div className="flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <Card3D className="w-full h-full flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
+            <div className="w-full md:w-[46%] lg:w-[42%] flex justify-center items-center">
+              <Card3D className="w-full max-w-md lg:max-w-lg">
                 <SEOImageSlot
                   src={intentImgSrc}
                   filename="local-keyword-research-india.webp"
                   alt="Table sorting keywords into informational, commercial and transactional page types"
                   width={800}
                   height={600}
-                  aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
-                  className="h-full shadow-2xl"
+                  aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[320px] sm:max-h-[350px] lg:max-h-[380px] w-full"
+                  className="shadow-xl"
                 />
               </Card3D>
             </div>
@@ -1063,17 +1063,17 @@ function IndiaSEOServices() {
           </div>
 
           {/* Subsection: Content SEO */}
-          <div className="flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <Card3D className="w-full h-full flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-14">
+            <div className="w-full md:w-[45%] lg:w-[40%] flex justify-center items-center">
+              <Card3D className="w-full max-w-md lg:max-w-lg">
                 <SEOImageSlot
                   src={contentImgSrc}
                   filename="content-seo-planning-india.webp"
                   alt="Content map connecting a main service page with supporting guides and FAQ pages"
                   width={800}
                   height={600}
-                  aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
-                  className="h-full shadow-2xl"
+                  aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[260px] sm:max-h-[280px] lg:max-h-[300px] w-full"
+                  className="shadow-xl"
                 />
               </Card3D>
             </div>
@@ -1098,17 +1098,17 @@ function IndiaSEOServices() {
           </div>
 
           {/* Subsection: Local SEO in India */}
-          <div className="flex flex-col md:flex-row-reverse items-stretch gap-10 lg:gap-14">
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <Card3D className="w-full h-full flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-14">
+            <div className="w-full md:w-[46%] lg:w-[42%] flex justify-center items-center">
+              <Card3D className="w-full max-w-md lg:max-w-lg">
                 <SEOImageSlot
                   src={localMapsImgSrc}
                   filename="google-maps-seo-india.webp"
                   alt="Map listing for a local business showing reviews, address and phone number"
                   width={800}
                   height={600}
-                  aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
-                  className="h-full shadow-2xl"
+                  aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[320px] sm:max-h-[350px] lg:max-h-[380px] w-full"
+                  className="shadow-xl"
                 />
               </Card3D>
             </div>
@@ -1343,17 +1343,17 @@ function IndiaSEOServices() {
 
       {/* Section 7: How We Measure SEO Performance */}
       <section className="w-full bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <Card3D className="w-full h-full flex flex-col justify-center">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
+          <div className="w-full md:w-[46%] lg:w-[42%] flex justify-center items-center">
+            <Card3D className="w-full max-w-md lg:max-w-lg">
               <SEOImageSlot
                 src={reportingImgSrc}
                 filename="seo-reporting-india.webp"
                 alt="Report view of organic clicks, impressions and conversions plotted over several months"
                 width={800}
                 height={600}
-                aspect="h-full min-h-[440px] lg:min-h-[520px] w-full"
-                className="h-full shadow-2xl"
+                aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[320px] sm:max-h-[350px] lg:max-h-[380px] w-full"
+                className="shadow-xl"
               />
             </Card3D>
           </div>

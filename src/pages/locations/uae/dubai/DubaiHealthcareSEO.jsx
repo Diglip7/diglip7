@@ -482,7 +482,7 @@ function DubaiHealthcareSEO() {
         schema={jsonLdGraph}
       />
 
-      {/* Visible Breadcrumb */}
+      {/* Visible Breadcrumb */} 
       <div className="pt-24 sm:pt-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-100 via-pink-100 to-white">
         <nav
           aria-label="Breadcrumb"
@@ -525,7 +525,7 @@ function DubaiHealthcareSEO() {
           {/* Left Text */}
           <div className="w-full lg:w-[58%] text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">Healthcare SEO Dubai </span>
+              <span className="text-gray-900">Healthcare SEO Dubai</span>
               <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
                 for Clinics, Hospitals & Medical Practices
@@ -561,7 +561,7 @@ function DubaiHealthcareSEO() {
             </div>
           </div>
 
-          {/* Right Section - Hero Image (Section 9: Hero) */}
+          {/* Right Section - Hero Image (Section 9: Hero) */} 
           <motion.div
             className="w-full lg:w-[42%] flex justify-center"
             initial={{ opacity: 0, y: 30 }}
@@ -659,7 +659,7 @@ function DubaiHealthcareSEO() {
 
       {/* Section 3: Why Healthcare SEO Matters for Healthcare Businesses in Dubai (Full-Width bg-white with Keyword Research Image from Section 9) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
           <div className="w-full md:w-1/2 flex flex-col justify-center">
             <Card3D className="w-full h-full flex flex-col justify-center">
               <SEOImageSlot
@@ -771,6 +771,7 @@ function DubaiHealthcareSEO() {
       </section>
 
       {/* Section 6: Building Trust Into Healthcare SEO (Full-Width bg-gray-50) */}
+
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
         <div className="max-w-4xl mx-auto text-center md:text-left">
           <FloatingElement>
@@ -783,7 +784,7 @@ function DubaiHealthcareSEO() {
               Because healthcare content can influence real decisions, trust has to be built into the page itself: accurate healthcare information, clear authorship, qualified reviewers where applicable, appropriate medical references, transparent business information, visible contact details, verified provider credentials, an editorial review process, regularly updated content, and clear disclaimers where relevant.
             </p>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              We do not claim medical expertise, licenses, certifications, awards or qualifications on your behalf unless they're verified, and we don't fabricate patient numbers, reviews, awards, healthcare clients, case studies, rankings, certifications or results.
+              We do not claim medical expertise, licenses, certifications, awards or qualifications on your behalf unless they're verified, and we don't fabricate patient numbers, reviews, awards, healthcare clients, case studies, rankings, certifications or results. 
             </p>
           </div>
         </div>
@@ -818,8 +819,9 @@ function DubaiHealthcareSEO() {
       </section>
 
       {/* Section 8: Healthcare Website Structure That Supports SEO (Full-Width bg-gray-50 with Website Architecture Image from Section 9) */}
+
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
           <div className="w-full md:w-1/2 flex flex-col justify-center">
             <Card3D className="w-full h-full flex flex-col justify-center">
               <SEOImageSlot
@@ -956,7 +958,7 @@ function DubaiHealthcareSEO() {
 
       {/* Section 11: How Healthcare SEO Performance Is Measured (Full-Width bg-white with Reporting Image from Section 9) */}
       <section className="w-full bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
           <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
@@ -1050,7 +1052,7 @@ function DubaiHealthcareSEO() {
 
       {/* Section 14: How Long Does Healthcare SEO Take? (Full-Width bg-gray-50 with Technical SEO Image from Section 9) */}
       <section className="w-full bg-gray-50 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10 lg:gap-14">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-14">
           <div className="flex-1 flex flex-col justify-center text-center md:text-left">
             <FloatingElement>
               <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-600 mb-6">
@@ -1068,14 +1070,14 @@ function DubaiHealthcareSEO() {
             </p>
           </div>
 
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <Card3D className="w-full h-full flex flex-col justify-center">
+          <div className="w-full md:w-[46%] lg:w-[42%] flex justify-center items-center">
+            <Card3D className="w-full max-w-md lg:max-w-lg">
               <SEOImageSlot
                 src={technicalImgSrc}
                 filename="healthcare-technical-seo-dubai.webp"
                 alt="Technical SEO analysis for a healthcare website"
-                aspect="h-full min-h-[420px] lg:min-h-[500px] w-full"
-                className="h-full shadow-2xl"
+                aspect="aspect-[4/3] sm:aspect-[16/10] max-h-[280px] sm:max-h-[300px] lg:max-h-[320px] w-full"
+                className="shadow-xl"
               />
             </Card3D>
           </div>
